@@ -224,6 +224,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  // Initialize Adaptive Transparent Navbar
+  initAdaptiveNavbar();
+
   // Load Data
   await loadBranchesData();
   await loadMenuData();
@@ -2948,6 +2951,9 @@ function renderFeaturedDishes() {
 // ========================================================
 async function initPromotionsBanner() {
   try {
+    // Preserve transparent floating hero navbar on homepage by not prepending banner
+    if (document.getElementById('heroSliderSection')) return;
+
     let res = await fetch('/api/promotions').catch(() => null);
     if (!res || !res.ok) res = await fetch('data/promotions.json').catch(() => null);
     if (!res || !res.ok) return;
@@ -2970,7 +2976,12 @@ async function initPromotionsBanner() {
       ${ab.link ? `<a href="${ab.link}" class="underline hover:opacity-80 ml-2 font-bold text-[11px]">Explore ↗</a>` : ''}
       <button onclick="document.getElementById('redboxPromoBar').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 opacity-75 hover:opacity-100 p-1 cursor-pointer text-sm font-bold">&times;</button>
     `;
-    document.body.prepend(bar);
+    const targetContainer = document.getElementById('promoAnnouncementBar');
+    if (targetContainer) {
+      targetContainer.appendChild(bar);
+    } else {
+      document.body.prepend(bar);
+    }
   } catch(e) {
     console.warn("Could not load promotions banner:", e);
   }
@@ -3010,4 +3021,82 @@ async function initDynamicTestimonials() {
   } catch(e) {
     console.warn("Could not load dynamic testimonials:", e);
   }
+}
+
+// ========================================================
+// TRANSPARENT ADAPTIVE NAVBAR & SWIGGY/ZOMATO QUICK ROUTING
+// ========================================================
+const CITY_SLUG_MAP = {
+  'chennai': 'chennai',
+  'bengaluru': 'bangalore',
+  'bangalore': 'bangalore',
+  'hyderabad': 'hyderabad',
+  'coimbatore': 'coimbatore',
+  'madurai': 'madurai',
+  'puducherry': 'pondicherry',
+  'pondicherry': 'pondicherry',
+  'all': 'chennai'
+};
+
+function updateOrderPlatformLinks(cityName = 'chennai') {
+  const cityKey = (cityName || 'chennai').toLowerCase().trim();
+  const swiggyCity = CITY_SLUG_MAP[cityKey] || 'chennai';
+  const zomatoCity = (cityKey === 'bengaluru' ? 'bangalore' : (CITY_SLUG_MAP[cityKey] || 'chennai'));
+
+  const swiggyUrl = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
+  const zomatoUrl = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+
+  document.querySelectorAll('.nav-order-pill-swiggy').forEach(el => {
+    el.href = swiggyUrl;
+    el.title = `Order The Red Box on Swiggy (${swiggyCity.toUpperCase()})`;
+  });
+  document.querySelectorAll('.nav-order-pill-zomato').forEach(el => {
+    el.href = zomatoUrl;
+    el.title = `Order The Red Box on Zomato (${zomatoCity.toUpperCase()})`;
+  });
+}
+
+function initAdaptiveNavbar() {
+  const header = document.getElementById('mainHeader');
+  if (!header) return;
+
+  const logoImg = document.getElementById('navBrandLogoImg');
+  const heroSection = document.getElementById('heroSliderSection');
+
+  // If there is no hero section on page (e.g. content pages), default to frosted glass light mode
+  if (!heroSection) {
+    header.classList.remove('nav-state-dark');
+    header.classList.add('nav-state-light');
+    if (logoImg) logoImg.src = 'assets/images/logo.png';
+    updateOrderPlatformLinks('chennai');
+    return;
+  }
+
+  // On page with dark hero section (e.g. index.html)
+  function handleNavScroll() {
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const heroH = heroSection.offsetHeight || 440;
+    const threshold = Math.max(70, heroH - 80);
+
+    if (scrollY < threshold) {
+      // Over Dark Hero: transparent background, crisp white text, white logo
+      if (!header.classList.contains('nav-state-dark') || header.classList.contains('nav-state-light')) {
+        header.classList.add('nav-state-dark');
+        header.classList.remove('nav-state-light');
+        if (logoImg) logoImg.src = 'assets/images/logo-white-text.png';
+      }
+    } else {
+      // Over Light Content: modern glassmorphism blur, dark slate text, standard RedBox logo
+      if (!header.classList.contains('nav-state-light') || header.classList.contains('nav-state-dark')) {
+        header.classList.add('nav-state-light');
+        header.classList.remove('nav-state-dark');
+        if (logoImg) logoImg.src = 'assets/images/logo.png';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+  window.addEventListener('resize', handleNavScroll, { passive: true });
+  handleNavScroll(); // Immediate initial evaluation
+  updateOrderPlatformLinks('chennai');
 }

@@ -87,16 +87,14 @@
         <a href="blog.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Stories</span></a>
       </nav>
 
-      <!-- Header Right: WOK HEI Badge & Order Online Button -->
-      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[#C5A059] font-heading font-extrabold text-xs tracking-wider uppercase select-none whitespace-nowrap">
-          
-          <span>WOK HEI FRESH</span>
-        </div>
-        <button onclick="openOrderModal()" class="inline-flex items-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 active:scale-98 transition-all cursor-pointer whitespace-nowrap flex-shrink-0">
-          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-          <span>Order Online</span>
-        </button>
+      <!-- Header Right: Swiggy & Zomato Quick Order Buttons -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy">
+          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 sm:h-5 w-auto object-contain">
+        </a>
+        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato">
+          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 sm:h-4 w-auto object-contain">
+        </a>
         <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="md:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
           <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
         </button>
@@ -104,8 +102,19 @@
 
     </div>
 
-        <!-- Neat Compact Mobile Dropdown (Directly below navbar, NOT a screen-blocking modal) -->
+    <!-- Neat Compact Mobile Dropdown (Directly below navbar, NOT a screen-blocking modal) -->
     <div id="mobileDropdown" class="hidden md:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
+      <!-- Mobile Swiggy & Zomato Quick Action -->
+      <div class="flex items-center gap-2 pb-2.5 border-b border-zinc-100 mb-2">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-swiggy py-2 justify-center gap-1.5">
+          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
+          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 w-auto object-contain">
+        </a>
+        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-zomato py-2 justify-center gap-1.5">
+          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
+          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 w-auto object-contain">
+        </a>
+      </div>
       <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
         <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
         <a href="menu.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
