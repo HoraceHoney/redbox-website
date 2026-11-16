@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "titlePrefix": "Partner & Grow With",
+    "titleHighlight": "The Red Box",
+    "subtitle": "India's fastest growing organized Indo-Chinese quick service restaurant chain. High-margin unit economics, proprietary central supply chain, and proven 1.8-year payback period.",
+    "stat1Label": "Total Investment",
+    "stat1Value": "₹ 22 - 27 L",
+    "stat1Sub": "Turnkey setup & equipment",
+    "stat2Label": "Average Payback",
+    "stat2Value": "~1.8 Years",
+    "stat2Sub": "Strong EBITDA margin",
+    "stat3Label": "Kiosk Space Req.",
+    "stat3Value": "300 - 600 sq ft",
+    "stat3Sub": "Mall / High-street / Cloud",
+    "heroImage": "assets/images/FO1.jpg",
+    "heroImageCaption": "Compact High-Efficiency Kitchen Layout",
+    "heroImageSub": "Automated wok cookers & proprietary sauce batching"
+  },
+  "formats": [
+    {
+      "model": "Express Takeaway Kiosk",
+      "space": "300 – 450 sq ft",
+      "capital": "₹ 22 – 24 Lakhs",
+      "setup": "₹ 12 Lakhs",
+      "staff": "3 – 4 Staff",
+      "sales": "₹ 6.5 – 8.5 Lakhs"
+    },
+    {
+      "model": "Mall Food Court Counter",
+      "space": "400 – 600 sq ft",
+      "capital": "₹ 24 – 27 Lakhs",
+      "setup": "₹ 14 Lakhs",
+      "staff": "4 – 5 Staff",
+      "sales": "₹ 8.5 – 12.0 Lakhs"
+    },
+    {
+      "model": "High-Street Dine-In Hub",
+      "space": "700 – 1200 sq ft",
+      "capital": "₹ 32 – 38 Lakhs",
+      "setup": "₹ 18 Lakhs",
+      "staff": "6 – 8 Staff",
+      "sales": "₹ 12.0 – 18.0 Lakhs"
+    }
+  ],
+  "pillars": [
+    {
+      "title": "Site Selection & Setup",
+      "desc": "Turnkey design guidance, layout mapping, and automated wok kitchen installations."
+    },
+    {
+      "title": "Centralized Supply Chain",
+      "desc": "Proprietary master sauces and seasoning pre-mixes dispatched weekly with zero quality drift."
+    },
+    {
+      "title": "Chef & Crew Academy",
+      "desc": "14-day rigorous culinary training ensuring flame control, hygiene, and speed of service."
+    },
+    {
+      "title": "Cloud POS & Marketing",
+      "desc": "Real-time billing, inventory tracking, aggregator integration, and hyper-local ads."
+    }
+  ]
+}

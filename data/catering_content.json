@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "badge": "Hot Wok Fire &",
+    "subBadge": "Bulk Orders & Live Counters",
+    "titlePrefix": "Hot Wok Fire &",
+    "titleHighlight": "Corporate Catering",
+    "subtitle": "From 50-person corporate tech lunches to 5,000-person college cultural fests with live theatrical wok stations.",
+    "helpline": "+91 89394 44411",
+    "noticeHours": "24 Hours Advance Notice"
+  },
+  "package1": {
+    "tag": "Option A",
+    "title": "Bulk Corporate Meal Boxes",
+    "price": "₹150",
+    "priceUnit": "/ box",
+    "description": "Individually sealed hot noodle & rice boxes, packed with appetisers, dips, and fortune cookies. Perfect for desk delivery, seminars, and training batches.",
+    "features": [
+      "Minimum batch: 20 boxes",
+      "Choice of Veg / Non-Veg split",
+      "Guaranteed 45-minute temperature retention",
+      "Cutlery & napkin kit included"
+    ],
+    "buttonText": "Book Meal Boxes"
+  },
+  "package2": {
+    "tag": "Option B",
+    "badge": "Most Popular",
+    "title": "Live Wok Counter Experience",
+    "price": "₹650",
+    "priceUnit": "/ person",
+    "description": "Our chef brings the wok station to your venue! Sizzling open flames, customized tossed noodles on demand, piping hot dim sums, and instant street-style theatre.",
+    "features": [
+      "Full live station setup with master chefs",
+      "Made-to-order spicy levels & sauces",
+      "Complete waste management & disposal",
+      "Ideal for college fests & annual corporate parties"
+    ],
+    "buttonText": "Request Live Wok Counter"
+  },
+  "estimator": {
+    "title": "Instant Catering Cost Estimator",
+    "pkg1Rate": 150,
+    "pkg2Rate": 250,
+    "pkg3Rate": 650,
+    "defaultGuests": 100,
+    "disclaimer": "*Subject to GST & venue logistics"
+  }
+}

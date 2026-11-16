@@ -9,10 +9,10 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans -->
+  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -42,6 +42,7 @@
             serif: ['Playfair Display', 'Georgia', 'serif'],
             heading: ['Montserrat', 'sans-serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
           }
         }
       }
@@ -164,10 +165,6 @@
               <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
               <span>Browse Dishes</span>
             </a>
-            <a href="#cateringSection" class="px-4 py-2 rounded-xl bg-amber-500 text-white text-xs font-heading font-bold uppercase tracking-wider shadow-sm hover:bg-amber-600 transition-all flex items-center gap-1.5">
-              <i data-lucide="users" class="w-3.5 h-3.5"></i>
-              <span>Catering Services</span>
-            </a>
             <a href="branches.html" class="px-3.5 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold transition-all flex items-center gap-1">
               <i data-lucide="map-pin" class="w-3.5 h-3.5 text-zinc-400"></i>
               <span>Change Branch</span>
@@ -190,20 +187,21 @@
                 <span id="fulfillmentModeLabel" class="text-[10px] font-heading font-extrabold uppercase tracking-wider text-zinc-400">Delivering To</span>
                 <span id="serviceZoneStatusChip" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center gap-1">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span id="serviceZoneStatusText">Nearby Branch Active</span>
+                  <span id="serviceZoneStatusText">In Hot Delivery Radius (&lt;12 km)</span>
                 </span>
+                <span id="gpsAccuracyBadge" class="hidden px-2 py-0.5 rounded-full text-[9px] font-mono bg-zinc-100 text-zinc-600 border border-zinc-200">GPS ±15m</span>
               </div>
               <div class="flex items-center gap-2 mt-0.5">
-                <h3 id="currentLocalityDisplay" class="font-heading font-black text-sm sm:text-base text-zinc-900 truncate">
-                  Detecting your neighborhood...
+                <h3 id="currentLocalityDisplay" class="font-heading font-black text-sm sm:text-base text-zinc-900 truncate" title="Delivery Address">
+                  45, G.N. Chetty Road, T. Nagar, Chennai - 600017
                 </h3>
-                <button onclick="openLocationSelectorModal()" class="px-2.5 py-0.5 text-xs font-bold text-brand-red hover:text-brand-red-dark hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 cursor-pointer flex-shrink-0" title="Change Location or Branch">
+                <button onclick="openLocationSelectorModal()" class="px-2.5 py-0.5 text-xs font-bold text-brand-red hover:text-brand-red-dark hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 cursor-pointer flex-shrink-0" title="Change Location or Address">
                   <span>Change</span>
                   <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
               <p id="nearestBranchInfoDisplay" class="text-[11px] text-zinc-500 mt-0.5 truncate">
-                Checking nearest of 57 culinary hubs...
+                Served by RedBox T. Nagar (2.2 km) · ~35 mins
               </p>
             </div>
           </div>
@@ -403,114 +401,6 @@
 
       </div>
 
-      <!-- ================= COMBINED CAMPUS & CORPORATE CATERING SECTION ================= -->
-      <section id="cateringSection" class="mt-12 py-10 sm:py-12 px-6 sm:px-10 bg-white rounded-3xl border border-[#E6DBC6] shadow-sm">
-        
-        <div class="text-center max-w-3xl mx-auto mb-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-wider uppercase mb-2">
-            <i data-lucide="chef-hat" class="w-3.5 h-3.5"></i>
-            <span>Event & Corporate Hospitality</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-heading font-black text-brand-slate uppercase">
-            Campus Fests & Corporate Catering
-          </h2>
-          <p class="text-xs sm:text-sm text-zinc-600 mt-2">
-            Fulfilled directly by your local Red Box hub. From 30-person executive lunches to 5,000-person college fests with live wok fire theatre.
-          </p>
-        </div>
-
-        <!-- Two Packages Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          
-          <!-- Package 1: Corporate Meal Boxes -->
-          <div class="bg-white border border-zinc-200 rounded-2xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-1 rounded-md">Option A</span>
-                <span class="text-xl font-black text-brand-slate">From ₹150 <span class="text-xs text-zinc-500 font-normal">/ box</span></span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 mb-3">Bulk Corporate Meal Boxes</h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mb-6 leading-relaxed">
-                Individually sealed hot noodle & rice boxes, packed with appetisers, dips, and fortune cookies. Perfect for desk delivery, seminars, and training batches.
-              </p>
-              <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Minimum batch: 20 boxes</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Choice of Veg / Non-Veg split</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Guaranteed 45-minute temperature retention</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Cutlery & napkin kit included</li>
-              </ul>
-            </div>
-            <button onclick="openCateringModal('Bulk Corporate Boxes')" class="w-full py-3 bg-zinc-900 hover:bg-black text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer">
-              Book Meal Boxes
-            </button>
-          </div>
-
-          <!-- Package 2: Live Wok Cooking Counters -->
-          <div class="bg-white border-2 border-brand-red/30 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-all flex flex-col justify-between relative overflow-hidden">
-            <div class="absolute top-0 right-0 bg-brand-red text-white text-[10px] font-extrabold uppercase px-4 py-1 rounded-bl-xl">
-              Most Popular
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Option B</span>
-                <span class="text-xl font-black text-brand-slate">From ₹650 <span class="text-xs text-zinc-500 font-normal">/ person</span></span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 mb-3">Live Wok Counter Experience</h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mb-6 leading-relaxed">
-                Our chef brings the wok station to your venue! Sizzling open flames, customized tossed noodles on demand, piping hot dim sums, and instant street-style theatre.
-              </p>
-              <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Full live station setup with master chefs</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Made-to-order spicy levels & sauces</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Complete waste management & disposal</li>
-                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Ideal for college fests & annual corporate parties</li>
-              </ul>
-            </div>
-            <button onclick="openCateringModal('Live Wok Counter')" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
-              Request Live Wok Counter
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Interactive Calculator -->
-        <div class="bg-amber-50/50 border border-amber-200/80 rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto shadow-xs">
-          <div class="flex items-center gap-2 mb-4">
-            <i data-lucide="calculator" class="w-5 h-5 text-brand-red"></i>
-            <h3 class="font-heading font-extrabold text-lg text-zinc-900">Instant Catering Cost Estimator</h3>
-          </div>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-            <div>
-              <label class="block text-xs font-bold text-zinc-700 uppercase mb-2">Package Type</label>
-              <select id="calcPackage" onchange="calculateCateringEstimate()" class="w-full p-2.5 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
-                <option value="150">Bulk Meal Boxes (₹150/box)</option>
-                <option value="250">Executive Lunch Box (₹250/box)</option>
-                <option value="650" selected>Live Wok Station (₹650/head)</option>
-              </select>
-
-              <div class="mt-4">
-                <div class="flex justify-between text-xs font-bold text-zinc-700 uppercase mb-1">
-                  <span>Number of Guests:</span>
-                  <span id="guestCountDisplay" class="text-brand-red font-black text-sm">100</span>
-                </div>
-                <input type="range" id="guestSlider" min="20" max="1000" step="10" value="100" oninput="calculateCateringEstimate()" class="w-full accent-brand-red">
-              </div>
-            </div>
-
-            <div class="bg-white rounded-2xl p-5 border border-zinc-200 text-center flex flex-col justify-center shadow-xs">
-              <span class="text-xs uppercase font-extrabold tracking-wider text-zinc-400">Estimated Total</span>
-              <div id="estimatedCostDisplay" class="text-3xl font-heading font-black text-brand-slate my-1">₹ 65,000</div>
-              <span class="text-[11px] text-zinc-500 mb-3">*Subject to GST & venue logistics</span>
-              <button onclick="openCateringModalWithEstimate()" class="py-2.5 px-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer">
-                Lock In This Quote
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
     </div>
   </main>
 
@@ -569,57 +459,6 @@
   </footer>
 
   
-  <!-- Catering Booking Modal -->
-  <div id="cateringModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeCateringModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="mb-6">
-        <span class="text-xs uppercase font-extrabold tracking-widest text-amber-600">Events & Catering</span>
-        <h3 class="text-2xl font-serif font-bold text-zinc-900 tracking-tight mt-1">Book Catering</h3>
-        <p id="cateringModalSubtitle" class="text-xs text-zinc-500 mt-1">Fill out the details and our event manager will connect with you.</p>
-      </div>
-
-      <form id="cateringForm" onsubmit="handleCateringSubmit(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Contact Name *</label>
-          <input type="text" id="cateringName" required placeholder="Your Name" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Phone Number *</label>
-            <input type="tel" id="cateringPhone" required placeholder="+91 98765 43210" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Event Date *</label>
-            <input type="date" id="cateringDate" required class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Expected Guests</label>
-            <input type="number" id="cateringModalGuests" value="100" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Selected Package</label>
-            <input type="text" id="cateringModalPackage" readonly class="w-full p-2.5 text-xs border border-zinc-200 bg-zinc-50 rounded-xl text-zinc-700 font-bold">
-          </div>
-        </div>
-        <div>
-          <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Fulfilling Branch / Venue Details</label>
-          <textarea id="cateringNotes" rows="3" placeholder="Fulfilling branch, college auditorium, tech park tower, preferences..." class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red"></textarea>
-        </div>
-        <div class="pt-2">
-          <button type="submit" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
-            Request Official Quote
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Order Modal -->
   <div id="orderModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-zinc-200 relative">
@@ -684,14 +523,14 @@
       </div>
 
       <!-- Option 1: Live GPS Detection -->
-      <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-5 flex items-center justify-between gap-3">
+      <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
         <div class="flex items-center gap-3 min-w-0">
           <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0">
             <i data-lucide="navigation" class="w-4 h-4"></i>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
-            <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">Detect nearest branch instantly</p>
+            <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">High-accuracy satellite pinpoint & reverse geocode</p>
           </div>
         </div>
         <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
@@ -700,30 +539,73 @@
         </button>
       </div>
 
+      <!-- Option 2: Enter Delivery Street Address -->
+      <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 mb-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-lg bg-zinc-200 text-zinc-700 flex items-center justify-center">
+              <i data-lucide="home" class="w-3.5 h-3.5"></i>
+            </div>
+            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Enter Delivery Address</h4>
+          </div>
+          <span class="text-[10px] text-zinc-500 font-medium">Exact street / door delivery</span>
+        </div>
+        <div class="space-y-2">
+          <input type="text" id="manualAddressFlat" placeholder="Flat / House / Building No. (e.g. Flat 4B, Ruby Towers)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <input type="text" id="manualAddressStreet" placeholder="Street / Road / Landmark (e.g. 45, G.N. Chetty Road, Near Vani Mahal)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="manualAddressArea" placeholder="Area / Locality (e.g. T. Nagar)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+            <input type="text" id="manualAddressPincode" placeholder="Pincode (e.g. 600017)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          </div>
+        </div>
+        <button onclick="saveManualDeliveryAddress()" class="w-full py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          <span>Save & Deliver to This Address</span>
+        </button>
+      </div>
+
       <!-- Quick Test Presets (For Demonstration & Immediate Testing) -->
       <div class="mb-5">
         <div class="flex items-center justify-between mb-2">
-          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">Quick Test Presets</label>
-          <span class="text-[10px] text-zinc-400">Click to preview use case</span>
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">Quick Address Presets</label>
+          <span class="text-[10px] text-zinc-400">Click to preview full address</span>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <button onclick="setTestPresetLocation('in-zone')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center gap-1.5 text-emerald-800 text-[11px] font-bold">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> In-Zone (1.8 km)
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button onclick="setTestPresetLocation('tnagar')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> T. Nagar Hub (2.2 km)
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Delivery Active</span>
             </div>
-            <p class="text-[10px] text-zinc-600 mt-0.5">Anna Nagar, Chennai</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">45, G.N. Chetty Road, T. Nagar, Chennai - 600017</p>
+          </button>
+          <button onclick="setTestPresetLocation('annanagar')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Anna Nagar (1.8 km)
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Delivery Active</span>
+            </div>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Plot 104, 2nd Ave, Anna Nagar East, Chennai - 600040</p>
           </button>
           <button onclick="setTestPresetLocation('takeaway-zone')" class="p-2.5 rounded-xl border border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center gap-1.5 text-amber-800 text-[11px] font-bold">
-              <span class="w-2 h-2 rounded-full bg-amber-500"></span> Takeaway (16 km)
+            <div class="flex items-center justify-between">
+              <span class="text-amber-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Kundrathur Corridor (17.6 km)
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">Takeaway Only</span>
             </div>
-            <p class="text-[10px] text-zinc-600 mt-0.5">Tambaram / Outer</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Plot 15, Kundrathur Main Rd, Chennai - 600069</p>
           </button>
           <button onclick="setTestPresetLocation('out-of-zone')" class="p-2.5 rounded-xl border border-red-200 bg-red-50/60 hover:bg-red-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center gap-1.5 text-red-800 text-[11px] font-bold">
-              <span class="w-2 h-2 rounded-full bg-red-500"></span> Out of Zone (320 km)
+            <div class="flex items-center justify-between">
+              <span class="text-red-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> New Delhi / Remote (320+ km)
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold">Out of Zone</span>
             </div>
-            <p class="text-[10px] text-zinc-600 mt-0.5">New Delhi / Remote</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Flat 102, Block B, Connaught Circus, New Delhi - 110001</p>
           </button>
         </div>
       </div>

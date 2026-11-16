@@ -1,13 +1,13 @@
 [
   {
     "id": "slide-1",
-    "type": "image",
-    "media": "assets/images/hdr-bnr-02.jpg",
-    "tag": "1000°F FLAME CRAFT",
-    "title": "1000°F Searing Flame & Wok Hei",
-    "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma.",
-    "playToEnd": false,
-    "duration": 6,
+    "type": "video",
+    "media": "assets/videos/wok-cooking-flame.webm",
+    "tag": "1000\u00b0F FLAME CRAFT",
+    "title": "Real Wok Hei. Sizzling Fresh.",
+    "desc": "Witness the intense high-heat wok tossing that seals in authentic smoky aroma and crisp vegetable crunch.",
+    "playToEnd": true,
+    "duration": 0,
     "primaryCta": {
       "text": "Explore Full Menu",
       "link": "menu.html",
@@ -45,7 +45,7 @@
     "id": "slide-3",
     "type": "image",
     "media": "assets/images/hdr-bnr-02.jpg",
-    "tag": "1000°F FLAME CRAFT",
+    "tag": "1000\u00b0F FLAME CRAFT",
     "title": "Sizzling Wok Hei Flavours",
     "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma and crisp vegetable crunch.",
     "playToEnd": false,
@@ -89,7 +89,7 @@
     "media": "assets/images/hdr-bnr-04.jpg",
     "tag": "PATENTED THERMAL PACKAGING",
     "title": "Piping Hot Comfort On The Go",
-    "desc": "Virgin eco-board geometric fold keeps your meal above 65°C for 45 minutes on the road.",
+    "desc": "Virgin eco-board geometric fold keeps your meal above 65\u00b0C for 45 minutes on the road.",
     "playToEnd": false,
     "duration": 6,
     "primaryCta": {
@@ -110,7 +110,7 @@
     "media": "assets/images/hdr-bnr-05.jpg",
     "tag": "GLOBAL EXPANSION",
     "title": "57+ Branches Across Global Hubs",
-    "desc": "India’s fastest growing organized Indo-Chinese quick service restaurant chain, serving 100,000+ meals monthly.",
+    "desc": "India\u2019s fastest growing organized Indo-Chinese quick service restaurant chain, serving 100,000+ meals monthly.",
     "playToEnd": false,
     "duration": 6,
     "primaryCta": {

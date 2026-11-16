@@ -676,10 +676,10 @@
                     <div id="refSigTag" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-bold tracking-wider uppercase mb-1.5">
                       Crowd Favorites
                     </div>
-                    <h3 id="refSigTitle" class="text-2xl font-heading font-black text-brand-slate uppercase">
-                      Signature Bestsellers
+                    <h3 id="refSigTitle" class="text-3xl sm:text-4xl font-serif font-bold text-zinc-900 tracking-tight">
+                      Signature <span class="font-serif italic font-normal text-brand-red">Bestsellers</span>
                     </h3>
-                    <p id="refSigSubtitle" class="text-xs text-zinc-600 max-w-xl">
+                    <p id="refSigSubtitle" class="text-xs sm:text-sm text-zinc-600 mt-1 max-w-2xl leading-relaxed">
                       The most loved wok creations across 57 branches, prepared fresh to order.
                     </p>
                   </div>
@@ -689,7 +689,7 @@
                 </div>
 
                 <!-- 6 Featured Signatures Cards -->
-                <div id="refSigCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div id="refSigCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   <!-- Populated by updateLiveReflection() -->
                 </div>
 
@@ -1697,57 +1697,647 @@
       </section>
 
       <!-- ======================================================== -->
-      <!-- VIEW: FRANCHISE LEADS                                    -->
       <!-- ======================================================== -->
-      <section id="view-franchises" class="hidden space-y-4">
-        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-          <h3 class="font-bold text-slate-900 text-sm">Franchise Partnership Applications</h3>
-          <span class="text-xs text-slate-500">Expansion Pipeline</span>
+      <!-- VIEW: FRANCHISE CMS & LEADS                              -->
+      <!-- ======================================================== -->
+      <section id="view-franchises" class="space-y-8 hidden">
+        <!-- Top Action Bar -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-red-100 text-brand-red">Expansion & Growth</span>
+              <h2 class="text-2xl font-black text-slate-900">Franchise Page Manager & CMS</h2>
+            </div>
+            <p class="text-sm text-slate-500 mt-1 max-w-2xl">
+              Visual CMS for non-coders. Manage franchise hero headlines, unit economics, 3 store formats, turnkey support pillars, and track incoming partner applications.
+            </p>
+          </div>
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <a href="franchise.html" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span>View Live Page</span>
+            </a>
+            <button onclick="saveAllFranchiseContent()" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold rounded-xl shadow-md hover:scale-102 active:scale-98 transition flex items-center gap-2 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+              <span>Save & Publish Changes</span>
+            </button>
+          </div>
         </div>
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <table class="w-full text-left text-xs text-slate-600">
-            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">Applicant Name</th>
-                <th class="px-4 py-3">Contact</th>
-                <th class="px-4 py-3">Target City</th>
-                <th class="px-4 py-3">Investment Range</th>
-                <th class="px-4 py-3">Experience</th>
-                <th class="px-4 py-3">Status</th>
-              </tr>
-            </thead>
-            <tbody id="franchises-tbody" class="divide-y divide-slate-100">
-              <!-- Populated by JS -->
-            </tbody>
-          </table>
+
+        <!-- Section Navigation Tabs -->
+        <div class="flex items-center gap-2 p-1.5 bg-slate-200/70 rounded-2xl overflow-x-auto no-scrollbar border border-slate-300/50">
+          <button onclick="switchFranchiseTab('hero')" id="tabBtn-franchise-hero" class="franchise-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>Hero & Economics</span>
+          </button>
+          <button onclick="switchFranchiseTab('formats')" id="tabBtn-franchise-formats" class="franchise-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span>Store Formats (3 Models)</span>
+          </button>
+          <button onclick="switchFranchiseTab('pillars')" id="tabBtn-franchise-pillars" class="franchise-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Turnkey Support Pillars</span>
+          </button>
+          <button onclick="switchFranchiseTab('leads')" id="tabBtn-franchise-leads" class="franchise-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span>Partner Applications Pipeline</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: HERO & ECONOMICS -->
+        <div id="franchiseTabContent-hero" class="franchise-tab-content space-y-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Hero Messaging & Main Value Proposition</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Customize headline titles, subtitle copy, and high-impact unit economics stats</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-red-50 text-brand-red text-[11px] font-bold">Hero Section</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Headline Prefix (Line 1)</label>
+                <input type="text" id="franchiseHeroPrefixInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-bold text-sm" placeholder="Partner With">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Headline Highlight (Italic / Red)</label>
+                <input type="text" id="franchiseHeroHighlightInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-bold text-sm text-brand-red" placeholder="The Red Box">
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1 text-xs">Executive Summary Subtitle</label>
+              <textarea id="franchiseHeroSubInput" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-medium text-xs text-slate-700 leading-relaxed" placeholder="India's fastest growing organized Indo-Chinese quick service restaurant chain..."></textarea>
+            </div>
+
+            <!-- 3 Unit Economics Key Stats -->
+            <div class="pt-3 border-t border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">Unit Economics Metrics (Top 3 Pills)</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Stat 1 -->
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Metric 1</span>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Label</label>
+                    <input type="text" id="franchiseStat1Label" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium" placeholder="Total Investment">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Value</label>
+                    <input type="text" id="franchiseStat1Val" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red" placeholder="₹ 22 - 27 L">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Subtext</label>
+                    <input type="text" id="franchiseStat1Sub" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-[11px] text-slate-500" placeholder="Turnkey setup & equipment">
+                  </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Metric 2</span>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Label</label>
+                    <input type="text" id="franchiseStat2Label" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium" placeholder="Average Payback">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Value</label>
+                    <input type="text" id="franchiseStat2Val" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red" placeholder="~1.8 Years">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Subtext</label>
+                    <input type="text" id="franchiseStat2Sub" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-[11px] text-slate-500" placeholder="Strong EBITDA margin">
+                  </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Metric 3</span>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Label</label>
+                    <input type="text" id="franchiseStat3Label" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium" placeholder="Kiosk Space Req.">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Value</label>
+                    <input type="text" id="franchiseStat3Val" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red" placeholder="300 - 600 sq ft">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Subtext</label>
+                    <input type="text" id="franchiseStat3Sub" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-[11px] text-slate-500" placeholder="Mall / High-street / Cloud">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Image & Showcase -->
+            <div class="pt-3 border-t border-slate-100">
+              <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">Kitchen Showcase Media</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div>
+                  <label class="block font-semibold text-slate-600 mb-1">Image URL / Path</label>
+                  <input type="text" id="franchiseHeroImgInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-mono" placeholder="assets/images/FO1.jpg">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-600 mb-1">Showcase Caption</label>
+                  <input type="text" id="franchiseHeroImgCaption" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-medium" placeholder="Compact High-Efficiency Kitchen Layout">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-600 mb-1">Showcase Subtext</label>
+                  <input type="text" id="franchiseHeroImgSub" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-500" placeholder="Automated wok cookers & proprietary sauce batching">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: STORE FORMATS (3 MODELS) -->
+        <div id="franchiseTabContent-formats" class="franchise-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-100 pb-3">
+              <h3 class="font-bold text-slate-900 text-base">Store Formats & Investment Tiers</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Customize the 3 business models displayed on the interactive comparison grid</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <!-- Model 0: Express Kiosk -->
+              <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-red-100 text-brand-red">Model 1</span>
+                  <span class="text-xs text-slate-400 font-mono">Format A</span>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Model Name</label>
+                  <input type="text" id="franchiseFormatModel0" class="w-full px-3 py-2 rounded-xl border border-slate-200 font-bold text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Space Req.</label>
+                    <input type="text" id="franchiseFormatSpace0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Total Capital</label>
+                    <input type="text" id="franchiseFormatCapital0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Kitchen Setup</label>
+                    <input type="text" id="franchiseFormatSetup0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Staffing</label>
+                    <input type="text" id="franchiseFormatStaff0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Expected Monthly Sales</label>
+                  <input type="text" id="franchiseFormatSales0" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-emerald-700">
+                </div>
+              </div>
+
+              <!-- Model 1: Mall Counter -->
+              <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-amber-100 text-amber-800">Model 2</span>
+                  <span class="text-xs text-slate-400 font-mono">Format B</span>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Model Name</label>
+                  <input type="text" id="franchiseFormatModel1" class="w-full px-3 py-2 rounded-xl border border-slate-200 font-bold text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Space Req.</label>
+                    <input type="text" id="franchiseFormatSpace1" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Total Capital</label>
+                    <input type="text" id="franchiseFormatCapital1" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Kitchen Setup</label>
+                    <input type="text" id="franchiseFormatSetup1" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Staffing</label>
+                    <input type="text" id="franchiseFormatStaff1" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Expected Monthly Sales</label>
+                  <input type="text" id="franchiseFormatSales1" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-emerald-700">
+                </div>
+              </div>
+
+              <!-- Model 2: High Street Dine-In -->
+              <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-purple-100 text-purple-800">Model 3</span>
+                  <span class="text-xs text-slate-400 font-mono">Format C</span>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Model Name</label>
+                  <input type="text" id="franchiseFormatModel2" class="w-full px-3 py-2 rounded-xl border border-slate-200 font-bold text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Space Req.</label>
+                    <input type="text" id="franchiseFormatSpace2" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Total Capital</label>
+                    <input type="text" id="franchiseFormatCapital2" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-brand-red">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Kitchen Setup</label>
+                    <input type="text" id="franchiseFormatSetup2" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Staffing</label>
+                    <input type="text" id="franchiseFormatStaff2" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-500 mb-0.5">Expected Monthly Sales</label>
+                  <input type="text" id="franchiseFormatSales2" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-emerald-700">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: TURNKEY SUPPORT PILLARS -->
+        <div id="franchiseTabContent-pillars" class="franchise-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-100 pb-3">
+              <h3 class="font-bold text-slate-900 text-base">Turnkey Support Pillars (4 Cards)</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Edit the 4 core pillars detailing how RedBox supports franchisees from setup to daily sales</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Pillar 0 -->
+              <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-200 text-slate-700">Pillar 1</span>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                  <input type="text" id="franchisePillarTitle0" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Description</label>
+                  <textarea id="franchisePillarDesc0" rows="2" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs text-slate-600"></textarea>
+                </div>
+              </div>
+
+              <!-- Pillar 1 -->
+              <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-200 text-slate-700">Pillar 2</span>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                  <input type="text" id="franchisePillarTitle1" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Description</label>
+                  <textarea id="franchisePillarDesc1" rows="2" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs text-slate-600"></textarea>
+                </div>
+              </div>
+
+              <!-- Pillar 2 -->
+              <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-200 text-slate-700">Pillar 3</span>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                  <input type="text" id="franchisePillarTitle2" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Description</label>
+                  <textarea id="franchisePillarDesc2" rows="2" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs text-slate-600"></textarea>
+                </div>
+              </div>
+
+              <!-- Pillar 3 -->
+              <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-200 text-slate-700">Pillar 4</span>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Title</label>
+                  <input type="text" id="franchisePillarTitle3" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs font-bold">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Description</label>
+                  <textarea id="franchisePillarDesc3" rows="2" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs text-slate-600"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: INVESTOR APPLICATIONS PIPELINE -->
+        <div id="franchiseTabContent-leads" class="franchise-tab-content space-y-4 hidden">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">Franchise Partnership Applications</h3>
+              <p class="text-xs text-slate-500">Review, vet, and update applicant statuses directly in real time</p>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">Live CRM Queue</span>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-left text-xs text-slate-600">
+              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="px-4 py-3">Applicant Name</th>
+                  <th class="px-4 py-3">Contact</th>
+                  <th class="px-4 py-3">Target City</th>
+                  <th class="px-4 py-3">Investment Range</th>
+                  <th class="px-4 py-3">Experience</th>
+                  <th class="px-4 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody id="franchises-tbody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <!-- ======================================================== -->
-      <!-- VIEW: CATERING REQUESTS                                  -->
+      <!-- VIEW: CATERING CMS & REQUESTS                            -->
       <!-- ======================================================== -->
-      <section id="view-catering" class="hidden space-y-4">
-        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-          <h3 class="font-bold text-slate-900 text-sm">Corporate & Party Catering Requests</h3>
-          <span class="text-xs text-slate-500">Live Wok & Box Inquiries</span>
+      <section id="view-catering" class="space-y-8 hidden">
+        <!-- Top Action Bar -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-red-100 text-brand-red">Institutional Services</span>
+              <h2 class="text-2xl font-black text-slate-900">Catering Page Manager & CMS</h2>
+            </div>
+            <p class="text-sm text-slate-500 mt-1 max-w-2xl">
+              Visual CMS for non-coders. Manage corporate catering offers, bulk meal box packages, live wok theatre descriptions, pricing estimator rates, and review incoming requests.
+            </p>
+          </div>
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <a href="catering.html" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span>View Live Page</span>
+            </a>
+            <button onclick="saveAllCateringContent()" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold rounded-xl shadow-md hover:scale-102 active:scale-98 transition flex items-center gap-2 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+              <span>Save & Publish Changes</span>
+            </button>
+          </div>
         </div>
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <table class="w-full text-left text-xs text-slate-600">
-            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">Client Name</th>
-                <th class="px-4 py-3">Contact</th>
-                <th class="px-4 py-3">Event Date</th>
-                <th class="px-4 py-3">Headcount</th>
-                <th class="px-4 py-3">Budget</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="catering-tbody" class="divide-y divide-slate-100">
-              <!-- Populated by JS -->
-            </tbody>
-          </table>
+
+        <!-- Section Navigation Tabs -->
+        <div class="flex items-center gap-2 p-1.5 bg-slate-200/70 rounded-2xl overflow-x-auto no-scrollbar border border-slate-300/50">
+          <button onclick="switchCateringTab('hero')" id="tabBtn-catering-hero" class="catering-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>Hero & Badges</span>
+          </button>
+          <button onclick="switchCateringTab('pkg1')" id="tabBtn-catering-pkg1" class="catering-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            <span>Option A: Meal Boxes</span>
+          </button>
+          <button onclick="switchCateringTab('pkg2')" id="tabBtn-catering-pkg2" class="catering-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+            <span>Option B: Live Wok Counter</span>
+          </button>
+          <button onclick="switchCateringTab('estimator')" id="tabBtn-catering-estimator" class="catering-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <span>Cost Estimator Rates</span>
+          </button>
+          <button onclick="switchCateringTab('requests')" id="tabBtn-catering-requests" class="catering-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            <span>Booking Inquiries Queue</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: HERO & BADGES -->
+        <div id="cateringTabContent-hero" class="catering-tab-content space-y-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Hero Messaging & Service Details</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Customize top badges, headline, subtitle, hotline contact, and minimum notice</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-red-50 text-brand-red text-[11px] font-bold">Hero Section</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Badge Tag</label>
+                <input type="text" id="cateringHeroBadgeInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-medium text-xs" placeholder="Institutional & Corporate Services">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Sub-Badge Tag</label>
+                <input type="text" id="cateringHeroSubBadgeInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-medium text-xs" placeholder="Bulk Orders & Live Counters">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Headline Prefix (Line 1)</label>
+                <input type="text" id="cateringHeroPrefixInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-bold text-sm" placeholder="Campus Fests &">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Headline Highlight (Line 2 in Red)</label>
+                <input type="text" id="cateringHeroHighlightInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-bold text-sm text-brand-red" placeholder="Corporate Catering">
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1 text-xs">Narrative Subtitle</label>
+              <textarea id="cateringHeroSubInput" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-medium text-xs text-slate-700 leading-relaxed" placeholder="From 50-person corporate tech lunches to 5,000-person college cultural fests with live theatrical wok stations."></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-3 border-t border-slate-100">
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Catering Helpline Phone</label>
+                <input type="text" id="cateringHelplineInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-mono text-xs" placeholder="+91 89394 44411">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Advance Notice Required</label>
+                <input type="text" id="cateringNoticeInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-medium text-xs" placeholder="24 Hours Advance Notice">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: MEAL BOXES PACKAGE -->
+        <div id="cateringTabContent-pkg1" class="catering-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Option A: Bulk Corporate Meal Boxes</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Edit title, base price, description, bullet points, and CTA</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 text-[11px] font-bold">Package 1</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Tag / Pill</label>
+                <input type="text" id="cateringPkg1TagInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Option A">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Package Title</label>
+                <input type="text" id="cateringPkg1TitleInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Bulk Corporate Meal Boxes">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Price & Unit</label>
+                <div class="flex gap-2">
+                  <input type="text" id="cateringPkg1PriceInput" class="w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold text-brand-red" placeholder="₹150">
+                  <input type="text" id="cateringPkg1UnitInput" class="w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-500" placeholder="/ box">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">Description</label>
+              <textarea id="cateringPkg1DescInput" rows="2" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-700"></textarea>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 space-y-2">
+              <label class="block font-bold text-slate-700 uppercase tracking-wider text-[11px]">Included Features (4 Bullets)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <input type="text" id="cateringPkg1Feat0" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Minimum batch: 20 boxes">
+                <input type="text" id="cateringPkg1Feat1" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Choice of Veg / Non-Veg split">
+                <input type="text" id="cateringPkg1Feat2" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Guaranteed 45-minute temperature retention">
+                <input type="text" id="cateringPkg1Feat3" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Cutlery & napkin kit included">
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">Button CTA Text</label>
+              <input type="text" id="cateringPkg1BtnInput" class="w-full sm:w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Book Meal Boxes">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: LIVE WOK COUNTER PACKAGE -->
+        <div id="cateringTabContent-pkg2" class="catering-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Option B: Live Wok Counter Experience</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Edit title, highlight badge, live chef pricing, description, and interactive features</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-[11px] font-bold">Package 2</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Tag / Pill</label>
+                <input type="text" id="cateringPkg2TagInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Option B">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Promotional Badge</label>
+                <input type="text" id="cateringPkg2BadgeInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold text-emerald-700" placeholder="Most Popular">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Package Title</label>
+                <input type="text" id="cateringPkg2TitleInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Live Wok Counter Experience">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Price & Unit</label>
+                <div class="flex gap-2">
+                  <input type="text" id="cateringPkg2PriceInput" class="w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold text-brand-red" placeholder="₹650">
+                  <input type="text" id="cateringPkg2UnitInput" class="w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-500" placeholder="/ person">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">Description</label>
+              <textarea id="cateringPkg2DescInput" rows="2" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-700"></textarea>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 space-y-2">
+              <label class="block font-bold text-slate-700 uppercase tracking-wider text-[11px]">Included Features (4 Bullets)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <input type="text" id="cateringPkg2Feat0" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Full live station setup with master chefs">
+                <input type="text" id="cateringPkg2Feat1" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Made-to-order spicy levels & sauces">
+                <input type="text" id="cateringPkg2Feat2" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Complete waste management & disposal">
+                <input type="text" id="cateringPkg2Feat3" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs" placeholder="Ideal for college fests & annual corporate parties">
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">Button CTA Text</label>
+              <input type="text" id="cateringPkg2BtnInput" class="w-full sm:w-1/2 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-bold" placeholder="Request Live Wok Counter">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: COST ESTIMATOR RATES -->
+        <div id="cateringTabContent-estimator" class="catering-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Cost Estimator Calculator Baseline Rates</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Tune the dynamic cost calculator rates so visitors receive instant accurate cost projections</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-purple-50 text-purple-800 text-[11px] font-bold">Estimator Config</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Estimator Section Title</label>
+                <input type="text" id="cateringEstTitleInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 font-bold text-xs" placeholder="Instant Catering Cost Estimator">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Default Guest Count Slider Baseline</label>
+                <input type="number" id="cateringEstDefaultGuestsInput" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 font-bold text-xs" placeholder="100">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-3 border-t border-slate-100">
+              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <label class="block font-bold text-slate-700 mb-1">Option A Rate (₹ / guest)</label>
+                <span class="text-[10px] text-slate-500 block mb-2">Meal Boxes</span>
+                <input type="number" id="cateringEstRate1Input" class="w-full px-3 py-2 rounded-lg border border-slate-200 font-bold text-sm text-brand-red" placeholder="150">
+              </div>
+              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <label class="block font-bold text-slate-700 mb-1">Option B Rate (₹ / guest)</label>
+                <span class="text-[10px] text-slate-500 block mb-2">Buffet Setup</span>
+                <input type="number" id="cateringEstRate2Input" class="w-full px-3 py-2 rounded-lg border border-slate-200 font-bold text-sm text-brand-red" placeholder="250">
+              </div>
+              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <label class="block font-bold text-slate-700 mb-1">Option C Rate (₹ / guest)</label>
+                <span class="text-[10px] text-slate-500 block mb-2">Live Theatrical Wok</span>
+                <input type="number" id="cateringEstRate3Input" class="w-full px-3 py-2 rounded-lg border border-slate-200 font-bold text-sm text-brand-red" placeholder="650">
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <label class="block font-semibold text-slate-700 mb-1 text-xs">Pricing Footnote / Disclaimer</label>
+              <input type="text" id="cateringEstDisclaimerInput" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-500" placeholder="*Subject to GST & venue logistics">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: BOOKING INQUIRIES QUEUE -->
+        <div id="cateringTabContent-requests" class="catering-tab-content space-y-4 hidden">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">Corporate & Party Catering Requests</h3>
+              <p class="text-xs text-slate-500">Live inquiries, requested headcounts, and follow-up status tracker</p>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">Live Inquiries Pipeline</span>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-left text-xs text-slate-600">
+              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="px-4 py-3">Client Name</th>
+                  <th class="px-4 py-3">Contact</th>
+                  <th class="px-4 py-3">Event Date</th>
+                  <th class="px-4 py-3">Headcount</th>
+                  <th class="px-4 py-3">Budget</th>
+                  <th class="px-4 py-3">Status</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="catering-tbody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -1906,6 +2496,7 @@
           <div class="flex items-center gap-2">
             <span class="font-bold text-slate-700">Filter By:</span>
             <button onclick="filterMediaCategory('All')" class="media-filter-btn active px-3 py-1 bg-slate-800 text-white rounded-md font-medium cursor-pointer">All Files</button>
+            <button onclick="filterMediaCategory('Videos')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Videos</button>
             <button onclick="filterMediaCategory('Dishes')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Dishes</button>
             <button onclick="filterMediaCategory('Banners')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Banners</button>
             <button onclick="filterMediaCategory('Uploads')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Uploads</button>
@@ -2078,265 +2669,6 @@
         </div>
       </section>
 
-      
-      <!-- ======================================================== -->
-      <!-- VIEW: TESTIMONIALS & REVIEWS                             -->
-      <!-- ======================================================== -->
-      <section id="view-testimonials" class="hidden space-y-5">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Customer Testimonials & Verified Reviews</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Manage customer reviews and food critic endorsements displayed on the website homepage.</p>
-          </div>
-          <button onclick="openAddTestimonialModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer self-start sm:self-auto">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-            <span>+ Add Testimonial</span>
-          </button>
-        </div>
-
-        <div id="testimonialsCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <!-- Populated by renderTestimonialsTable() -->
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: BLOG & STORIES CMS                                 -->
-      <!-- ======================================================== -->
-      <section id="view-blogs" class="hidden space-y-5">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Culinary Stories & Blog CMS</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Create, edit, and publish wok craft articles, recipe spotlights, and brand stories.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <a href="blog.html" target="_blank" class="px-3.5 py-2 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
-              <span>View Public Blog ↗</span>
-            </a>
-            <button onclick="openAddBlogModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Write Article</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-600">
-              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-                <tr>
-                  <th class="px-4 py-3">Article Title</th>
-                  <th class="px-4 py-3">Category</th>
-                  <th class="px-4 py-3">Author</th>
-                  <th class="px-4 py-3">Date</th>
-                  <th class="px-4 py-3">Status</th>
-                  <th class="px-4 py-3 text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="blogsTableBody" class="divide-y divide-slate-100">
-                <!-- Populated by renderBlogsTable() -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: MEDIA LIBRARY EXPLORER                             -->
-      <!-- ======================================================== -->
-      <section id="view-media" class="hidden space-y-5">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Central Media Library Explorer</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Upload, organize, preview, and copy URLs of food photography, banners, and logos.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <label class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-              <span>Upload New Media</span>
-              <input type="file" id="mediaLibraryUploader" onchange="handleMediaLibraryUpload(this.files[0])" class="hidden" accept="image/*,video/*">
-            </label>
-          </div>
-        </div>
-
-        <!-- Filter bar -->
-        <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 text-xs">
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-slate-700">Filter By:</span>
-            <button onclick="filterMediaCategory('All')" class="media-filter-btn active px-3 py-1 bg-slate-800 text-white rounded-md font-medium cursor-pointer">All Files</button>
-            <button onclick="filterMediaCategory('Dishes')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Dishes</button>
-            <button onclick="filterMediaCategory('Banners')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Banners</button>
-            <button onclick="filterMediaCategory('Uploads')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">Uploads</button>
-            <button onclick="filterMediaCategory('General')" class="media-filter-btn px-3 py-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-md font-medium cursor-pointer">General</button>
-          </div>
-          <div class="text-slate-500 font-medium" id="mediaCountIndicator">
-            Showing 0 assets
-          </div>
-        </div>
-
-        <div id="mediaGridContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          <!-- Populated by renderMediaGrid() -->
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: PROMOTIONS & OFFERS                                -->
-      <!-- ======================================================== -->
-      <section id="view-promotions" class="hidden space-y-6">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Promotions, Announcement Banners & Coupon Codes</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Control live promotional strips, sitewide discounts, and limited-time voucher codes.</p>
-          </div>
-          <button onclick="savePromotionsToBackend()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Save & Publish Offers</span>
-          </button>
-        </div>
-
-        <!-- Announcement Strip Settings -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">📢</div>
-              <div>
-                <h4 class="font-bold text-sm text-slate-900">Top Header Announcement Bar</h4>
-                <p class="text-xs text-slate-500">Displays a full-width promotional banner on the very top of all public pages.</p>
-              </div>
-            </div>
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" id="promo-bar-enable" class="sr-only peer" checked>
-              <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
-            </label>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Headline Text *</label>
-              <input type="text" id="promo-bar-text" value="⚡ SPECIAL OFFER: FLAT 20% OFF ON ORDERS ABOVE ₹499 | USE CODE: REDWOK20" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Badge Tag</label>
-              <input type="text" id="promo-bar-badge" value="LIMITED TIME" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Target Click Link</label>
-              <input type="text" id="promo-bar-link" value="menu.html" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Background Color</label>
-                <input type="color" id="promo-bar-bgcolor" value="#991B1B" class="w-full h-8 px-1 py-1 text-xs border border-slate-300 rounded-lg cursor-pointer">
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Text Color</label>
-                <input type="color" id="promo-bar-textcolor" value="#FFFFFF" class="w-full h-8 px-1 py-1 text-xs border border-slate-300 rounded-lg cursor-pointer">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Coupons Table -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div>
-              <h4 class="font-bold text-sm text-slate-900">Active Voucher Coupons</h4>
-              <p class="text-xs text-slate-500">Discount codes that customers can apply at checkout.</p>
-            </div>
-            <button onclick="openAddCouponModal()" class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold transition cursor-pointer">
-              + New Coupon
-            </button>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-600">
-              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-                <tr>
-                  <th class="px-4 py-3">Coupon Code</th>
-                  <th class="px-4 py-3">Campaign Title</th>
-                  <th class="px-4 py-3">Discount</th>
-                  <th class="px-4 py-3">Min Order</th>
-                  <th class="px-4 py-3">Expiry</th>
-                  <th class="px-4 py-3">Status</th>
-                  <th class="px-4 py-3 text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="couponsTableBody" class="divide-y divide-slate-100">
-                <!-- Populated by renderCouponsTable() -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: USER ROLES & TEAM ACCESS                           -->
-      <!-- ======================================================== -->
-      <section id="view-users" class="hidden space-y-6">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Team Users & Access Permissions</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Control administrative accounts, role levels, and operational scope.</p>
-          </div>
-          <button onclick="openAddUserModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
-            <span>+ Add Team Member</span>
-          </button>
-        </div>
-
-        <!-- Role Badges Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
-              <h4 class="font-bold text-xs text-slate-900">Super Admin</h4>
-            </div>
-            <p class="text-[11px] text-slate-500">Unrestricted access to all modules, APIs, user roles, and database backups.</p>
-          </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-              <h4 class="font-bold text-xs text-slate-900">Brand & Marketing</h4>
-            </div>
-            <p class="text-[11px] text-slate-500">Banners, blog articles, testimonials, promotional offers, and media library.</p>
-          </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
-              <h4 class="font-bold text-xs text-slate-900">Branch Operations</h4>
-            </div>
-            <p class="text-[11px] text-slate-500">Menu items, pricing, out-of-stock toggles, store timings, and branch listings.</p>
-          </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
-              <h4 class="font-bold text-xs text-slate-900">CRM & Sales</h4>
-            </div>
-            <p class="text-[11px] text-slate-500">Table reservations, contact leads, franchise pipeline, and catering inquiries.</p>
-          </div>
-        </div>
-
-        <!-- Team Table -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <table class="w-full text-left text-xs text-slate-600">
-            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">Member Name</th>
-                <th class="px-4 py-3">Email Address</th>
-                <th class="px-4 py-3">Assigned Role</th>
-                <th class="px-4 py-3">Branch Scope</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="usersTableBody" class="divide-y divide-slate-100">
-              <!-- Populated by renderUsersTable() -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: AUDIT LOGS                                         -->
       <!-- ======================================================== -->
       <section id="view-audit" class="hidden space-y-4">
         <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
@@ -2865,18 +3197,17 @@
           <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Dish Photo Image URL *</label>
           <div class="flex items-center gap-3">
             <div class="w-16 h-16 rounded-xl bg-amber-50 border border-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-xs">
-              <img id="sigImagePreview" src="assets/images/FO4.jpg" alt="Preview" class="w-full h-full object-contain">
+              <img id="sigImagePreview" src="assets/images/img-08.png" alt="Preview" class="w-full h-full object-contain">
             </div>
             <div class="flex-1 space-y-1.5">
-              <input type="text" id="sigDishImage" oninput="if(document.getElementById('sigImagePreview')) document.getElementById('sigImagePreview').src=this.value" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-mono text-xs" placeholder="assets/images/FO4.jpg">
+              <input type="text" id="sigDishImage" oninput="if(document.getElementById('sigImagePreview')) document.getElementById('sigImagePreview').src=this.value" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red font-mono text-xs" placeholder="assets/images/img-08.png">
               <div class="flex items-center gap-1.5 flex-wrap text-[11px] text-slate-500">
                 <span class="text-[10px] font-bold text-slate-400 uppercase">Presets:</span>
-                <button type="button" onclick="setSigImagePreset('assets/images/FO4.jpg')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">FO4</button>
-                <button type="button" onclick="setSigImagePreset('assets/images/img-03.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-03</button>
-                <button type="button" onclick="setSigImagePreset('assets/images/img-02.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-02</button>
-                <button type="button" onclick="setSigImagePreset('assets/images/img-01.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-01</button>
-                <button type="button" onclick="setSigImagePreset('assets/images/img-08.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-08</button>
-                <button type="button" onclick="setSigImagePreset('assets/images/img-07.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-07</button>
+                <button type="button" onclick="setSigImagePreset('assets/images/img-08.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-08 (Starters)</button>
+                <button type="button" onclick="setSigImagePreset('assets/images/img-03.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-03 (Rice)</button>
+                <button type="button" onclick="setSigImagePreset('assets/images/img-02.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-02 (Noodles)</button>
+                <button type="button" onclick="setSigImagePreset('assets/images/img-01.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-01 (Momos)</button>
+                <button type="button" onclick="setSigImagePreset('assets/images/img-07.png')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 font-mono">img-07 (Bento)</button>
               </div>
             </div>
           </div>
@@ -3585,15 +3916,15 @@
 
     function getCategoryDishImage(category, foodType) {
       const cat = (category || '').toLowerCase();
-      if (cat.includes('momo') || cat.includes('dim sum')) return 'assets/images/FO2.jpg';
-      if (cat.includes('noodle') || cat.includes('chow')) return 'assets/images/FO3.jpg';
-      if (cat.includes('rice') || cat.includes('biryani')) return 'assets/images/FO5.jpg';
-      if (cat.includes('gravy') || cat.includes('course') || cat.includes('curry')) return 'assets/images/hdr-bnr-02.jpg';
-      if (cat.includes('combo') || cat.includes('meal') || cat.includes('box')) return 'assets/images/hdr-bnr-04.jpg';
-      if (cat.includes('beverage') || cat.includes('dessert') || cat.includes('soup')) return 'assets/images/hdr-bnr-06.jpg';
-      if (cat.includes('chicken') || cat.includes('starter') || cat.includes('dragon')) return 'assets/images/FO4.jpg';
-      if (cat.includes('prawn') || cat.includes('seafood') || cat.includes('crispy')) return 'assets/images/FO1.jpg';
-      return (foodType === 'veg' || foodType === true || (category && category.toLowerCase().includes('veg'))) ? 'assets/images/FO5.jpg' : 'assets/images/FO4.jpg';
+      if (cat.includes('momo') || cat.includes('dim sum')) return 'assets/images/img-01.png';
+      if (cat.includes('noodle') || cat.includes('chow')) return 'assets/images/img-02.png';
+      if (cat.includes('rice') || cat.includes('biryani')) return 'assets/images/img-03.png';
+      if (cat.includes('gravy') || cat.includes('course') || cat.includes('curry')) return 'assets/images/img-04.png';
+      if (cat.includes('combo') || cat.includes('meal') || cat.includes('box')) return 'assets/images/img-07.png';
+      if (cat.includes('beverage') || cat.includes('dessert') || cat.includes('soup')) return 'assets/images/img-06.png';
+      if (cat.includes('chicken') || cat.includes('starter') || cat.includes('dragon')) return 'assets/images/img-08.png';
+      if (cat.includes('prawn') || cat.includes('seafood') || cat.includes('crispy')) return 'assets/images/img-08.png';
+      return (foodType === 'veg' || foodType === true || (category && category.toLowerCase().includes('veg'))) ? 'assets/images/img-03.png' : 'assets/images/img-08.png';
     }
 
     function updateMenuImagePreview(url) {
@@ -3656,8 +3987,8 @@
         promotions: "Promotions, Banners & Promo Codes",
         reservations: "Table Bookings & Diners",
         enquiries: "Customer Contact Enquiries",
-        franchises: "Franchise Applications Pipeline",
-        catering: "Corporate & Event Catering",
+        franchises: "Franchise CMS & Applications Pipeline",
+        catering: "Catering CMS & Event Inquiries",
         careers: "Job Openings & Resumes",
         settings: "Global Website Configuration",
         users: "Team Roles & Access Control",
@@ -3716,6 +4047,16 @@
         renderAdminNewReleases();
         renderAdminSignatures();
         updateLiveReflection();
+      }
+      if (viewName === 'franchises') {
+        if (!appState.franchiseContent) loadFranchiseContent();
+        else populateFranchiseForm(appState.franchiseContent);
+        renderFranchisesTable();
+      }
+      if (viewName === 'catering') {
+        if (!appState.cateringContent) loadCateringContent();
+        else populateCateringForm(appState.cateringContent);
+        renderCateringTable();
       }
       // Auto-unfold parent accordion for active view
       const SECTION_MAP = {
@@ -3843,6 +4184,14 @@
         let resC = await fetch('/api/catering').catch(() => null);
         if (!resC || !resC.ok) resC = await fetch('data/catering.json').catch(() => null);
         if (resC && resC.ok) appState.catering = await resC.json();
+      } catch(e) {}
+
+      try {
+        await loadFranchiseContent();
+      } catch(e) {}
+
+      try {
+        await loadCateringContent();
       } catch(e) {}
 
       renderAll();
@@ -5368,7 +5717,7 @@ function renderCareersCards() {
             category: 'Chicken Starters',
             rating: '4.9',
             price: 280,
-            image: 'assets/images/FO4.jpg',
+            image: 'assets/images/img-08.png',
             desc: 'Crispy chicken strips tossed in spicy red garlic sauce, cashews, and fiery sun-dried chillies.',
             active: true
           },
@@ -5439,28 +5788,37 @@ function renderCareersCards() {
     // Load Homepage Content on Startup
     async function loadHomepageContent() {
       try {
-        const cached = localStorage.getItem('redbox_homepage_content');
-        if (cached) {
-          appState.homepageContent = JSON.parse(cached);
+        let res = await fetch('/api/homepage').catch(() => null);
+        if (!res || !res.ok) res = await fetch('data/homepage_content.json').catch(() => null);
+        if (res && res.ok) {
+          appState.homepageContent = await res.json();
         }
       } catch (err) {
-        console.warn('Could not read cached redbox_homepage_content:', err);
+        console.warn('Could not fetch homepage_content.json:', err);
       }
 
       if (!appState.homepageContent) {
         try {
-          let res = await fetch('/api/homepage').catch(() => null);
-          if (!res || !res.ok) res = await fetch('data/homepage_content.json').catch(() => null);
-          if (res && res.ok) {
-            appState.homepageContent = await res.json();
+          const cached = localStorage.getItem('redbox_homepage_content');
+          if (cached) {
+            appState.homepageContent = JSON.parse(cached);
           }
         } catch (err) {
-          console.warn('Could not fetch homepage_content.json:', err);
+          console.warn('Could not read cached redbox_homepage_content:', err);
         }
       }
 
       if (!appState.homepageContent) {
         appState.homepageContent = JSON.parse(JSON.stringify(defaultHomepageContent));
+      }
+
+      // Upgrade any old FO images in signatures to authentic food photos
+      if (appState.homepageContent?.featuredSignatures?.items) {
+        appState.homepageContent.featuredSignatures.items.forEach(dish => {
+          if (dish.image && dish.image.includes('FO')) {
+            dish.image = (dish.foodType === 'veg' || dish.isVeg) ? 'assets/images/img-03.png' : 'assets/images/img-08.png';
+          }
+        });
       }
 
       // Ensure properties exist
@@ -6361,7 +6719,7 @@ function renderCareersCards() {
 
       container.innerHTML = items.map((dish, idx) => {
         const isVeg = (dish.foodType && dish.foodType.toLowerCase() === 'veg') || (dish.isVeg === true);
-        const imgUrl = dish.image || 'assets/images/FO4.jpg';
+        const imgUrl = dish.image || (isVeg ? 'assets/images/img-03.png' : 'assets/images/img-08.png');
         const isFirst = idx === 0;
         const isLast = idx === items.length - 1;
         const hasDiscount = (dish.discountPercent && dish.discountPercent > 0) || (dish.originalPrice && dish.originalPrice > dish.price);
@@ -6597,9 +6955,9 @@ function renderCareersCards() {
         recalcSigDiscount('price');
 
         document.getElementById('sigDishFoodType').value = (dish.foodType === 'veg' || dish.isVeg === true) ? 'veg' : 'nonveg';
-        document.getElementById('sigDishImage').value = dish.image || 'assets/images/FO4.jpg';
+        document.getElementById('sigDishImage').value = dish.image || 'assets/images/img-08.png';
         if (document.getElementById('sigImagePreview')) {
-          document.getElementById('sigImagePreview').src = dish.image || 'assets/images/FO4.jpg';
+          document.getElementById('sigImagePreview').src = dish.image || 'assets/images/img-08.png';
         }
         document.getElementById('sigDishDesc').value = dish.desc || dish.description || '';
         document.getElementById('sigDishActive').checked = dish.active !== false;
@@ -6615,9 +6973,9 @@ function renderCareersCards() {
         recalcSigDiscount('percent');
 
         document.getElementById('sigDishFoodType').value = 'nonveg';
-        document.getElementById('sigDishImage').value = 'assets/images/FO4.jpg';
+        document.getElementById('sigDishImage').value = 'assets/images/img-08.png';
         if (document.getElementById('sigImagePreview')) {
-          document.getElementById('sigImagePreview').src = 'assets/images/FO4.jpg';
+          document.getElementById('sigImagePreview').src = 'assets/images/img-08.png';
         }
         document.getElementById('sigDishDesc').value = '';
         document.getElementById('sigDishActive').checked = true;
@@ -6677,7 +7035,7 @@ function renderCareersCards() {
         discountPercent: discountPct,
         foodType: foodType,
         isVeg: foodType === 'veg',
-        image: image || 'assets/images/FO4.jpg',
+        image: image || (foodType === 'veg' ? 'assets/images/img-03.png' : 'assets/images/img-08.png'),
         desc: desc,
         active: active
       };
@@ -6838,7 +7196,15 @@ function renderCareersCards() {
       const sigGridEl = document.getElementById('refSigCardsGrid');
 
       if (sigTagEl) sigTagEl.innerText = sig.sectionTag || 'CROWD FAVORITES';
-      if (sigTitleEl) sigTitleEl.innerText = sig.sectionTitle || 'Signature Bestsellers';
+      if (sigTitleEl) {
+        const titleText = sig.sectionTitle || 'Signature Bestsellers';
+        const parts = titleText.split(' ');
+        if (parts.length > 1) {
+          sigTitleEl.innerHTML = `${parts.slice(0, -1).join(' ')} <span class="font-serif italic font-normal text-brand-red">${parts.slice(-1).join(' ')}</span>`;
+        } else {
+          sigTitleEl.innerText = titleText;
+        }
+      }
       if (sigSubEl) sigSubEl.innerText = sig.sectionSubtitle || '';
 
       const activeSigItems = (sig.items || []).filter(item => item.active !== false);
@@ -6848,53 +7214,77 @@ function renderCareersCards() {
         } else {
           sigGridEl.innerHTML = activeSigItems.map(dish => {
             const isVeg = (dish.foodType && dish.foodType.toLowerCase() === 'veg') || (dish.isVeg === true);
-            const imgUrl = dish.image || 'assets/images/FO4.jpg';
-            const rating = dish.rating || '4.9';
+            const imgUrl = dish.image || (isVeg ? 'assets/images/img-03.png' : 'assets/images/img-08.png');
+            const rating = (dish.rating || '4.9').replace(/[★☆]/g, '').trim();
             const tagText = dish.tag || 'Bestseller';
             const hasDiscount = (dish.discountPercent && dish.discountPercent > 0) || (dish.originalPrice && dish.originalPrice > dish.price);
             const savingsAmount = (dish.originalPrice && dish.originalPrice > dish.price) ? (dish.originalPrice - dish.price) : 0;
-            const discountBadge = dish.discountPercent ? `${dish.discountPercent}% OFF` : (savingsAmount > 0 ? `SAVE ₹${savingsAmount}` : tagText);
+            const discountLabel = dish.discountPercent ? `${dish.discountPercent}% OFF` : (savingsAmount > 0 ? `SAVE ₹${savingsAmount}` : tagText);
 
             return `
-              <div class="bg-white rounded-2xl p-4 flex flex-col justify-between border border-zinc-200/80 shadow-xs group relative overflow-hidden">
+              <div class="food-card bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm hover:shadow-xl hover:border-brand-red/30 transition-all duration-300 group flex flex-col justify-between">
                 <div>
-                  <div class="flex items-center justify-between gap-2 mb-2">
-                    <div class="flex items-center gap-1.5">
-                      <span class="${isVeg ? 'badge-veg' : 'badge-nonveg'}"></span>
-                      <span class="text-[10px] font-bold text-zinc-400 uppercase">${dish.category || 'Specialty'}</span>
+                  <!-- Prominent Top Product Image (Full, Uncut Food Photo) -->
+                  <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-zinc-900 border-b border-zinc-100">
+                    <img src="${imgUrl}" alt="${dish.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    
+                    <!-- Top Badges Overlay -->
+                    <div class="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
+                      <span class="${isVeg ? 'badge-veg' : 'badge-nonveg'}" title="${isVeg ? 'Vegetarian' : 'Non-Vegetarian'}"></span>
+                      <span class="px-2.5 py-0.5 text-[10px] font-bold bg-white/95 text-amber-700 border border-amber-200/80 rounded-full shadow-xs">
+                        ${rating}★
+                      </span>
                     </div>
-                    <div class="flex items-center gap-1.5">
-                      <span class="px-1.5 py-0.2 text-[9px] font-bold bg-amber-50 text-amber-700 border border-amber-200 rounded">${rating}</span>
-                      <div class="flex items-baseline gap-1">
-                        <span class="font-heading font-black text-brand-red text-sm">₹ ${dish.price}</span>
-                        ${dish.originalPrice && dish.originalPrice > dish.price ? `
-                          <span class="text-[9px] text-zinc-400 line-through font-bold">₹ ${dish.originalPrice}</span>
-                        ` : ''}
-                      </div>
+
+                    <div class="absolute top-3 right-3 flex items-center gap-1">
+                      ${hasDiscount ? `
+                        <span class="px-2.5 py-1 text-[10px] font-heading font-extrabold bg-red-600 text-white rounded-full uppercase tracking-wider shadow-sm animate-pulse">
+                          ${discountLabel}
+                        </span>
+                      ` : `
+                        <span class="px-2.5 py-1 text-[10px] font-heading font-bold bg-white/95 text-zinc-700 rounded-full uppercase tracking-wider shadow-xs border border-zinc-200">
+                          ${tagText}
+                        </span>
+                      `}
+                    </div>
+
+                    <!-- Price Badge on Image -->
+                    <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs shadow-md border border-zinc-200 flex items-baseline gap-1.5">
+                      <span class="font-mono font-bold text-brand-red text-base sm:text-lg tracking-tight price-val">₹ ${dish.price}</span>
+                      ${dish.originalPrice && dish.originalPrice > dish.price ? `
+                        <span class="line-through text-xs font-bold text-zinc-400 font-mono">₹ ${dish.originalPrice}</span>
+                      ` : ''}
                     </div>
                   </div>
 
-                  <div class="flex gap-3 items-center mb-3">
-                    <div class="w-14 h-14 rounded-lg bg-amber-50/50 p-1 flex items-center justify-center flex-shrink-0 border border-zinc-100">
-                      <img src="${imgUrl}" alt="${dish.name}" class="w-full h-full object-contain">
+                  <!-- Product Details Below Image -->
+                  <div class="p-5 space-y-2">
+                    <div class="flex items-center justify-between text-[11px] text-zinc-400 font-medium">
+                      <span class="uppercase tracking-wider">${dish.category || 'Specialty'}</span>
+                      ${savingsAmount > 0 ? `
+                        <span class="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                          Save ₹${savingsAmount}
+                        </span>
+                      ` : ''}
                     </div>
-                    <div class="flex-1 min-w-0">
-                      <h4 class="font-heading font-black text-xs text-brand-slate truncate">${dish.name}</h4>
-                      <p class="text-[10px] text-zinc-500 line-clamp-2 mt-0.5 leading-tight">${dish.desc || dish.description || ''}</p>
-                    </div>
+
+                    <h4 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 tracking-wide group-hover:text-brand-red transition-colors leading-snug line-clamp-1">
+                      ${dish.name}
+                    </h4>
+
+                    <p class="text-xs text-zinc-600 font-sans leading-relaxed line-clamp-2">
+                      ${dish.desc || dish.description || ''}
+                    </p>
                   </div>
                 </div>
 
-                <div class="pt-2 border-t border-zinc-100 flex items-center justify-between text-[10px]">
-                  <div class="flex items-center gap-1.5">
-                    <span class="font-bold text-amber-600 uppercase tracking-wider text-[9px]">${tagText}</span>
-                    ${hasDiscount ? `
-                      <span class="px-1.5 py-0.5 bg-red-600 text-white font-extrabold text-[8px] rounded uppercase tracking-wider">
-                        ${discountBadge}
-                      </span>
-                    ` : ''}
-                  </div>
-                  <span class="px-2.5 py-1 bg-brand-red text-white font-extrabold uppercase rounded-full shadow-xs">Add to Box</span>
+                <!-- Action Bar -->
+                <div class="px-5 pb-5 pt-3 border-t border-zinc-100 flex items-center justify-between">
+                  <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">${tagText}</span>
+                  <span class="px-4 py-2 bg-brand-red text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                    Add to Box
+                  </span>
                 </div>
               </div>
             `;
@@ -7998,6 +8388,57 @@ function renderCareersCards() {
       renderMediaGrid(activeMediaFilter);
     }
 
+    function renderVideoAssetsSection() {
+      const grid = document.getElementById('videoAssetsGrid');
+      const badge = document.getElementById('videoCountBadge');
+      if (!grid) return;
+
+      const allFiles = appState.mediaFiles || [];
+      let videos = allFiles.filter(f => (f.category || '').toLowerCase() === 'videos' || /\.(webm|mp4|mov|ogg)$/i.test(f.url || f.name || ''));
+
+      // If no videos scanned from API yet, show default wok-cooking-flame.webm
+      if (videos.length === 0) {
+        videos = [{
+          name: 'wok-cooking-flame.webm',
+          url: 'assets/videos/wok-cooking-flame.webm',
+          category: 'Videos',
+          size: 12682627
+        }];
+      }
+
+      if (badge) {
+        badge.innerText = `${videos.length} Hero Video${videos.length > 1 ? 's' : ''} Ready`;
+      }
+
+      grid.innerHTML = videos.map(v => {
+        const fname = v.name || v.url.split('/').pop();
+        const sizeMb = v.size ? (v.size / (1024 * 1024)).toFixed(1) : '12.1';
+        return `
+          <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-md flex flex-col justify-between">
+            <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+              <video src="${v.url}" controls muted playsinline loop class="w-full h-full object-cover"></video>
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-brand-red text-white text-[10px] font-bold uppercase tracking-wider">HERO ACTIVE</span>
+            </div>
+            <div class="p-4 bg-slate-900 text-white space-y-2">
+              <div class="flex items-center justify-between">
+                <h5 class="font-bold text-xs truncate max-w-[180px]" title="${fname}">${fname}</h5>
+                <span class="text-[10px] font-mono text-slate-400">${sizeMb} MB · 1080p</span>
+              </div>
+              <p class="text-[11px] text-slate-300">1000°F Searing Flame & Wok Hei live kitchen footage for homepage hero carousel.</p>
+              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                <button onclick="setMediaAsHeroSlide('${v.url}', '1000°F FLAME CRAFT', 'Real Wok Hei. Sizzling Fresh.')" class="flex-1 py-1.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition text-center cursor-pointer">
+                  Active on Hero Slider
+                </button>
+                <button onclick="copyMediaUrl('${v.url}')" class="py-1.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-bold transition cursor-pointer">
+                  Copy Path
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function filterMediaCategory(cat) {
       activeMediaFilter = cat;
       document.querySelectorAll('.media-filter-btn').forEach(btn => {
@@ -8026,14 +8467,59 @@ function renderCareersCards() {
         c.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400">No media assets in this category.</div>`;
         return;
       }
+
+      // If user selected "Videos" category, render high-definition video card with playback controls below the filter bar
+      if (catLower === 'videos') {
+        c.innerHTML = items.map(f => {
+          const fname = f.name || f.filename || 'wok-cooking-flame.webm';
+          const sizeMb = f.size ? (f.size / (1024 * 1024)).toFixed(1) : '12.1';
+          return `
+          <div class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-3 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-md flex flex-col justify-between">
+            <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+              <video src="${f.url}" controls muted playsinline loop class="w-full h-full object-cover"></video>
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-brand-red text-white text-[10px] font-bold uppercase tracking-wider">HERO ACTIVE</span>
+            </div>
+            <div class="p-4 bg-slate-900 text-white space-y-2">
+              <div class="flex items-center justify-between">
+                <h5 class="font-bold text-xs truncate max-w-[200px]" title="${fname}">${fname}</h5>
+                <span class="text-[10px] font-mono text-slate-400">${sizeMb} MB · 1080p</span>
+              </div>
+              <p class="text-[11px] text-slate-300">1000°F Searing Flame & Wok Hei live kitchen footage for homepage hero carousel.</p>
+              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                <button onclick="setMediaAsHeroSlide('${f.url}', '1000°F FLAME CRAFT', 'Real Wok Hei. Sizzling Fresh.')" class="flex-1 py-1.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition text-center cursor-pointer">
+                  Set as Hero Slide
+                </button>
+                <button onclick="copyMediaUrl('${f.url}')" class="py-1.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-bold transition cursor-pointer">
+                  Copy Path
+                </button>
+              </div>
+            </div>
+          </div>
+          `;
+        }).join('');
+        return;
+      }
       c.innerHTML = items.map(f => {
         const fname = f.name || f.filename || 'asset.jpg';
         const sizeKb = f.size ? Math.round(f.size / 1024) : (f.size_kb || 0);
         const ext = fname.split('.').pop().toUpperCase();
+        const isVideo = (f.category || '').toLowerCase() === 'videos' || /\.(webm|mp4|mov|ogg)$/i.test(f.url || fname);
+
+        const mediaPreview = isVideo
+          ? `<video src="${f.url}" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()" class="w-full h-full object-cover"></video>
+             <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-brand-red text-white text-[9px] font-bold tracking-wider">VIDEO</span>`
+          : `<img src="${f.url}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-slate-400 text-xs font-mono p-2\'>${fname}</div>'">`;
+
+        const heroButton = isVideo
+          ? `<button onclick="setMediaAsHeroSlide('${f.url}', '1000°F FLAME CRAFT', 'Real Wok Hei. Sizzling Fresh.')" class="w-full mt-1.5 py-1 px-2 bg-brand-red hover:bg-brand-red-dark text-white rounded text-[10px] font-bold transition flex items-center justify-center gap-1 cursor-pointer">
+               <span>Set as Hero Slide</span>
+             </button>`
+          : '';
+
         return `
         <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition group flex flex-col justify-between">
           <div class="h-32 bg-slate-100 overflow-hidden relative flex items-center justify-center">
-            <img src="${f.url}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-slate-400 text-xs font-mono p-2\'>${fname}</div>'">
+            ${mediaPreview}
             <span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 text-white text-[9px] font-mono">${sizeKb} KB</span>
           </div>
           <div class="p-3 bg-white border-t border-slate-100">
@@ -8043,6 +8529,7 @@ function renderCareersCards() {
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
               <span>Copy Path</span>
             </button>
+            ${heroButton}
           </div>
         </div>
       `;
@@ -8055,6 +8542,62 @@ function renderCareersCards() {
       }).catch(() => {
         showToast("Path: " + url);
       });
+    }
+
+    async function setMediaAsHeroSlide(videoUrl, tag = '1000°F FLAME CRAFT', title = 'Real Wok Hei. Sizzling Fresh.') {
+      if (!appState.homepageContent) appState.homepageContent = {};
+      if (!Array.isArray(appState.homepageContent.heroSlider)) {
+        try {
+          const cached = localStorage.getItem('redbox_hero_slides');
+          appState.homepageContent.heroSlider = cached ? JSON.parse(cached) : [];
+        } catch(e) {
+          appState.homepageContent.heroSlider = [];
+        }
+      }
+
+      if (appState.homepageContent.heroSlider.length > 0) {
+        appState.homepageContent.heroSlider[0].type = 'video';
+        appState.homepageContent.heroSlider[0].media = videoUrl;
+        appState.homepageContent.heroSlider[0].tag = tag;
+        appState.homepageContent.heroSlider[0].title = title;
+        appState.homepageContent.heroSlider[0].playToEnd = true;
+        appState.homepageContent.heroSlider[0].duration = 0;
+      } else {
+        appState.homepageContent.heroSlider.push({
+          id: 'slide-1',
+          type: 'video',
+          media: videoUrl,
+          tag: tag,
+          title: title,
+          desc: 'Witness the intense high-heat wok tossing that seals in authentic smoky aroma.',
+          playToEnd: true,
+          duration: 0,
+          active: true
+        });
+      }
+
+      // 1. Sync localStorage
+      localStorage.setItem('redbox_hero_slides', JSON.stringify(appState.homepageContent.heroSlider));
+      localStorage.setItem('redbox_homepage_content', JSON.stringify(appState.homepageContent));
+      window.dispatchEvent(new Event('storage'));
+
+      // 2. POST to server
+      try {
+        await fetch('/api/homepage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appState.homepageContent)
+        });
+        await fetch('/api/slides', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appState.homepageContent.heroSlider)
+        });
+      } catch(e) {
+        console.warn("Could not save to API:", e);
+      }
+
+      showToast('✓ Video successfully set as Active Hero Slide in Slider!');
     }
 
     // ========================================================
@@ -8339,6 +8882,330 @@ function renderCareersCards() {
           body: JSON.stringify(appState.catering)
         }).catch(() => null);
         showToast(`Catering request #${id} updated to ${newStatus}`);
+      }
+    }
+
+    // ========================================================
+    // FRANCHISE CMS CONTROLLER
+    // ========================================================
+    function switchFranchiseTab(tabName) {
+      const tabs = ['hero', 'formats', 'pillars', 'leads'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tabBtn-franchise-${t}`);
+        const content = document.getElementById(`franchiseTabContent-${t}`);
+        if (content) content.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+          btn.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
+        }
+      });
+      const activeBtn = document.getElementById(`tabBtn-franchise-${tabName}`);
+      const activeContent = document.getElementById(`franchiseTabContent-${tabName}`);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
+      }
+      if (tabName === 'leads') {
+        renderFranchisesTable();
+      }
+    }
+
+    async function loadFranchiseContent() {
+      try {
+        let data = null;
+        try {
+          const cached = localStorage.getItem('redbox_franchise_content');
+          if (cached) data = JSON.parse(cached);
+        } catch (e) {}
+
+        const res = await fetch('/api/franchise-content').catch(() => null);
+        if (res && res.ok) {
+          const remote = await res.json();
+          if (remote && typeof remote === 'object') data = remote;
+        }
+
+        if (data) {
+          appState.franchiseContent = data;
+          populateFranchiseForm(data);
+        }
+      } catch (err) {
+        console.error('Error loading franchise content:', err);
+      }
+    }
+
+    function populateFranchiseForm(data) {
+      if (!data) return;
+      if (data.hero) {
+        const h = data.hero;
+        if (document.getElementById('franchiseHeroPrefixInput')) document.getElementById('franchiseHeroPrefixInput').value = h.titlePrefix || '';
+        if (document.getElementById('franchiseHeroHighlightInput')) document.getElementById('franchiseHeroHighlightInput').value = h.titleHighlight || '';
+        if (document.getElementById('franchiseHeroSubInput')) document.getElementById('franchiseHeroSubInput').value = h.subtitle || '';
+        if (document.getElementById('franchiseStat1Label')) document.getElementById('franchiseStat1Label').value = h.stat1Label || '';
+        if (document.getElementById('franchiseStat1Val')) document.getElementById('franchiseStat1Val').value = h.stat1Value || '';
+        if (document.getElementById('franchiseStat1Sub')) document.getElementById('franchiseStat1Sub').value = h.stat1Sub || '';
+        if (document.getElementById('franchiseStat2Label')) document.getElementById('franchiseStat2Label').value = h.stat2Label || '';
+        if (document.getElementById('franchiseStat2Val')) document.getElementById('franchiseStat2Val').value = h.stat2Value || '';
+        if (document.getElementById('franchiseStat2Sub')) document.getElementById('franchiseStat2Sub').value = h.stat2Sub || '';
+        if (document.getElementById('franchiseStat3Label')) document.getElementById('franchiseStat3Label').value = h.stat3Label || '';
+        if (document.getElementById('franchiseStat3Val')) document.getElementById('franchiseStat3Val').value = h.stat3Value || '';
+        if (document.getElementById('franchiseStat3Sub')) document.getElementById('franchiseStat3Sub').value = h.stat3Sub || '';
+        if (document.getElementById('franchiseHeroImgInput')) document.getElementById('franchiseHeroImgInput').value = h.heroImage || '';
+        if (document.getElementById('franchiseHeroImgCaption')) document.getElementById('franchiseHeroImgCaption').value = h.heroImageCaption || '';
+        if (document.getElementById('franchiseHeroImgSub')) document.getElementById('franchiseHeroImgSub').value = h.heroImageSub || '';
+      }
+
+      if (Array.isArray(data.formats)) {
+        data.formats.forEach((fmt, i) => {
+          if (document.getElementById(`franchiseFormatModel${i}`)) document.getElementById(`franchiseFormatModel${i}`).value = fmt.model || '';
+          if (document.getElementById(`franchiseFormatSpace${i}`)) document.getElementById(`franchiseFormatSpace${i}`).value = fmt.space || '';
+          if (document.getElementById(`franchiseFormatCapital${i}`)) document.getElementById(`franchiseFormatCapital${i}`).value = fmt.capital || '';
+          if (document.getElementById(`franchiseFormatSetup${i}`)) document.getElementById(`franchiseFormatSetup${i}`).value = fmt.setup || '';
+          if (document.getElementById(`franchiseFormatStaff${i}`)) document.getElementById(`franchiseFormatStaff${i}`).value = fmt.staff || '';
+          if (document.getElementById(`franchiseFormatSales${i}`)) document.getElementById(`franchiseFormatSales${i}`).value = fmt.sales || '';
+        });
+      }
+
+      if (Array.isArray(data.pillars)) {
+        data.pillars.forEach((p, i) => {
+          if (document.getElementById(`franchisePillarTitle${i}`)) document.getElementById(`franchisePillarTitle${i}`).value = p.title || '';
+          if (document.getElementById(`franchisePillarDesc${i}`)) document.getElementById(`franchisePillarDesc${i}`).value = p.desc || '';
+        });
+      }
+    }
+
+    async function saveAllFranchiseContent() {
+      if (!appState.franchiseContent) appState.franchiseContent = { hero: {}, formats: [], pillars: [] };
+
+      // Harvest Hero
+      appState.franchiseContent.hero = {
+        titlePrefix: document.getElementById('franchiseHeroPrefixInput')?.value || '',
+        titleHighlight: document.getElementById('franchiseHeroHighlightInput')?.value || '',
+        subtitle: document.getElementById('franchiseHeroSubInput')?.value || '',
+        stat1Label: document.getElementById('franchiseStat1Label')?.value || '',
+        stat1Value: document.getElementById('franchiseStat1Val')?.value || '',
+        stat1Sub: document.getElementById('franchiseStat1Sub')?.value || '',
+        stat2Label: document.getElementById('franchiseStat2Label')?.value || '',
+        stat2Value: document.getElementById('franchiseStat2Val')?.value || '',
+        stat2Sub: document.getElementById('franchiseStat2Sub')?.value || '',
+        stat3Label: document.getElementById('franchiseStat3Label')?.value || '',
+        stat3Value: document.getElementById('franchiseStat3Val')?.value || '',
+        stat3Sub: document.getElementById('franchiseStat3Sub')?.value || '',
+        heroImage: document.getElementById('franchiseHeroImgInput')?.value || '',
+        heroImageCaption: document.getElementById('franchiseHeroImgCaption')?.value || '',
+        heroImageSub: document.getElementById('franchiseHeroImgSub')?.value || ''
+      };
+
+      // Harvest Formats
+      appState.franchiseContent.formats = [0, 1, 2].map(i => ({
+        model: document.getElementById(`franchiseFormatModel${i}`)?.value || '',
+        space: document.getElementById(`franchiseFormatSpace${i}`)?.value || '',
+        capital: document.getElementById(`franchiseFormatCapital${i}`)?.value || '',
+        setup: document.getElementById(`franchiseFormatSetup${i}`)?.value || '',
+        staff: document.getElementById(`franchiseFormatStaff${i}`)?.value || '',
+        sales: document.getElementById(`franchiseFormatSales${i}`)?.value || ''
+      }));
+
+      // Harvest Pillars
+      appState.franchiseContent.pillars = [0, 1, 2, 3].map(i => ({
+        title: document.getElementById(`franchisePillarTitle${i}`)?.value || '',
+        desc: document.getElementById(`franchisePillarDesc${i}`)?.value || ''
+      }));
+
+      // Save to localStorage
+      try {
+        localStorage.setItem('redbox_franchise_content', JSON.stringify(appState.franchiseContent));
+      } catch (e) {}
+
+      // POST to /api/franchise-content
+      try {
+        const res = await fetch('/api/franchise-content', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appState.franchiseContent)
+        });
+        if (res.ok) {
+          showToast('Franchise CMS content saved & published live!');
+        } else {
+          showToast('Failed to persist franchise content', true);
+        }
+      } catch (err) {
+        console.error('Error saving franchise content:', err);
+        showToast('Error connecting to server', true);
+      }
+    }
+
+    // ========================================================
+    // CATERING CMS CONTROLLER
+    // ========================================================
+    function switchCateringTab(tabName) {
+      const tabs = ['hero', 'pkg1', 'pkg2', 'estimator', 'requests'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tabBtn-catering-${t}`);
+        const content = document.getElementById(`cateringTabContent-${t}`);
+        if (content) content.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+          btn.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
+        }
+      });
+      const activeBtn = document.getElementById(`tabBtn-catering-${tabName}`);
+      const activeContent = document.getElementById(`cateringTabContent-${tabName}`);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-white/60');
+      }
+      if (tabName === 'requests') {
+        renderCateringTable();
+      }
+    }
+
+    async function loadCateringContent() {
+      try {
+        let data = null;
+        try {
+          const cached = localStorage.getItem('redbox_catering_content');
+          if (cached) data = JSON.parse(cached);
+        } catch (e) {}
+
+        const res = await fetch('/api/catering-content').catch(() => null);
+        if (res && res.ok) {
+          const remote = await res.json();
+          if (remote && typeof remote === 'object') data = remote;
+        }
+
+        if (data) {
+          appState.cateringContent = data;
+          populateCateringForm(data);
+        }
+      } catch (err) {
+        console.error('Error loading catering content:', err);
+      }
+    }
+
+    function populateCateringForm(data) {
+      if (!data) return;
+      if (data.hero) {
+        const h = data.hero;
+        if (document.getElementById('cateringHeroBadgeInput')) document.getElementById('cateringHeroBadgeInput').value = h.badge || '';
+        if (document.getElementById('cateringHeroSubBadgeInput')) document.getElementById('cateringHeroSubBadgeInput').value = h.subBadge || '';
+        if (document.getElementById('cateringHeroPrefixInput')) document.getElementById('cateringHeroPrefixInput').value = h.titlePrefix || '';
+        if (document.getElementById('cateringHeroHighlightInput')) document.getElementById('cateringHeroHighlightInput').value = h.titleHighlight || '';
+        if (document.getElementById('cateringHeroSubInput')) document.getElementById('cateringHeroSubInput').value = h.subtitle || '';
+        if (document.getElementById('cateringHelplineInput')) document.getElementById('cateringHelplineInput').value = h.helpline || '';
+        if (document.getElementById('cateringNoticeInput')) document.getElementById('cateringNoticeInput').value = h.noticeHours || '';
+      }
+
+      if (data.package1) {
+        const p1 = data.package1;
+        if (document.getElementById('cateringPkg1TagInput')) document.getElementById('cateringPkg1TagInput').value = p1.tag || '';
+        if (document.getElementById('cateringPkg1TitleInput')) document.getElementById('cateringPkg1TitleInput').value = p1.title || '';
+        if (document.getElementById('cateringPkg1PriceInput')) document.getElementById('cateringPkg1PriceInput').value = p1.price || '';
+        if (document.getElementById('cateringPkg1UnitInput')) document.getElementById('cateringPkg1UnitInput').value = p1.priceUnit || '';
+        if (document.getElementById('cateringPkg1DescInput')) document.getElementById('cateringPkg1DescInput').value = p1.description || '';
+        if (document.getElementById('cateringPkg1BtnInput')) document.getElementById('cateringPkg1BtnInput').value = p1.buttonText || '';
+        if (Array.isArray(p1.features)) {
+          p1.features.forEach((feat, i) => {
+            if (document.getElementById(`cateringPkg1Feat${i}`)) document.getElementById(`cateringPkg1Feat${i}`).value = feat;
+          });
+        }
+      }
+
+      if (data.package2) {
+        const p2 = data.package2;
+        if (document.getElementById('cateringPkg2TagInput')) document.getElementById('cateringPkg2TagInput').value = p2.tag || '';
+        if (document.getElementById('cateringPkg2BadgeInput')) document.getElementById('cateringPkg2BadgeInput').value = p2.badge || '';
+        if (document.getElementById('cateringPkg2TitleInput')) document.getElementById('cateringPkg2TitleInput').value = p2.title || '';
+        if (document.getElementById('cateringPkg2PriceInput')) document.getElementById('cateringPkg2PriceInput').value = p2.price || '';
+        if (document.getElementById('cateringPkg2UnitInput')) document.getElementById('cateringPkg2UnitInput').value = p2.priceUnit || '';
+        if (document.getElementById('cateringPkg2DescInput')) document.getElementById('cateringPkg2DescInput').value = p2.description || '';
+        if (document.getElementById('cateringPkg2BtnInput')) document.getElementById('cateringPkg2BtnInput').value = p2.buttonText || '';
+        if (Array.isArray(p2.features)) {
+          p2.features.forEach((feat, i) => {
+            if (document.getElementById(`cateringPkg2Feat${i}`)) document.getElementById(`cateringPkg2Feat${i}`).value = feat;
+          });
+        }
+      }
+
+      if (data.estimator) {
+        const est = data.estimator;
+        if (document.getElementById('cateringEstTitleInput')) document.getElementById('cateringEstTitleInput').value = est.title || '';
+        if (document.getElementById('cateringEstRate1Input')) document.getElementById('cateringEstRate1Input').value = est.pkg1Rate || 150;
+        if (document.getElementById('cateringEstRate2Input')) document.getElementById('cateringEstRate2Input').value = est.pkg2Rate || 250;
+        if (document.getElementById('cateringEstRate3Input')) document.getElementById('cateringEstRate3Input').value = est.pkg3Rate || 650;
+        if (document.getElementById('cateringEstDefaultGuestsInput')) document.getElementById('cateringEstDefaultGuestsInput').value = est.defaultGuests || 100;
+        if (document.getElementById('cateringEstDisclaimerInput')) document.getElementById('cateringEstDisclaimerInput').value = est.disclaimer || '';
+      }
+    }
+
+    async function saveAllCateringContent() {
+      if (!appState.cateringContent) appState.cateringContent = { hero: {}, package1: {}, package2: {}, estimator: {} };
+
+      // Harvest Hero
+      appState.cateringContent.hero = {
+        badge: document.getElementById('cateringHeroBadgeInput')?.value || '',
+        subBadge: document.getElementById('cateringHeroSubBadgeInput')?.value || '',
+        titlePrefix: document.getElementById('cateringHeroPrefixInput')?.value || '',
+        titleHighlight: document.getElementById('cateringHeroHighlightInput')?.value || '',
+        subtitle: document.getElementById('cateringHeroSubInput')?.value || '',
+        helpline: document.getElementById('cateringHelplineInput')?.value || '',
+        noticeHours: document.getElementById('cateringNoticeInput')?.value || ''
+      };
+
+      // Harvest Package 1
+      appState.cateringContent.package1 = {
+        tag: document.getElementById('cateringPkg1TagInput')?.value || '',
+        title: document.getElementById('cateringPkg1TitleInput')?.value || '',
+        price: document.getElementById('cateringPkg1PriceInput')?.value || '',
+        priceUnit: document.getElementById('cateringPkg1UnitInput')?.value || '',
+        description: document.getElementById('cateringPkg1DescInput')?.value || '',
+        features: [0, 1, 2, 3].map(i => document.getElementById(`cateringPkg1Feat${i}`)?.value || '').filter(Boolean),
+        buttonText: document.getElementById('cateringPkg1BtnInput')?.value || ''
+      };
+
+      // Harvest Package 2
+      appState.cateringContent.package2 = {
+        tag: document.getElementById('cateringPkg2TagInput')?.value || '',
+        badge: document.getElementById('cateringPkg2BadgeInput')?.value || '',
+        title: document.getElementById('cateringPkg2TitleInput')?.value || '',
+        price: document.getElementById('cateringPkg2PriceInput')?.value || '',
+        priceUnit: document.getElementById('cateringPkg2UnitInput')?.value || '',
+        description: document.getElementById('cateringPkg2DescInput')?.value || '',
+        features: [0, 1, 2, 3].map(i => document.getElementById(`cateringPkg2Feat${i}`)?.value || '').filter(Boolean),
+        buttonText: document.getElementById('cateringPkg2BtnInput')?.value || ''
+      };
+
+      // Harvest Estimator
+      appState.cateringContent.estimator = {
+        title: document.getElementById('cateringEstTitleInput')?.value || '',
+        pkg1Rate: parseInt(document.getElementById('cateringEstRate1Input')?.value || 150, 10),
+        pkg2Rate: parseInt(document.getElementById('cateringEstRate2Input')?.value || 250, 10),
+        pkg3Rate: parseInt(document.getElementById('cateringEstRate3Input')?.value || 650, 10),
+        defaultGuests: parseInt(document.getElementById('cateringEstDefaultGuestsInput')?.value || 100, 10),
+        disclaimer: document.getElementById('cateringEstDisclaimerInput')?.value || ''
+      };
+
+      // Save to localStorage
+      try {
+        localStorage.setItem('redbox_catering_content', JSON.stringify(appState.cateringContent));
+      } catch (e) {}
+
+      // POST to /api/catering-content
+      try {
+        const res = await fetch('/api/catering-content', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appState.cateringContent)
+        });
+        if (res.ok) {
+          showToast('Catering CMS content saved & published live!');
+        } else {
+          showToast('Failed to persist catering content', true);
+        }
+      } catch (err) {
+        console.error('Error saving catering content:', err);
+        showToast('Error connecting to server', true);
       }
     }
 

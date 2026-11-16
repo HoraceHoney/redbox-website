@@ -135,17 +135,17 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-wider uppercase mb-2">
+        <div id="cateringHeroBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-wider uppercase mb-2">
           Institutional & Corporate Services
         </div>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/10 text-brand-red text-xs font-heading font-bold uppercase tracking-widest border border-brand-red/20 mb-3">
+        <div id="cateringHeroSubBadge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/10 text-brand-red text-xs font-heading font-bold uppercase tracking-widest border border-brand-red/20 mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse"></span>
           <span>Bulk Orders & Live Counters</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+        <h1 id="cateringHeroTitle" class="text-4xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
           Campus Fests & <span class="font-serif italic font-normal text-brand-red">Corporate Catering</span>
         </h1>
-        <p class="text-sm text-zinc-600 mt-2">
+        <p id="cateringHeroSubtitle" class="text-sm text-zinc-600 mt-2">
           From 50-person corporate tech lunches to 5,000-person college cultural fests with live theatrical wok stations.
         </p>
       </div>
@@ -157,47 +157,47 @@
         <div class="bg-white border border-zinc-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-1 rounded-md">Option A</span>
-              <span class="text-xl font-black text-brand-slate">From ₹150 <span class="text-xs text-zinc-500 font-normal">/ box</span></span>
+              <span id="pkg1Tag" class="text-xs font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-1 rounded-md">Option A</span>
+              <span class="text-xl font-black text-brand-slate"><span id="pkg1Price">From ₹150</span> <span id="pkg1PriceUnit" class="text-xs text-zinc-500 font-normal">/ box</span></span>
             </div>
-            <h2 class="text-2xl font-serif font-bold text-zinc-900 mb-3">Bulk Corporate Meal Boxes</h2>
-            <p class="text-sm text-zinc-600 mb-6 leading-relaxed">
+            <h2 id="pkg1Title" class="text-2xl font-serif font-bold text-zinc-900 mb-3">Bulk Corporate Meal Boxes</h2>
+            <p id="pkg1Desc" class="text-sm text-zinc-600 mb-6 leading-relaxed">
               Individually sealed hot noodle & rice boxes, packed with appetisers, dips, and fortune cookies. Perfect for desk delivery, seminars, and training batches.
             </p>
-            <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
+            <ul id="pkg1Features" class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Minimum batch: 20 boxes</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Choice of Veg / Non-Veg split</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Guaranteed 45-minute temperature retention</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Cutlery & napkin kit included</li>
             </ul>
           </div>
-          <button onclick="openCateringModal('Bulk Corporate Boxes')" class="w-full py-3 bg-zinc-900 hover:bg-black text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all">
+          <button id="pkg1Btn" onclick="openCateringModal('Bulk Corporate Boxes')" class="w-full py-3 bg-zinc-900 hover:bg-black text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer">
             Book Meal Boxes
           </button>
         </div>
 
         <!-- Package 2: Live Wok Cooking Counters -->
         <div class="bg-white border-2 border-brand-red/30 rounded-2xl p-8 shadow-md hover:shadow-lg transition-all flex flex-col justify-between relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-brand-red text-white text-[10px] font-extrabold uppercase px-4 py-1 rounded-bl-xl">
+          <div id="pkg2Badge" class="absolute top-0 right-0 bg-brand-red text-white text-[10px] font-extrabold uppercase px-4 py-1 rounded-bl-xl">
             Most Popular
           </div>
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Option B</span>
-              <span class="text-xl font-black text-brand-slate">From ₹650 <span class="text-xs text-zinc-500 font-normal">/ person</span></span>
+              <span id="pkg2Tag" class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Option B</span>
+              <span class="text-xl font-black text-brand-slate"><span id="pkg2Price">From ₹650</span> <span id="pkg2PriceUnit" class="text-xs text-zinc-500 font-normal">/ person</span></span>
             </div>
-            <h2 class="text-2xl font-serif font-bold text-zinc-900 mb-3">Live Wok Counter Experience</h2>
-            <p class="text-sm text-zinc-600 mb-6 leading-relaxed">
+            <h2 id="pkg2Title" class="text-2xl font-serif font-bold text-zinc-900 mb-3">Live Wok Counter Experience</h2>
+            <p id="pkg2Desc" class="text-sm text-zinc-600 mb-6 leading-relaxed">
               Our chef brings the wok station to your venue! Sizzling open flames, customized tossed noodles on demand, piping hot dim sums, and instant street-style theatre.
             </p>
-            <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
+            <ul id="pkg2Features" class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Full live station setup with master chefs</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Made-to-order spicy levels & sauces</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Complete waste management & disposal</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Ideal for college fests & annual corporate parties</li>
             </ul>
           </div>
-          <button onclick="openCateringModal('Live Wok Counter')" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all">
+          <button id="pkg2Btn" onclick="openCateringModal('Live Wok Counter')" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
             Request Live Wok Counter
           </button>
         </div>
@@ -208,7 +208,7 @@
       <div class="bg-canvas-ivory border border-zinc-200 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto shadow-sm">
         <div class="flex items-center gap-2 mb-4">
           <i data-lucide="calculator" class="w-5 h-5 text-brand-red"></i>
-          <h3 class="font-heading font-extrabold text-lg text-zinc-900">Instant Catering Cost Estimator</h3>
+          <h3 id="estimatorTitle" class="font-heading font-extrabold text-lg text-zinc-900">Instant Catering Cost Estimator</h3>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
@@ -232,8 +232,8 @@
           <div class="bg-white rounded-xl p-5 border border-zinc-200 text-center flex flex-col justify-center">
             <span class="text-xs uppercase font-extrabold tracking-wider text-zinc-400">Estimated Total</span>
             <div id="estimatedCostDisplay" class="text-3xl font-heading font-black text-brand-slate my-1">₹ 65,000</div>
-            <span class="text-[11px] text-zinc-500 mb-3">*Subject to GST & venue logistics</span>
-            <button onclick="openCateringModalWithEstimate()" class="py-2.5 px-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all">
+            <span id="estimatorDisclaimer" class="text-[11px] text-zinc-500 mb-3">*Subject to GST & venue logistics</span>
+            <button onclick="openCateringModalWithEstimate()" class="py-2.5 px-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all cursor-pointer">
               Lock In This Quote
             </button>
           </div>
@@ -403,5 +403,112 @@
     </div>
   </div>
 
+  <script>
+    async function loadDynamicCateringContent() {
+      try {
+        let data = null;
+        try {
+          const cached = localStorage.getItem('redbox_catering_content');
+          if (cached) data = JSON.parse(cached);
+        } catch (e) {}
+
+        const res = await fetch('/api/catering-content').catch(() => null);
+        if (res && res.ok) {
+          const remote = await res.json();
+          if (remote && typeof remote === 'object') data = remote;
+        }
+
+        if (!data) return;
+
+        // 1. Hero
+        if (data.hero) {
+          const b = document.getElementById('cateringHeroBadge');
+          if (b && data.hero.badge) b.innerText = data.hero.badge;
+          const sb = document.getElementById('cateringHeroSubBadge');
+          if (sb && data.hero.subBadge) {
+            sb.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse"></span><span>${data.hero.subBadge}</span>`;
+          }
+          const t = document.getElementById('cateringHeroTitle');
+          if (t && (data.hero.titlePrefix || data.hero.titleHighlight)) {
+            t.innerHTML = `${data.hero.titlePrefix || 'Campus Fests &'} <span class="font-serif italic font-normal text-brand-red">${data.hero.titleHighlight || 'Corporate Catering'}</span>`;
+          }
+          const sub = document.getElementById('cateringHeroSubtitle');
+          if (sub && data.hero.subtitle) sub.innerText = data.hero.subtitle;
+        }
+
+        // 2. Package 1
+        if (data.package1) {
+          const tag = document.getElementById('pkg1Tag');
+          if (tag && data.package1.tag) tag.innerText = data.package1.tag;
+          const price = document.getElementById('pkg1Price');
+          if (price && data.package1.price) price.innerText = data.package1.price.startsWith('From') ? data.package1.price : `From ${data.package1.price}`;
+          const unit = document.getElementById('pkg1PriceUnit');
+          if (unit && data.package1.priceUnit) unit.innerText = data.package1.priceUnit;
+          const title = document.getElementById('pkg1Title');
+          if (title && data.package1.title) title.innerText = data.package1.title;
+          const desc = document.getElementById('pkg1Desc');
+          if (desc && data.package1.description) desc.innerText = data.package1.description;
+          const btn = document.getElementById('pkg1Btn');
+          if (btn && data.package1.buttonText) btn.innerText = data.package1.buttonText;
+
+          if (Array.isArray(data.package1.features) && data.package1.features.length) {
+            const featEl = document.getElementById('pkg1Features');
+            if (featEl) {
+              featEl.innerHTML = data.package1.features.map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> ${f}</li>`).join('');
+            }
+          }
+        }
+
+        // 3. Package 2
+        if (data.package2) {
+          const tag = document.getElementById('pkg2Tag');
+          if (tag && data.package2.tag) tag.innerText = data.package2.tag;
+          const badge = document.getElementById('pkg2Badge');
+          if (badge && data.package2.badge) badge.innerText = data.package2.badge;
+          const price = document.getElementById('pkg2Price');
+          if (price && data.package2.price) price.innerText = data.package2.price.startsWith('From') ? data.package2.price : `From ${data.package2.price}`;
+          const unit = document.getElementById('pkg2PriceUnit');
+          if (unit && data.package2.priceUnit) unit.innerText = data.package2.priceUnit;
+          const title = document.getElementById('pkg2Title');
+          if (title && data.package2.title) title.innerText = data.package2.title;
+          const desc = document.getElementById('pkg2Desc');
+          if (desc && data.package2.description) desc.innerText = data.package2.description;
+          const btn = document.getElementById('pkg2Btn');
+          if (btn && data.package2.buttonText) btn.innerText = data.package2.buttonText;
+
+          if (Array.isArray(data.package2.features) && data.package2.features.length) {
+            const featEl = document.getElementById('pkg2Features');
+            if (featEl) {
+              featEl.innerHTML = data.package2.features.map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> ${f}</li>`).join('');
+            }
+          }
+        }
+
+        // 4. Estimator
+        if (data.estimator) {
+          const et = document.getElementById('estimatorTitle');
+          if (et && data.estimator.title) et.innerText = data.estimator.title;
+          const ed = document.getElementById('estimatorDisclaimer');
+          if (ed && data.estimator.disclaimer) ed.innerText = data.estimator.disclaimer;
+          const sel = document.getElementById('calcPackage');
+          if (sel && data.estimator.pkg1Rate && data.estimator.pkg2Rate && data.estimator.pkg3Rate) {
+            sel.options[0].value = data.estimator.pkg1Rate;
+            sel.options[0].text = `Bulk Meal Boxes (₹${data.estimator.pkg1Rate}/box)`;
+            sel.options[1].value = data.estimator.pkg2Rate;
+            sel.options[1].text = `Executive Lunch Box (₹${data.estimator.pkg2Rate}/box)`;
+            sel.options[2].value = data.estimator.pkg3Rate;
+            sel.options[2].text = `Live Wok Station (₹${data.estimator.pkg3Rate}/head)`;
+            if (typeof calculateCateringEstimate === 'function') calculateCateringEstimate();
+          }
+        }
+
+        if (window.lucide) window.lucide.createIcons();
+      } catch (err) {
+        console.error('Error hydrating dynamic catering content:', err);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDynamicCateringContent);
+  </script>
 </body>
 </html>

@@ -137,33 +137,33 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
         
         <div class="lg:col-span-7 space-y-5">
-          <h1 class="text-4xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+          <h1 id="franchiseHeroTitle" class="text-4xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
             Partner With <span class="font-serif italic font-normal text-brand-red">The Red Box</span>
           </h1>
-          <p class="text-base text-zinc-600 leading-relaxed">
+          <p id="franchiseHeroSubtitle" class="text-base text-zinc-600 leading-relaxed">
             India's fastest growing organized Indo-Chinese quick service restaurant chain. High-margin unit economics, proprietary central supply chain, and proven 1.8-year payback period.
           </p>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
             <div class="bg-white p-4 rounded-xl border border-zinc-200">
-              <span class="text-[11px] uppercase font-bold text-zinc-400">Total Investment</span>
-              <div class="text-xl font-heading font-black text-brand-red">₹ 22 - 27 L</div>
-              <span class="text-[10px] text-zinc-500">Turnkey setup & equipment</span>
+              <span id="franchiseStat1Label" class="text-[11px] uppercase font-bold text-zinc-400">Total Investment</span>
+              <div id="franchiseStat1Val" class="text-xl font-heading font-black text-brand-red">₹ 22 - 27 L</div>
+              <span id="franchiseStat1Sub" class="text-[10px] text-zinc-500">Turnkey setup & equipment</span>
             </div>
             <div class="bg-white p-4 rounded-xl border border-zinc-200">
-              <span class="text-[11px] uppercase font-bold text-zinc-400">Average Payback</span>
-              <div class="text-xl font-heading font-black text-brand-slate">~1.8 Years</div>
-              <span class="text-[10px] text-zinc-500">Strong EBITDA margin</span>
+              <span id="franchiseStat2Label" class="text-[11px] uppercase font-bold text-zinc-400">Average Payback</span>
+              <div id="franchiseStat2Val" class="text-xl font-heading font-black text-brand-slate">~1.8 Years</div>
+              <span id="franchiseStat2Sub" class="text-[10px] text-zinc-500">Strong EBITDA margin</span>
             </div>
             <div class="bg-white p-4 rounded-xl border border-zinc-200">
-              <span class="text-[11px] uppercase font-bold text-zinc-400">Kiosk Space Req.</span>
-              <div class="text-xl font-heading font-black text-brand-gold">300 - 600 sq ft</div>
-              <span class="text-[10px] text-zinc-500">Mall / High-street / Cloud</span>
+              <span id="franchiseStat3Label" class="text-[11px] uppercase font-bold text-zinc-400">Kiosk Space Req.</span>
+              <div id="franchiseStat3Val" class="text-xl font-heading font-black text-brand-gold">300 - 600 sq ft</div>
+              <span id="franchiseStat3Sub" class="text-[10px] text-zinc-500">Mall / High-street / Cloud</span>
             </div>
           </div>
 
           <div class="pt-2">
-            <button onclick="openFranchiseModal()" class="px-8 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-sm uppercase tracking-wider rounded-full shadow-lg shadow-brand-red/30 transition-all flex items-center gap-2">
+            <button onclick="openFranchiseModal()" class="px-8 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-sm uppercase tracking-wider rounded-full shadow-lg shadow-brand-red/30 transition-all flex items-center gap-2 cursor-pointer">
               <i data-lucide="file-text" class="w-4 h-4"></i>
               <span>Download Franchise Kit & Apply</span>
             </button>
@@ -173,10 +173,10 @@
         <!-- Kiosk Image -->
         <div class="lg:col-span-5">
           <div class="oriental-frame rounded-2xl p-3 shadow-xl bg-white">
-            <img src="assets/images/FO1.jpg" alt="Franchise Kiosk" class="rounded-xl w-full h-72 object-cover">
+            <img id="franchiseHeroImg" src="assets/images/FO1.jpg" alt="Franchise Kiosk" class="rounded-xl w-full h-72 object-cover">
             <div class="p-3 text-center">
-              <div class="text-xs font-bold text-zinc-800">Compact High-Efficiency Kitchen Layout</div>
-              <div class="text-[11px] text-zinc-500">Automated wok cookers & proprietary sauce batching</div>
+              <div id="franchiseHeroImgCap" class="text-xs font-bold text-zinc-800">Compact High-Efficiency Kitchen Layout</div>
+              <div id="franchiseHeroImgSub" class="text-[11px] text-zinc-500">Automated wok cookers & proprietary sauce batching</div>
             </div>
           </div>
         </div>
@@ -202,7 +202,7 @@
                 <th class="p-4">Expected Monthly Sales</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-zinc-200 text-zinc-800 font-medium">
+            <tbody id="franchiseFormatsTbody" class="divide-y divide-zinc-200 text-zinc-800 font-medium">
               <tr class="hover:bg-zinc-50">
                 <td class="p-4 font-bold text-brand-red">Express Takeaway Kiosk</td>
                 <td class="p-4">300 – 450 sq ft</td>
@@ -229,6 +229,36 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Partner Support Pillars Grid -->
+      <div class="mb-16">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-200">Turnkey Partner Support</span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900 tracking-tight mt-2">Why 57+ Partners Trust The Red Box</h2>
+        </div>
+        <div id="franchisePillarsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-5 bg-white rounded-2xl border border-zinc-200 shadow-xs space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold">1</div>
+            <h3 class="font-heading font-extrabold text-sm text-zinc-900">Site Selection & Setup</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">Turnkey design guidance, layout mapping, and automated wok kitchen installations.</p>
+          </div>
+          <div class="p-5 bg-white rounded-2xl border border-zinc-200 shadow-xs space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold">2</div>
+            <h3 class="font-heading font-extrabold text-sm text-zinc-900">Centralized Supply Chain</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">Proprietary master sauces and seasoning pre-mixes dispatched weekly with zero quality drift.</p>
+          </div>
+          <div class="p-5 bg-white rounded-2xl border border-zinc-200 shadow-xs space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold">3</div>
+            <h3 class="font-heading font-extrabold text-sm text-zinc-900">Chef & Crew Academy</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">14-day rigorous culinary training ensuring flame control, hygiene, and speed of service.</p>
+          </div>
+          <div class="p-5 bg-white rounded-2xl border border-zinc-200 shadow-xs space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold">4</div>
+            <h3 class="font-heading font-extrabold text-sm text-zinc-900">Cloud POS & Marketing</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">Real-time billing, inventory tracking, aggregator integration, and hyper-local ads.</p>
+          </div>
         </div>
       </div>
 
@@ -400,5 +430,102 @@
     </div>
   </div>
 
+  <script>
+    async function loadDynamicFranchiseContent() {
+      try {
+        let data = null;
+        try {
+          const cached = localStorage.getItem('redbox_franchise_content');
+          if (cached) data = JSON.parse(cached);
+        } catch (e) {}
+
+        const res = await fetch('/api/franchise-content').catch(() => null);
+        if (res && res.ok) {
+          const remote = await res.json();
+          if (remote && typeof remote === 'object') data = remote;
+        }
+
+        if (!data) return;
+
+        // 1. Hero
+        if (data.hero) {
+          const t = document.getElementById('franchiseHeroTitle');
+          if (t && (data.hero.titlePrefix || data.hero.titleHighlight)) {
+            t.innerHTML = `${data.hero.titlePrefix || 'Partner With'} <span class="font-serif italic font-normal text-brand-red">${data.hero.titleHighlight || 'The Red Box'}</span>`;
+          }
+          const sub = document.getElementById('franchiseHeroSubtitle');
+          if (sub && data.hero.subtitle) sub.innerText = data.hero.subtitle;
+
+          // Stats
+          const s1l = document.getElementById('franchiseStat1Label');
+          if (s1l && data.hero.stat1Label) s1l.innerText = data.hero.stat1Label;
+          const s1v = document.getElementById('franchiseStat1Val');
+          if (s1v && data.hero.stat1Value) s1v.innerText = data.hero.stat1Value;
+          const s1s = document.getElementById('franchiseStat1Sub');
+          if (s1s && data.hero.stat1Sub) s1s.innerText = data.hero.stat1Sub;
+
+          const s2l = document.getElementById('franchiseStat2Label');
+          if (s2l && data.hero.stat2Label) s2l.innerText = data.hero.stat2Label;
+          const s2v = document.getElementById('franchiseStat2Val');
+          if (s2v && data.hero.stat2Value) s2v.innerText = data.hero.stat2Value;
+          const s2s = document.getElementById('franchiseStat2Sub');
+          if (s2s && data.hero.stat2Sub) s2s.innerText = data.hero.stat2Sub;
+
+          const s3l = document.getElementById('franchiseStat3Label');
+          if (s3l && data.hero.stat3Label) s3l.innerText = data.hero.stat3Label;
+          const s3v = document.getElementById('franchiseStat3Val');
+          if (s3v && data.hero.stat3Value) s3v.innerText = data.hero.stat3Value;
+          const s3s = document.getElementById('franchiseStat3Sub');
+          if (s3s && data.hero.stat3Sub) s3s.innerText = data.hero.stat3Sub;
+
+          // Image
+          const img = document.getElementById('franchiseHeroImg');
+          if (img && data.hero.heroImage) img.src = data.hero.heroImage;
+          const cap = document.getElementById('franchiseHeroImgCap');
+          if (cap && data.hero.heroImageCaption) cap.innerText = data.hero.heroImageCaption;
+          const imgSub = document.getElementById('franchiseHeroImgSub');
+          if (imgSub && data.hero.heroImageSub) imgSub.innerText = data.hero.heroImageSub;
+        }
+
+        // 2. Formats
+        if (Array.isArray(data.formats) && data.formats.length) {
+          const tbody = document.getElementById('franchiseFormatsTbody');
+          if (tbody) {
+            const colors = ['text-brand-red', 'text-brand-slate', 'text-brand-gold', 'text-emerald-700'];
+            tbody.innerHTML = data.formats.map((fmt, i) => `
+              <tr class="hover:bg-zinc-50">
+                <td class="p-4 font-bold ${colors[i % colors.length]}">${fmt.model}</td>
+                <td class="p-4">${fmt.space}</td>
+                <td class="p-4 font-bold text-zinc-900">${fmt.capital}</td>
+                <td class="p-4">${fmt.setup}</td>
+                <td class="p-4">${fmt.staff}</td>
+                <td class="p-4 font-bold text-brand-red">${fmt.sales}</td>
+              </tr>
+            `).join('');
+          }
+        }
+
+        // 3. Pillars
+        if (Array.isArray(data.pillars) && data.pillars.length) {
+          const container = document.getElementById('franchisePillarsContainer');
+          if (container) {
+            container.innerHTML = data.pillars.map((p, i) => `
+              <div class="p-5 bg-white rounded-2xl border border-zinc-200 shadow-xs space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold">${i + 1}</div>
+                <h3 class="font-heading font-extrabold text-sm text-zinc-900">${p.title}</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed">${p.desc}</p>
+              </div>
+            `).join('');
+          }
+        }
+
+        if (window.lucide) window.lucide.createIcons();
+      } catch (err) {
+        console.error('Error hydrating dynamic franchise content:', err);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDynamicFranchiseContent);
+  </script>
 </body>
 </html>

@@ -76,6 +76,12 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif clean in ['/api/about', '/api/about-content']:
             data = self.read_json_file('about_content.json', {})
             return self.send_json(data)
+        elif clean in ['/api/catering-content', '/api/catering/content']:
+            data = self.read_json_file('catering_content.json', {})
+            return self.send_json(data)
+        elif clean in ['/api/franchise-content', '/api/franchises/content']:
+            data = self.read_json_file('franchise_content.json', {})
+            return self.send_json(data)
 
         # 2. Restaurant & Menu Management
         elif clean in ['/api/menu', '/api/menu-items', '/api/menu/list/']:
@@ -118,10 +124,10 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif clean in ['/api/media', '/api/media-library']:
             media_items = []
             scan_dirs = [
-                ('assets/videos', 'Videos'),
-                ('assets/uploads', 'Uploads'),
                 ('assets/images/dishes', 'Dishes'),
-                ('assets/images', 'General')
+                ('assets/images', 'General'),
+                ('assets/uploads', 'Uploads'),
+                ('assets/videos', 'Videos')
             ]
             for rel_dir, category in scan_dirs:
                 abs_dir = os.path.join(DIRECTORY, rel_dir)
@@ -223,6 +229,20 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 self.write_json_file('about_content.json', payload)
                 return self.send_json({'status': 'ok', 'message': 'About Us content updated successfully'})
+            except Exception as e:
+                return self.send_json({'status': 'error', 'message': str(e)}, 500)
+
+        elif clean in ['/api/catering-content', '/api/catering/content']:
+            try:
+                self.write_json_file('catering_content.json', payload)
+                return self.send_json({'status': 'ok', 'message': 'Catering content updated successfully'})
+            except Exception as e:
+                return self.send_json({'status': 'error', 'message': str(e)}, 500)
+
+        elif clean in ['/api/franchise-content', '/api/franchises/content']:
+            try:
+                self.write_json_file('franchise_content.json', payload)
+                return self.send_json({'status': 'ok', 'message': 'Franchise content updated successfully'})
             except Exception as e:
                 return self.send_json({'status': 'error', 'message': str(e)}, 500)
 

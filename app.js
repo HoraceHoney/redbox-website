@@ -318,7 +318,22 @@ async function initHeroCarousel() {
 }
 
 async function loadHeroSlides() {
-  // 1. Try localStorage first (fastest and reflects live admin edits)
+  // 1. Fetch from data/slides.json with cache buster to guarantee synchronized content
+  try {
+    const res = await fetch('data/slides.json?v=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        heroSlides = data.filter(s => s.active !== false);
+        try { localStorage.setItem('redbox_hero_slides', JSON.stringify(heroSlides)); } catch(e){}
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn('Could not fetch data/slides.json:', err);
+  }
+
+  // 2. Try localStorage fallback
   try {
     const cached = localStorage.getItem('redbox_hero_slides');
     if (cached) {
@@ -330,20 +345,6 @@ async function loadHeroSlides() {
     }
   } catch (err) {
     console.warn('Could not read redbox_hero_slides from localStorage:', err);
-  }
-
-  // 2. Fetch from data/slides.json
-  try {
-    const res = await fetch('data/slides.json');
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
-        heroSlides = data.filter(s => s.active !== false);
-        return;
-      }
-    }
-  } catch (err) {
-    console.warn('Could not fetch data/slides.json:', err);
   }
 
   // 3. Fallback to default slides
@@ -758,15 +759,15 @@ function setFoodTypeFilter(type) {
 
 function getCategoryDishImage(category, foodType) {
   const cat = (category || '').toLowerCase();
-  if (cat.includes('momo') || cat.includes('dim sum')) return 'assets/images/FO2.jpg';
-  if (cat.includes('noodle') || cat.includes('chow')) return 'assets/images/FO3.jpg';
-  if (cat.includes('rice') || cat.includes('biryani')) return 'assets/images/FO5.jpg';
-  if (cat.includes('gravy') || cat.includes('course') || cat.includes('curry')) return 'assets/images/hdr-bnr-02.jpg';
-  if (cat.includes('combo') || cat.includes('meal') || cat.includes('box')) return 'assets/images/hdr-bnr-04.jpg';
-  if (cat.includes('beverage') || cat.includes('dessert') || cat.includes('soup')) return 'assets/images/hdr-bnr-06.jpg';
-  if (cat.includes('chicken') || cat.includes('starter') || cat.includes('dragon')) return 'assets/images/FO4.jpg';
-  if (cat.includes('prawn') || cat.includes('seafood') || cat.includes('crispy')) return 'assets/images/FO1.jpg';
-  return (foodType === 'veg' || (category && category.toLowerCase().includes('veg'))) ? 'assets/images/FO5.jpg' : 'assets/images/FO4.jpg';
+  if (cat.includes('momo') || cat.includes('dim sum')) return 'assets/images/img-01.png';
+  if (cat.includes('noodle') || cat.includes('chow')) return 'assets/images/img-02.png';
+  if (cat.includes('rice') || cat.includes('biryani')) return 'assets/images/img-03.png';
+  if (cat.includes('gravy') || cat.includes('course') || cat.includes('curry')) return 'assets/images/img-04.png';
+  if (cat.includes('combo') || cat.includes('meal') || cat.includes('box')) return 'assets/images/img-07.png';
+  if (cat.includes('beverage') || cat.includes('dessert') || cat.includes('soup')) return 'assets/images/img-06.png';
+  if (cat.includes('chicken') || cat.includes('starter') || cat.includes('dragon')) return 'assets/images/img-08.png';
+  if (cat.includes('prawn') || cat.includes('seafood') || cat.includes('crispy')) return 'assets/images/img-08.png';
+  return (foodType === 'veg' || (category && category.toLowerCase().includes('veg'))) ? 'assets/images/img-03.png' : 'assets/images/img-08.png';
 }
 
 function updateWebsiteBreadcrumbs() {
@@ -929,7 +930,7 @@ function renderMenuItems() {
 
             <!-- Price Badge Overlay on Image -->
             <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs shadow-md border border-zinc-200 flex items-center gap-1">
-              <span class="font-heading font-extrabold text-brand-red text-base sm:text-lg tracking-tight">${priceDisplay}</span>
+              <span class="font-mono font-bold text-brand-red text-base sm:text-lg tracking-tight price-val">${priceDisplay}</span>
             </div>
           </div>
 
@@ -1750,6 +1751,8 @@ let userFulfillment = {
   isVerified: false,
   mode: 'delivery', // 'delivery' | 'takeaway'
   localityName: 'Location not verified',
+  fullAddress: '45, G.N. Chetty Road, T. Nagar, Chennai - 600017',
+  accuracyMeters: null,
   latitude: null,
   longitude: null,
   nearestBranch: null,
@@ -1770,7 +1773,7 @@ function initMenuLocationPipeline() {
   if (branchParam && branchesData && branchesData.length > 0) {
     const matched = branchesData.find(b => b.id === branchParam || b.branch_code === branchParam);
     if (matched) {
-      applyBranchLocation(matched, 1.2, `${matched.area || matched.name}, ${matched.city}`);
+      applyBranchLocation(matched, 1.2, `${matched.area || matched.name}, ${matched.city}`, matched.address);
       return;
     }
   }
@@ -1782,6 +1785,9 @@ function initMenuLocationPipeline() {
       const parsed = JSON.parse(saved);
       if (parsed && parsed.isVerified && parsed.nearestBranch) {
         userFulfillment = { ...userFulfillment, ...parsed };
+        if (!userFulfillment.fullAddress && userFulfillment.nearestBranch) {
+          userFulfillment.fullAddress = userFulfillment.nearestBranch.address || userFulfillment.localityName;
+        }
         updateFulfillmentBarUI();
         updateOutOfServiceBannerUI();
         renderMenuItems();
@@ -1792,17 +1798,31 @@ function initMenuLocationPipeline() {
     console.warn('Could not read saved fulfillment state:', e);
   }
 
-  // 3. Prompt Geolocation if browser permits
+  // 3. Default to T. Nagar branch / address on first load so user immediately sees real delivery context
+  if (branchesData && branchesData.length > 0) {
+    const tnagarBranch = branchesData.find(b => b.id === 'rbx-chn-tnagar') || branchesData[0];
+    setUserLocation(
+      13.0418,
+      80.2341,
+      'T. Nagar, Chennai',
+      tnagarBranch,
+      2.2,
+      '45, G.N. Chetty Road, T. Nagar, Chennai - 600017',
+      12
+    );
+  }
+
+  // 4. Prompt Geolocation if browser permits
   detectUserGPS(false);
 }
 
-// GPS Location Detector
+// GPS Location Detector with High Accuracy & Reverse Geocoding
 function detectUserGPS(isManualClick = false) {
   const statusMsg = document.getElementById('gpsStatusMessage');
   const btnDetect = document.getElementById('btnModalDetectGps');
   const btnDetectText = document.getElementById('btnModalDetectGpsText');
 
-  if (statusMsg) statusMsg.textContent = 'Detecting satellite coordinates...';
+  if (statusMsg) statusMsg.textContent = 'Requesting high-accuracy GPS coordinates...';
   if (btnDetectText) btnDetectText.textContent = 'Locating...';
   if (btnDetect) btnDetect.disabled = true;
 
@@ -1815,17 +1835,54 @@ function detectUserGPS(isManualClick = false) {
   }
 
   navigator.geolocation.getCurrentPosition(
-    (position) => {
+    async (position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
+      const accuracy = position.coords.accuracy || 15;
       
       // Calculate distance to all 57 branches
       const nearest = findNearestBranch(lat, lon);
-      const locality = nearest.branch ? `${nearest.branch.area || nearest.branch.name}, ${nearest.branch.city}` : 'Your Neighborhood';
+      let locality = nearest.branch ? `${nearest.branch.area || nearest.branch.name}, ${nearest.branch.city}` : 'Your Neighborhood';
+      let fullAddress = nearest.branch && nearest.branch.address ? nearest.branch.address : `${locality}`;
+
+      // Reverse geocode via OpenStreetMap Nominatim for exact street address
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
+        const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`, {
+          signal: controller.signal,
+          headers: { 'Accept-Language': 'en' }
+        });
+        clearTimeout(timeoutId);
+        if (geoRes.ok) {
+          const geoData = await geoRes.json();
+          const addr = geoData.address || {};
+          const road = addr.road || addr.street || addr.pedestrian || addr.suburb || '';
+          const houseNo = addr.house_number || '';
+          const neighbourhood = addr.neighbourhood || addr.suburb || addr.residential || '';
+          const city = addr.city || addr.town || addr.village || 'Chennai';
+          const postcode = addr.postcode ? ` - ${addr.postcode}` : '';
+          
+          const streetPart = [houseNo, road].filter(Boolean).join(', ');
+          const areaPart = neighbourhood || addr.city_district || '';
+          
+          if (streetPart && areaPart) {
+            fullAddress = `${streetPart}, ${areaPart}, ${city}${postcode}`;
+            locality = `${areaPart}, ${city}`;
+          } else if (road) {
+            fullAddress = `${road}, ${city}${postcode}`;
+            locality = `${road}, ${city}`;
+          } else if (geoData.display_name) {
+            fullAddress = geoData.display_name.split(',').slice(0, 4).join(', ');
+          }
+        }
+      } catch (err) {
+        console.warn('Reverse geocoding timeout or error, using branch address fallback:', err);
+      }
       
-      setUserLocation(lat, lon, locality, nearest.branch, nearest.distance);
+      setUserLocation(lat, lon, locality, nearest.branch, nearest.distance, fullAddress, accuracy);
       
-      if (statusMsg) statusMsg.textContent = `Identified: ${locality} (${nearest.distance.toFixed(1)} km to hub)`;
+      if (statusMsg) statusMsg.textContent = `Identified: ${fullAddress.slice(0, 45)}... (${nearest.distance.toFixed(1)} km to hub)`;
       if (btnDetectText) btnDetectText.textContent = 'Location Found!';
       if (btnDetect) btnDetect.disabled = false;
 
@@ -1846,7 +1903,7 @@ function detectUserGPS(isManualClick = false) {
 
       handleLocationDenied();
     },
-    { timeout: 8000, maximumAge: 60000, enableHighAccuracy: true }
+    { timeout: 8000, maximumAge: 0, enableHighAccuracy: true }
   );
 }
 
@@ -1865,36 +1922,53 @@ function handleLocationDenied() {
   if (localityDisplay) localityDisplay.textContent = 'Share location to check availability';
   if (branchInfoDisplay) branchInfoDisplay.textContent = 'Viewing 270+ master recipes in catalog mode';
   if (btnRequest) btnRequest.classList.remove('hidden');
+
+  updateOutOfServiceBannerUI();
+  renderMenuItems();
 }
 
-// Find nearest branch among all branches
+// Distance Calculation Helpers
+function calculateDistanceKm(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Earth radius in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 function findNearestBranch(lat, lon) {
-  if (!branchesData || branchesData.length === 0) return { branch: null, distance: 99999 };
-  let bestBranch = null;
-  let minDistance = 999999;
+  if (!branchesData || branchesData.length === 0) return { branch: null, distance: 9999 };
+  let minDistance = Infinity;
+  let nearestBranch = null;
 
-  for (const b of branchesData) {
-    if (b.latitude && b.longitude) {
-      const d = calculateDistanceKm(lat, lon, b.latitude, b.longitude);
-      if (d < minDistance) {
-        minDistance = d;
-        bestBranch = b;
-      }
+  branchesData.forEach(branch => {
+    const dist = calculateDistanceKm(lat, lon, branch.latitude, branch.longitude);
+    if (dist < minDistance) {
+      minDistance = dist;
+      nearestBranch = branch;
     }
-  }
+  });
 
-  return { branch: bestBranch, distance: minDistance };
+  return { branch: nearestBranch, distance: minDistance };
 }
 
-// Apply resolved user location
-function setUserLocation(lat, lon, localityName, branch, distanceKm) {
+// Set user location state with complete fullAddress
+function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress = null, accuracy = null) {
   const isOutOfZone = distanceKm > 25;
   const isTakeawayOnly = distanceKm > 12 && distanceKm <= 25;
+
+  const resolvedAddress = fullAddress || (branch && branch.address ? branch.address : localityName);
 
   userFulfillment = {
     isVerified: true,
     mode: (isTakeawayOnly || isOutOfZone) ? 'takeaway' : userFulfillment.mode,
     localityName: localityName,
+    fullAddress: resolvedAddress,
+    accuracyMeters: accuracy,
     latitude: lat,
     longitude: lon,
     nearestBranch: branch,
@@ -1922,14 +1996,70 @@ function setUserLocation(lat, lon, localityName, branch, distanceKm) {
   }
 }
 
+// Manual delivery address save handler
+function saveManualDeliveryAddress() {
+  const flatEl = document.getElementById('manualAddressFlat');
+  const streetEl = document.getElementById('manualAddressStreet');
+  const areaEl = document.getElementById('manualAddressArea');
+  const pincodeEl = document.getElementById('manualAddressPincode');
+
+  const flat = flatEl ? flatEl.value.trim() : '';
+  const street = streetEl ? streetEl.value.trim() : '';
+  const area = areaEl ? areaEl.value.trim() : '';
+  const pincode = pincodeEl ? pincodeEl.value.trim() : '';
+
+  if (!street && !area && !flat) {
+    alert('Please enter at least a street or area name.');
+    return;
+  }
+
+  // Combine full address
+  const parts = [];
+  if (flat) parts.push(flat);
+  if (street) parts.push(street);
+  if (area) parts.push(area);
+  let fullAddr = parts.join(', ');
+  if (pincode) fullAddr += (fullAddr ? ` - ${pincode}` : pincode);
+
+  // Match nearest branch based on area text or fallback to T. Nagar/Anna Nagar
+  let matchedBranch = null;
+  if (branchesData && branchesData.length > 0) {
+    const searchStr = `${area} ${street}`.toLowerCase();
+    matchedBranch = branchesData.find(b => {
+      const bStr = `${b.area} ${b.name} ${b.address}`.toLowerCase();
+      return bStr.includes(area.toLowerCase()) || (street && bStr.includes(street.toLowerCase()));
+    });
+    if (!matchedBranch) {
+      matchedBranch = branchesData.find(b => b.id === 'rbx-chn-tnagar') || branchesData[0];
+    }
+  }
+
+  const distanceKm = 1.8; // default in-zone distance for manually specified address
+  setUserLocation(
+    matchedBranch ? matchedBranch.latitude : 13.0418,
+    matchedBranch ? matchedBranch.longitude : 80.2341,
+    area || (matchedBranch ? matchedBranch.area : 'Chennai'),
+    matchedBranch,
+    distanceKm,
+    fullAddr,
+    null
+  );
+
+  closeLocationSelectorModal();
+  if (typeof showToast === 'function') {
+    showToast('✓ Delivery address saved: ' + fullAddr);
+  }
+}
+
 // Apply manual branch selection
-function applyBranchLocation(branch, mockDistance = 1.5, customLocality = null) {
+function applyBranchLocation(branch, mockDistance = 1.5, customLocality = null, customAddress = null) {
   setUserLocation(
     branch.latitude || 13.085,
     branch.longitude || 80.2101,
     customLocality || `${branch.area || branch.name}, ${branch.city}`,
     branch,
-    mockDistance
+    mockDistance,
+    customAddress || branch.address || `${branch.area || branch.name}, ${branch.city}`
   );
 }
 
@@ -1944,6 +2074,7 @@ function updateFulfillmentBarUI() {
   const btnTakeaway = document.getElementById('toggleBtnTakeaway');
   const btnRequest = document.getElementById('btnRequestLocationAccess');
   const iconContainer = document.getElementById('locationPinIconContainer');
+  const accBadge = document.getElementById('gpsAccuracyBadge');
 
   if (!localityDisplay) return;
 
@@ -1963,7 +2094,18 @@ function updateFulfillmentBarUI() {
   }
 
   if (userFulfillment.isVerified) {
-    localityDisplay.textContent = userFulfillment.localityName;
+    // Put the detailed address where the image is
+    localityDisplay.textContent = userFulfillment.fullAddress || userFulfillment.localityName;
+    localityDisplay.title = userFulfillment.fullAddress || userFulfillment.localityName;
+
+    if (accBadge) {
+      if (userFulfillment.accuracyMeters) {
+        accBadge.textContent = `GPS ±${Math.round(userFulfillment.accuracyMeters)}m`;
+        accBadge.classList.remove('hidden');
+      } else {
+        accBadge.classList.add('hidden');
+      }
+    }
 
     if (userFulfillment.isOutOfZone) {
       if (statusChip) {
@@ -1971,7 +2113,7 @@ function updateFulfillmentBarUI() {
       }
       if (statusText) statusText.textContent = 'Beyond Delivery Radius · Showcase';
       if (branchInfoDisplay) {
-        branchInfoDisplay.textContent = `Nearest Hub: ${userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox Hub'} (${userFulfillment.distanceKm} km away)`;
+        branchInfoDisplay.textContent = `Nearest Hub: ${userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox Hub'} (${userFulfillment.distanceKm} km away) · Delivery unavailable`;
       }
       if (iconContainer) {
         iconContainer.className = 'w-11 h-11 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center flex-shrink-0 text-amber-600 shadow-xs';
@@ -1982,7 +2124,7 @@ function updateFulfillmentBarUI() {
       }
       if (statusText) statusText.textContent = 'Takeaway Radius Active (12-25 km)';
       if (branchInfoDisplay) {
-        branchInfoDisplay.textContent = `Hub: ${userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox'} (${userFulfillment.distanceKm} km) · Takeaway Ready in 15m`;
+        branchInfoDisplay.textContent = `Served by ${userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox'} (${userFulfillment.distanceKm} km) · Takeaway Ready in 15m`;
       }
       if (iconContainer) {
         iconContainer.className = 'w-11 h-11 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center flex-shrink-0 text-amber-600 shadow-xs';
@@ -2004,18 +2146,17 @@ function updateFulfillmentBarUI() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Update Out-of-Service Zone Experience Banner
+// Update Out of Service Zone Banner UI
 function updateOutOfServiceBannerUI() {
-  const banner = document.getElementById('outOfServiceZoneBanner');
+  const banner = document.getElementById('outOfServiceNoticeBanner');
   if (!banner) return;
 
   if (userFulfillment.isVerified && userFulfillment.isOutOfZone) {
     banner.classList.remove('hidden');
-    const userLoc = document.getElementById('outOfZoneUserLocality');
-    const distEl = document.getElementById('outOfZoneDistanceKm');
-    const branchName = document.getElementById('outOfZoneNearestBranchName');
-
-    if (userLoc) userLoc.textContent = userFulfillment.localityName || 'your area';
+    const locName = document.getElementById('outOfServiceLocalityName');
+    const distEl = document.getElementById('outOfServiceDistanceKm');
+    const branchName = document.getElementById('outOfServiceNearestBranchName');
+    if (locName) locName.textContent = userFulfillment.localityName || 'your area';
     if (distEl) distEl.textContent = `${userFulfillment.distanceKm || 320} km`;
     if (branchName) branchName.textContent = userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox Anna Nagar Hub';
   } else {
@@ -2025,44 +2166,74 @@ function updateOutOfServiceBannerUI() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Toggle delivery vs takeaway
+// Toggle delivery vs takeaway mode
 function setFulfillmentMode(mode) {
-  if (mode === 'delivery') {
-    if (userFulfillment.isVerified && userFulfillment.isOutOfZone) {
-      alert(`Hot delivery is currently unavailable in ${userFulfillment.localityName} (${userFulfillment.distanceKm} km from nearest hub). We have enabled Takeaway Pre-order and Showcase Mode!`);
-      mode = 'takeaway';
-    } else if (userFulfillment.isVerified && userFulfillment.isTakeawayOnly) {
-      alert(`Your location (${userFulfillment.distanceKm} km away) is beyond our 12 km hot delivery radius. Switched to Takeaway curbside pickup!`);
-      mode = 'takeaway';
-    }
+  if (mode === 'delivery' && (userFulfillment.isOutOfZone || userFulfillment.isTakeawayOnly)) {
+    alert(`Delivery is unavailable for locations beyond 12 km. Your nearest RedBox branch is ${userFulfillment.distanceKm} km away. Please choose Takeaway or select another delivery address.`);
+    return;
   }
-
   userFulfillment.mode = mode;
   try {
     localStorage.setItem('redbox_fulfillment', JSON.stringify(userFulfillment));
   } catch (e) {}
-
   updateFulfillmentBarUI();
   renderMenuItems();
 }
 
-// Preset Quick Test Handler
+// Preset Quick Address Handler
 function setTestPresetLocation(preset) {
-  if (preset === 'in-zone') {
-    // Anna Nagar, Chennai (< 2km)
+  if (preset === 'in-zone' || preset === 'tnagar') {
+    // 45, G.N. Chetty Road, T. Nagar, Chennai - 600017
+    const b = branchesData.find(x => x.id === 'rbx-chn-tnagar') || branchesData[0];
+    setUserLocation(
+      13.0418,
+      80.2341,
+      'T. Nagar, Chennai',
+      b,
+      2.2,
+      '45, G.N. Chetty Road, T. Nagar, Chennai - 600017',
+      12
+    );
+  } else if (preset === 'annanagar') {
+    // Plot 104, 2nd Avenue, Anna Nagar East, Chennai - 600040
     const b = branchesData.find(x => x.id === 'rbx-chn-annanagar') || branchesData[0];
-    applyBranchLocation(b, 1.8, 'Anna Nagar East, Chennai');
+    setUserLocation(
+      13.085,
+      80.2101,
+      'Anna Nagar, Chennai',
+      b,
+      1.8,
+      'Plot 104, 2nd Avenue, Anna Nagar East, Chennai - 600040',
+      10
+    );
   } else if (preset === 'takeaway-zone') {
-    // Sriperumbudur / Outer Corridor (~17.6 km)
+    // Plot 15, Kundrathur Main Road, Kundrathur, Chennai - 600069 (~17.6 km)
     const b = branchesData.find(x => x.id === 'rbx-chn-kundrathur') || branchesData[0];
-    setUserLocation(12.9675, 79.9406, 'Sriperumbudur / Outer Corridor', b, 17.6);
+    setUserLocation(
+      12.9675,
+      79.9406,
+      'Kundrathur / Outer Corridor',
+      b,
+      17.6,
+      'Plot 15, Kundrathur Main Road, Near Bus Terminus, Chennai - 600069',
+      25
+    );
   } else if (preset === 'out-of-zone') {
-    // New Delhi / Remote (> 300km)
+    // Flat 102, Connaught Circus, New Delhi - 110001 (> 300km)
     const nearest = findNearestBranch(28.6139, 77.2090);
-    setUserLocation(28.6139, 77.2090, 'Connaught Place, New Delhi', nearest.branch, nearest.distance);
+    setUserLocation(
+      28.6139,
+      77.2090,
+      'Connaught Place, New Delhi',
+      nearest.branch,
+      nearest.distance,
+      'Flat 102, Block B, Connaught Circus, New Delhi - 110001',
+      50
+    );
   }
   closeLocationSelectorModal();
 }
+
 
 // Location Selector Modal Controls
 function openLocationSelectorModal(dishId = null) {
@@ -2472,24 +2643,32 @@ document.addEventListener('keydown', (e) => {
 // Load Full Homepage Content (Hero Slider, New Releases, Featured Signatures)
 async function loadHomepageContent() {
   try {
-    const cached = localStorage.getItem('redbox_homepage_content');
-    if (cached) {
-      homepageContent = JSON.parse(cached);
+    let res = await fetch('/api/homepage').catch(() => null);
+    if (!res || !res.ok) res = await fetch('data/homepage_content.json').catch(() => null);
+    if (res && res.ok) {
+      homepageContent = await res.json();
     }
-  } catch (e) {
-    console.warn('Could not parse redbox_homepage_content from localStorage:', e);
+  } catch (err) {
+    console.warn('Could not fetch homepage content:', err);
   }
 
   if (!homepageContent) {
     try {
-      let res = await fetch('/api/homepage').catch(() => null);
-      if (!res || !res.ok) res = await fetch('data/homepage_content.json').catch(() => null);
-      if (res && res.ok) {
-        homepageContent = await res.json();
+      const cached = localStorage.getItem('redbox_homepage_content');
+      if (cached) {
+        homepageContent = JSON.parse(cached);
       }
-    } catch (err) {
-      console.warn('Could not fetch homepage content:', err);
+    } catch (e) {
+      console.warn('Could not parse redbox_homepage_content from localStorage:', e);
     }
+  }
+
+  if (homepageContent?.featuredSignatures?.items) {
+    homepageContent.featuredSignatures.items.forEach(dish => {
+      if (dish.image && dish.image.includes('FO')) {
+        dish.image = (dish.foodType === 'veg' || dish.isVeg) ? 'assets/images/img-03.png' : 'assets/images/img-08.png';
+      }
+    });
   }
 
   if (homepageContent) {
@@ -2556,7 +2735,7 @@ function renderNewReleases() {
 
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
             <span class="text-xs font-semibold text-zinc-300">${dish.category || 'Chef Special'}</span>
-            <span class="font-heading font-black text-lg text-amber-400">₹ ${dish.price}</span>
+            <span class="font-mono font-bold text-lg text-amber-400 price-val">₹ ${dish.price}</span>
           </div>
         </div>
 
@@ -2643,9 +2822,9 @@ function renderFeaturedDishes() {
 
                 <!-- Price Badge on Image -->
                 <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs shadow-md border border-zinc-200 flex items-baseline gap-1.5">
-                  <span class="font-heading font-extrabold text-brand-red text-base sm:text-lg tracking-tight">₹ ${dish.price}</span>
+                  <span class="font-mono font-bold text-brand-red text-base sm:text-lg tracking-tight price-val">₹ ${dish.price}</span>
                   ${dish.originalPrice && dish.originalPrice > dish.price ? `
-                    <span class="line-through text-xs font-bold text-zinc-400">₹ ${dish.originalPrice}</span>
+                    <span class="line-through text-xs font-bold text-zinc-400 font-mono">₹ ${dish.originalPrice}</span>
                   ` : ''}
                 </div>
               </div>
@@ -2727,7 +2906,7 @@ function renderFeaturedDishes() {
 
             <!-- Price Badge on Image -->
             <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs shadow-md border border-zinc-200 flex items-baseline gap-1.5">
-              <span class="font-heading font-extrabold text-brand-red text-base sm:text-lg tracking-tight">₹ ${dish.price}</span>
+              <span class="font-mono font-bold text-brand-red text-base sm:text-lg tracking-tight price-val">₹ ${dish.price}</span>
             </div>
           </div>
 

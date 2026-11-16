@@ -9,10 +9,10 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans -->
+  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -42,6 +42,7 @@
             serif: ['Playfair Display', 'Georgia', 'serif'],
             heading: ['Montserrat', 'sans-serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
           }
         }
       }
@@ -138,10 +139,10 @@
     <section id="heroSliderSection" class="relative w-full bg-zinc-950 overflow-hidden h-[340px] sm:h-[440px] lg:h-[540px] select-none group/slider">
       
       <!-- Slide Image (1922x772 px full width) -->
-      <img id="heroBannerImg" src="assets/images/hdr-bnr-01.jpg" alt="The Red Box Hero Banner" class="w-full h-full object-cover transition-opacity duration-500 block">
+      <img id="heroBannerImg" src="assets/images/hdr-bnr-01.jpg" alt="The Red Box Hero Banner" class="w-full h-full object-cover transition-opacity duration-500 hidden">
       
       <!-- Slide Video (Plays to its full extent before auto-scrolling) -->
-      <video id="heroBannerVideo" class="w-full h-full object-cover hidden" playsinline muted autoplay preload="auto">
+      <video id="heroBannerVideo" src="assets/videos/wok-cooking-flame.webm" class="w-full h-full object-cover block" playsinline muted autoplay preload="auto">
         <source id="heroBannerVideoSrc" src="assets/videos/wok-cooking-flame.webm" type="video/webm">
       </video>
 
@@ -168,15 +169,15 @@
           
           <div class="max-w-3xl space-y-2 sm:space-y-3 pointer-events-auto">
             <span id="heroBannerTag" class="inline-block px-3 py-1 bg-brand-red text-white text-[10px] sm:text-xs font-extrabold uppercase tracking-widest rounded-md shadow-md">
-              SIGNATURE DIM SUMS
+              1000°F FLAME CRAFT
             </span>
 
             <h1 id="heroBannerTitle" class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight drop-shadow-lg leading-tight">
-              Real Wok Craft. Iconic Red Box.
+              Real Wok Hei. Sizzling Fresh.
             </h1>
 
             <p id="heroBannerDesc" class="text-xs sm:text-base text-zinc-200 font-medium max-w-2xl drop-shadow leading-relaxed">
-              Steaming, freshly tossed Indo-Chinese specialties packed hot in our 45-minute heat-retention fold box.
+              Witness the intense high-heat wok tossing that seals in authentic smoky aroma and crisp vegetable crunch.
             </p>
 
             <!-- Quick Action Buttons On Slider -->
