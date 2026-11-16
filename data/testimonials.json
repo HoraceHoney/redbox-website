@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Priya Sundaram",
+    "role": "Food Critic & Blogger, Chennai",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    "rating": 5,
+    "text": "The Wok Hei in their Dragon Chicken and Burnt Garlic Fried Rice is unmatched. You genuinely get that restaurant-grade smoky crunch even after 35 minutes of delivery.",
+    "branch": "RedBox Anna Nagar",
+    "date": "2026-11-10",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Arun Karthik",
+    "role": "Tech Lead, Ascendas IT Park",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "rating": 5,
+    "text": "We ordered 75 custom wok boxes for our product launch lunch. Arrived piping hot in their patented hexagonal red boxes. Every team member was raving about the Chilli Garlic Momos.",
+    "branch": "RedBox OMR Thoraipakkam",
+    "date": "2026-11-08",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Dr. Meera Nambiar",
+    "role": "Pediatrician & Long-time Patron",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    "rating": 5,
+    "text": "Zero synthetic food colorings is a massive deal for our family. RedBox proves you can have electrifying Indo-Chinese flavors without artificial red dyes or heavy preservatives.",
+    "branch": "RedBox Besant Nagar",
+    "date": "2026-11-04",
+    "active": true
+  }
+]

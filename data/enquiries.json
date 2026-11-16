@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Rajesh Sharma",
+    "contact": "9840112233 · rajesh@gmail.com",
+    "subject": "Catering Inquiry",
+    "message": "Need wok boxes for 60 employees at DLF Cybercity.",
+    "date": "Today, 10:15 AM",
+    "status": "New",
+    "assignedTo": "Catering Dept"
+  },
+  {
+    "id": 2,
+    "name": "Pooja V",
+    "contact": "9940223344 · pooja@outlook.com",
+    "subject": "Special Event",
+    "message": "Birthday party live cooking counter inquiry.",
+    "date": "Yesterday",
+    "status": "In Discussion",
+    "assignedTo": "Guest Relations"
+  }
+]

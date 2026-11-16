@@ -1,0 +1,567 @@
+/* ==========================================================================
+   The Red Box - Modern White Theme & Oriental Heritage Stylesheet
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --brand-red: #D9232D;
+  --color-brand-red: #D9232D;
+  --brand-red-dark: #B51B24;
+  --brand-red-light: #FFF1F2;
+  --brand-gold: #C5A059;
+  --brand-gold-light: #F7F3E9;
+  --brand-slate: #1C1D1F;
+  --brand-slate-light: #2A2B2E;
+  --text-main: #18191B;
+  --text-muted: #5E6267;
+  --text-light: #8E9297;
+  --border-light: #EDE8DF;
+  --border-gold: rgba(197, 160, 89, 0.4);
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 10px 30px -4px rgba(28, 29, 31, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 20px 40px -6px rgba(217, 35, 45, 0.12), 0 8px 16px -2px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.6;
+  background-color: var(--bg-primary);
+}
+
+/* Typography Overrides - Luxury Mainland China Editorial & Wok Heritage Typography */
+.font-serif,
+h1.font-serif,
+h2.font-serif,
+h3.font-serif,
+h4.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+.font-heading {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Default Heading Font Fallbacks */
+h1:not(.font-heading):not(.font-cinzel),
+h2:not(.font-heading):not(.font-cinzel) {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Luxury Red & Gold Foil Metallic Text Gradients */
+.red-foil-text {
+  background: linear-gradient(135deg, #B51B24 0%, #D9232D 50%, #991B1B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-text {
+  background: linear-gradient(135deg, #9A7B38 0%, #C5A059 40%, #B3862A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle Oriental Lattice Pattern */
+.bg-chinese-lattice-white {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Professional Nav Link Styling */
+.nav-item-link {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.825rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #374151;
+  padding: 0.6rem 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.nav-item-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--brand-red);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-item-link:hover {
+  color: var(--brand-red);
+}
+
+.nav-item-link:hover::after,
+.nav-item-link.active::after {
+  width: 100%;
+}
+
+.nav-item-link.active {
+  color: var(--brand-red);
+}
+
+/* Slider Controls */
+.slider-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  color: #18191B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.slider-arrow-btn:hover {
+  background-color: var(--brand-red);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Oriental Traditional Framing */
+.oriental-frame {
+  position: relative;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-card);
+  padding: 1.5rem;
+}
+
+.oriental-frame::before,
+.oriental-frame::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--brand-gold);
+}
+
+.oriental-frame::before {
+  top: -3px;
+  left: -3px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.oriental-frame::after {
+  bottom: -3px;
+  right: -3px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F3EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9232D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B51B24;
+}
+
+/* Card Hover Elevation */
+.food-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+}
+.food-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 35, 45, 0.3);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Pulse Hotspot Pins for The Box */
+.hotspot-pin {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(217, 35, 45, 0.7);
+  animation: pulse-red 2s infinite;
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+.hotspot-pin:hover {
+  transform: scale(1.2);
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 35, 45, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(217, 35, 45, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 35, 45, 0);
+  }
+}
+
+/* Food Type Badge (Veg / Non-Veg) */
+.badge-veg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #16A34A;
+  border-radius: 3px;
+  background: white;
+}
+.badge-veg::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16A34A;
+}
+
+.badge-nonveg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #DC2626;
+  border-radius: 3px;
+  background: white;
+}
+.badge-nonveg::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 9px solid #DC2626;
+}
+
+/* Tab active styles */
+.category-pill.active {
+  background-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+  border-color: var(--brand-red) !important;
+  box-shadow: 0 6px 16px rgba(217, 35, 45, 0.25);
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  background-color: rgba(28, 29, 31, 0.65);
+  backdrop-filter: blur(6px);
+}
+
+/* ==========================================================================
+   Golden Dragon Highlight Watermark & Product Section Highlighting
+   ========================================================================== */
+
+/* Golden Dragon Highlight Watermarks */
+/* Golden Dragon Highlight Watermarks - High Visibility Imperial Gold */
+.dragon-watermark-right {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 620px;
+  height: 620px;
+  max-width: 60vw;
+  max-height: 60vw;
+  background-image: url('assets/images/golden-dragon-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.30;
+  filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.5)) contrast(1.18) brightness(1.08);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.dragon-watermark-left {
+  position: absolute;
+  top: 5%;
+  left: -30px;
+  width: 560px;
+  height: 560px;
+  max-width: 50vw;
+  max-height: 50vw;
+  background-image: url('assets/images/golden-dragon-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  transform: scaleX(-1);
+  opacity: 0.28;
+  filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.5)) contrast(1.18) brightness(1.08);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.dragon-watermark-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: 720px;
+  max-width: 75vw;
+  max-height: 75vw;
+  background-image: url('assets/images/golden-dragon-watermark.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.32;
+  filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.55)) contrast(1.2) brightness(1.1);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Distinct Section Background Styles & Medium Professional Spacing */
+.section-medium-gap {
+  padding-top: 2.5rem;   /* 40px */
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 640px) {
+  .section-medium-gap {
+    padding-top: 3rem;   /* 48px */
+    padding-bottom: 3rem;
+  }
+}
+
+.bg-section-porcelain {
+  background-color: #F8F5EE;
+  border-top: 1px solid #E8E0D2;
+  border-bottom: 1px solid #E8E0D2;
+}
+
+.bg-section-studio {
+  background-color: #F2F4F7;
+  border-top: 1px solid #E2E6EB;
+  border-bottom: 1px solid #E2E6EB;
+}
+
+.bg-section-warm-linen {
+  background: linear-gradient(180deg, #FFFDF8 0%, #FAF4EA 50%, #F4EDE0 100%);
+  border-top: 1px solid #EADBCA;
+  border-bottom: 1px solid #EADBCA;
+}
+
+.bg-section-white {
+  background-color: #FFFFFF;
+  border-top: 1px solid #EAE5DC;
+  border-bottom: 1px solid #EAE5DC;
+}
+
+/* Product Section Highlighting - Warm Ivory Canvas with Subtle Depth */
+.product-section-highlight {
+  position: relative;
+  background-color: #FAF7F2;
+  background-image: radial-gradient(#E5DAC2 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-top: 1px solid #E6DBC6;
+  border-bottom: 1px solid #E6DBC6;
+}
+
+/* Enhanced Food Card with Distinct Depth & Elevation */
+.food-card {
+  position: relative;
+  background: #FFFFFF !important;
+  border: 1.5px solid #E6DDCF !important;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(28, 29, 31, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.food-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #D9232D 0%, #C5A059 50%, #D9232D 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  border-color: #D9232D !important;
+  box-shadow: 0 18px 40px -6px rgba(217, 35, 45, 0.16), 0 6px 16px -2px rgba(0, 0, 0, 0.06);
+}
+
+.food-card:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced Dish Image Pedestal */
+.dish-image-pedestal {
+  position: relative;
+  background: radial-gradient(circle, #FFF9F0 0%, #F5EEDB 100%);
+  border: 2px solid #EADFC9;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.12);
+  transition: all 0.35s ease;
+}
+
+.food-card:hover .dish-image-pedestal {
+  border-color: rgba(217, 35, 45, 0.4);
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 8px 22px rgba(217, 35, 45, 0.18);
+}
+
+
+
+/* ==========================================================================
+   Responsive Navigation Fallback Utilities (Ensures robust desktop & mobile nav)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .hidden.md\:flex,
+  nav.md\:flex,
+  header nav {
+    display: flex !important;
+  }
+  .md\:hidden,
+  #mobileMenuBtn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  nav.md\:flex,
+  .hidden.md\:flex {
+    display: none !important;
+  }
+  .md\:hidden,
+  #mobileMenuBtn {
+    display: flex !important;
+  }
+}
+
+/* ==========================================================================
+   Menu Location & Fulfillment Bar Styling
+   ========================================================================== */
+.fulfillment-bar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(228, 228, 231, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.fulfillment-toggle-pill {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fulfillment-toggle-pill.active {
+  background-color: #D9232D !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(217, 35, 45, 0.4);
+}
+
+.fulfillment-toggle-pill.active span,
+.fulfillment-toggle-pill.active i,
+.fulfillment-toggle-pill.active svg {
+  color: #ffffff !important;
+}
+
+.fulfillment-toggle-pill.active #deliveryEtaBadge,
+.fulfillment-toggle-pill.active #takeawayEtaBadge {
+  background-color: rgba(0, 0, 0, 0.28) !important;
+  color: #ffffff !important;
+}
+
+.fulfillment-toggle-pill.inactive {
+  background-color: transparent !important;
+  color: #27272a !important;
+}
+
+.fulfillment-toggle-pill.inactive span {
+  color: #27272a !important;
+}
+
+.fulfillment-toggle-pill.inactive i,
+.fulfillment-toggle-pill.inactive svg {
+  color: #52525b !important;
+}
+
+.fulfillment-toggle-pill.inactive #deliveryEtaBadge,
+.fulfillment-toggle-pill.inactive #takeawayEtaBadge {
+  background-color: #e4e4e7 !important;
+  color: #3f3f46 !important;
+}
+
+.fulfillment-toggle-pill.inactive:hover {
+  color: #09090b !important;
+  background-color: rgba(228, 228, 231, 0.6) !important;
+}
+
+/* Out of Service Zone Styling */
+.out-of-zone-container {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.5) 0%, #ffffff 50%, rgba(254, 226, 226, 0.4) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 10px 30px -5px rgba(217, 119, 6, 0.08);
+}
+

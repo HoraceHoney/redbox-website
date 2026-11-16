@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Red Box · Admin Console (Localhost)</title>
+  <link rel="icon" type="image/png" href="assets/images/fav-icon.png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#D32F2F',
+              darkred: '#991B1B',
+              gold: '#C5A059',
+              slate: '#0F172A',
+              sidebar: '#1E293B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex h-screen overflow-hidden">
+
+  <!-- ======================================================== -->
+  <!-- SIDEBAR NAVIGATION                                       -->
+  <!-- ======================================================== -->
+  <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 z-30 transition-all duration-300">
+    <!-- Brand / Header -->
+    <div class="h-16 px-4 flex items-center justify-between border-b border-slate-800 bg-slate-950">
+      <a href="admin.html" class="flex items-center gap-3">
+        <img src="assets/images/logo.png" onerror="this.src='../assets/images/logo.png'" alt="RedBox" class="h-8 w-auto">
+        <div>
+          <span class="font-bold text-white tracking-wide text-sm block">RedBox · Admin</span>
+          <span class="text-[10px] text-amber-400 font-medium tracking-wider uppercase">Localhost Console</span>
+        </div>
+      </a>
+      <span class="px-1.5 py-0.5 text-[10px] bg-emerald-500/20 text-emerald-400 font-semibold rounded border border-emerald-500/30">v2.4</span>
+    </div>
+
+    <!-- Navigation Scroll -->
+    <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1 custom-scroll text-sm">
+      
+      <!-- Dashboard -->
+      <button onclick="switchView('dashboard')" id="nav-dashboard" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-white bg-slate-800 font-medium transition-colors">
+        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Dashboard</span>
+      </button>
+
+      <!-- RESTAURANT GROUP -->
+      <div class="pt-3 pb-1">
+        <p class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Restaurant Ops</p>
+      </div>
+
+      <button onclick="switchView('branches')" id="nav-branches" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Outlets & Branches</span>
+        </div>
+        <span id="badge-branches-count" class="px-2 py-0.5 text-xs bg-slate-800 text-slate-300 rounded-full font-semibold">53</span>
+      </button>
+
+      <button onclick="switchView('menu')" id="nav-menu" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span>Menu Catalog</span>
+        </div>
+        <span id="badge-menu-count" class="px-2 py-0.5 text-xs bg-slate-800 text-slate-300 rounded-full font-semibold">271</span>
+      </button>
+
+      <!-- BOOKINGS & CRM -->
+      <div class="pt-3 pb-1">
+        <p class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Bookings & CRM</p>
+      </div>
+
+      <button onclick="switchView('reservations')" id="nav-reservations" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Table Bookings</span>
+        </div>
+        <span class="px-2 py-0.5 text-xs bg-red-900/40 text-red-300 rounded-full font-semibold">13</span>
+      </button>
+
+      <button onclick="switchView('enquiries')" id="nav-enquiries" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Contact Enquiries</span>
+        </div>
+        <span class="px-2 py-0.5 text-xs bg-amber-900/40 text-amber-300 rounded-full font-semibold">10</span>
+      </button>
+
+      <button onclick="switchView('franchises')" id="nav-franchises" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <span>Franchise Leads</span>
+        </div>
+      </button>
+
+      <button onclick="switchView('catering')" id="nav-catering" class="nav-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18z"/></svg>
+          <span>Catering Requests</span>
+        </div>
+      </button>
+
+      <!-- CONTENT & HR -->
+      <div class="pt-3 pb-1">
+        <p class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Content & People</p>
+      </div>
+
+      <button onclick="switchView('careers')" id="nav-careers" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Careers & Jobs</span>
+      </button>
+
+      <!-- SYSTEM & SETTINGS -->
+      <div class="pt-3 pb-1">
+        <p class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500">System & Config</p>
+      </div>
+
+      <button onclick="switchView('settings')" id="nav-settings" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span>Website Settings</span>
+      </button>
+
+      <button onclick="switchView('audit')" id="nav-audit" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Audit Logs</span>
+      </button>
+
+      <!-- Return to Public Site -->
+      <div class="pt-4 border-t border-slate-800">
+        <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-amber-400 hover:text-amber-300 hover:bg-slate-800/80 transition-colors font-medium text-xs">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <span>View Public Website ↗</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Admin User Footer -->
+    <div class="p-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-white text-xs">AU</div>
+        <div class="truncate">
+          <p class="text-xs font-semibold text-white truncate">Admin User</p>
+          <p class="text-[10px] text-slate-400 truncate">admin@theredbox.com</p>
+        </div>
+      </div>
+      <button onclick="handleLogout()" title="Logout" class="text-slate-400 hover:text-red-400 p-1.5 rounded transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ======================================================== -->
+  <!-- MAIN WORKSPACE CONTENT                                   -->
+  <!-- ======================================================== -->
+  <main class="flex-1 flex flex-col min-w-0 bg-slate-100 overflow-hidden">
+    
+    <!-- Top Bar -->
+    <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between flex-shrink-0 z-20">
+      <div class="flex items-center gap-4">
+        <h1 id="page-title" class="text-lg font-bold text-slate-900 tracking-tight">Dashboard Overview</h1>
+        <span id="backend-status-pill" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          Localhost Data Active
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Live Remote Backend Sync Button -->
+        <button onclick="syncWithRenderBackend()" id="btn-sync" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-300 flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span>Sync Remote API</span>
+        </button>
+
+        <!-- View Website Link -->
+        <a href="index.html" target="_blank" class="px-3 py-1.5 text-xs font-semibold bg-red-600 hover:bg-red-700 text-white rounded-lg transition flex items-center gap-1.5 shadow-sm">
+          <span>Website Live Preview</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable View Container -->
+    <div id="view-content" class="flex-1 overflow-y-auto p-6 custom-scroll">
+      
+      <!-- ======================================================== -->
+      <!-- VIEW: DASHBOARD                                          -->
+      <!-- ======================================================== -->
+      <section id="view-dashboard" class="space-y-6">
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Total Branches</p>
+              <h3 id="stat-branches" class="text-2xl font-black text-slate-900 mt-1">53</h3>
+              <p class="text-[11px] text-emerald-600 font-medium mt-1">Across 17 South Indian Hubs</p>
+            </div>
+            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Menu Catalog</p>
+              <h3 id="stat-menu" class="text-2xl font-black text-slate-900 mt-1">271</h3>
+              <p class="text-[11px] text-slate-500 font-medium mt-1">28 Food Categories</p>
+            </div>
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Table Reservations</p>
+              <h3 class="text-2xl font-black text-slate-900 mt-1">13</h3>
+              <p class="text-[11px] text-red-600 font-medium mt-1">2 Pending Confirmation</p>
+            </div>
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Customer Leads</p>
+              <h3 class="text-2xl font-black text-slate-900 mt-1">10</h3>
+              <p class="text-[11px] text-emerald-600 font-medium mt-1">Catering & Franchise</p>
+            </div>
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Action Banner -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 p-6 rounded-2xl text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">Fast Control</span>
+            <h2 class="text-xl font-bold mt-2">Manage The Red Box Outlets & Menu</h2>
+            <p class="text-slate-300 text-sm mt-1">Directly edit branch addresses, coordinates, menu items, or review live customer catering leads.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="openBranchModal()" class="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-xl shadow transition">
+              + Add New Branch
+            </button>
+            <button onclick="openMenuModal()" class="px-4 py-2.5 bg-white hover:bg-slate-100 text-slate-900 font-semibold text-xs rounded-xl shadow transition">
+              + Add Menu Item
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent Activity & System Health -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Recent Leads -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center justify-between">
+              <span>Recent Customer Inquiries</span>
+              <button onclick="switchView('enquiries')" class="text-red-600 hover:text-red-700 text-xs font-semibold">View All →</button>
+            </h4>
+            <div class="space-y-3" id="dash-recent-leads">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- System Details -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm mb-4">Platform Architecture & Status</h4>
+            <ul class="space-y-2.5 text-xs">
+              <li class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span class="text-slate-500">Backend API</span>
+                <span class="font-mono text-slate-700">redbox-admin-backend.onrender.com/api</span>
+              </li>
+              <li class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span class="text-slate-500">Localhost Mode</span>
+                <span class="font-semibold text-emerald-600">Active (Instant Response)</span>
+              </li>
+              <li class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span class="text-slate-500">Delivery Integrations</span>
+                <span class="font-semibold text-slate-800">Swiggy Brand #1636 / Zomato / WhatsApp</span>
+              </li>
+              <li class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                <span class="text-slate-500">Heat Retention Tech</span>
+                <span class="font-semibold text-slate-800">45-Minute Fold Eco-Board</span>
+              </li>
+              <li class="flex items-center justify-between py-1.5">
+                <span class="text-slate-500">Active Outlets</span>
+                <span class="font-semibold text-slate-800">53 Physical & Cloud Hubs</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: BRANCHES                                           -->
+      <!-- ======================================================== -->
+      <section id="view-branches" class="hidden space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200">
+          <div class="flex items-center gap-3">
+            <input type="text" id="branch-search" oninput="filterBranchesTable()" placeholder="Search branch name, address, or city..." class="px-3 py-2 border border-slate-300 rounded-lg text-xs w-64 focus:outline-none focus:ring-2 focus:ring-red-500">
+            <select id="branch-city-filter" onchange="filterBranchesTable()" class="px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-red-500">
+              <option value="">All Cities</option>
+            </select>
+          </div>
+          <button onclick="openBranchModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-lg transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span>Add Outlet</span>
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-600">
+              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="px-4 py-3">Outlet Name</th>
+                  <th class="px-4 py-3">City / Hub</th>
+                  <th class="px-4 py-3">Address</th>
+                  <th class="px-4 py-3">Phone Line</th>
+                  <th class="px-4 py-3">Coordinates</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="branches-tbody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: MENU ITEMS                                         -->
+      <!-- ======================================================== -->
+      <section id="view-menu" class="hidden space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200">
+          <div class="flex items-center gap-3">
+            <input type="text" id="menu-search" oninput="filterMenuTable()" placeholder="Search dish title or description..." class="px-3 py-2 border border-slate-300 rounded-lg text-xs w-64 focus:outline-none focus:ring-2 focus:ring-red-500">
+            <select id="menu-cat-filter" onchange="filterMenuTable()" class="px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-red-500">
+              <option value="">All Categories (28)</option>
+            </select>
+            <select id="menu-diet-filter" onchange="filterMenuTable()" class="px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-red-500">
+              <option value="">All Dietary</option>
+              <option value="Veg">Vegetarian</option>
+              <option value="Non-Veg">Non-Vegetarian</option>
+            </select>
+          </div>
+          <button onclick="openMenuModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-lg transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span>Add Menu Dish</span>
+          </button>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-600">
+              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="px-4 py-3">Dish Title</th>
+                  <th class="px-4 py-3">Category</th>
+                  <th class="px-4 py-3">Diet</th>
+                  <th class="px-4 py-3">Price</th>
+                  <th class="px-4 py-3">Description</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="menu-tbody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: RESERVATIONS                                       -->
+      <!-- ======================================================== -->
+      <section id="view-reservations" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">Table Bookings & Diners (13 Records)</h3>
+          <span class="text-xs text-slate-500">Live Dine-In Slot Manager</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Guest Name</th>
+                <th class="px-4 py-3">Contact</th>
+                <th class="px-4 py-3">Branch Location</th>
+                <th class="px-4 py-3">Date & Time</th>
+                <th class="px-4 py-3">Guests</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="reservations-tbody" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: ENQUIRIES                                          -->
+      <!-- ======================================================== -->
+      <section id="view-enquiries" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">Customer Contact Enquiries (10 Leads)</h3>
+          <span class="text-xs text-slate-500">CRM Inbound Pipeline</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Customer Name</th>
+                <th class="px-4 py-3">Email & Phone</th>
+                <th class="px-4 py-3">Subject</th>
+                <th class="px-4 py-3">Message Summary</th>
+                <th class="px-4 py-3">Timestamp</th>
+                <th class="px-4 py-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="enquiries-tbody" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: FRANCHISE LEADS                                    -->
+      <!-- ======================================================== -->
+      <section id="view-franchises" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">Franchise Partnership Applications</h3>
+          <span class="text-xs text-slate-500">Expansion Pipeline</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Applicant Name</th>
+                <th class="px-4 py-3">Contact</th>
+                <th class="px-4 py-3">Target City</th>
+                <th class="px-4 py-3">Investment Range</th>
+                <th class="px-4 py-3">Experience</th>
+                <th class="px-4 py-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="franchises-tbody" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: CATERING REQUESTS                                  -->
+      <!-- ======================================================== -->
+      <section id="view-catering" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">Corporate & Party Catering Requests</h3>
+          <span class="text-xs text-slate-500">Live Wok & Box Inquiries</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Client Name</th>
+                <th class="px-4 py-3">Contact</th>
+                <th class="px-4 py-3">Event Date</th>
+                <th class="px-4 py-3">Headcount</th>
+                <th class="px-4 py-3">Budget</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="catering-tbody" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: CAREERS                                            -->
+      <!-- ======================================================== -->
+      <section id="view-careers" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">Open Job Roles & Talent Applications</h3>
+          <button onclick="alert('Feature to post new opening is available.')" class="px-3 py-1.5 bg-red-600 text-white rounded-lg text-xs font-semibold">+ Add Role</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="careers-container">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: WEBSITE SETTINGS                                   -->
+      <!-- ======================================================== -->
+      <section id="view-settings" class="hidden space-y-5 max-w-4xl">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Website & Brand Configuration</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Control company identity, contact numbers, and maintenance flags.</p>
+          </div>
+
+          <form id="settings-form" onsubmit="saveSettings(event)" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Brand Name *</label>
+                <input type="text" id="set-name" value="The Red Box" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Hotline Phone Number *</label>
+                <input type="text" id="set-phone" value="+91 89394 44411" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Primary Contact Email *</label>
+                <input type="email" id="set-email" value="contact@theredbox.in" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp Hotline</label>
+                <input type="text" id="set-whatsapp" value="+91 89394 44411" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Headquarters Full Address</label>
+              <input type="text" id="set-address" value="27, Sait Colony 1st St, opp. to trans steel, Egmore, Chennai, Tamil Nadu 600008" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Operating Hours</label>
+                <input type="text" id="set-hours" value="Daily: 11:00 AM - 11:30 PM" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Swiggy Brand URL</label>
+                <input type="text" id="set-swiggy" value="https://www.swiggy.com/direct/brand/1636" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between border-t border-slate-100">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="set-maintenance" class="w-4 h-4 text-red-600 rounded">
+                <span class="text-xs text-slate-700 font-medium">Enable Maintenance Mode</span>
+              </label>
+              <button type="submit" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold shadow transition">Save Settings</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: AUDIT LOGS                                         -->
+      <!-- ======================================================== -->
+      <section id="view-audit" class="hidden space-y-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm">System Audit Trail</h3>
+          <span class="text-xs text-slate-500">Administrative Logs</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-left text-xs text-slate-600">
+            <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Actor / Admin</th>
+                <th class="px-4 py-3">Action Type</th>
+                <th class="px-4 py-3">Module Affected</th>
+                <th class="px-4 py-3">Description</th>
+                <th class="px-4 py-3">Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="audit-tbody" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ADD / EDIT BRANCH                                 -->
+  <!-- ======================================================== -->
+  <div id="modal-branch" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 id="modal-branch-title" class="font-bold text-slate-900 text-sm">Add New Outlet</h3>
+        <button onclick="closeBranchModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+      </div>
+      <form id="form-branch" onsubmit="saveBranch(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="branch-id">
+        <div>
+          <label class="block font-semibold mb-1 text-slate-700">Outlet Name *</label>
+          <input type="text" id="branch-name" required placeholder="e.g. RedBox T Nagar" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">City *</label>
+            <input type="text" id="branch-city" required placeholder="e.g. Chennai" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">Phone Line *</label>
+            <input type="text" id="branch-phone" required placeholder="e.g. 8939444411" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-slate-700">Full Address *</label>
+          <textarea id="branch-address" required rows="2" placeholder="Street, landmark, pincode..." class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">Latitude</label>
+            <input type="number" step="any" id="branch-lat" placeholder="13.0827" class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">Longitude</label>
+            <input type="number" step="any" id="branch-lng" placeholder="80.2707" class="w-full px-3 py-2 border rounded-lg">
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-2 border-t">
+          <button type="button" onclick="closeBranchModal()" class="px-4 py-2 border rounded-lg text-slate-600 font-semibold hover:bg-slate-50">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow">Save Branch</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ADD / EDIT MENU ITEM                              -->
+  <!-- ======================================================== -->
+  <div id="modal-menu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 id="modal-menu-title" class="font-bold text-slate-900 text-sm">Add Menu Dish</h3>
+        <button onclick="closeMenuModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+      </div>
+      <form id="form-menu" onsubmit="saveMenuItem(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="menu-item-id">
+        <div>
+          <label class="block font-semibold mb-1 text-slate-700">Dish Title *</label>
+          <input type="text" id="menu-name" required placeholder="e.g. Schezwan Chicken Noodles" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">Category *</label>
+            <input type="text" id="menu-cat" required placeholder="e.g. Noodles, Fried Rice..." class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-slate-700">Dietary *</label>
+            <select id="menu-diet" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option value="Non-Veg">Non-Veg</option>
+              <option value="Veg">Veg</option>
+              <option value="Egg">Egg</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-slate-700">Price (INR ₹) *</label>
+          <input type="number" id="menu-price" required placeholder="250" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-slate-700">Description</label>
+          <textarea id="menu-desc" rows="2" placeholder="Wok-tossed noodles with tender meat and savory gravy..." class="w-full px-3 py-2 border rounded-lg"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2 border-t">
+          <button type="button" onclick="closeMenuModal()" class="px-4 py-2 border rounded-lg text-slate-600 font-semibold hover:bg-slate-50">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow">Save Dish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST -->
+  <div id="admin-toast" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-2 transition-all duration-300">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toast-text">Action completed successfully</span>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- APPLICATION SCRIPT & CONTROLLER                          -->
+  <!-- ======================================================== -->
+  <script>
+    let appState = {
+      branches: [],
+      menu: [],
+      reservations: [
+        { id: 1, name: "Sathish Kumar", phone: "9840256337", email: "satheesh@thechinesestory.com", branch: "RedBox Egmore", date: "2026-11-15 19:30", guests: 4, status: "Confirmed" },
+        { id: 2, name: "Pranab T", phone: "5558759414", email: "pran.abhueco@gmail.com", branch: "RedBox BTM Layout", date: "2026-11-16 20:00", guests: 2, status: "New" },
+        { id: 3, name: "Gdhoy Pagrk", phone: "9808384988", email: "a.wo.horav@gmail.com", branch: "RedBox Hitech City", date: "2026-11-16 13:00", guests: 6, status: "New" },
+        { id: 4, name: "Kiran R", phone: "9764306065", email: "kiran.r@gmail.com", branch: "RedBox Indira Nagar", date: "2026-11-18 20:30", guests: 3, status: "Confirmed" }
+      ],
+      enquiries: [
+        { id: 1, name: "Rajesh Sharma", contact: "9840112233 · rajesh@gmail.com", subject: "Catering Inquiry", message: "Need wok boxes for 60 employees at DLF Cybercity.", date: "Today, 10:15 AM", status: "New" },
+        { id: 2, name: "Pooja V", contact: "9940223344 · pooja@outlook.com", subject: "Special Event", message: "Birthday party live cooking counter inquiry.", date: "Yesterday, 4:20 PM", status: "In Progress" },
+        { id: 3, name: "Muthu Nathan", contact: "9884334455 · muthu@gmail.com", subject: "Feedback", message: "Loved the Chicken Chilli Garlic Noodles fold box!", date: "Nov 10, 2:10 PM", status: "Resolved" }
+      ],
+      franchises: [
+        { id: 1, name: "Arunachalam V", contact: "9841001122", city: "Coimbatore", investment: "₹25 Lakhs - ₹35 Lakhs", exp: "5 years F&B Franchise Owner", status: "Under Review" },
+        { id: 2, name: "Deepak Reddy", contact: "9700112233", city: "Hyderabad (Kondapur)", investment: "₹35 Lakhs - ₹50 Lakhs", exp: "Cloud Kitchen Operator", status: "Interview Scheduled" }
+      ],
+      catering: [
+        { id: 1, client: "Cognizant Tech Party", contact: "9840998877", date: "2026-12-05", guests: 80, budget: "₹52,000", status: "Approved" },
+        { id: 2, client: "Dr. Arvind Wedding Reception", contact: "9940887766", date: "2026-12-18", guests: 150, budget: "₹97,500", status: "Pending" }
+      ],
+      careers: [
+        { title: "Senior Wok Master Chef", dept: "Kitchen Operations", location: "Chennai Central Kitchen", applicants: 8 },
+        { title: "Restaurant Outlet Manager", dept: "Store Operations", location: "Bengaluru (Indira Nagar)", applicants: 12 },
+        { title: "Delivery Fleet Captain", dept: "Logistics", location: "Hyderabad Hub", applicants: 15 }
+      ],
+      auditLogs: [
+        { actor: "admin@theredbox.com", action: "UPDATE", module: "Website Settings", desc: "Updated hotline hours and phone line", time: "10/28/2026, 3:23 PM" },
+        { actor: "admin@theredbox.com", action: "CREATE", module: "Outlets", desc: "Added new outlet: RedBox Thiruvananthapuram", time: "10/27/2026, 4:17 PM" },
+        { actor: "admin@theredbox.com", action: "UPDATE", module: "Menu Items", desc: "Updated price for Chilli Beef Gravy", time: "10/26/2026, 1:35 PM" }
+      ]
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('admin-toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3500);
+    }
+
+    // View Switcher
+    function switchView(viewName) {
+      const views = ['dashboard', 'branches', 'menu', 'reservations', 'enquiries', 'franchises', 'catering', 'careers', 'settings', 'audit'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        const nav = document.getElementById(`nav-${v}`);
+        if (el) el.classList.add('hidden');
+        if (nav) {
+          nav.classList.remove('bg-slate-800', 'text-white');
+          nav.classList.add('text-slate-300');
+        }
+      });
+
+      const targetView = document.getElementById(`view-${viewName}`);
+      const targetNav = document.getElementById(`nav-${viewName}`);
+      if (targetView) targetView.classList.remove('hidden');
+      if (targetNav) {
+        targetNav.classList.add('bg-slate-800', 'text-white');
+        targetNav.classList.remove('text-slate-300');
+      }
+
+      const titles = {
+        dashboard: "Dashboard Overview",
+        branches: "Outlets & Branches Management",
+        menu: "Food Menu & Pricing Catalog",
+        reservations: "Table Bookings & Diners",
+        enquiries: "Customer Contact Enquiries",
+        franchises: "Franchise Applications Pipeline",
+        catering: "Corporate & Event Catering",
+        careers: "Job Openings & Resumes",
+        settings: "Global Website Configuration",
+        audit: "Administrative Audit Trail"
+      };
+      document.getElementById('page-title').innerText = titles[viewName] || "Admin Console";
+    }
+
+    // Initial Data Loader
+    async function initAdmin() {
+      // 1. Load branches
+      try {
+        const localBranches = localStorage.getItem('redbox_admin_branches');
+        if (localBranches) {
+          appState.branches = JSON.parse(localBranches);
+        } else {
+          let res = await fetch('data/branches.json').catch(() => null);
+          if (!res || !res.ok) res = await fetch('../data/branches.json').catch(() => null);
+          if (!res || !res.ok) res = await fetch('/data/branches.json').catch(() => null);
+          if (res && res.ok) {
+            const data = await res.json();
+            appState.branches = Array.isArray(data) ? data : (data.results || data.data || []);
+            localStorage.setItem('redbox_admin_branches', JSON.stringify(appState.branches));
+          }
+        }
+      } catch(e) {
+        console.warn("Could not load local branches, using fallback.", e);
+      }
+
+      // 2. Load menu
+      try {
+        const localMenu = localStorage.getItem('redbox_admin_menu');
+        if (localMenu) {
+          appState.menu = JSON.parse(localMenu);
+        } else {
+          let res = await fetch('data/menu.json').catch(() => null);
+          if (!res || !res.ok) res = await fetch('../data/menu.json').catch(() => null);
+          if (!res || !res.ok) res = await fetch('/data/menu.json').catch(() => null);
+          if (res && res.ok) {
+            const data = await res.json();
+            appState.menu = Array.isArray(data) ? data : (data.results || data.data || []);
+            localStorage.setItem('redbox_admin_menu', JSON.stringify(appState.menu));
+          }
+        }
+      } catch(e) {
+        console.warn("Could not load local menu, using fallback.", e);
+      }
+
+      renderAll();
+    }
+
+    function renderAll() {
+      // Counters
+      document.getElementById('stat-branches').innerText = appState.branches.length;
+      document.getElementById('stat-menu').innerText = appState.menu.length;
+      document.getElementById('badge-branches-count').innerText = appState.branches.length;
+      document.getElementById('badge-menu-count').innerText = appState.menu.length;
+
+      renderBranchesTable();
+      renderMenuTable();
+      renderReservationsTable();
+      renderEnquiriesTable();
+      renderFranchisesTable();
+      renderCateringTable();
+      renderCareersCards();
+      renderAuditTable();
+      renderDashboardLeads();
+    }
+
+    // Render Branches
+    function renderBranchesTable(list = null) {
+      const branches = list || appState.branches;
+      const tbody = document.getElementById('branches-tbody');
+      tbody.innerHTML = '';
+
+      const citySelect = document.getElementById('branch-city-filter');
+      const cities = [...new Set(appState.branches.map(b => b.city || b.area || 'Other'))].sort();
+      citySelect.innerHTML = '<option value="">All Cities</option>' + cities.map(c => `<option value="${c}">${c}</option>`).join('');
+
+      branches.forEach((b, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition";
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-semibold text-slate-900">${b.name || b.branch_name || 'RedBox Outlet'}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${b.city || 'Chennai'}</span></td>
+          <td class="px-4 py-3 max-w-xs truncate" title="${b.address || ''}">${b.address || 'Address pending'}</td>
+          <td class="px-4 py-3 font-mono">${b.phone || b.contact_number || '8939444411'}</td>
+          <td class="px-4 py-3 font-mono text-[11px] text-slate-500">${b.latitude || '13.08'}, ${b.longitude || '80.27'}</td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <button onclick="editBranch(${idx})" class="text-blue-600 hover:text-blue-800 font-medium">Edit</button>
+              <button onclick="deleteBranch(${idx})" class="text-red-600 hover:text-red-800 font-medium">Delete</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterBranchesTable() {
+      const q = document.getElementById('branch-search').value.toLowerCase();
+      const city = document.getElementById('branch-city-filter').value;
+      const filtered = appState.branches.filter(b => {
+        const text = `${b.name || ''} ${b.address || ''} ${b.city || ''}`.toLowerCase();
+        const matchesQuery = text.includes(q);
+        const matchesCity = !city || (b.city === city);
+        return matchesQuery && matchesCity;
+      });
+      renderBranchesTable(filtered);
+    }
+
+    // Render Menu
+    function renderMenuTable(list = null) {
+      const menu = list || appState.menu;
+      const tbody = document.getElementById('menu-tbody');
+      tbody.innerHTML = '';
+
+      const catSelect = document.getElementById('menu-cat-filter');
+      const cats = [...new Set(appState.menu.map(m => m.category || m.category_name || 'General'))].sort();
+      catSelect.innerHTML = '<option value="">All Categories (28)</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
+
+      menu.slice(0, 100).forEach((m, idx) => {
+        const isVeg = (m.dietary_type || m.is_veg ? 'Veg' : 'Non-Veg') === 'Veg';
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition";
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-semibold text-slate-900">${m.name || m.dish_name || 'RedBox Special'}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${m.category || m.category_name || 'Main Course'}</span></td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isVeg ? 'bg-emerald-100 text-emerald-700 border border-emerald-300' : 'bg-red-100 text-red-700 border border-red-300'}">
+              ${isVeg ? 'VEG' : 'NON-VEG'}
+            </span>
+          </td>
+          <td class="px-4 py-3 font-bold text-slate-900">₹${m.price || 249}</td>
+          <td class="px-4 py-3 max-w-xs truncate text-slate-500" title="${m.description || ''}">${m.description || 'Authentic high-heat wok craft.'}</td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <button onclick="editMenuItem(${idx})" class="text-blue-600 hover:text-blue-800 font-medium">Edit</button>
+              <button onclick="deleteMenuItem(${idx})" class="text-red-600 hover:text-red-800 font-medium">Delete</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterMenuTable() {
+      const q = document.getElementById('menu-search').value.toLowerCase();
+      const cat = document.getElementById('menu-cat-filter').value;
+      const diet = document.getElementById('menu-diet-filter').value;
+      const filtered = appState.menu.filter(m => {
+        const text = `${m.name || ''} ${m.description || ''}`.toLowerCase();
+        const matchesQuery = text.includes(q);
+        const matchesCat = !cat || ((m.category || m.category_name) === cat);
+        const itemDiet = (m.dietary_type || (m.is_veg ? 'Veg' : 'Non-Veg'));
+        const matchesDiet = !diet || (itemDiet === diet);
+        return matchesQuery && matchesCat && matchesDiet;
+      });
+      renderMenuTable(filtered);
+    }
+
+    // Render Tables (Reservations, Enquiries, etc.)
+    function renderReservationsTable() {
+      const tbody = document.getElementById('reservations-tbody');
+      tbody.innerHTML = appState.reservations.map((r, i) => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-4 py-3 font-semibold text-slate-900">${r.name}</td>
+          <td class="px-4 py-3">${r.phone}<br><span class="text-slate-400 text-[10px]">${r.email}</span></td>
+          <td class="px-4 py-3">${r.branch}</td>
+          <td class="px-4 py-3 font-mono">${r.date}</td>
+          <td class="px-4 py-3 font-bold">${r.guests} Pax</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.status === 'Confirmed' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${r.status}</span></td>
+          <td class="px-4 py-3">
+            <button onclick="toggleResStatus(${i})" class="text-xs text-blue-600 hover:underline">Toggle Status</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleResStatus(i) {
+      appState.reservations[i].status = appState.reservations[i].status === 'Confirmed' ? 'New' : 'Confirmed';
+      renderReservationsTable();
+      showToast("Reservation status updated.");
+    }
+
+    function renderEnquiriesTable() {
+      const tbody = document.getElementById('enquiries-tbody');
+      tbody.innerHTML = appState.enquiries.map(e => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-4 py-3 font-semibold text-slate-900">${e.name}</td>
+          <td class="px-4 py-3">${e.contact}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded bg-slate-100 text-slate-800 font-medium">${e.subject}</span></td>
+          <td class="px-4 py-3 max-w-xs truncate">${e.message}</td>
+          <td class="px-4 py-3 text-slate-400">${e.date}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">${e.status}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderFranchisesTable() {
+      const tbody = document.getElementById('franchises-tbody');
+      tbody.innerHTML = appState.franchises.map(f => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-4 py-3 font-semibold text-slate-900">${f.name}</td>
+          <td class="px-4 py-3 font-mono">${f.contact}</td>
+          <td class="px-4 py-3 font-bold text-slate-800">${f.city}</td>
+          <td class="px-4 py-3 text-emerald-700 font-semibold">${f.investment}</td>
+          <td class="px-4 py-3">${f.exp}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">${f.status}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderCateringTable() {
+      const tbody = document.getElementById('catering-tbody');
+      tbody.innerHTML = appState.catering.map((c, i) => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-4 py-3 font-semibold text-slate-900">${c.client}</td>
+          <td class="px-4 py-3 font-mono">${c.contact}</td>
+          <td class="px-4 py-3 font-mono">${c.date}</td>
+          <td class="px-4 py-3 font-bold">${c.guests} Guests</td>
+          <td class="px-4 py-3 font-bold text-emerald-700">${c.budget}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${c.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${c.status}</span></td>
+          <td class="px-4 py-3">
+            <button onclick="toggleCatering(${i})" class="text-xs text-blue-600 hover:underline">Toggle Approval</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleCatering(i) {
+      appState.catering[i].status = appState.catering[i].status === 'Approved' ? 'Pending' : 'Approved';
+      renderCateringTable();
+      showToast("Catering status updated.");
+    }
+
+    function renderCareersCards() {
+      const container = document.getElementById('careers-container');
+      container.innerHTML = appState.careers.map(c => `
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+          <div>
+            <span class="px-2 py-0.5 text-[10px] font-bold bg-slate-100 text-slate-600 rounded">${c.dept}</span>
+            <h4 class="font-bold text-slate-900 mt-1 text-sm">${c.title}</h4>
+            <p class="text-slate-500 text-xs mt-0.5">${c.location}</p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs font-bold text-red-600 block">${c.applicants} Applicants</span>
+            <button onclick="alert('Viewing applications for ${c.title}')" class="mt-1 text-[11px] text-slate-700 hover:underline">Review Resumes</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderAuditTable() {
+      const tbody = document.getElementById('audit-tbody');
+      tbody.innerHTML = appState.auditLogs.map(a => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-4 py-3 font-mono text-slate-700 font-medium">${a.actor}</td>
+          <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${a.action === 'CREATE' ? 'bg-emerald-100 text-emerald-800' : a.action === 'UPDATE' ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'}">${a.action}</span></td>
+          <td class="px-4 py-3 font-semibold text-slate-800">${a.module}</td>
+          <td class="px-4 py-3 text-slate-600">${a.desc}</td>
+          <td class="px-4 py-3 font-mono text-slate-400 text-[11px]">${a.time}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderDashboardLeads() {
+      const container = document.getElementById('dash-recent-leads');
+      container.innerHTML = appState.enquiries.slice(0, 3).map(e => `
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+          <div>
+            <p class="font-bold text-slate-900 text-xs">${e.name}</p>
+            <p class="text-slate-500 text-[11px]">${e.subject} · ${e.date}</p>
+          </div>
+          <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-blue-100 text-blue-800">${e.status}</span>
+        </div>
+      `).join('');
+    }
+
+    // Branch Modal Handlers
+    function openBranchModal(editIdx = null) {
+      document.getElementById('modal-branch').classList.remove('hidden');
+      if (editIdx !== null) {
+        const b = appState.branches[editIdx];
+        document.getElementById('modal-branch-title').innerText = "Edit Branch Outlet";
+        document.getElementById('branch-id').value = editIdx;
+        document.getElementById('branch-name').value = b.name || b.branch_name || '';
+        document.getElementById('branch-city').value = b.city || '';
+        document.getElementById('branch-phone').value = b.phone || b.contact_number || '';
+        document.getElementById('branch-address').value = b.address || '';
+        document.getElementById('branch-lat').value = b.latitude || '';
+        document.getElementById('branch-lng').value = b.longitude || '';
+      } else {
+        document.getElementById('modal-branch-title').innerText = "Add New Outlet";
+        document.getElementById('form-branch').reset();
+        document.getElementById('branch-id').value = '';
+      }
+    }
+
+    function closeBranchModal() {
+      document.getElementById('modal-branch').classList.add('hidden');
+    }
+
+    function saveBranch(e) {
+      e.preventDefault();
+      const id = document.getElementById('branch-id').value;
+      const bData = {
+        name: document.getElementById('branch-name').value,
+        city: document.getElementById('branch-city').value,
+        phone: document.getElementById('branch-phone').value,
+        address: document.getElementById('branch-address').value,
+        latitude: parseFloat(document.getElementById('branch-lat').value) || 13.0827,
+        longitude: parseFloat(document.getElementById('branch-lng').value) || 80.2707,
+      };
+
+      if (id !== '') {
+        appState.branches[parseInt(id)] = { ...appState.branches[parseInt(id)], ...bData };
+        showToast("Outlet updated successfully.");
+      } else {
+        appState.branches.unshift(bData);
+        showToast("New outlet added successfully.");
+      }
+
+      localStorage.setItem('redbox_admin_branches', JSON.stringify(appState.branches));
+      closeBranchModal();
+      renderAll();
+    }
+
+    function editBranch(idx) {
+      openBranchModal(idx);
+    }
+
+    function deleteBranch(idx) {
+      if (confirm(`Are you sure you want to delete ${appState.branches[idx].name || 'this branch'}?`)) {
+        appState.branches.splice(idx, 1);
+        localStorage.setItem('redbox_admin_branches', JSON.stringify(appState.branches));
+        renderAll();
+        showToast("Outlet deleted.");
+      }
+    }
+
+    // Menu Modal Handlers
+    function openMenuModal(editIdx = null) {
+      document.getElementById('modal-menu').classList.remove('hidden');
+      if (editIdx !== null) {
+        const m = appState.menu[editIdx];
+        document.getElementById('modal-menu-title').innerText = "Edit Menu Dish";
+        document.getElementById('menu-item-id').value = editIdx;
+        document.getElementById('menu-name').value = m.name || m.dish_name || '';
+        document.getElementById('menu-cat').value = m.category || m.category_name || '';
+        document.getElementById('menu-diet').value = (m.dietary_type || (m.is_veg ? 'Veg' : 'Non-Veg'));
+        document.getElementById('menu-price').value = m.price || 249;
+        document.getElementById('menu-desc').value = m.description || '';
+      } else {
+        document.getElementById('modal-menu-title').innerText = "Add Menu Dish";
+        document.getElementById('form-menu').reset();
+        document.getElementById('menu-item-id').value = '';
+      }
+    }
+
+    function closeMenuModal() {
+      document.getElementById('modal-menu').classList.add('hidden');
+    }
+
+    function saveMenuItem(e) {
+      e.preventDefault();
+      const id = document.getElementById('menu-item-id').value;
+      const mData = {
+        name: document.getElementById('menu-name').value,
+        category: document.getElementById('menu-cat').value,
+        dietary_type: document.getElementById('menu-diet').value,
+        is_veg: document.getElementById('menu-diet').value === 'Veg',
+        price: parseInt(document.getElementById('menu-price').value) || 249,
+        description: document.getElementById('menu-desc').value
+      };
+
+      if (id !== '') {
+        appState.menu[parseInt(id)] = { ...appState.menu[parseInt(id)], ...mData };
+        showToast("Menu item updated.");
+      } else {
+        appState.menu.unshift(mData);
+        showToast("New dish added to menu.");
+      }
+
+      localStorage.setItem('redbox_admin_menu', JSON.stringify(appState.menu));
+      closeMenuModal();
+      renderAll();
+    }
+
+    function editMenuItem(idx) {
+      openMenuModal(idx);
+    }
+
+    function deleteMenuItem(idx) {
+      if (confirm(`Delete ${appState.menu[idx].name || 'this dish'} from menu?`)) {
+        appState.menu.splice(idx, 1);
+        localStorage.setItem('redbox_admin_menu', JSON.stringify(appState.menu));
+        renderAll();
+        showToast("Dish removed from catalog.");
+      }
+    }
+
+    function saveSettings(e) {
+      e.preventDefault();
+      showToast("Website settings saved successfully.");
+      appState.auditLogs.unshift({
+        actor: "admin@theredbox.com",
+        action: "UPDATE",
+        module: "Website Settings",
+        desc: "Saved brand information and contact numbers",
+        time: "Just now"
+      });
+      renderAuditTable();
+    }
+
+    function syncWithRenderBackend() {
+      const btn = document.getElementById('btn-sync');
+      btn.innerHTML = `<span class="animate-spin inline-block mr-1">⟳</span> Connecting to Render...`;
+      
+      fetch('https://redbox-admin-backend.onrender.com/api/branches/list/?page=1&page_size=200')
+        .then(res => res.json())
+        .then(data => {
+          if (data && (data.results || data.data)) {
+            const list = data.results || data.data;
+            appState.branches = list;
+            localStorage.setItem('redbox_admin_branches', JSON.stringify(list));
+            renderAll();
+            showToast(`Synced ${list.length} live branches from Render API!`);
+          } else {
+            showToast("Connected to Render API successfully.");
+          }
+        })
+        .catch(err => {
+          console.warn("Render backend offline or cold starting, keeping local cache.", err);
+          showToast("Remote backend sleeping (cold start). Localhost cache preserved.");
+        })
+        .finally(() => {
+          btn.innerHTML = `<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg><span>Sync Remote API</span>`;
+        });
+    }
+
+    function handleLogout() {
+      if (confirm("Logout from RedBox Admin Console?")) {
+        window.location.href = "index.html";
+      }
+    }
+
+    // Run on startup
+    window.addEventListener('DOMContentLoaded', initAdmin);
+  </script>
+</body>
+</html>

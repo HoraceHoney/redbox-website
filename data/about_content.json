@@ -1,0 +1,234 @@
+{
+  "hero": {
+    "badge": "EST. 2015 · CHENNAI ORIGIN",
+    "chineseTitle": "火候与心 · CRAFT & LEGACY",
+    "titlePrefix": "Born from Fire.",
+    "titleHighlight": "Folded for Comfort.",
+    "titleSuffix": "",
+    "subtitle": "Discover the 11-year obsession behind India’s fastest-growing organized Indo-Chinese quick service restaurant chain — where century-old wok traditions meet patented thermal origami packaging.",
+    "heroImage": "assets/images/hdr-bnr-01.jpg",
+    "stats": [
+      {
+        "val": "57+",
+        "label": "Global Hubs"
+      },
+      {
+        "val": "271",
+        "label": "Wok Recipes"
+      },
+      {
+        "val": "1000°F",
+        "label": "Flame Heat"
+      },
+      {
+        "val": "45 Min",
+        "label": "Heat Lock"
+      }
+    ]
+  },
+  "philosophy": {
+    "badge": "传承百年的风味哲学 · CENTURY-OLD LINEAGE",
+    "title": "The Philosophy of Flavour",
+    "subtitle": "From Kolkata’s Tiretti Bazaar to 57 organized hubs, our mission has never wavered: honor the blistering wok hei, respect the master reductions, and deliver hot comfort without compromise.",
+    "quote": "A hot meal is the oldest gesture of love. We built Red Box to make sure distance never turns it cold.",
+    "quoteAuthor": "Head Chef & Co-Founder",
+    "image": "assets/images/hdr-bnr-03.jpg",
+    "paragraphs": [
+      "In 2015, Indo-Chinese food across India was either confined to expensive banquet restaurants or unorganized street stalls with inconsistent hygiene. The magic of real Hakka wok cooking — the scorching flame, the smoky caramelization, the delicate balance of soy and roasted garlic — was lost during delivery.",
+      "We spent three years testing over 200 paper geometries, moisture vents, and food-grade barriers before engineering the Red Box fold. Today, whether you eat at our takeaway counters or order to your midnight desk, the wok hei you taste was born seconds ago in a 1000°F pan."
+    ]
+  },
+  "fourPillars": {
+    "badge": "四大支柱 · THE GUIDING PRINCIPLES",
+    "title": "The Four Pillars of CULINARY MASTERY",
+    "titleHighlight": "CULINARY MASTERY",
+    "subtitle": "Every dish tossed in our kitchens and every box folded at our counters is guided by four uncompromising commitments to our guests.",
+    "pillars": [
+      {
+        "id": "pillar-1",
+        "num": "01",
+        "seal": "正宗",
+        "title": "Authenticity of Origin",
+        "desc": "Recipes passed down from ancestral Hakka Cantonese settlements in Kolkata. No artificial colors, no MSG additions — just century-old spice alchemy.",
+        "tag": "CENTURY-OLD LINEAGE",
+        "image": "assets/images/hdr-bnr-06.jpg"
+      },
+      {
+        "id": "pillar-2",
+        "num": "02",
+        "seal": "火候",
+        "title": "The Theatre of Wok Hei",
+        "desc": "Heavy cast-iron woks blast over high-pressure jet burners at 1000°F. The rapid 90-second sear locks nutrients, crispness, and smoky wok aroma.",
+        "tag": "1000°F CAST IRON SEAR",
+        "image": "assets/images/hdr-bnr-06.jpg"
+      },
+      {
+        "id": "pillar-3",
+        "num": "03",
+        "seal": "匠心",
+        "title": "The Art of the Fold",
+        "desc": "From delicate translucent dumpling pleats crafted every morning to our patented 45-minute heat-lock box that unfolds into an instant plate.",
+        "tag": "PRECISION ENGINEERING",
+        "image": "assets/images/hdr-bnr-04.jpg"
+      },
+      {
+        "id": "pillar-4",
+        "num": "04",
+        "seal": "礼待",
+        "title": "Gracious Hospitality",
+        "desc": "Whether dining at our sleek takeaway hubs across 57 branches or opening a steaming Red Box at your midnight desk, every guest is treated like royalty.",
+        "tag": "57 BRANCHES · FAMILY WARMTH",
+        "image": "assets/images/hdr-bnr-05.jpg"
+      }
+    ]
+  },
+  "theBox": {
+    "badge": "专利包装 · THE VAULT INNOVATION",
+    "title": "The Anatomy of THE RED BOX",
+    "titleHighlight": "THE RED BOX",
+    "subtitle": "Engineered from virgin food-grade board, our patented folding geometry traps steam while releasing moisture vapor, keeping your meal above 65°C for 45 minutes on the road.",
+    "boxImage": "assets/images/hdr-bnr-04.jpg",
+    "features": [
+      {
+        "title": "45-Minute Thermal Insulation",
+        "desc": "Double-wall corrugated thermal fold maintains piping heat above 65°C for 45 minutes from wok to doorstep."
+      },
+      {
+        "title": "Spill-Proof Origami Locking Fold",
+        "desc": "Interlocking geometric tuck tabs lock tight without messy plastic tapes or leaky staples."
+      },
+      {
+        "title": "100% Food-Grade Virgin Eco-Board",
+        "desc": "Certified PLA aqueous moisture barrier; zero plastic liners and 100% biodegradable in 90 days."
+      },
+      {
+        "title": "Unfolds Into An Instant Dining Plate",
+        "desc": "Release two side tabs to reveal a wide, stable paper plate — dine anywhere without dishwashing."
+      }
+    ],
+    "guarantee": "Our 100% Biodegradable Guarantee: Compostable in 90 days, plastic-free lining, non-toxic vegetable ink."
+  },
+  "branchlineTimeline": {
+    "badge": "十一年历程 · THE 11-YEAR ODYSSEY",
+    "title": "11 Years of Fire, Flavor & Fearless Growth",
+    "titleHighlight": "Flavor & Fearless Growth",
+    "subtitle": "From three fuel station takeaway kiosks to a multinational organized food brand, follow the branchline of our journey.",
+    "milestones": [
+      {
+        "id": "mile-1",
+        "year": "2015",
+        "nodeLabel": "15",
+        "badge": "2015 · THE GENESIS",
+        "title": "Three Kiosks & An Obsession",
+        "desc": "The Red Box launched at three petrol pump takeaway kiosks in Chennai. Armed with seasoned woks, fresh ingredients, and an uncompromising commitment to hygiene, the first boxes were tossed.",
+        "sideNote": "Anna Nagar, Velachery, and OMR fuel kiosk pilots.",
+        "sideLabel": "INITIAL FOOTPRINT",
+        "active": true
+      },
+      {
+        "id": "mile-2",
+        "year": "2018",
+        "nodeLabel": "18",
+        "badge": "2018 · THE PATENT",
+        "title": "The Packaging Revolution",
+        "desc": "Patented the iconic 45-minute heat-lock origami fold box. Delivery complaints dropped to zero as meals arrived piping hot, establishing Red Box as Chennai's most trusted takeaway brand.",
+        "sideNote": "Design patent granted for 45-min thermal retention fold.",
+        "sideLabel": "PATENT GRANTED",
+        "active": true
+      },
+      {
+        "id": "mile-3",
+        "year": "2021",
+        "nodeLabel": "21",
+        "badge": "2021 · REGIONAL SCALE",
+        "title": "South India Expansion",
+        "desc": "Crossed 25 branches across Bengaluru, Hyderabad, and Kochi. Introduced standardized prep lines, digital order management, and central sauce distribution.",
+        "sideNote": "1,000,000+ Wok Boxes sold across 3 southern states.",
+        "sideLabel": "SCALE RECORD",
+        "active": true
+      },
+      {
+        "id": "mile-4",
+        "year": "2024",
+        "nodeLabel": "24",
+        "badge": "2024 · THE MASTER HUB",
+        "title": "Commissary Excellence",
+        "desc": "Commissioned state-of-the-art central production commissary ensuring 100% taste uniformity across all tier-1 and tier-2 hubs, from Coimbatore to Visakhapatnam.",
+        "sideNote": "FSSAI ISO 22000 certified commissary infrastructure.",
+        "sideLabel": "QUALITY STANDARD",
+        "active": true
+      },
+      {
+        "id": "mile-5",
+        "year": "2026",
+        "nodeLabel": "26",
+        "badge": "2026 · TODAY & BEYOND",
+        "title": "57 Branches · One Vision",
+        "desc": "Celebrating 57 thriving branches, 271 authentic dishes, and millions of happy diners. The journey continues with zero compromise on the fire that started it all.",
+        "sideNote": "Over 10,000,000 Wok Boxes served; expanded across 17 regional hubs.",
+        "sideLabel": "CURRENT MILESTONE",
+        "active": true
+      },
+      {
+        "id": "mile-1794652288302",
+        "year": "2027",
+        "nodeLabel": "27",
+        "badge": "2027 · GLOBAL EXPANSION",
+        "title": "London & Dubai Flagships",
+        "desc": "Launched first overseas flagship woks in Central London and Dubai Marina, spreading authentic Indo-Chinese comfort worldwide.",
+        "sideLabel": "GLOBAL FOOTPRINT",
+        "sideNote": "Dual-continent expansion serving 500,000+ meals monthly.",
+        "active": true
+      }
+    ]
+  },
+  "craftGallery": {
+    "badge": "烹饪艺术 · SENSORY EXCELLENCE",
+    "title": "The Craft Behind Every RED BOX",
+    "titleHighlight": "RED BOX",
+    "subtitle": "Take a look inside our kitchen theater where authentic cast-iron woks meet master ingredients.",
+    "items": [
+      {
+        "id": "craft-1",
+        "tag": "WOK HEI",
+        "title": "1000°F Searing Flame (Jet Wok)",
+        "desc": "Roaring jet burners instantly caramelize aromatics and sear fresh proteins without moisture loss.",
+        "image": "assets/images/hdr-bnr-06.jpg",
+        "active": true
+      },
+      {
+        "id": "craft-2",
+        "tag": "DIM SUM ART",
+        "title": "Translucent Treasures",
+        "desc": "Artisanal pleating encasing seasoned prawns, tender chicken, and garden water chestnuts.",
+        "image": "assets/images/FO4.jpg",
+        "active": true
+      },
+      {
+        "id": "craft-3",
+        "tag": "SECRET BROTHS",
+        "title": "House Spice Reductions",
+        "desc": "Slow-brewed over 12 hours with whole Sichuan peppercorns, roasted garlic, and scallion oils.",
+        "image": "assets/images/hdr-bnr-02.jpg",
+        "active": true
+      },
+      {
+        "id": "craft-4",
+        "tag": "45-MIN HOT",
+        "title": "45-Minute Vault Box",
+        "desc": "Food-grade virgin board folds that retain piping thermal heat without soggy condensation.",
+        "image": "assets/images/hdr-bnr-04.jpg",
+        "active": true
+      }
+    ]
+  },
+  "founderPledge": {
+    "badge": "创始人承诺 · THE PLEDGE",
+    "quote": "We didn't set out to make fast food. We set out to make great food, quickly — in a box worthy of the fire it was born in.",
+    "founderName": "R. Valavan",
+    "founderRole": "Founder & Managing Director",
+    "signatureImage": "assets/images/signature.png",
+    "sealText": "红盒真品 · AUTHENTIC RED BOX",
+    "yearEstablished": "2015"
+  }
+}

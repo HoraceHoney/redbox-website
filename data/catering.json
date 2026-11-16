@@ -1,0 +1,61 @@
+[
+  {
+    "client": "Tech Corporate Test",
+    "type": "Live Wok Station",
+    "date": "2026-11-20",
+    "contact": "9998887775 · corporate@test.com",
+    "budget": "₹75,000",
+    "pax": 150,
+    "id": 5,
+    "status": "New Lead",
+    "created_at": "2026-11-15 20:33"
+  },
+  {
+    "name": "Infosys Bangalore Fest",
+    "phone": "98401 99999",
+    "email": "events@infosys.com",
+    "event_type": "Live Wok Station",
+    "event_date": "2026-12-10",
+    "guest_count": 250,
+    "total": "₹ 1,62,500",
+    "status": "New Lead",
+    "id": 4,
+    "created_at": "2026-11-15 20:16"
+  },
+  {
+    "name": "Infosys Bangalore Fest",
+    "phone": "98401 99999",
+    "email": "events@infosys.com",
+    "event_type": "Live Wok Station",
+    "event_date": "2026-12-10",
+    "guest_count": 250,
+    "total": "₹ 1,62,500",
+    "status": "New Lead",
+    "id": 3,
+    "created_at": "2026-11-15 20:16"
+  },
+  {
+    "id": 1,
+    "name": "Tech Mahindra Campus Fest",
+    "phone": "98408 12345",
+    "email": "events@techm.com",
+    "event_type": "Live Wok Station",
+    "event_date": "2026-11-28",
+    "guest_count": 150,
+    "total": "₹ 97,500",
+    "status": "Proposal Sent",
+    "notes": "Requested both veg and non-veg live toss wok counter."
+  },
+  {
+    "id": 2,
+    "name": "Cognizant Annual Day",
+    "phone": "99400 54321",
+    "email": "cultural@cognizant.com",
+    "event_type": "Express Wok Box Delivery",
+    "event_date": "2026-12-05",
+    "guest_count": 300,
+    "total": "₹ 1,35,000",
+    "status": "New Lead",
+    "notes": "Individual thermal packaging preferred."
+  }
+]

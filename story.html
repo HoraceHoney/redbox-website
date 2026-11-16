@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us · Culinary Heritage & The Box | The Red Box</title>
+  <meta name="description" content="Discover the story of The Red Box — authentic 1000°F high-heat Wok Hei, patented thermal box engineering, and 57 branches born from passion for authentic Indo-Chinese cuisine.">
+  <link rel="icon" type="image/png" href="assets/images/fav-icon.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#D9232D',
+              'red-dark': '#B51B24',
+              'red-light': '#FFF1F2',
+              'red-lacquer': '#C41E3A',
+              gold: '#C5A059',
+              'gold-light': '#F7F3E9',
+              'gold-bright': '#D4AF37',
+              'gold-dark': '#9A7B38',
+              slate: '#1C1D1F',
+              'slate-light': '#2A2B2E',
+            },
+            stone: {
+              50: '#FDFBF7',
+              100: '#F7F4EE',
+              200: '#EBE5D8',
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            heading: ['Montserrat', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Clean luxury white theme with subtle oriental lattice pattern */
+    .bg-chinese-lattice-white {
+      background-color: #FFFFFF;
+      background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Red Foil Metallic Text Gradient */
+    .red-foil-text {
+      background: linear-gradient(135deg, #B51B24 0%, #D9232D 50%, #991B1B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Gold Foil Metallic Text Gradient */
+    .gold-foil-text {
+      background: linear-gradient(135deg, #9A7B38 0%, #C5A059 40%, #B3862A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Drop-cap editorial flourish in Red Box crimson */
+    .drop-cap::first-letter {
+      float: left;
+      font-family: 'Cinzel', serif;
+      font-size: 3.8rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-bottom: 2px;
+      color: #D9232D;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(217, 35, 45, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-zinc-900 antialiased selection:bg-brand-red selection:text-white">
+
+  <!-- ======================================================== -->
+  <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-zinc-200 shadow-xs backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6">
+      
+      <!-- Brand Logo Left -->
+      <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
+        <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+      </a>
+
+      <!-- Desktop Nav: Inline Navigation Links (Visible on tablets and desktop: md and up) -->
+      <nav class="hidden md:flex items-center gap-1.5 xl:gap-3">
+        <a href="index.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
+        <a href="menu.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Menu</span></a>
+        <a href="branches.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
+        <a href="about.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>About Us</span></a>
+        <a href="catering.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
+        <a href="franchise.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
+      </nav>
+
+      <!-- Header Right: WOK HEI Badge & Order Online Button -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[#C5A059] font-heading font-extrabold text-xs tracking-wider uppercase select-none whitespace-nowrap">
+          
+          <span>WOK HEI FRESH</span>
+        </div>
+        <button onclick="openOrderModal()" class="inline-flex items-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 active:scale-98 transition-all cursor-pointer whitespace-nowrap flex-shrink-0">
+          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+          <span>Order Online</span>
+        </button>
+        <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="md:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
+          <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
+        </button>
+      </div>
+
+    </div>
+
+        <!-- Neat Compact Mobile Dropdown (Directly below navbar, NOT a screen-blocking modal) -->
+    <div id="mobileDropdown" class="hidden md:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
+      <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
+        <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
+        <a href="menu.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
+        <a href="branches.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Branches</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700">57+ Hubs</span></a>
+        <a href="about.html" class="px-3 py-2 text-xs font-heading font-black text-brand-red border-l-2 border-brand-red bg-zinc-100/70 rounded-md flex items-center justify-between"><span>About Us</span></a>
+        <a href="catering.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Catering</span></a>
+        <a href="franchise.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Franchise</span></a>
+      </div>
+      <div class="flex items-center justify-between text-xs px-1 pt-0.5">
+        <a href="tel:04443533333" class="flex items-center gap-1.5 font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+          <span>044 4353 3333</span>
+        </a>
+        <a href="admin.html" class="flex items-center gap-1 text-[11px] font-heading font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="shield" class="w-3 h-3 text-amber-500"></i>
+          <span>Admin</span>
+        </a>
+        <button onclick="openOrderModal()" class="text-[11px] font-heading font-bold text-brand-red hover:underline cursor-pointer">Quick Order</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- MAINLAND CHINA STYLE ABOUT US PAGE (WHITE LUXURY THEME) -->
+  <!-- ======================================================== -->
+  <main class="flex-grow bg-chinese-lattice-white relative overflow-hidden">
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 1: THE GRAND ATMOSPHERIC HERO (WHITE LUXURY) -->
+    <!-- ---------------------------------------------------- -->
+    <section class="relative min-h-[78vh] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 overflow-hidden border-b border-zinc-200/80 bg-gradient-to-b from-stone-50 via-white to-white">
+      
+      <!-- Ambient Background Image with Light Vignette -->
+      <div class="absolute inset-0 z-0 opacity-10">
+        <img src="assets/images/hdr-bnr-01.jpg" alt="Culinary Heritage" class="w-full h-full object-cover object-center filter scale-105 transform transition duration-1000">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white"></div>
+
+      <!-- Subtle Golden Dragon Watermark in Background -->
+      <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.35] z-0">
+        <img src="assets/images/golden-dragon-watermark.png" alt="Imperial Dragon" class="w-[720px] max-w-full object-contain filter drop-shadow-[0_0_30px_rgba(197,160,89,0.55)] brightness-105 contrast-115 animate-pulse-subtle">
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-4xl mx-auto space-y-6 pt-4">
+        
+        <!-- Master Classical Headline (Cinzel & Playfair Display) -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-zinc-900 tracking-tight leading-[1.08]">
+          Plates of Authentic Craft.<br>
+          <span class="text-brand-red block mt-2 font-serif">Souls Full of Stories.</span>
+        </h1>
+
+        <!-- Editorial Subtitle with Deep Respect for Tradition -->
+        <p class="text-zinc-600 font-sans text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
+          Inspired by the timeless culinary alchemy of ancient Sichuan, Jiangsu, and the storied Chinatown lanes of Tangra — reimagined with relentless passion for modern diners across India.
+        </p>
+
+        <!-- Ornate Oriental Divider -->
+        <div class="flex items-center justify-center gap-3 py-2 text-zinc-400">
+          <div class="h-px w-16 bg-gradient-to-r from-transparent via-red-300 to-transparent"></div>
+          <span class="text-brand-red text-xs">❖</span>
+          <div class="h-px w-16 bg-gradient-to-r from-transparent via-red-300 to-transparent"></div>
+        </div>
+
+        <!-- Grand 4-Metric High-Contrast Stat Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-4 text-left">
+          
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border border-zinc-200/90 shadow-sm hover:shadow-md hover:border-red-300 transition-all">
+            <div class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900">57+</div>
+            <div class="text-[10px] sm:text-xs font-heading font-extrabold text-zinc-500 uppercase tracking-wider mt-1">GLOBAL BRANCHES</div>
+          </div>
+
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border border-red-200 shadow-sm hover:shadow-md hover:border-brand-red transition-all">
+            <div class="text-2xl sm:text-3xl font-serif font-bold text-brand-red">1000°F</div>
+            <div class="text-[10px] sm:text-xs font-heading font-extrabold text-zinc-500 uppercase tracking-wider mt-1">WOK HEI FLAME</div>
+          </div>
+
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border border-zinc-200/90 shadow-sm hover:shadow-md hover:border-amber-300 transition-all">
+            <div class="text-2xl sm:text-3xl font-serif font-bold text-[#C5A059]">271</div>
+            <div class="text-[10px] sm:text-xs font-heading font-extrabold text-zinc-500 uppercase tracking-wider mt-1">CURATED RECIPES</div>
+          </div>
+
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border border-zinc-200/90 shadow-sm hover:shadow-md hover:border-red-300 transition-all">
+            <div class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900">45 MIN</div>
+            <div class="text-[10px] sm:text-xs font-heading font-extrabold text-zinc-500 uppercase tracking-wider mt-1">HEAT LOCK BOX</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 2: THE PHILOSOPHY OF FLAVOUR (SPLIT-SCREEN)  -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-stone-50/60">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Dual Overlapping Cast-Iron & Wok Imagery -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Primary Wok Mastery Photo -->
+            <div class="relative rounded-3xl overflow-hidden shadow-xl border-2 border-zinc-200/90 group">
+              <img src="assets/images/hdr-bnr-06.jpg" alt="Master Wok Toss" class="w-full h-80 sm:h-96 object-cover object-center transform group-hover:scale-103 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="text-[10px] font-heading font-extrabold tracking-widest uppercase text-amber-300 block">CAST IRON MASTERY</span>
+                <p class="text-xs font-sans text-zinc-200">Seasoned woks heated to 1000°F for authentic smoky sear.</p>
+              </div>
+            </div>
+
+            <!-- Secondary Inset Plate Photo with Red Accent Border -->
+            <div class="absolute -bottom-6 -right-4 sm:-right-6 w-48 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-red bg-white hidden sm:block">
+              <img src="assets/images/hdr-bnr-01.jpg" alt="Artisanal Dim Sum & House Sauce" class="w-full h-32 sm:h-36 object-cover">
+              <div class="p-2.5 bg-white text-zinc-900 text-center">
+                <span class="text-[10px] font-heading font-bold text-brand-red uppercase tracking-wider block">Handcrafted Fresh</span>
+                <span class="text-[10px] text-zinc-500 font-sans">Rolled & pleated every dawn</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Editorial Craft & Ancient Lineage Text -->
+        <div class="lg:col-span-6 space-y-6">
+          
+          <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+            <span>CULINARY PHILOSOPHY · 理念</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-zinc-900 tracking-tight leading-tight">
+            The Sacred Harmony of Fire, Wok & Spice.
+          </h2>
+
+          <div class="space-y-4 text-zinc-700 text-sm sm:text-base leading-relaxed font-sans">
+            <p class="drop-cap">
+              The Red Box was born from an unwavering conviction: authentic street-style Indo-Chinese should never compromise on culinary integrity, kitchen hygiene, or temperature. In the ancient kitchens of China, master wok chefs spent lifetimes perfecting <em>Wok Hei</em> — the mythical "breath of the wok" that can only be captured in seconds over searing, roaring flames.
+            </p>
+            <p>
+              Every dish we toss balances the delicate equilibrium of Yin and Yang: the crisp freshness of hand-selected vegetables against the tender sear of protein; the intense warmth of slow-simmered Sichuan chillies harmonized with the deep, savoury depth of aged fermented soy and fragrant ginger.
+            </p>
+          </div>
+
+          <!-- Dual Philosophy Tenet Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+            <div class="p-4 rounded-xl bg-white border border-zinc-200 shadow-2xs">
+              <div class="flex items-center gap-2 text-zinc-900 font-heading font-extrabold text-xs uppercase tracking-wider">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                <span>Zero Preservatives</span>
+              </div>
+              <p class="text-xs text-zinc-500 mt-1 font-sans">Whole chillies, roasted garlic, and master-brewed broths made fresh daily.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-zinc-200 shadow-2xs">
+              <div class="flex items-center gap-2 text-zinc-900 font-heading font-extrabold text-xs uppercase tracking-wider">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                <span>Virgin Eco-Board</span>
+              </div>
+              <p class="text-xs text-zinc-500 mt-1 font-sans">100% spill-proof fold container that locks 45 minutes of piping heat.</p>
+            </div>
+          </div>
+
+          <!-- Chef Syndicate Endorsement Block -->
+          <div class="pt-4 border-t border-zinc-200 flex items-center justify-between">
+            <div class="border-l-4 border-brand-red pl-4">
+              <span class="block text-xs font-serif italic text-zinc-800">"Wok cooking is not merely heat; it is an instinct of time and reverence."</span>
+              <span class="block text-[11px] font-heading font-extrabold text-zinc-900 uppercase tracking-wider mt-1">Executive Wok Master · The Red Box Syndicate</span>
+            </div>
+            <div class="text-right text-brand-red text-xs font-serif font-black border border-red-200 bg-red-50 px-2.5 py-1 rounded">
+              正宗匠心
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 3: THE FOUR PILLARS OF MASTERY (WHITE)       -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-white">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
+            <span>四大支柱 · THE GUIDING PRINCIPLES</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+            The Four Pillars of <span class="text-brand-red font-cinzel">CULINARY MASTERY</span>
+          </h2>
+          <p class="text-zinc-600 text-sm sm:text-base font-sans">
+            Rooted in ancient Chinese culinary philosophy and refined over eleven years of passion across 57 branches.
+          </p>
+          <div class="flex items-center justify-center gap-3 pt-2 text-zinc-300">
+            <div class="h-px w-12 bg-zinc-300"></div>
+            <span class="text-brand-red text-xs">❖</span>
+            <div class="h-px w-12 bg-zinc-300"></div>
+          </div>
+        </div>
+
+        <!-- 4 Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Pillar 1 -->
+          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">01</span>
+                <span class="text-2xl font-serif font-black text-brand-red">正宗</span>
+              </div>
+              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
+                Authenticity of Origin
+              </h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
+                Recipes passed down from ancestral Hakka Cantonese settlements in Kolkata. No artificial colors, no MSG additions — just century-old spice alchemy.
+              </p>
+            </div>
+            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
+              Century-Old Lineage
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">02</span>
+                <span class="text-2xl font-serif font-black text-brand-red">火候</span>
+              </div>
+              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
+                The Theatre of Wok Hei
+              </h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
+                Heavy cast-iron woks blast over high-pressure jet burners at 1000°F. The rapid 90-second sear locks nutrients, crispness, and smoky wok aroma.
+              </p>
+            </div>
+            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-brand-red uppercase tracking-wider">
+              1000°F Cast Iron Sear
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">03</span>
+                <span class="text-2xl font-serif font-black text-brand-red">匠心</span>
+              </div>
+              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
+                The Art of the Fold
+              </h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
+                From delicate translucent dumpling pleats crafted every morning to our patented 45-minute heat-lock box that unfolds into an instant plate.
+              </p>
+            </div>
+            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
+              Precision Engineering
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">04</span>
+                <span class="text-2xl font-serif font-black text-brand-red">礼待</span>
+              </div>
+              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
+                Gracious Hospitality
+              </h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
+                Whether dining at our sleek takeaway hubs across 57 branches or opening a steaming Red Box at your midnight desk, every guest is treated like royalty.
+              </p>
+            </div>
+            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
+              57 Branches · Family Warmth
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 4: THE ANATOMY OF "THE BOX" (WHITE LUXURY)   -->
+    <!-- ---------------------------------------------------- -->
+    <section id="the-box" class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-stone-50/70 scroll-mt-20 overflow-hidden">
+      <!-- Golden Dragon Watermark Highlight in The Box -->
+      <div class="dragon-watermark-right opacity-30"></div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-brand-red text-xs font-heading font-extrabold tracking-widest uppercase mb-3 select-none">
+            <i data-lucide="box" class="w-3.5 h-3.5 text-brand-red"></i>
+            <span>盒工 · PROPRIETARY PACKAGING ENGINEERING</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-zinc-900 tracking-tight leading-tight">
+            The Anatomy of <span class="text-brand-red font-cinzel">"The Box"</span>
+          </h2>
+          <p class="text-zinc-600 text-sm sm:text-base mt-4 font-sans leading-relaxed">
+            Culinary mastery is futile if food arrives cold or soggy. Explore how our origami-folded, multi-layered virgin board container locks in authentic 1000°F wok hei heat for 45 minutes on the road.
+          </p>
+        </div>
+
+        <!-- Interactive Hotspot Showcase Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
+          
+          <!-- Interactive Visual Center Left -->
+          <div class="lg:col-span-6 relative">
+            <div class="relative bg-white rounded-3xl p-8 sm:p-12 border border-zinc-200 shadow-xl flex items-center justify-center min-h-[420px] overflow-hidden group">
+              
+              <!-- Subtle Amber Gradient in Center -->
+              <div class="absolute inset-0 bg-radial-gradient from-amber-50/50 via-transparent to-transparent pointer-events-none"></div>
+
+              <!-- Packshot Image -->
+              <img src="assets/images/redbox-logo.png" alt="The Red Box Packshot" class="w-72 max-w-full h-auto object-contain filter drop-shadow-[0_15px_30px_rgba(217,35,45,0.25)] transition-transform duration-500 group-hover:scale-105">
+
+              <!-- Hotspot Interactive Pins -->
+              <button onclick="activateBoxHotspot(1)" id="pin-1" class="hotspot-pin top-20 left-16 sm:left-20" title="Thermal Insulation">1</button>
+              <button onclick="activateBoxHotspot(2)" id="pin-2" class="hotspot-pin top-24 right-16 sm:right-20" title="Origami Leak-Proofing">2</button>
+              <button onclick="activateBoxHotspot(3)" id="pin-3" class="hotspot-pin bottom-24 left-16 sm:left-24" title="100% Virgin Eco-Board">3</button>
+              <button onclick="activateBoxHotspot(4)" id="pin-4" class="hotspot-pin bottom-20 right-16 sm:right-24" title="Instant Dining Plate">4</button>
+
+            </div>
+            <p class="text-center text-xs text-zinc-500 mt-3 font-heading font-bold tracking-wider uppercase">
+              • Click any numbered pin to inspect thermal engineering •
+            </p>
+          </div>
+
+          <!-- Hotspot Explainer Cards Right -->
+          <div class="lg:col-span-6 space-y-4">
+            
+            <div id="hotspotCard-1" onclick="activateBoxHotspot(1)" class="hotspot-card bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading">1</span>
+                <h4 class="font-heading font-extrabold text-base text-zinc-900">45-Minute Thermal Insulation</h4>
+              </div>
+              <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+                Internal multi-layer thermal reflective barriers keep steaming noodles and fried rice above 65°C for 45 minutes, ensuring your meal arrives at true wok-tossed temperature.
+              </p>
+            </div>
+
+            <div id="hotspotCard-2" onclick="activateBoxHotspot(2)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">2</span>
+                <h4 class="font-heading font-extrabold text-base text-zinc-900">Spill-Proof Origami Locking Fold</h4>
+              </div>
+              <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+                Tightly interlocking tab folds eliminate clumsy plastic bags. Even rich Manchurian, Schezwan, and garlic chili gravies stay locked inside during rapid transit.
+              </p>
+            </div>
+
+            <div id="hotspotCard-3" onclick="activateBoxHotspot(3)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">3</span>
+                <h4 class="font-heading font-extrabold text-base text-zinc-900">100% Food-Grade Virgin Eco-Board</h4>
+              </div>
+              <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+                Certified chlorine-free, unbleached, and microwave-safe paperboard. Zero harmful microplastics or petroleum liners ever come into contact with your hot food.
+              </p>
+            </div>
+
+            <div id="hotspotCard-4" onclick="activateBoxHotspot(4)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">4</span>
+                <h4 class="font-heading font-extrabold text-base text-zinc-900">Unfolds Into An Instant Dining Plate</h4>
+              </div>
+              <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+                Simply tear along the side tab perforations and your Red Box unfolds flat into an instant, spill-proof dining plate at your work desk, home, or on the go.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Sustainability & Purity Commitments -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-6 sm:p-8 text-center max-w-4xl mx-auto shadow-sm">
+          <div class="inline-flex items-center gap-2 text-emerald-700 text-xs font-heading font-extrabold uppercase tracking-widest mb-2">
+            <i data-lucide="leaf" class="w-4 h-4 text-emerald-600"></i>
+            <span>Environmental & Food Safety Purity</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl sm:text-2xl text-zinc-900 mb-3">Our 100% Biodegradable Guarantee</h3>
+          <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto mb-6 font-sans">
+            While industry takeout relies on single-use plastic containers, every Red Box is engineered from sustainable FSC-certified forestry pulp that decomposes naturally within 90 days.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-heading font-bold text-zinc-800">
+            <div class="p-3 rounded-xl bg-stone-50 border border-zinc-200 flex flex-col items-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>
+              <span>FSC Certified Pulp</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-50 border border-zinc-200 flex flex-col items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+              <span>100% Plastic Free</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-50 border border-zinc-200 flex flex-col items-center gap-1.5">
+              <i data-lucide="microwave" class="w-5 h-5 text-amber-600"></i>
+              <span>Microwave Safe</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-50 border border-zinc-200 flex flex-col items-center gap-1.5">
+              <i data-lucide="droplet" class="w-5 h-5 text-sky-600"></i>
+              <span>Non-Toxic Soy Inks</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 5: THE 11-YEAR HERITAGE ODYSSEY (WHITE)      -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-white relative overflow-hidden">
+      <!-- Golden Dragon Watermark Highlight -->
+      <div class="dragon-watermark-left opacity-25"></div>
+      <div class="max-w-5xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
+            <span>十一年历程 · THE 11-YEAR ODYSSEY</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+            From a Single Flame to <span class="text-brand-red font-cinzel">57 GLOBAL BRANCHES</span>
+          </h2>
+          <p class="text-zinc-600 text-sm sm:text-base font-sans">
+            A decade of relentless culinary refinement, kitchen engineering, and regional expansion across South India.
+          </p>
+        </div>
+
+        <!-- Vertical Timeline Conduit -->
+        <div class="relative">
+          
+          <!-- Central Glowing Guide Track -->
+          <div class="absolute left-6 md:left-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-brand-red via-[#C5A059] to-brand-red -translate-x-1/2 rounded-full shadow-xs"></div>
+
+          <div class="space-y-12 sm:space-y-16">
+            
+            <!-- Milestone 1: 2015 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 group">
+              <div class="md:w-1/2 md:text-right md:pr-12 pl-14 md:pl-0">
+                <span class="inline-block px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-heading font-extrabold uppercase tracking-widest border border-red-200">2015 · THE GENESIS</span>
+                <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-2">Three Kiosks & An Obsession</h3>
+                <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-sans leading-relaxed">
+                  The Red Box launched at three petrol pump takeaway kiosks in Chennai. Armed with seasoned woks, fresh ingredients, and an uncompromising commitment to hygiene, the first boxes were tossed.
+                </p>
+              </div>
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white border-2 border-brand-red shadow-md flex items-center justify-center font-heading font-black text-brand-red text-sm z-10 group-hover:scale-110 transition-transform">
+                15
+              </div>
+              <div class="md:w-1/2 md:pl-12 pl-14 md:pl-0">
+                <div class="p-4 rounded-xl bg-stone-50 border border-zinc-200 text-xs font-sans text-zinc-600 shadow-2xs">
+                  <span class="font-heading font-bold text-zinc-900 uppercase block mb-1">Key Milestone:</span>
+                  First 10,000 Wok Boxes served; iconic red fold design conceptualized.
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 2: 2018 -->
+            <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center gap-8 group">
+              <div class="md:w-1/2 md:text-left md:pl-12 pl-14 md:pl-0">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-900 text-xs font-heading font-extrabold uppercase tracking-widest border border-amber-200">2018 · THE BREAKTHROUGH</span>
+                <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-2">The Packaging Revolution</h3>
+                <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-sans leading-relaxed">
+                  Engineered the proprietary 45-minute heat-lock virgin eco-board box. Customers could now enjoy restaurant-hot wok tossing anywhere without soggy takeout compromises.
+                </p>
+              </div>
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white border-2 border-[#C5A059] shadow-md flex items-center justify-center font-heading font-black text-[#C5A059] text-sm z-10 group-hover:scale-110 transition-transform">
+                18
+              </div>
+              <div class="md:w-1/2 md:pr-12 pl-14 md:pl-0 md:text-right">
+                <div class="p-4 rounded-xl bg-stone-50 border border-zinc-200 text-xs font-sans text-zinc-600 shadow-2xs">
+                  <span class="font-heading font-bold text-zinc-900 uppercase block mb-1">Patent Milestone:</span>
+                  100% plastic-free, leak-proof fold-out plate design rolled out across Tamil Nadu.
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 3: 2021 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 group">
+              <div class="md:w-1/2 md:text-right md:pr-12 pl-14 md:pl-0">
+                <span class="inline-block px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-heading font-extrabold uppercase tracking-widest border border-red-200">2021 · REGIONAL HORIZONS</span>
+                <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-2">South India Expansion</h3>
+                <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-sans leading-relaxed">
+                  Entered Bengaluru and Hyderabad tech corridors. Mastered lightning 7-minute turnaround times to feed corporate workforces during peak hours with consistent culinary quality.
+                </p>
+              </div>
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white border-2 border-brand-red shadow-md flex items-center justify-center font-heading font-black text-brand-red text-sm z-10 group-hover:scale-110 transition-transform">
+                21
+              </div>
+              <div class="md:w-1/2 md:pl-12 pl-14 md:pl-0">
+                <div class="p-4 rounded-xl bg-stone-50 border border-zinc-200 text-xs font-sans text-zinc-600 shadow-2xs">
+                  <span class="font-heading font-bold text-zinc-900 uppercase block mb-1">Scale Record:</span>
+                  Crossed 25 branches; established central quality spice blend commissaries.
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 4: 2024 -->
+            <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center gap-8 group">
+              <div class="md:w-1/2 md:text-left md:pl-12 pl-14 md:pl-0">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-900 text-xs font-heading font-extrabold uppercase tracking-widest border border-amber-200">2024 · THE MASTER HUB</span>
+                <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-2">Commissary Excellence</h3>
+                <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-sans leading-relaxed">
+                  Commissioned state-of-the-art central production commissary ensuring 100% taste uniformity across all tier-1 and tier-2 hubs, from Coimbatore to Visakhapatnam.
+                </p>
+              </div>
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white border-2 border-[#C5A059] shadow-md flex items-center justify-center font-heading font-black text-[#C5A059] text-sm z-10 group-hover:scale-110 transition-transform">
+                24
+              </div>
+              <div class="md:w-1/2 md:pr-12 pl-14 md:pl-0 md:text-right">
+                <div class="p-4 rounded-xl bg-stone-50 border border-zinc-200 text-xs font-sans text-zinc-600 shadow-2xs">
+                  <span class="font-heading font-bold text-zinc-900 uppercase block mb-1">Quality Standard:</span>
+                  FSSAI ISO 22000 certified commissary infrastructure.
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 5: 2026 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 group">
+              <div class="md:w-1/2 md:text-right md:pr-12 pl-14 md:pl-0">
+                <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-heading font-extrabold uppercase tracking-widest border border-emerald-200">2026 · TODAY & BEYOND</span>
+                <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-2">57 Branches · One Vision</h3>
+                <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-sans leading-relaxed">
+                  Celebrating 57 thriving branches, 271 authentic dishes, and millions of happy diners. The journey continues with zero compromise on the fire that started it all.
+                </p>
+              </div>
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-red border-2 border-white shadow-lg flex items-center justify-center font-heading font-black text-white text-sm z-10 group-hover:scale-115 transition-transform">
+                26
+              </div>
+              <div class="md:w-1/2 md:pl-12 pl-14 md:pl-0">
+                <div class="p-4 rounded-xl bg-red-50 border border-red-200 text-xs font-sans text-zinc-700 shadow-2xs">
+                  <span class="font-heading font-bold text-brand-red uppercase block mb-1">Current Milestone:</span>
+                  Over 10,000,000 Wok Boxes served; expanded across 17 regional hubs.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 6: SENSORY CRAFT GALLERY (WHITE LUXURY)      -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-stone-50/50">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
+            <span>烹饪艺术 · SENSORY EXCELLENCE</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+            The Craft Behind Every <span class="text-brand-red font-cinzel">RED BOX</span>
+          </h2>
+          <p class="text-zinc-600 text-sm sm:text-base font-sans">
+            Take a look inside our kitchen theater where authentic cast-iron woks meet master ingredients.
+          </p>
+        </div>
+
+        <!-- 4-Panel Luxury Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all group">
+            <div class="h-48 overflow-hidden relative">
+              <img src="assets/images/hdr-bnr-06.jpg" alt="1000°F Searing Flame" class="w-full h-full object-cover group-hover:scale-108 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-heading font-bold text-brand-red uppercase tracking-wider">WOK HEI</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading font-extrabold text-base text-zinc-900 group-hover:text-brand-red transition-colors">1000°F Searing Flame</h3>
+              <p class="text-xs text-zinc-600 mt-2 font-sans leading-relaxed">Roaring jet burners instantly caramelize aromatics and sear fresh proteins without moisture loss.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all group">
+            <div class="h-48 overflow-hidden relative">
+              <img src="assets/images/hdr-bnr-01.jpg" alt="Handcrafted Dim Sum" class="w-full h-full object-cover group-hover:scale-108 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-heading font-bold text-amber-700 uppercase tracking-wider">DIM SUM ART</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading font-extrabold text-base text-zinc-900 group-hover:text-brand-red transition-colors">Translucent Treasures</h3>
+              <p class="text-xs text-zinc-600 mt-2 font-sans leading-relaxed">Artisanal pleating encasing seasoned prawns, tender chicken, and garden water chestnuts.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all group">
+            <div class="h-48 overflow-hidden relative">
+              <img src="assets/images/hdr-bnr-06.jpg" alt="Master Sauces" class="w-full h-full object-cover group-hover:scale-108 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-heading font-bold text-brand-red uppercase tracking-wider">SECRET BROTHS</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading font-extrabold text-base text-zinc-900 group-hover:text-brand-red transition-colors">House Spice Reductions</h3>
+              <p class="text-xs text-zinc-600 mt-2 font-sans leading-relaxed">Slow-brewed over 12 hours with whole Sichuan peppercorns, roasted garlic, and scallion oils.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all group">
+            <div class="h-48 overflow-hidden relative">
+              <img src="assets/images/hdr-bnr-01.jpg" alt="Patented Packaging" class="w-full h-full object-cover group-hover:scale-108 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-heading font-bold text-emerald-700 uppercase tracking-wider">45-MIN HOT</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading font-extrabold text-base text-zinc-900 group-hover:text-brand-red transition-colors">45-Minute Vault Box</h3>
+              <p class="text-xs text-zinc-600 mt-2 font-sans leading-relaxed">Food-grade virgin board folds that retain piping thermal heat without soggy condensation.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 7: FOUNDER'S PLEDGE & SEAL (WHITE LUXURY)    -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200/80 bg-white">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="relative bg-gradient-to-br from-stone-50 via-white to-red-50/25 border-2 border-red-200 rounded-3xl p-8 sm:p-14 text-center shadow-md overflow-hidden">
+          
+          <!-- Wax Seal Stamp Emblem -->
+          <div class="w-16 h-16 rounded-full bg-brand-red text-white flex items-center justify-center font-serif font-black text-2xl shadow-lg shadow-brand-red/30 mx-auto mb-6 select-none">
+            印
+          </div>
+
+          <h3 class="text-2xl sm:text-4xl font-serif font-bold text-zinc-900 mb-4">
+            Our Unwavering Culinary Pledge
+          </h3>
+
+          <p class="text-zinc-700 text-base sm:text-lg italic font-serif leading-relaxed max-w-2xl mx-auto mb-8">
+            "We do not merely assemble meals; we orchestrate an ancient dialogue between fire, steel, and spice. Every box that leaves our woks is an unyielding pledge to true craft, uncompromised heat, and heartfelt hospitality."
+          </p>
+
+          <div class="pt-6 border-t border-zinc-200/80 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs">
+            <div>
+              <span class="block font-heading font-extrabold text-zinc-900 uppercase tracking-wider">THE RED BOX CULINARY COUNCIL</span>
+              <span class="block text-zinc-500 font-sans mt-0.5">Master Chef Syndicate & Founding Partners</span>
+            </div>
+            <div class="hidden sm:block h-6 w-px bg-zinc-300"></div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-red-50 border border-red-200 text-brand-red font-heading font-bold text-[11px]">100% GENUINE WOK HEI</span>
+              <span class="px-3 py-1 rounded-full bg-stone-100 border border-zinc-300 text-zinc-700 font-heading font-bold text-[11px]">EST. 2015</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 8: GRAND DUAL CONVERSION CTA (WHITE LUXURY)  -->
+    <!-- ---------------------------------------------------- -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-stone-50 border-b border-zinc-200">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        
+        <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
+          <span>READY TO EXPERIENCE THE FIRE?</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900">
+          Taste Eleven Years of <span class="text-brand-red font-cinzel">WOK MASTERY</span>
+        </h2>
+
+        <p class="text-zinc-600 text-sm sm:text-base font-sans max-w-2xl mx-auto">
+          Explore 271 authentic dishes, locate your nearest branch across 17 regional hubs, or order delivery straight to your door.
+        </p>
+
+        <!-- 3 Primary Conversion Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4">
+          
+          <a href="menu.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 transition-all cursor-pointer">
+            <i data-lucide="utensils" class="w-4 h-4"></i>
+            <span>EXPLORE 271-DISH MENU</span>
+          </a>
+
+          <a href="branches.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-zinc-50 border-2 border-zinc-300 hover:border-brand-red text-zinc-800 hover:text-brand-red font-heading font-bold text-xs uppercase tracking-wider transition-all">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red"></i>
+            <span>LOCATE 57 GLOBAL BRANCHES</span>
+          </a>
+
+          <button onclick="openOrderModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm hover:scale-102 transition-all cursor-pointer">
+            <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-red"></i>
+            <span>ORDER ON SWIGGY / ZOMATO</span>
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- LUXURY FOOTER                                            -->
+  <!-- ======================================================== -->
+  <footer class="bg-zinc-900 text-zinc-400 pt-16 pb-12 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Brand Bio -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="inline-block">
+            <img src="assets/images/logo.png" alt="The Red Box Logo" class="h-12 w-auto object-contain">
+          </a>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed max-w-sm">
+            Fresh Indo-Chinese food on the go. High-heat 1000°F authentic cast-iron wok tossed noodles, fried rice, and dim sum packed hot in our proprietary 45-minute heat retention box.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://www.facebook.com/theredboxindia/" target="_blank" class="w-9 h-9 rounded-full bg-zinc-800 hover:bg-brand-red text-zinc-300 hover:text-white flex items-center justify-center transition-colors">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.instagram.com/theredboxindia/" target="_blank" class="w-9 h-9 rounded-full bg-zinc-800 hover:bg-brand-red text-zinc-300 hover:text-white flex items-center justify-center transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=918939444411" target="_blank" class="w-9 h-9 rounded-full bg-zinc-800 hover:bg-emerald-600 text-zinc-300 hover:text-white flex items-center justify-center transition-colors">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <h4 class="font-heading font-extrabold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-xs font-sans">
+            <li><a href="index.html" class="hover:text-brand-red transition-colors">Home</a></li>
+            <li><a href="menu.html" class="hover:text-brand-red transition-colors">Food Menu (271 Dishes)</a></li>
+            <li><a href="branches.html" class="hover:text-brand-red transition-colors">57 Branches & Hubs</a></li>
+            <li><a href="about.html" class="hover:text-brand-red transition-colors text-white font-bold">About Us</a></li>
+            <li><a href="about.html#the-box" class="hover:text-brand-red transition-colors">The 45-Min Box (USP)</a></li>
+            <li><a href="catering.html" class="hover:text-brand-red transition-colors">Catering Calculator</a></li>
+            <li><a href="franchise.html" class="hover:text-brand-red transition-colors">Franchise Partnership</a></li>
+            <li><a href="admin.html" class="hover:text-brand-red transition-colors">Admin Console</a></li>
+          </ul>
+        </div>
+
+        <!-- Regional Branches -->
+        <div>
+          <h4 class="font-heading font-extrabold text-xs uppercase tracking-widest text-white mb-4">Regional Hubs (57)</h4>
+          <ul class="space-y-1.5 text-xs text-zinc-400 font-sans">
+            <li>• Chennai (26 Branches & HQ)</li>
+            <li>• Bengaluru (8 Branches - BTM, Indiranagar)</li>
+            <li>• Hyderabad (6 Branches - Hitech City)</li>
+            <li>• Coimbatore (4 Branches - RS Puram)</li>
+            <li>• Madurai, Puducherry, Vellore, Vizag</li>
+            <li class="pt-2 text-[11px] text-amber-400 font-bold">Daily: 11:00 AM – 11:30 PM</li>
+          </ul>
+        </div>
+
+        <!-- Direct Hotline & HQ -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-extrabold text-xs uppercase tracking-widest text-white mb-4">Direct Hotline & HQ</h4>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed">
+            Old No 35, New No 14, 2nd Main Rd, RA Puram, Chennai, Tamil Nadu 600028
+          </p>
+          <div class="space-y-1 text-xs">
+            <a href="tel:+918939444411" class="text-white hover:text-brand-red block font-bold flex items-center gap-1.5">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+              <span>+91 89394 44411</span>
+            </a>
+            <a href="mailto:contact@theredbox.in" class="text-zinc-400 hover:text-white block">contact@theredbox.in</a>
+          </div>
+          <div class="pt-2 text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>FSSAI Certified · ISO 22000 Standards</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-zinc-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-sans">
+        <div>© 2026 The Red Box Food Enterprises Pvt. Ltd. All rights reserved.</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-zinc-400">Privacy Policy</a>
+          <a href="#" class="hover:text-zinc-400">Terms of Service</a>
+          <a href="admin.html" class="text-brand-red hover:underline font-bold">Staff Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- ORDER MODAL                                              -->
+  <!-- ======================================================== -->
+  <div id="orderModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-zinc-200 relative animate-in fade-in zoom-in duration-200">
+      <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-700 cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-6">
+        <img src="assets/images/logo.png" alt="Logo" class="h-12 w-auto mx-auto mb-2 object-contain">
+        <h3 class="text-xl font-heading font-black text-zinc-900 uppercase">Order Fresh To Your Door</h3>
+        <p class="text-xs text-zinc-500 font-sans mt-1">Select your preferred delivery platform</p>
+      </div>
+      <div class="space-y-3">
+        <a href="https://www.swiggy.com/direct/brand/1636?source=swiggy-direct&subSource=branches" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/swiggy.png" alt="Swiggy" class="h-7 w-auto object-contain">
+            <div>
+              <div class="font-bold text-sm text-zinc-900">Swiggy Direct</div>
+              <div class="text-xs text-zinc-500 font-sans">Official delivery across 57 branches</div>
+            </div>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a href="https://www.zomato.com/search?query=RedBox" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/zomato.png" alt="Zomato" class="h-6 w-auto object-contain">
+            <div>
+              <div class="font-bold text-sm text-zinc-900">Zomato</div>
+              <div class="text-xs text-zinc-500 font-sans">Fast delivery to your location</div>
+            </div>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=918939444411&text=Hi+Red+Box%2C+I+would+like+to+order+food" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-6 w-auto object-contain">
+            <div>
+              <div class="font-bold text-sm text-zinc-900">WhatsApp Quick Order</div>
+              <div class="text-xs text-zinc-500 font-sans">Chat directly with Red Box team</div>
+            </div>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+      </div>
+      <div class="mt-5 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
+        <a href="tel:04443533333" class="hover:text-brand-red flex items-center gap-1 font-bold">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+          <span>Hotline: 044 4353 3333</span>
+        </a>
+        <a href="branches.html" class="hover:text-brand-red flex items-center gap-1">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+          <span>Find Branches</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    function toggleMobileNav() {
+      const dropdown = document.getElementById('mobileDropdown');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (dropdown) {
+        dropdown.classList.toggle('hidden');
+        if (icon) {
+          if (dropdown.classList.contains('hidden')) {
+            icon.setAttribute('data-lucide', 'menu');
+          } else {
+            icon.setAttribute('data-lucide', 'x');
+          }
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+    }
+    function toggleNavDrawer() { toggleMobileNav(); }
+    function closeNavDrawer() {
+      const dropdown = document.getElementById('mobileDropdown');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (dropdown && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'menu');
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+    }
+    function openOrderModal() {
+      const modal = document.getElementById('orderModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+    function closeOrderModal() {
+      const modal = document.getElementById('orderModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Box Hotspot Activation for White Theme
+    function activateBoxHotspot(num) {
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById(`hotspotCard-${i}`);
+        const pin = document.getElementById(`pin-${i}`);
+        if (card && pin) {
+          if (i === num) {
+            card.className = 'hotspot-card bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer';
+            const numBadge = card.querySelector('span');
+            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading';
+            pin.style.transform = 'scale(1.25)';
+          } else {
+            card.className = 'hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs';
+            const numBadge = card.querySelector('span');
+            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading';
+            pin.style.transform = 'scale(1)';
+          }
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeNavDrawer();
+        closeOrderModal();
+      }
+    });
+  </script>
+</body>
+</html>

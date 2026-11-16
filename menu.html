@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Menu (270+ Dishes) | The Red Box</title>
+  <meta name="description" content="Explore our authentic Indo-Chinese menu with 270+ freshly wok-tossed dishes, momos, noodles, fried rice, and gravies.">
+  <link rel="icon" type="image/png" href="assets/images/fav-icon.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#D9232D',
+              'red-dark': '#B51B24',
+              'red-light': '#FFF1F2',
+              'red-lacquer': '#C41E3A',
+              gold: '#C5A059',
+              'gold-light': '#F7F3E9',
+              'gold-bright': '#D4AF37',
+              'gold-dark': '#9A7B38',
+              slate: '#1C1D1F',
+              'slate-light': '#2A2B2E',
+            },
+            canvas: {
+              white: '#FFFFFF',
+              ivory: '#FAF7F2',
+              cream: '#F4EFE6'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            heading: ['Montserrat', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex flex-col bg-white text-zinc-900 antialiased selection:bg-brand-red selection:text-white">
+
+  <!-- ================= BRAND MINIMAL HEADER (EXACT SPECIFICATION) ================= -->
+  <!-- ======================================================== -->
+  <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
+  <!-- ======================================================== -->
+  <!-- ======================================================== -->
+  <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
+  <!-- ======================================================== -->
+  <!-- ======================================================== -->
+  <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
+  <!-- ======================================================== -->
+  <!-- ======================================================== -->
+  <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-zinc-200 shadow-xs backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6">
+      
+      <!-- Brand Logo Left -->
+      <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
+        <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+      </a>
+
+      <!-- Desktop Nav: Inline Navigation Links (Visible on tablets and desktop: md and up) -->
+      <nav class="hidden md:flex items-center gap-1.5 xl:gap-3">
+        <a href="index.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
+        <a href="menu.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>Menu</span></a>
+        <a href="branches.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
+        <a href="about.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>About Us</span></a>
+        <a href="catering.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
+        <a href="franchise.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
+        <a href="blog.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Stories</span></a>
+      </nav>
+
+      <!-- Header Right: WOK HEI Badge & Order Online Button -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[#C5A059] font-heading font-extrabold text-xs tracking-wider uppercase select-none whitespace-nowrap">
+          
+          <span>WOK HEI FRESH</span>
+        </div>
+        <button onclick="openOrderModal()" class="inline-flex items-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 active:scale-98 transition-all cursor-pointer whitespace-nowrap flex-shrink-0">
+          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+          <span>Order Online</span>
+        </button>
+        <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="md:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
+          <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
+        </button>
+      </div>
+
+    </div>
+
+        <!-- Neat Compact Mobile Dropdown (Directly below navbar, NOT a screen-blocking modal) -->
+    <div id="mobileDropdown" class="hidden md:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
+      <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
+        <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
+        <a href="menu.html" class="px-3 py-2 text-xs font-heading font-black text-brand-red border-l-2 border-brand-red bg-zinc-100/70 rounded-md flex items-center justify-between"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
+        <a href="branches.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Branches</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700">57+ Hubs</span></a>
+        <a href="about.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>About Us</span></a>
+        <a href="catering.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Catering</span></a>
+        <a href="franchise.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Franchise</span></a>
+      </div>
+      <div class="flex items-center justify-between text-xs px-1 pt-0.5">
+        <a href="tel:04443533333" class="flex items-center gap-1.5 font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+          <span>044 4353 3333</span>
+        </a>
+        <a href="admin.html" class="flex items-center gap-1 text-[11px] font-heading font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="shield" class="w-3 h-3 text-amber-500"></i>
+          <span>Admin</span>
+        </a>
+        <button onclick="openOrderModal()" class="text-[11px] font-heading font-bold text-brand-red hover:underline cursor-pointer">Quick Order</button>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <main class="flex-grow py-12 product-section-highlight relative overflow-hidden">
+    <!-- Golden Dragon Highlight Watermarks -->
+    <div class="dragon-watermark-right"></div>
+    <div class="dragon-watermark-left"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Dynamic Branch Context Header (Shown when arriving from a specific branch e.g. menu.html?branch=...) -->
+      <div id="branchContextHeader" class="hidden mb-8 p-5 sm:p-6 bg-white border border-red-200/80 rounded-3xl shadow-sm relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+          <i data-lucide="store" class="w-48 h-48 text-brand-red"></i>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative z-10">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span id="branchHeaderCode" class="px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-700 font-mono text-[10px] font-bold">RBX-IND-CHN-001</span>
+              <span id="branchHeaderRegion" class="px-2 py-0.5 rounded-md bg-red-50 text-brand-red text-[10px] font-extrabold uppercase">Asia · India</span>
+              <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Open Store
+              </span>
+            </div>
+            <h2 id="branchHeaderName" class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900 tracking-tight">
+              RedBox Anna Nagar
+            </h2>
+            <p id="branchHeaderAddress" class="text-xs text-zinc-500 mt-1 max-w-xl">
+              Plot 104, 2nd Avenue, Near Roundana, Anna Nagar East, Chennai, Tamil Nadu 600040
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <a href="#menuDishesSection" class="px-4 py-2 rounded-xl bg-brand-red text-white text-xs font-heading font-bold uppercase tracking-wider shadow-sm hover:bg-brand-red-dark transition-all flex items-center gap-1.5">
+              <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
+              <span>Browse Dishes</span>
+            </a>
+            <a href="#cateringSection" class="px-4 py-2 rounded-xl bg-amber-500 text-white text-xs font-heading font-bold uppercase tracking-wider shadow-sm hover:bg-amber-600 transition-all flex items-center gap-1.5">
+              <i data-lucide="users" class="w-3.5 h-3.5"></i>
+              <span>Catering Services</span>
+            </a>
+            <a href="branches.html" class="px-3.5 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold transition-all flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-zinc-400"></i>
+              <span>Change Branch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Location & Order / Takeaway Fulfillment Bar -->
+      <div id="menuFulfillmentBar" class="fulfillment-bar mb-8 p-3 sm:p-4 rounded-2xl sm:rounded-3xl shadow-sm relative z-30 transition-all">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          
+          <!-- Left: Location Indicator & Kitchen Hub Info -->
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div id="locationPinIconContainer" class="w-11 h-11 rounded-2xl bg-red-50 border border-red-200/60 flex items-center justify-center flex-shrink-0 text-brand-red shadow-xs">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span id="fulfillmentModeLabel" class="text-[10px] font-heading font-extrabold uppercase tracking-wider text-zinc-400">Delivering To</span>
+                <span id="serviceZoneStatusChip" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span id="serviceZoneStatusText">Nearby Branch Active</span>
+                </span>
+              </div>
+              <div class="flex items-center gap-2 mt-0.5">
+                <h3 id="currentLocalityDisplay" class="font-heading font-black text-sm sm:text-base text-zinc-900 truncate">
+                  Detecting your neighborhood...
+                </h3>
+                <button onclick="openLocationSelectorModal()" class="px-2.5 py-0.5 text-xs font-bold text-brand-red hover:text-brand-red-dark hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 cursor-pointer flex-shrink-0" title="Change Location or Branch">
+                  <span>Change</span>
+                  <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+              <p id="nearestBranchInfoDisplay" class="text-[11px] text-zinc-500 mt-0.5 truncate">
+                Checking nearest of 57 culinary hubs...
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Delivery vs Takeaway Segmented Toggle -->
+          <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 self-start md:self-auto">
+            <div class="inline-flex p-1 bg-zinc-100/90 rounded-2xl border border-zinc-200/70 shadow-inner" role="group">
+              <button id="toggleBtnDelivery" onclick="setFulfillmentMode('delivery')" class="fulfillment-toggle-pill active px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-extrabold flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="bike" class="w-3.5 h-3.5"></i>
+                <span>Order Delivery</span>
+                <span id="deliveryEtaBadge" class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded font-sans font-bold bg-black/20 text-white ml-1">30-40m</span>
+              </button>
+              <button id="toggleBtnTakeaway" onclick="setFulfillmentMode('takeaway')" class="fulfillment-toggle-pill inactive px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-extrabold flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>Takeaway</span>
+                <span id="takeawayEtaBadge" class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded font-sans font-bold bg-zinc-200 text-zinc-700 ml-1">15m ready</span>
+              </button>
+            </div>
+
+            <!-- Enable GPS Button (Visible when location is not yet permitted) -->
+            <button id="btnRequestLocationAccess" onclick="detectUserGPS(true)" class="hidden px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer animate-pulse">
+              <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+              <span>Allow GPS</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Out-of-Service Zone Experience Card (Displayed when user is > 25km from nearest branch) -->
+      <div id="outOfServiceZoneBanner" class="hidden out-of-zone-container mb-12 rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all">
+        <!-- Background Watermark Accent -->
+        <div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none">
+          <i data-lucide="map-pin-off" class="w-72 h-72 text-amber-900"></i>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <!-- Left Side: Message & Constructive Actions -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-[10px] sm:text-xs font-heading font-extrabold uppercase tracking-wider border border-amber-300/80">
+                <i data-lucide="map-pin-off" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>Beyond Instant Delivery Radius</span>
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-700 text-[10px] font-bold">
+                Showcase Mode Active
+              </span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-zinc-900 tracking-tight leading-tight">
+              We Haven't Landed in Your Neighborhood Yet!
+            </h2>
+
+            <p class="text-xs sm:text-sm text-zinc-700 leading-relaxed">
+              Red Box currently operates <strong class="text-zinc-900">57 artisanal kitchen hubs</strong> across South India, the Gulf, Singapore, and London. Your location in <span id="outOfZoneUserLocality" class="font-bold text-brand-red">your area</span> is approximately <strong id="outOfZoneDistanceKm" class="text-zinc-900 font-extrabold">-- km</strong> away from our nearest kitchen (<span id="outOfZoneNearestBranchName" class="font-bold text-zinc-900">Nearest Hub</span>).
+            </p>
+
+            <div class="bg-white/85 backdrop-blur-xs p-3.5 rounded-2xl border border-amber-200/80 text-xs text-zinc-600 space-y-2 shadow-xs">
+              <div class="flex items-start gap-2">
+                
+                <p><strong>12 km Strict Freshness Policy:</strong> Because our Indo-Chinese dishes are tossed in blistering 1,000°F woks and dispatched piping hot (>65°C), instant home delivery is restricted to a 12 km radius.</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5"></i>
+                <p><strong>Explore our 270+ Master Dishes:</strong> You can still freely browse the complete culinary roster, spice levels, and ingredients below in Showcase Mode.</p>
+              </div>
+            </div>
+
+            <!-- Out of Service Zone Actions -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button onclick="openCityNotifyModal()" class="px-4 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="bell-ring" class="w-3.5 h-3.5"></i>
+                <span>Vote For My City / Notify Me</span>
+              </button>
+              <button onclick="openLocationSelectorModal()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-zinc-50 text-zinc-700 text-xs font-heading font-bold border border-zinc-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-zinc-400"></i>
+                <span>Pick a Serving Branch</span>
+              </button>
+              <a href="catering.html" class="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-heading font-bold border border-amber-200/80 transition-all flex items-center gap-1.5">
+                <i data-lucide="truck" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>Bulk Interstate Catering (>50 Boxes)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Side: Graphic / Image Card Indicating Out-of-Service Zone -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-amber-200/90 bg-white group">
+              <img src="assets/images/out-of-service-zone.jpg" alt="RedBox Expanding Soon" class="w-full h-64 sm:h-72 object-cover group-hover:scale-103 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/90 text-[10px] font-heading font-black tracking-wider uppercase mb-1">
+                  Global Expansion 2026
+                </span>
+                <h4 class="font-serif font-bold text-base sm:text-lg leading-snug">Bringing Authentic Wok Hei to New Cities</h4>
+                <p class="text-[11px] text-zinc-200 mt-1">57 hubs and counting. Help us choose our next kitchen location!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Page Banner Header -->
+      <div id="menuDishesSection" class="mb-16">
+        
+        <!-- 2-Column Responsive Grid: Left Sidebar + Right Dishes Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT SIDEBAR: Professional Filter Panel (4 cols on lg, 3 on xl) -->
+          <aside class="lg:col-span-4 xl:col-span-3 bg-white rounded-3xl border border-zinc-200 shadow-sm p-5 space-y-5 sticky top-24">
+            
+            <!-- Filter Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-100">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sliders-horizontal" class="w-4 h-4 text-brand-red"></i>
+                <h3 class="font-heading font-extrabold text-zinc-900 text-xs uppercase tracking-wider">Filter Menu</h3>
+              </div>
+              <button onclick="resetWebsiteMenuFilters()" class="text-[11px] font-bold text-zinc-400 hover:text-brand-red transition flex items-center gap-1 cursor-pointer" title="Reset all filters">
+                <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                <span>Reset</span>
+              </button>
+            </div>
+
+            <!-- Dish Search Box -->
+            <div>
+              <label class="block text-[10px] font-extrabold text-zinc-400 uppercase tracking-wider mb-1.5">Dish Search</label>
+              <div class="relative">
+                <i data-lucide="search" class="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input type="text" id="menuSearchInput" oninput="onWebsiteMenuSearch()" placeholder="Search momos, noodles..." class="w-full pl-9 pr-3 py-2 text-xs font-medium bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition-all">
+              </div>
+            </div>
+
+            <!-- Major Categories (Vertical List with real-time count badges) -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-[10px] font-extrabold text-zinc-400 uppercase tracking-wider">Major Categories</label>
+                <span id="labelSelectedMajorCatWeb" class="text-[10px] font-bold text-brand-red">All Dishes</span>
+              </div>
+              <div id="websiteMajorCategoriesList" class="space-y-1 max-h-[320px] overflow-y-auto pr-1 text-xs">
+                <!-- Dynamically populated by JS -->
+              </div>
+            </div>
+
+
+
+          </aside>
+
+          <!-- RIGHT MAIN: Dishes Grid & Pagination (8 cols on lg, 9 on xl) -->
+          <main class="lg:col-span-8 xl:col-span-9 space-y-6">
+            
+            <!-- Summary Strip -->
+            <div class="p-3 sm:p-4 bg-zinc-50 rounded-2xl border border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-heading font-black text-brand-slate text-sm sm:text-base" id="webCategoryHeadingTitle">All Dishes</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-zinc-200 text-zinc-700 font-bold text-xs" id="webCategoryCountBadge">271 dishes</span>
+                <span class="hidden xl:inline-block text-xs text-zinc-400 font-medium">
+                  (Showing <span id="displayedCount" class="font-bold text-zinc-700">12</span> of <span id="totalFilteredCount" class="font-bold text-zinc-700">271</span> dishes)
+                </span>
+                <!-- Hidden count fallbacks for small screens -->
+                <span class="xl:hidden hidden"><span id="displayedCountFallback">12</span><span id="totalFilteredCountFallback">271</span></span>
+              </div>
+
+              <!-- Dietary Type Filter (All / Veg / Non-Veg) -->
+              <div class="inline-flex p-1 bg-zinc-200/70 rounded-2xl border border-zinc-200 text-xs font-bold shadow-2xs self-start sm:self-auto" role="group">
+                <button type="button" onclick="setFoodTypeFilter('all')" id="filterTypeAll" class="food-filter-btn px-4 py-1.5 rounded-xl bg-white text-zinc-900 shadow-sm transition text-center cursor-pointer">
+                  All
+                </button>
+                <button type="button" onclick="setFoodTypeFilter('veg')" id="filterTypeVeg" class="food-filter-btn px-3.5 py-1.5 rounded-xl text-zinc-600 hover:text-emerald-700 transition text-center flex items-center justify-center gap-1.5 cursor-pointer">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 flex-shrink-0"></span>
+                  <span>Veg</span>
+                </button>
+                <button type="button" onclick="setFoodTypeFilter('non-veg')" id="filterTypeNonVeg" class="food-filter-btn px-3.5 py-1.5 rounded-xl text-zinc-600 hover:text-brand-red transition text-center flex items-center justify-center gap-1.5 cursor-pointer">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-red flex-shrink-0"></span>
+                  <span>Non-Veg</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Dishes Grid -->
+            <div id="menuItemsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              <!-- Dynamically populated from data/menu.json -->
+            </div>
+
+            <!-- Load More / Progressive Expansion Button -->
+            <div class="pt-6 text-center">
+              <button id="loadMoreMenuBtn" onclick="loadMoreMenuItems()" class="px-8 py-3.5 bg-zinc-900 hover:bg-brand-red text-white font-extrabold text-xs uppercase tracking-wider rounded-full transition-all shadow-sm hover:shadow-md cursor-pointer">
+                Show More Dishes (<span id="loadMoreRemainingCount">+12 More</span>)
+              </button>
+            </div>
+
+          </main>
+
+        </div>
+
+      </div>
+
+      <!-- ================= COMBINED CAMPUS & CORPORATE CATERING SECTION ================= -->
+      <section id="cateringSection" class="mt-12 py-10 sm:py-12 px-6 sm:px-10 bg-white rounded-3xl border border-[#E6DBC6] shadow-sm">
+        
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-wider uppercase mb-2">
+            <i data-lucide="chef-hat" class="w-3.5 h-3.5"></i>
+            <span>Event & Corporate Hospitality</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-heading font-black text-brand-slate uppercase">
+            Campus Fests & Corporate Catering
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-600 mt-2">
+            Fulfilled directly by your local Red Box hub. From 30-person executive lunches to 5,000-person college fests with live wok fire theatre.
+          </p>
+        </div>
+
+        <!-- Two Packages Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Package 1: Corporate Meal Boxes -->
+          <div class="bg-white border border-zinc-200 rounded-2xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-1 rounded-md">Option A</span>
+                <span class="text-xl font-black text-brand-slate">From ₹150 <span class="text-xs text-zinc-500 font-normal">/ box</span></span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 mb-3">Bulk Corporate Meal Boxes</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mb-6 leading-relaxed">
+                Individually sealed hot noodle & rice boxes, packed with appetisers, dips, and fortune cookies. Perfect for desk delivery, seminars, and training batches.
+              </p>
+              <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Minimum batch: 20 boxes</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Choice of Veg / Non-Veg split</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Guaranteed 45-minute temperature retention</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Cutlery & napkin kit included</li>
+              </ul>
+            </div>
+            <button onclick="openCateringModal('Bulk Corporate Boxes')" class="w-full py-3 bg-zinc-900 hover:bg-black text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer">
+              Book Meal Boxes
+            </button>
+          </div>
+
+          <!-- Package 2: Live Wok Cooking Counters -->
+          <div class="bg-white border-2 border-brand-red/30 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition-all flex flex-col justify-between relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-brand-red text-white text-[10px] font-extrabold uppercase px-4 py-1 rounded-bl-xl">
+              Most Popular
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Option B</span>
+                <span class="text-xl font-black text-brand-slate">From ₹650 <span class="text-xs text-zinc-500 font-normal">/ person</span></span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 mb-3">Live Wok Counter Experience</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mb-6 leading-relaxed">
+                Our chef brings the wok station to your venue! Sizzling open flames, customized tossed noodles on demand, piping hot dim sums, and instant street-style theatre.
+              </p>
+              <ul class="space-y-2.5 text-xs text-zinc-700 font-medium mb-6">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Full live station setup with master chefs</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Made-to-order spicy levels & sauces</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Complete waste management & disposal</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Ideal for college fests & annual corporate parties</li>
+              </ul>
+            </div>
+            <button onclick="openCateringModal('Live Wok Counter')" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
+              Request Live Wok Counter
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Interactive Calculator -->
+        <div class="bg-amber-50/50 border border-amber-200/80 rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto shadow-xs">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="calculator" class="w-5 h-5 text-brand-red"></i>
+            <h3 class="font-heading font-extrabold text-lg text-zinc-900">Instant Catering Cost Estimator</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+            <div>
+              <label class="block text-xs font-bold text-zinc-700 uppercase mb-2">Package Type</label>
+              <select id="calcPackage" onchange="calculateCateringEstimate()" class="w-full p-2.5 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
+                <option value="150">Bulk Meal Boxes (₹150/box)</option>
+                <option value="250">Executive Lunch Box (₹250/box)</option>
+                <option value="650" selected>Live Wok Station (₹650/head)</option>
+              </select>
+
+              <div class="mt-4">
+                <div class="flex justify-between text-xs font-bold text-zinc-700 uppercase mb-1">
+                  <span>Number of Guests:</span>
+                  <span id="guestCountDisplay" class="text-brand-red font-black text-sm">100</span>
+                </div>
+                <input type="range" id="guestSlider" min="20" max="1000" step="10" value="100" oninput="calculateCateringEstimate()" class="w-full accent-brand-red">
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 border border-zinc-200 text-center flex flex-col justify-center shadow-xs">
+              <span class="text-xs uppercase font-extrabold tracking-wider text-zinc-400">Estimated Total</span>
+              <div id="estimatedCostDisplay" class="text-3xl font-heading font-black text-brand-slate my-1">₹ 65,000</div>
+              <span class="text-[11px] text-zinc-500 mb-3">*Subject to GST & venue logistics</span>
+              <button onclick="openCateringModalWithEstimate()" class="py-2.5 px-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer">
+                Lock In This Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= GROUNDED DARK SLATE FOOTER ================= -->
+  <footer class="bg-brand-slate text-zinc-400 pt-16 pb-12 border-t border-zinc-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
+        
+        <div class="lg:col-span-4 space-y-4">
+          <div class="inline-flex items-center py-1">
+            <img src="assets/images/logo-white-text.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-11 sm:h-12 w-auto object-contain">
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Pioneering the authentic wok-box takeaway movement across India. Premium ingredients, zero synthetic food colorings, and 100% recyclable heat-locking packaging.
+          </p>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Sections</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-brand-red transition-colors">Home</a></li>
+            <li><a href="menu.html" class="text-brand-red font-bold">Food Menu</a></li>
+            <li><a href="about.html" class="hover:text-brand-red transition-colors">About Us</a></li>
+            <li><a href="about.html#the-box" class="hover:text-brand-red transition-colors">The Box USP</a></li>
+            <li><a href="branches.html" class="hover:text-brand-red transition-colors">Branches</a></li>
+            <li><a href="catering.html" class="hover:text-brand-red transition-colors">Catering</a></li>
+            <li><a href="franchise.html" class="hover:text-brand-red transition-colors">Franchise</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Helpline & Branches</h4>
+          <div class="text-xs text-zinc-300">
+            Helpline: <a href="tel:+918939444411" class="font-bold text-brand-red hover:underline">+91 89394 44411</a>
+          </div>
+          <p class="text-xs text-zinc-400">
+            Chennai (26) · Bengaluru (8) · Hyderabad (6) · Coimbatore (4) · Madurai · Puducherry · Vizag · Nagpur
+          </p>
+        </div>
+
+        <div class="lg:col-span-3 space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Order Online</h4>
+          <div class="flex items-center gap-3">
+            <img src="assets/images/swiggy.png" alt="Swiggy" class="h-6 w-auto cursor-pointer" onclick="openOrderModal()">
+            <img src="assets/images/zomato.png" alt="Zomato" class="h-5 w-auto cursor-pointer" onclick="openOrderModal()">
+            <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-6 w-auto cursor-pointer" onclick="openWhatsAppModal()">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 text-center text-xs text-zinc-500">
+        © 2026 The Red Box Food Enterprises Pvt. Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  
+  <!-- Catering Booking Modal -->
+  <div id="cateringModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeCateringModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-amber-600">Events & Catering</span>
+        <h3 class="text-2xl font-serif font-bold text-zinc-900 tracking-tight mt-1">Book Catering</h3>
+        <p id="cateringModalSubtitle" class="text-xs text-zinc-500 mt-1">Fill out the details and our event manager will connect with you.</p>
+      </div>
+
+      <form id="cateringForm" onsubmit="handleCateringSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Contact Name *</label>
+          <input type="text" id="cateringName" required placeholder="Your Name" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Phone Number *</label>
+            <input type="tel" id="cateringPhone" required placeholder="+91 98765 43210" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Event Date *</label>
+            <input type="date" id="cateringDate" required class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Expected Guests</label>
+            <input type="number" id="cateringModalGuests" value="100" class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Selected Package</label>
+            <input type="text" id="cateringModalPackage" readonly class="w-full p-2.5 text-xs border border-zinc-200 bg-zinc-50 rounded-xl text-zinc-700 font-bold">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-zinc-700 mb-1">Fulfilling Branch / Venue Details</label>
+          <textarea id="cateringNotes" rows="3" placeholder="Fulfilling branch, college auditorium, tech park tower, preferences..." class="w-full p-2.5 text-xs border border-zinc-300 rounded-xl focus:outline-none focus:border-brand-red"></textarea>
+        </div>
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer">
+            Request Official Quote
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Modal -->
+  <div id="orderModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-zinc-200 relative">
+      <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-5">
+        <img src="assets/images/logo.png" alt="Logo" class="h-10 w-auto mx-auto mb-2">
+        <h3 id="orderModalHeading" class="text-2xl font-serif font-bold text-zinc-900 tracking-tight">Order Fresh Delivery</h3>
+        <p id="orderModalSubtitle" class="text-xs text-zinc-500 mt-1">Direct from nearest kitchen hub</p>
+      </div>
+      <div class="space-y-3">
+        <a id="orderModalSwiggyLink" href="https://www.swiggy.com/direct/brand/1636?source=swiggy-direct&subSource=branches" target="_blank" class="flex items-center justify-between p-4 rounded-2xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/swiggy.png" alt="Swiggy" class="h-7 w-auto">
+            <div>
+              <span class="font-bold text-sm text-zinc-900 block">Swiggy Direct</span>
+              <span id="orderModalSwiggyNote" class="text-[11px] text-zinc-500">Live order tracking & fast delivery</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a id="orderModalZomatoLink" href="https://www.zomato.com/search?query=RedBox" target="_blank" class="flex items-center justify-between p-4 rounded-2xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/zomato.png" alt="Zomato" class="h-6 w-auto">
+            <div>
+              <span class="font-bold text-sm text-zinc-900 block">Zomato</span>
+              <span id="orderModalZomatoNote" class="text-[11px] text-zinc-500">Fast delivery from nearest hub</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a id="orderModalWhatsappLink" href="https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20takeaway" target="_blank" class="flex items-center justify-between p-4 rounded-2xl border border-zinc-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-7 w-auto">
+            <div>
+              <span class="font-bold text-sm text-zinc-900 block">WhatsApp Direct / Takeaway</span>
+              <span id="orderModalWhatsappNote" class="text-[11px] text-zinc-500">Instant pickup pre-order</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location Selection & Verification Modal -->
+  <div id="locationSelectorModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeLocationSelectorModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Delivery Location</h3>
+          <p class="text-xs text-zinc-500">Verify branch proximity (12 km hot delivery radius) and dish availability</p>
+        </div>
+      </div>
+
+      <!-- Option 1: Live GPS Detection -->
+      <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-5 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0">
+            <i data-lucide="navigation" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0">
+            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
+            <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">Detect nearest branch instantly</p>
+          </div>
+        </div>
+        <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+          <span id="btnModalDetectGpsText">Detect Location</span>
+          <i data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Quick Test Presets (For Demonstration & Immediate Testing) -->
+      <div class="mb-5">
+        <div class="flex items-center justify-between mb-2">
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">Quick Test Presets</label>
+          <span class="text-[10px] text-zinc-400">Click to preview use case</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <button onclick="setTestPresetLocation('in-zone')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center gap-1.5 text-emerald-800 text-[11px] font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> In-Zone (1.8 km)
+            </div>
+            <p class="text-[10px] text-zinc-600 mt-0.5">Anna Nagar, Chennai</p>
+          </button>
+          <button onclick="setTestPresetLocation('takeaway-zone')" class="p-2.5 rounded-xl border border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center gap-1.5 text-amber-800 text-[11px] font-bold">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span> Takeaway (16 km)
+            </div>
+            <p class="text-[10px] text-zinc-600 mt-0.5">Tambaram / Outer</p>
+          </button>
+          <button onclick="setTestPresetLocation('out-of-zone')" class="p-2.5 rounded-xl border border-red-200 bg-red-50/60 hover:bg-red-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center gap-1.5 text-red-800 text-[11px] font-bold">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span> Out of Zone (320 km)
+            </div>
+            <p class="text-[10px] text-zinc-600 mt-0.5">New Delhi / Remote</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Branches & Areas -->
+      <div class="mb-3">
+        <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1.5">Or Choose from 57 Kitchen Hubs</label>
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-3"></i>
+          <input type="text" id="modalBranchSearchInput" oninput="filterModalBranches(this.value)" placeholder="Search city or branch (e.g. Anna Nagar, Indiranagar, Dubai...)" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none">
+        </div>
+      </div>
+
+      <!-- Scrollable Branch List -->
+      <div id="modalBranchListContainer" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Vote / Notify for City Modal (For Out-of-Zone Users) -->
+  <div id="cityNotifyModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative">
+      <button onclick="closeCityNotifyModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 mx-auto flex items-center justify-center mb-2">
+          <i data-lucide="bell" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Bring Red Box to Your City</h3>
+        <p class="text-xs text-zinc-500 mt-1">Vote for your neighborhood! When our 1,000°F woks launch in your area, you'll receive a free opening feast voucher.</p>
+      </div>
+
+      <form id="cityNotifyForm" onsubmit="submitCityNotify(event)" class="space-y-3.5">
+        <div>
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1">Your City / Area</label>
+          <input type="text" id="cityNotifyCityInput" required placeholder="e.g. New Delhi, Mumbai, Pune..." class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none">
+        </div>
+        <div>
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1">Mobile / WhatsApp</label>
+          <input type="tel" id="cityNotifyPhoneInput" required placeholder="e.g. +91 98765 43210" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none">
+        </div>
+        <div>
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1">Email Address</label>
+          <input type="email" id="cityNotifyEmailInput" required placeholder="your.name@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all cursor-pointer">
+          Vote For My City & Get Voucher
+        </button>
+      </form>
+
+      <div id="cityNotifySuccess" class="hidden text-center py-4 space-y-2">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center">
+          <i data-lucide="check" class="w-6 h-6"></i>
+        </div>
+        <h4 class="font-serif font-bold text-zinc-900 text-base">You're On The VIP Launch List!</h4>
+        <p class="text-xs text-zinc-600">We've registered your interest for <span id="cityNotifyConfirmedCity" class="font-bold text-brand-red"></span>. You'll receive opening updates and your complimentary Wok Box voucher on opening week!</p>
+        <button onclick="closeCityNotifyModal()" class="mt-3 px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold rounded-xl transition cursor-pointer">Continue Browsing Showcase</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    function toggleMobileNav() {
+      const dropdown = document.getElementById('mobileDropdown');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (dropdown) {
+        dropdown.classList.toggle('hidden');
+        if (icon) {
+          if (dropdown.classList.contains('hidden')) {
+            icon.setAttribute('data-lucide', 'menu');
+          } else {
+            icon.setAttribute('data-lucide', 'x');
+          }
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+    }
+    function toggleNavDrawer() { toggleMobileNav(); }
+    function closeNavDrawer() {
+      const dropdown = document.getElementById('mobileDropdown');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (dropdown && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'menu');
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+    }
+  </script>
+</body>
+</html>

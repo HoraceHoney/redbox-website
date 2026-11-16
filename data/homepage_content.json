@@ -1,0 +1,290 @@
+{
+  "heroSlider": [
+    {
+      "id": "slide-1",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-02.jpg",
+      "tag": "1000\u00b0F FLAME CRAFT",
+      "title": "1000\u00b0F Searing Flame & Wok Hei",
+      "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "Explore Full Menu",
+        "link": "menu.html",
+        "icon": "utensils"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-2",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-01.jpg",
+      "tag": "SIGNATURE DIM SUMS",
+      "title": "Real Wok Craft. Iconic Red Box.",
+      "desc": "Steaming, freshly tossed Indo-Chinese specialties packed hot in our 45-minute heat-retention fold box.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "Explore Full Menu",
+        "link": "menu.html",
+        "icon": "utensils"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-3",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-02.jpg",
+      "tag": "1000\u00b0F FLAME CRAFT",
+      "title": "Sizzling Wok Hei Flavours",
+      "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma and crisp vegetable crunch.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "Explore Full Menu",
+        "link": "menu.html",
+        "icon": "utensils"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-4",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-03.jpg",
+      "tag": "ARTISANAL SPICE BLENDS",
+      "title": "Legendary Dragon Chicken & Gravies",
+      "desc": "Crafted fresh daily with whole sun-dried chillies, crushed garlic, and zero artificial preservatives.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "Explore Full Menu",
+        "link": "menu.html",
+        "icon": "utensils"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-5",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-04.jpg",
+      "tag": "PATENTED THERMAL PACKAGING",
+      "title": "Piping Hot Comfort On The Go",
+      "desc": "Virgin eco-board geometric fold keeps your meal above 65\u00b0C for 45 minutes on the road.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "The Box Innovation",
+        "link": "about.html#the-box",
+        "icon": "box"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-6",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-05.jpg",
+      "tag": "GLOBAL EXPANSION",
+      "title": "57+ Branches Across Global Hubs",
+      "desc": "India\u2019s fastest growing organized Indo-Chinese quick service restaurant chain, serving 100,000+ meals monthly.",
+      "playToEnd": false,
+      "duration": 6,
+      "primaryCta": {
+        "text": "Explore 57 Branches",
+        "link": "branches.html",
+        "icon": "map-pin"
+      },
+      "secondaryCta": {
+        "text": "Franchise Model",
+        "link": "franchise.html",
+        "icon": "briefcase"
+      },
+      "active": true
+    },
+    {
+      "id": "slide-1794654038732",
+      "type": "image",
+      "media": "assets/images/hdr-bnr-03.jpg",
+      "tag": "ARTISANAL SPICE BLENDS",
+      "title": "Legendary Dragon Chicken & Gravies",
+      "desc": "Crafted fresh daily with whole sun-dried chillies and crushed garlic.",
+      "playToEnd": false,
+      "duration": 6,
+      "fit": "cover",
+      "quality": "fullhd",
+      "primaryCta": {
+        "text": "Explore Full Menu",
+        "link": "menu.html",
+        "icon": "utensils"
+      },
+      "secondaryCta": {
+        "text": "Order Online",
+        "action": "openOrderModal()",
+        "icon": "shopping-bag"
+      },
+      "active": true
+    }
+  ],
+  "newReleases": {
+    "sectionTag": "JUST LAUNCHED \u00b7 SEASONAL WOK CREATIONS",
+    "sectionTitle": "New Releases & Chef Specials",
+    "sectionSubtitle": "Freshly crafted recipes from our master chefs, tossed in blistering 1000\u00b0F woks and packed steaming hot in our 45-min fold box.",
+    "items": [
+      {
+        "id": "rel-1",
+        "name": "Fiery Dragon Prawn Wok Box",
+        "tag": "CHEF SIGNATURE",
+        "foodType": "nonveg",
+        "category": "Signature Starters",
+        "price": 380,
+        "image": "assets/images/FO1.jpg",
+        "desc": "Jumbo tiger prawns flash-seared with crushed bird's eye chillies, scallions, and toasted sesame oil in our 45-min heat seal box.",
+        "active": true
+      },
+      {
+        "id": "rel-2",
+        "name": "Truffle Butter Garlic Veg Dim Sums",
+        "tag": "LIMITED EDITION",
+        "foodType": "veg",
+        "category": "Artisanal Dim Sums",
+        "price": 260,
+        "image": "assets/images/FO2.jpg",
+        "desc": "Delicate translucent parcels filled with water chestnuts, shiitake, and wild mushrooms drizzled with white truffle oil.",
+        "active": true
+      },
+      {
+        "id": "rel-3",
+        "name": "Smoky Sichuan Crispy Lamb Box",
+        "tag": "NEW RELEASE",
+        "foodType": "nonveg",
+        "category": "Wok Specials",
+        "price": 395,
+        "image": "assets/images/FO3.jpg",
+        "desc": "Shredded crispy tender lamb tossed with roasted Sichuan peppercorns, scallions, and caramelized dark ginger glaze.",
+        "active": true
+      }
+    ]
+  },
+  "featuredSignatures": {
+    "sectionTag": "CROWD FAVORITES",
+    "sectionTitle": "Signature Bestsellers",
+    "sectionSubtitle": "The most loved wok creations across 57 branches, prepared fresh to order.",
+    "items": [
+      {
+        "id": "feat-1",
+        "name": "Legendary Dragon Chicken",
+        "category": "Chicken Starters",
+        "rating": "4.9\u2605",
+        "tag": "20% OFF",
+        "originalPrice": 350,
+        "price": 280,
+        "discountPercent": 20,
+        "foodType": "nonveg",
+        "isVeg": false,
+        "image": "assets/images/FO4.jpg",
+        "desc": "Crispy chicken strips tossed in spicy red garlic sauce, cashews, and fiery sun-dried chillies.",
+        "active": true
+      },
+      {
+        "id": "feat-2",
+        "name": "Signature Schezwan Fried Rice",
+        "category": "Fried Rice",
+        "rating": "4.8\u2605",
+        "tag": "15% OFF",
+        "originalPrice": 260,
+        "price": 221,
+        "discountPercent": 15,
+        "foodType": "veg",
+        "isVeg": true,
+        "image": "assets/images/FO5.jpg",
+        "desc": "Long grain basmati rice tossed with fresh garden vegetables and in-house fermented Schezwan chilli oil.",
+        "active": true
+      },
+      {
+        "id": "feat-3",
+        "name": "Chilli Garlic Chicken Hakka Noodles",
+        "category": "Hakka Noodles",
+        "rating": "4.9\u2605",
+        "tag": "20% OFF",
+        "originalPrice": 300,
+        "price": 240,
+        "discountPercent": 20,
+        "foodType": "nonveg",
+        "isVeg": false,
+        "image": "assets/images/FO3.jpg",
+        "desc": "Fresh hand-pulled noodles stir-fried with shredded chicken, crunchy bell peppers, and roasted garlic wok char.",
+        "active": true
+      },
+      {
+        "id": "feat-5",
+        "name": "Paneer Manchurian Dry Bowl",
+        "category": "Veg Starters",
+        "rating": "4.7\u2605",
+        "tag": "15% OFF",
+        "originalPrice": 270,
+        "price": 230,
+        "discountPercent": 15,
+        "foodType": "veg",
+        "isVeg": true,
+        "image": "assets/images/FO1.jpg",
+        "desc": "Fresh cottage cheese cubes flash-fried and glazed in dark soy, green chillies, coriander, and ginger.",
+        "active": true
+      },
+      {
+        "id": "feat-4",
+        "name": "Steamed Chicken Momos in Red Garlic",
+        "category": "Dim Sums & Momos",
+        "rating": "4.9\u2605",
+        "tag": "20% OFF",
+        "originalPrice": 260,
+        "price": 208,
+        "discountPercent": 20,
+        "foodType": "nonveg",
+        "isVeg": false,
+        "image": "assets/images/FO2.jpg",
+        "desc": "Paper-thin steamed dumplings filled with juicy seasoned chicken mince, served with spicy red chutney.",
+        "active": true
+      },
+      {
+        "id": "feat-6",
+        "name": "Classic Bento Fold Box Meal",
+        "category": "Meal Boxes",
+        "rating": "4.9\u2605",
+        "tag": "20% OFF",
+        "originalPrice": 360,
+        "price": 288,
+        "discountPercent": 20,
+        "foodType": "nonveg",
+        "isVeg": false,
+        "image": "assets/images/hdr-bnr-04.jpg",
+        "desc": "Choice of Hakka Noodles or Fried Rice paired with Chicken Manchurian, 2 Steamed Momos, and Kimchi salad.",
+        "active": true
+      }
+    ]
+  }
+}

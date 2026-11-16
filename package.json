@@ -1,0 +1,13 @@
+{
+  "name": "redbox-localhost-app",
+  "version": "2.4.0",
+  "description": "The Red Box - Authentic Indo-Chinese Food On The Go (Localhost Web Application)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "python": "python server.py",
+    "serve": "npx serve ."
+  },
+  "author": "The Red Box Engineering Team",
+  "license": "ISC"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "slug": "science-of-1000-degree-wok-hei",
+    "title": "The Chemistry of Wok Hei: Why High-Heat Searing Matters",
+    "category": "Culinary Secrets",
+    "author": "Chef K. Chen · Master Wok Artisan",
+    "date": "November 12, 2026",
+    "readTime": "4 min read",
+    "image": "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?w=800&auto=format&fit=crop&q=80",
+    "excerpt": "Discover how searing cast-iron woks at blistering 1000°F creates vaporized oil micro-droplets that seal in smoky authentic Indo-Chinese flavor.",
+    "content": "<p class=\"mb-4\">In classical Cantonese wok cooking, <em>Wok Hei</em> translates literally to \"breath of the wok.\" At The Red Box, every stir-fry dish is prepared on seasoned heavy-gauge cast-iron woks over forced-air turbo burners producing over 100,000 BTUs.</p><p class=\"mb-4\">When cold fresh ingredients hit a wok at 1000°F (540°C), cellular moisture instantly vaporizes rather than stewing. This preserves the crunchy integrity of bell peppers, scallions, and water chestnuts while caramelizing amino acids and natural sugars in micro-seconds.</p><h3 class=\"text-xl font-bold font-serif mb-2 text-zinc-900\">Zero Synthetic Colors, 100% Natural Red</h3><p class=\"mb-4\">Traditional roadside Indo-Chinese heavily relies on synthetic Rhodamine B or artificial red dyes. At RedBox, our deep fiery hues are derived entirely from Kashmiri whole red chillies steeped in garlic-infused sesame oil and fermented bean pastes.</p>",
+    "published": true,
+    "featured": true
+  },
+  {
+    "id": 2,
+    "slug": "patented-thermal-box-origami",
+    "title": "The Engineering Behind Our 45-Minute Heat-Lock Box",
+    "category": "Packaging Innovation",
+    "author": "Design & Logistics Team",
+    "date": "October 28, 2026",
+    "readTime": "3 min read",
+    "image": "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=800&auto=format&fit=crop&q=80",
+    "excerpt": "Why traditional plastic round containers ruin hot noodles, and how our geometric origami box keeps food steaming hot (>65°C) across Chennai traffic.",
+    "content": "<p class=\"mb-4\">One of the greatest dilemmas in food delivery is condensation. Plastic containers trap steam that drips back into fried rice and momos, turning crisp noodles into soggy mash.</p><p class=\"mb-4\">The Red Box is engineered from virgin unbleached food-grade kraft board with dual micro-venting corner ports. The geometric folding technique creates a natural thermal vortex that retains radiant heat while allowing excess steam pressure to escape gently.</p>",
+    "published": true,
+    "featured": false
+  },
+  {
+    "id": 3,
+    "slug": "franchise-turnkey-roi-blueprint",
+    "title": "RedBox Franchise Model: Scalable Indo-Chinese Unit Economics",
+    "category": "Franchise & Growth",
+    "author": "Operations Directorate",
+    "date": "October 15, 2026",
+    "readTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80",
+    "excerpt": "An operational breakdown of our compact 350 sq ft express kiosk model, centralized sauce supply, and proven 1.8-year capital payback.",
+    "content": "<p class=\"mb-4\">With 57 outlets operating across 4 continents, The Red Box has systematized every element of quick-service Indo-Chinese dining. From pre-portioned daily batch sauces to automated temperature-controlled induction woks, kitchen operations require zero master chefs on-site.</p>",
+    "published": true,
+    "featured": false
+  }
+]

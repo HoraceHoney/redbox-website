@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Integration Test Lead",
+    "contact": "9998887776",
+    "email": "test.franchise@example.com",
+    "city": "Chennai",
+    "investment": "₹30 - 50 Lakhs",
+    "exp": "Restaurant Management",
+    "message": "Automated verification test lead",
+    "id": 4,
+    "status": "New",
+    "date": "2026-11-15 20:33"
+  },
+  {
+    "name": "Sanjay Menon",
+    "city": "Kochi",
+    "budget": "₹ 25 - 30 Lakhs (Food Court)",
+    "phone": "+91 97450 11223",
+    "email": "sanjay.menon@kerala.com",
+    "status": "New",
+    "id": 3,
+    "date": "2026-11-15 20:16"
+  },
+  {
+    "id": 1,
+    "name": "Venkatesh Rao",
+    "city": "Coimbatore",
+    "budget": "₹ 25 - 30 Lakhs (Food Court)",
+    "experience": "7 Years Retail / QSR franchisee",
+    "phone": "+91 94432 10987",
+    "email": "venkat.rao@gmail.com",
+    "status": "Under Review",
+    "assignedTo": "Franchise Head",
+    "notes": "Shortlisted 450 sq ft unit in Brookefields Mall."
+  },
+  {
+    "id": 2,
+    "name": "Ayesha Siddiqua",
+    "city": "Hyderabad",
+    "budget": "₹ 20 - 25 Lakhs (Express Kiosk)",
+    "experience": "First-time food entrepreneur",
+    "phone": "+91 98840 98765",
+    "email": "ayesha.s@outlook.com",
+    "status": "Kit Sent",
+    "assignedTo": "Business Dev",
+    "notes": "Sent Franchise Kit & Unit Economics deck."
+  }
+]

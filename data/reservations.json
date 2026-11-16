@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Sathish Kumar",
+    "phone": "9840256337",
+    "email": "satheesh@thechinesestory.com",
+    "branch": "RedBox Egmore",
+    "date": "2026-11-16 19:30",
+    "guests": 4,
+    "status": "Confirmed",
+    "notes": "VIP Table requested. Anniversary celebration."
+  },
+  {
+    "id": 2,
+    "name": "Pranab T",
+    "phone": "9555875941",
+    "email": "pran.abhueco@gmail.com",
+    "branch": "RedBox BTM Layout",
+    "date": "2026-11-17 20:00",
+    "guests": 2,
+    "status": "New",
+    "notes": "Window seating preference."
+  },
+  {
+    "id": 3,
+    "name": "Gdhoy Pagrk",
+    "phone": "9808384988",
+    "email": "a.wo.horav@gmail.com",
+    "branch": "RedBox Hitech City",
+    "date": "2026-11-18 13:00",
+    "guests": 6,
+    "status": "New",
+    "notes": "Corporate team lunch."
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "id": "slide-1",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-02.jpg",
+    "tag": "1000°F FLAME CRAFT",
+    "title": "1000°F Searing Flame & Wok Hei",
+    "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "Explore Full Menu",
+      "link": "menu.html",
+      "icon": "utensils"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-2",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-01.jpg",
+    "tag": "SIGNATURE DIM SUMS",
+    "title": "Real Wok Craft. Iconic Red Box.",
+    "desc": "Steaming, freshly tossed Indo-Chinese specialties packed hot in our 45-minute heat-retention fold box.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "Explore Full Menu",
+      "link": "menu.html",
+      "icon": "utensils"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-3",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-02.jpg",
+    "tag": "1000°F FLAME CRAFT",
+    "title": "Sizzling Wok Hei Flavours",
+    "desc": "Intense high-heat wok tossing that seals in the authentic smoky aroma and crisp vegetable crunch.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "Explore Full Menu",
+      "link": "menu.html",
+      "icon": "utensils"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-4",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-03.jpg",
+    "tag": "ARTISANAL SPICE BLENDS",
+    "title": "Legendary Dragon Chicken & Gravies",
+    "desc": "Crafted fresh daily with whole sun-dried chillies, crushed garlic, and zero artificial preservatives.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "Explore Full Menu",
+      "link": "menu.html",
+      "icon": "utensils"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-5",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-04.jpg",
+    "tag": "PATENTED THERMAL PACKAGING",
+    "title": "Piping Hot Comfort On The Go",
+    "desc": "Virgin eco-board geometric fold keeps your meal above 65°C for 45 minutes on the road.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "The Box Innovation",
+      "link": "about.html#the-box",
+      "icon": "box"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-6",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-05.jpg",
+    "tag": "GLOBAL EXPANSION",
+    "title": "57+ Branches Across Global Hubs",
+    "desc": "India’s fastest growing organized Indo-Chinese quick service restaurant chain, serving 100,000+ meals monthly.",
+    "playToEnd": false,
+    "duration": 6,
+    "primaryCta": {
+      "text": "Explore 57 Branches",
+      "link": "branches.html",
+      "icon": "map-pin"
+    },
+    "secondaryCta": {
+      "text": "Franchise Model",
+      "link": "franchise.html",
+      "icon": "briefcase"
+    },
+    "active": true
+  },
+  {
+    "id": "slide-1794654038732",
+    "type": "image",
+    "media": "assets/images/hdr-bnr-03.jpg",
+    "tag": "ARTISANAL SPICE BLENDS",
+    "title": "Legendary Dragon Chicken & Gravies",
+    "desc": "Crafted fresh daily with whole sun-dried chillies and crushed garlic.",
+    "playToEnd": false,
+    "duration": 6,
+    "fit": "cover",
+    "quality": "fullhd",
+    "primaryCta": {
+      "text": "Explore Full Menu",
+      "link": "menu.html",
+      "icon": "utensils"
+    },
+    "secondaryCta": {
+      "text": "Order Online",
+      "action": "openOrderModal()",
+      "icon": "shopping-bag"
+    },
+    "active": true
+  }
+]

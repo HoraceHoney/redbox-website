@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branches & Global Locator | The Red Box .com</title>
+  <meta name="description" content="Explore The Red Box network across 57+ branches. Deep filter by continent, country, city, and area. Locate your nearest branch for dine-in, takeaway, delivery, and catering.">
+  <link rel="icon" type="image/png" href="assets/images/fav-icon.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cinzel & Playfair Display (Mainland China luxury serif) + Montserrat + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#D9232D',
+              'red-dark': '#B51B24',
+              'red-light': '#FFF1F2',
+              'red-lacquer': '#C41E3A',
+              gold: '#C5A059',
+              'gold-light': '#F7F3E9',
+              'gold-bright': '#D4AF37',
+              'gold-dark': '#9A7B38',
+              slate: '#1C1D1F',
+              'slate-light': '#2A2B2E',
+            },
+            canvas: {
+              white: '#FFFFFF',
+              ivory: '#FAF7F2',
+              cream: '#F4EFE6'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            heading: ['Montserrat', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .leaflet-popup-content-wrapper {
+      border-radius: 1rem;
+      padding: 0;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      border: 1px solid #E5E7EB;
+    }
+    .leaflet-popup-content {
+      margin: 0;
+      line-height: 1.4;
+    }
+    .pulse-loc-btn {
+      position: relative;
+    }
+    .pulse-loc-btn::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 9999px;
+      border: 2px solid rgba(217, 35, 45, 0.4);
+      animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.08); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-zinc-50 text-zinc-900 antialiased selection:bg-brand-red selection:text-white">
+
+  <!-- ================= BRAND MINIMAL HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-zinc-200 shadow-xs backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6">
+      
+      <!-- Brand Logo Left -->
+      <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
+        <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+      </a>
+
+      <!-- Desktop Nav: Inline Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1.5 xl:gap-3">
+        <a href="index.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
+        <a href="menu.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Menu</span></a>
+        <a href="branches.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>Branches</span></a>
+        <a href="about.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>About Us</span></a>
+        <a href="catering.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
+        <a href="franchise.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
+        <a href="blog.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Stories</span></a>
+      </nav>
+
+      <!-- Header Right: WOK HEI Badge & Order Online Button -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[#C5A059] font-heading font-extrabold text-xs tracking-wider uppercase select-none whitespace-nowrap">
+          
+          <span>WOK HEI FRESH</span>
+        </div>
+        <button onclick="openOrderModal()" class="inline-flex items-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 active:scale-98 transition-all cursor-pointer whitespace-nowrap flex-shrink-0">
+          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+          <span>Order Online</span>
+        </button>
+        <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="md:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
+          <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Neat Compact Mobile Dropdown -->
+    <div id="mobileDropdown" class="hidden md:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
+      <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
+        <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
+        <a href="menu.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
+        <a href="branches.html" class="px-3 py-2 text-xs font-heading font-black text-brand-red border-l-2 border-brand-red bg-zinc-100/70 rounded-md flex items-center justify-between"><span>Branches</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700">57+ Hubs</span></a>
+        <a href="about.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>About Us</span></a>
+        <a href="catering.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Catering</span></a>
+        <a href="franchise.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Franchise</span></a>
+      </div>
+      <div class="flex items-center justify-between text-xs px-1 pt-0.5">
+        <a href="tel:04443533333" class="flex items-center gap-1.5 font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+          <span>044 4353 3333</span>
+        </a>
+        <a href="admin.html" class="flex items-center gap-1 text-[11px] font-heading font-bold text-zinc-600 hover:text-brand-red">
+          <i data-lucide="shield" class="w-3 h-3 text-amber-500"></i>
+          <span>Admin</span>
+        </a>
+        <button onclick="openOrderModal()" class="text-[11px] font-heading font-bold text-brand-red hover:underline cursor-pointer">Quick Order</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN BRANCHES CONTENT ================= -->
+  <main class="flex-grow py-8 sm:py-10 bg-zinc-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Banner Header & Global Location Controls -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-zinc-200/80 shadow-xs mb-8 relative overflow-hidden">
+        <!-- Golden Dragon Watermark Highlight -->
+        <div class="dragon-watermark-right opacity-30"></div>
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          
+          <div>
+            <h1 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
+              Our Global <span class="font-serif italic font-normal text-brand-red">Branch Network</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-zinc-500 mt-1 max-w-2xl leading-relaxed">
+              Explore 57+ authentic wok-fired hubs across India and international flagships. Locate your closest store for dining, takeaway, express 45-minute heat-lock delivery, and bulk corporate catering.
+            </p>
+          </div>
+
+          <!-- Geolocation & Search Action Group -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- Nearest Branch GPS Button -->
+            <button onclick="findNearestBranch()" id="btnFindNearest" class="pulse-loc-btn inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white px-5 py-3 rounded-2xl font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 transition-all cursor-pointer whitespace-nowrap">
+              <i data-lucide="navigation" class="w-4 h-4"></i>
+              <span>Find Nearest Branch</span>
+            </button>
+
+            <!-- Search Input -->
+            <div class="relative w-full sm:w-72">
+              <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input type="text" id="branchSearchInput" oninput="handleBranchSearch(this.value)" placeholder="Search area, city, or branch code..." class="w-full pl-10 pr-4 py-3 text-xs font-medium bg-zinc-50 border border-zinc-200 rounded-2xl focus:outline-none focus:bg-white focus:border-brand-red transition-all shadow-inner">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Status Bar -->
+        <div id="locationStatusAlert" class="hidden mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs font-medium text-amber-900 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red flex-shrink-0"></i>
+            <span id="locationStatusText">Detecting your location...</span>
+          </div>
+          <button onclick="dismissLocationAlert()" class="text-amber-700 hover:text-amber-900 text-xs font-bold">✕</button>
+        </div>
+      </div>
+
+      <!-- MAIN SPLIT LAYOUT: LEFT/CENTER (MAP + CARDS) & RIGHT SIDEBAR (DEEP FILTER) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- ================= LEFT / CENTER: MAP & BRANCH CARDS (8 COLUMNS) ================= -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- Leaflet Interactive Map Container -->
+          <div class="rounded-3xl overflow-hidden border border-zinc-200 shadow-md bg-white relative">
+            <div class="p-3.5 bg-white border-b border-zinc-100 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
+                <span class="font-heading font-bold text-zinc-800" id="mapScopeTitle">Interactive World & Regional Map</span>
+              </div>
+              <div class="flex items-center gap-2 text-zinc-500 text-[11px]">
+                <i data-lucide="mouse-pointer" class="w-3 h-3 text-zinc-400"></i>
+                <span>Click any pin to inspect branch details & menu</span>
+              </div>
+            </div>
+            
+            <div id="leafletMap" class="w-full h-[380px] sm:h-[440px] z-10"></div>
+            
+            <!-- Map Overlay Info Badge -->
+            <div class="absolute bottom-3 left-3 z-20 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-zinc-200 text-[11px] font-bold text-zinc-700 shadow-sm flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span id="mapBranchCounter">Loading 57 active branches...</span>
+            </div>
+          </div>
+
+          <!-- Hidden markers for internal state counters -->
+          <span id="filterBreadcrumbs" class="hidden"></span>
+          <span id="visibleBranchCount" class="hidden"></span>
+          <span id="totalBranchCount" class="hidden"></span>
+
+          <!-- Branch Cards Grid -->
+          <div id="branchCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Populated dynamically by app.js -->
+          </div>
+
+        </div>
+
+        <!-- ================= RIGHT SIDEBAR: DEEP HIERARCHICAL FILTER (4 COLUMNS) ================= -->
+        <div class="lg:col-span-4 sticky top-24 space-y-4">
+          
+          <div class="bg-white rounded-3xl p-6 border border-zinc-200 shadow-sm">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-100 mb-5">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sliders-horizontal" class="w-4 h-4 text-brand-red"></i>
+                <h3 class="font-heading font-extrabold text-sm uppercase tracking-wider text-zinc-900">Deep Branch Filter</h3>
+              </div>
+              <button onclick="resetAllFilters()" class="text-[11px] font-bold text-zinc-400 hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">
+                <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                <span>Reset</span>
+              </button>
+            </div>
+
+            <!-- Hierarchical Selectors (Continent down to Area) -->
+            <div class="space-y-4">
+              
+              <!-- 1. Continent Selector -->
+              <div>
+                <label for="filterContinent" class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-500 mb-1.5 flex items-center gap-1.5">
+                  <i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  <span>1. Continent</span>
+                </label>
+                <select id="filterContinent" onchange="onContinentChange(this.value)" class="w-full p-2.5 text-xs font-semibold bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:border-brand-red focus:bg-white transition-all">
+                  <option value="All">All Continents (Global Network)</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Middle East">Middle East</option>
+                  <option value="Europe">Europe</option>
+                  <option value="North America">North America</option>
+                </select>
+              </div>
+
+              <!-- 2. Country Selector -->
+              <div>
+                <label for="filterCountry" class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-500 mb-1.5 flex items-center gap-1.5">
+                  <i data-lucide="flag" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  <span>2. Country</span>
+                </label>
+                <select id="filterCountry" onchange="onCountryChange(this.value)" class="w-full p-2.5 text-xs font-semibold bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:border-brand-red focus:bg-white transition-all">
+                  <option value="All">All Countries</option>
+                </select>
+              </div>
+
+              <!-- 3. State / Province Selector -->
+              <div>
+                <label for="filterState" class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-500 mb-1.5 flex items-center gap-1.5">
+                  <i data-lucide="landmark" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  <span>3. State / Province</span>
+                </label>
+                <select id="filterState" onchange="onStateChange(this.value)" class="w-full p-2.5 text-xs font-semibold bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:border-brand-red focus:bg-white transition-all">
+                  <option value="All">All States / Provinces</option>
+                </select>
+              </div>
+
+              <!-- 4. City Selector -->
+              <div>
+                <label for="filterCity" class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-500 mb-1.5 flex items-center gap-1.5">
+                  <i data-lucide="building-2" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  <span>4. City / Metro Hub</span>
+                </label>
+                <select id="filterCity" onchange="onCityChange(this.value)" class="w-full p-2.5 text-xs font-semibold bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:border-brand-red focus:bg-white transition-all">
+                  <option value="All">All Cities</option>
+                </select>
+              </div>
+
+              <!-- 5. Area / Neighborhood Selector -->
+              <div>
+                <label for="filterArea" class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-500 mb-1.5 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  <span>5. Area / Neighborhood</span>
+                </label>
+                <select id="filterArea" onchange="onAreaChange(this.value)" class="w-full p-2.5 text-xs font-semibold bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:border-brand-red focus:bg-white transition-all">
+                  <option value="All">All Areas</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Service Feature Toggles -->
+            <div class="mt-6 pt-5 border-t border-zinc-100">
+              <span class="block text-[11px] font-extrabold uppercase tracking-wider text-zinc-400 mb-3">Facility Filters</span>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2.5 text-xs font-medium text-zinc-700 cursor-pointer hover:text-zinc-900">
+                  <input type="checkbox" id="facilityDineIn" onchange="applyFacilityFilters()" class="rounded border-zinc-300 text-brand-red focus:ring-brand-red">
+                  <span>Dine-In Available</span>
+                </label>
+                <label class="flex items-center gap-2.5 text-xs font-medium text-zinc-700 cursor-pointer hover:text-zinc-900">
+                  <input type="checkbox" id="facilityLateNight" onchange="applyFacilityFilters()" class="rounded border-zinc-300 text-brand-red focus:ring-brand-red">
+                  <span>Late Night (Open past 11:30 PM)</span>
+                </label>
+                <label class="flex items-center gap-2.5 text-xs font-medium text-zinc-700 cursor-pointer hover:text-zinc-900">
+                  <input type="checkbox" id="facilityCatering" onchange="applyFacilityFilters()" class="rounded border-zinc-300 text-brand-red focus:ring-brand-red">
+                  <span>Catering Base Hub</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Red Box Standard Guarantee Callout -->
+            <div class="mt-6 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/70 text-xs">
+              <div class="flex items-center gap-2 text-[#C5A059] font-extrabold text-[11px] uppercase tracking-wider mb-1">
+                <i data-lucide="shield-check" class="w-4 h-4 text-brand-red"></i>
+                <span>All Branches Standard</span>
+              </div>
+              <p class="text-zinc-600 text-[11px] leading-relaxed">
+                45-minute heat-lock packaging, virgin food-grade board, and zero synthetic food coloring guaranteed across every single global location.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FULL BRANCH DATA PROFILE MODAL / DRAWER ================= -->
+  <div id="branchDetailModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto animate-in fade-in duration-200">
+      
+      <button onclick="closeBranchDetailModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-800 transition-colors p-1.5 rounded-full hover:bg-zinc-100 cursor-pointer" aria-label="Close branch modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Branch Header -->
+      <div class="mb-5 pr-8">
+        <div class="flex items-center gap-2 mb-2">
+          <span id="modalStoreCode" class="px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-700 font-mono text-[10px] font-bold">RBX-IND-CHN-001</span>
+          <span id="modalRegionBadge" class="px-2 py-0.5 rounded-md bg-red-50 text-brand-red text-[10px] font-extrabold uppercase">Asia · India</span>
+          <span id="modalDistanceBadge" class="hidden px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">0.8 km away</span>
+        </div>
+        <h3 id="modalBranchName" class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900 tracking-tight">RedBox Anna Nagar</h3>
+        <p id="modalBranchArea" class="text-xs font-bold text-zinc-500 mt-0.5">Anna Nagar East · Chennai, Tamil Nadu</p>
+      </div>
+
+      <!-- Quick Action: View Menu & Catering (Primary) -->
+      <div class="mb-6 p-4 rounded-2xl bg-red-50/80 border border-brand-red/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <span class="text-xs font-bold text-brand-red uppercase tracking-wider block">Branch Culinary Services</span>
+          <span class="text-xs text-zinc-600">Browse 270+ dishes & plan event catering fulfilled by this store.</span>
+        </div>
+        <a id="modalMenuCateringBtn" href="menu.html" class="inline-flex items-center justify-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase px-4 py-2.5 rounded-xl shadow-md transition-all whitespace-nowrap cursor-pointer">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span>View Menu & Catering</span>
+        </a>
+      </div>
+
+      <!-- Full Data Grid -->
+      <div class="space-y-4 text-xs">
+        
+        <!-- Address & Directions -->
+        <div class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1">Store Address</span>
+              <p id="modalAddress" class="text-xs font-semibold text-zinc-800 leading-relaxed">
+                Plot 104, 2nd Avenue, Near Roundana, Anna Nagar East, Chennai, Tamil Nadu 600040
+              </p>
+            </div>
+            <a id="modalDirectionsLink" href="#" target="_blank" class="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:text-brand-red hover:border-brand-red transition-colors shadow-xs">
+              <i data-lucide="navigation-2" class="w-3.5 h-3.5 text-brand-red"></i>
+              <span>Get Directions</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hours & Contact Info -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+            <span class="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1">Store Operating Hours</span>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span id="modalHours" class="font-bold text-zinc-800">11:00 AM – 11:30 PM</span>
+            </div>
+            <span class="text-[10px] text-zinc-500 block mt-1">Open 7 days a week</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+            <span class="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-1">Helpline & Manager</span>
+            <div class="space-y-1">
+              <a id="modalPhoneLink" href="tel:+918939444411" class="font-bold text-brand-red hover:underline flex items-center gap-1.5">
+                <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                <span id="modalPhoneText">+91 89394 44411</span>
+              </a>
+              <span id="modalManagerText" class="text-[10px] text-zinc-500 block">Manager: +91 98401 23456</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facilities & Seating -->
+        <div class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+          <span class="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-2">Service Capabilities</span>
+          <div id="modalFacilitiesList" class="flex flex-wrap gap-1.5">
+            <!-- Facility pills -->
+          </div>
+        </div>
+
+        <!-- Delivery Ordering Links -->
+        <div>
+          <span class="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-400 mb-2">Instant Delivery Channels</span>
+          <div class="grid grid-cols-3 gap-2">
+            <a id="modalSwiggyLink" href="#" target="_blank" class="p-2.5 rounded-xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 flex flex-col items-center justify-center gap-1 transition-all text-center">
+              <img src="assets/images/swiggy.png" alt="Swiggy" class="h-5 w-auto">
+              <span class="text-[10px] font-bold text-zinc-700">Swiggy</span>
+            </a>
+            <a id="modalZomatoLink" href="#" target="_blank" class="p-2.5 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 flex flex-col items-center justify-center gap-1 transition-all text-center">
+              <img src="assets/images/zomato.png" alt="Zomato" class="h-4 w-auto">
+              <span class="text-[10px] font-bold text-zinc-700">Zomato</span>
+            </a>
+            <a id="modalWhatsappLink" href="#" target="_blank" class="p-2.5 rounded-xl border border-zinc-200 hover:border-emerald-500 hover:bg-emerald-50/50 flex flex-col items-center justify-center gap-1 transition-all text-center">
+              <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-5 w-auto">
+              <span class="text-[10px] font-bold text-zinc-700">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= GROUNDED DARK SLATE FOOTER ================= -->
+  <footer class="bg-brand-slate text-zinc-400 pt-16 pb-12 border-t border-zinc-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
+        <div class="lg:col-span-4 space-y-4">
+          <div class="inline-flex items-center py-1">
+            <img src="assets/images/logo-white-text.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-11 sm:h-12 w-auto object-contain">
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            57+ national and international branches across Asia, Middle East, Europe, and North America. Direct online order options on Swiggy, Zomato, and WhatsApp.
+          </p>
+        </div>
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Sections</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-brand-red transition-colors">Home</a></li>
+            <li><a href="menu.html" class="hover:text-brand-red transition-colors">Food Menu</a></li>
+            <li><a href="branches.html" class="hover:text-brand-red transition-colors">Branches</a></li>
+            <li><a href="about.html" class="hover:text-brand-red transition-colors">About Us</a></li>
+            <li><a href="catering.html" class="hover:text-brand-red transition-colors">Catering</a></li>
+            <li><a href="franchise.html" class="hover:text-brand-red transition-colors">Franchise</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-6 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Central Operations</h4>
+          <p class="text-xs text-zinc-300">Helpline: +91 89394 44411 · Email: contact@theredbox.in</p>
+          <p class="text-xs text-zinc-400">Head Office: Old No 35, New No 14, 2nd Main Rd, RA Puram, Chennai, TN 600028</p>
+        </div>
+      </div>
+      <div class="pt-8 text-center text-xs text-zinc-500">
+        © 2026 The Red Box Food Enterprises Pvt. Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Order Modal -->
+  <div id="orderModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-zinc-200 relative">
+      <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-700">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-6">
+        <img src="assets/images/logo.png" alt="Logo" class="h-12 w-auto mx-auto mb-2">
+        <h3 class="text-2xl font-serif font-bold text-zinc-900 tracking-tight">Order Delivery</h3>
+      </div>
+      <div class="space-y-3">
+        <a href="https://www.swiggy.com/direct/brand/1636?source=swiggy-direct&subSource=branches" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/swiggy.png" alt="Swiggy" class="h-7 w-auto">
+            <span class="font-bold text-sm text-zinc-900">Swiggy Direct</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a href="https://www.zomato.com/search?query=RedBox" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/zomato.png" alt="Zomato" class="h-6 w-auto">
+            <span class="font-bold text-sm text-zinc-900">Zomato</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+        <a href="https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20takeaway" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-7 w-auto">
+            <span class="font-bold text-sm text-zinc-900">WhatsApp Takeaway</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Application JS -->
+  <script src="app.js"></script>
+</body>
+</html>
