@@ -118,6 +118,7 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif clean in ['/api/media', '/api/media-library']:
             media_items = []
             scan_dirs = [
+                ('assets/videos', 'Videos'),
                 ('assets/uploads', 'Uploads'),
                 ('assets/images/dishes', 'Dishes'),
                 ('assets/images', 'General')
@@ -149,7 +150,10 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
             media_items.sort(key=lambda x: x.get('mtime', 0), reverse=True)
             return self.send_json(media_items)
 
-        return super().do_GET()
+        try:
+            return super().do_GET()
+        except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+            pass
 
     def do_POST(self):
         clean = self.path.split('?')[0].rstrip('/')
@@ -390,6 +394,13 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     daemon_threads = True
     allow_reuse_address = True
 
+    def handle_error(self, request, client_address):
+        # Ignore client disconnects like ConnectionResetError
+        exc = sys.exc_info()[1]
+        if isinstance(exc, (ConnectionResetError, ConnectionAbortedError, BrokenPipeError)):
+            return
+        super().handle_error(request, client_address)
+
 def run():
     port = DEFAULT_PORT
     server = None
@@ -415,12 +426,20 @@ def run():
     print(f"==================================================")
     
     # Run server
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        print("\nShutting down server...")
-        server.shutdown()
-        server.server_close()
+    while True:
+        try:
+            server.serve_forever()
+            break
+        except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+            continue
+        except KeyboardInterrupt:
+            print("\nShutting down server...")
+            server.shutdown()
+            server.server_close()
+            break
+        except Exception as e:
+            print(f"Server exception: {e}")
+            time.sleep(0.5)
 
 if __name__ == '__main__':
     run()
