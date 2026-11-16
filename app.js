@@ -2951,9 +2951,6 @@ function renderFeaturedDishes() {
 // ========================================================
 async function initPromotionsBanner() {
   try {
-    // Preserve transparent floating hero navbar on homepage by not prepending banner
-    if (document.getElementById('heroSliderSection')) return;
-
     let res = await fetch('/api/promotions').catch(() => null);
     if (!res || !res.ok) res = await fetch('data/promotions.json').catch(() => null);
     if (!res || !res.ok) return;
@@ -2967,20 +2964,26 @@ async function initPromotionsBanner() {
 
     const bar = document.createElement('div');
     bar.id = 'redboxPromoBar';
-    bar.className = 'w-full py-2 px-4 text-center text-xs font-semibold flex items-center justify-center gap-2 relative z-50 shadow-xs transition-all';
-    bar.style.backgroundColor = ab.bgColor || '#D9232D';
+    bar.className = 'w-full py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 sm:gap-2 relative z-50 shadow-xs transition-all';
+    bar.style.backgroundColor = ab.bgColor || '#991B1B';
     bar.style.color = ab.textColor || '#FFFFFF';
     bar.innerHTML = `
-      <span class="px-2 py-0.5 rounded-full bg-white/20 text-[10px] uppercase font-bold tracking-wider">${ab.badge || 'PROMO'}</span>
-      <span>${ab.text}</span>
-      ${ab.link ? `<a href="${ab.link}" class="underline hover:opacity-80 ml-2 font-bold text-[11px]">Explore ↗</a>` : ''}
-      <button onclick="document.getElementById('redboxPromoBar').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 opacity-75 hover:opacity-100 p-1 cursor-pointer text-sm font-bold">&times;</button>
+      <span class="px-2 py-0.5 rounded-full bg-white/20 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">${ab.badge || 'PROMO'}</span>
+      <span class="truncate sm:overflow-visible">${ab.text}</span>
+      ${ab.link ? `<a href="${ab.link}" class="underline hover:opacity-80 ml-1.5 font-bold text-[10px] sm:text-[11px] whitespace-nowrap">Explore ↗</a>` : ''}
+      <button onclick="document.getElementById('redboxPromoBar').remove()" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 opacity-75 hover:opacity-100 p-1 cursor-pointer text-sm font-bold leading-none" aria-label="Dismiss Announcement">&times;</button>
     `;
+
     const targetContainer = document.getElementById('promoAnnouncementBar');
     if (targetContainer) {
       targetContainer.appendChild(bar);
     } else {
-      document.body.prepend(bar);
+      const header = document.getElementById('mainHeader') || document.querySelector('header');
+      if (header) {
+        header.prepend(bar);
+      } else {
+        document.body.prepend(bar);
+      }
     }
   } catch(e) {
     console.warn("Could not load promotions banner:", e);
