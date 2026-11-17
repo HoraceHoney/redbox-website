@@ -563,6 +563,32 @@ const MENU_HUBS_DEF = {
   "us-east": { label: "US East Coast", continent: "North America", country: "United States", currency: "USD", symbol: "$" }
 };
 
+// Dynamically augment menu regional hubs from all branches in branchesData
+function getWebsiteAllMenuHubs() {
+  const hubs = { ...MENU_HUBS_DEF };
+  const branches = branchesData || [];
+  branches.forEach(b => {
+    if (!b.country) return;
+    const country = b.country.trim();
+    const countryLower = country.toLowerCase();
+    const isCovered = Object.values(hubs).some(def => {
+      if (Array.isArray(def.countries)) return def.countries.some(c => c.toLowerCase() === countryLower);
+      return (def.country || '').toLowerCase() === countryLower;
+    });
+    if (!isCovered) {
+      const slug = countryLower.replace(/[^a-z0-9]+/g, '-');
+      hubs[slug] = {
+        label: `${country} Hub`,
+        continent: b.continent || 'Global',
+        country: country,
+        currency: 'USD',
+        symbol: '$'
+      };
+    }
+  });
+  return hubs;
+}
+
 let activeMajorCategory = 'All';
 let activeContinent = 'All';
 let activeCountry = 'All';
@@ -635,49 +661,64 @@ function setMenuMajorCategory(cat) {
 function populateWebsiteContinentFilter() {
   const el = document.getElementById('menuFilterContinent');
   if (!el) return;
-  const continents = ['All', 'Asia', 'Europe', 'Middle East', 'North America'];
-  el.innerHTML = continents.map(c => `<option value="${c}" ${c === activeContinent ? 'selected' : ''}>${c === 'All' ? 'All Continents (4)' : c}</option>`).join('');
+  const allHubs = getWebsiteAllMenuHubs();
+  const branchContinents = (branchesData || []).map(b => (b.continent || '').trim()).filter(Boolean);
+  const hubContinents = Object.values(allHubs).map(h => (h.continent || '').trim()).filter(Boolean);
+  const uniqueContinents = ['All', ...new Set([...branchContinents, ...hubContinents])].sort();
+  el.innerHTML = uniqueContinents.map(c => `<option value="${c}" ${c.toLowerCase() === activeContinent.toLowerCase() ? 'selected' : ''}>${c === 'All' ? `All Continents (${uniqueContinents.length - 1})` : c}</option>`).join('');
 }
 
 function populateWebsiteCountryFilter() {
   const el = document.getElementById('menuFilterCountry');
   if (!el) return;
 
-  let validCountries = [];
-  if (activeContinent === 'Asia') {
-    validCountries = ['India', 'Malaysia', 'Singapore'];
-  } else if (activeContinent === 'Middle East') {
-    validCountries = ['United Arab Emirates'];
-  } else if (activeContinent === 'Europe') {
-    validCountries = ['United Kingdom'];
-  } else if (activeContinent === 'North America') {
-    validCountries = ['United States'];
-  } else {
-    validCountries = ['India', 'Malaysia', 'Singapore', 'United Arab Emirates', 'United Kingdom', 'United States'];
-  }
+  const allHubs = getWebsiteAllMenuHubs();
+  let countries = [];
+  Object.values(allHubs).forEach(h => {
+    if (activeContinent === 'All' || (h.continent || '').toLowerCase().trim() === activeContinent.toLowerCase().trim()) {
+      if (Array.isArray(h.countries)) countries.push(...h.countries);
+      else if (h.country) countries.push(h.country);
+    }
+  });
 
-  const countries = ['All', ...validCountries.sort()];
-  el.innerHTML = countries.map(c => `<option value="${c}" ${c === activeCountry ? 'selected' : ''}>${c === 'All' ? 'All Countries' : c}</option>`).join('');
+  (branchesData || []).forEach(b => {
+    if (b.country && (activeContinent === 'All' || (b.continent || '').toLowerCase().trim() === activeContinent.toLowerCase().trim())) {
+      countries.push(b.country);
+    }
+  });
+
+  const canonicalMap = new Map();
+  countries.forEach(c => {
+    const trimmed = (c || '').trim();
+    if (trimmed && !canonicalMap.has(trimmed.toLowerCase())) {
+      canonicalMap.set(trimmed.toLowerCase(), trimmed);
+    }
+  });
+
+  const uniqueCountries = ['All', ...Array.from(canonicalMap.values()).sort((a, b) => a.localeCompare(b))];
+  el.innerHTML = uniqueCountries.map(c => `<option value="${c}" ${c.toLowerCase() === activeCountry.toLowerCase() ? 'selected' : ''}>${c === 'All' ? `All Countries (${uniqueCountries.length - 1})` : c}</option>`).join('');
 }
 
 function populateWebsiteHubFilter() {
   const el = document.getElementById('menuFilterHub');
   if (!el) return;
 
-  let hubs = Object.keys(MENU_HUBS_DEF);
+  const allHubs = getWebsiteAllMenuHubs();
+  let hubKeys = Object.keys(allHubs);
   if (activeContinent !== 'All') {
-    hubs = hubs.filter(k => MENU_HUBS_DEF[k].continent === activeContinent);
+    hubKeys = hubKeys.filter(k => (allHubs[k].continent || '').toLowerCase().trim() === activeContinent.toLowerCase().trim());
   }
   if (activeCountry !== 'All') {
-    hubs = hubs.filter(k => {
-      const def = MENU_HUBS_DEF[k];
-      if (Array.isArray(def.countries)) return def.countries.includes(activeCountry);
-      return def.country === activeCountry;
+    const selCountryLower = activeCountry.toLowerCase().trim();
+    hubKeys = hubKeys.filter(k => {
+      const def = allHubs[k];
+      if (Array.isArray(def.countries)) return def.countries.some(c => c.toLowerCase().trim() === selCountryLower);
+      return (def.country || '').toLowerCase().trim() === selCountryLower;
     });
   }
 
-  let options = `<option value="All" ${activeHub === 'All' ? 'selected' : ''}>All Regional Hubs (${hubs.length})</option>`;
-  options += hubs.map(h => `<option value="${h}" ${h === activeHub ? 'selected' : ''}>${MENU_HUBS_DEF[h].label}</option>`).join('');
+  let options = `<option value="All" ${activeHub === 'All' ? 'selected' : ''}>All Regional Hubs (${hubKeys.length})</option>`;
+  options += hubKeys.map(h => `<option value="${h}" ${h === activeHub ? 'selected' : ''}>${allHubs[h].label}</option>`).join('');
   el.innerHTML = options;
 }
 
@@ -842,27 +883,31 @@ function renderMenuItems() {
       if (branchRegion && !regs.includes(branchRegion)) return false;
     }
 
+    const allHubs = getWebsiteAllMenuHubs();
+
     // 4. Hub Filter
     if (activeHub !== 'All') {
-      if (!regs.includes(activeHub)) return false;
+      if (!regs.includes(activeHub) && !regs.includes('all')) return false;
     }
 
     // 5. Country Filter
     if (activeCountry !== 'All') {
-      const matchesCountry = regs.some(r => {
-        const def = MENU_HUBS_DEF[r];
+      const selCountryLower = activeCountry.toLowerCase().trim();
+      const matchesCountry = regs.includes('all') || regs.some(r => {
+        const def = allHubs[r];
         if (!def) return false;
-        if (Array.isArray(def.countries)) return def.countries.includes(activeCountry);
-        return def.country === activeCountry;
+        if (Array.isArray(def.countries)) return def.countries.some(c => c.toLowerCase().trim() === selCountryLower);
+        return (def.country || '').toLowerCase().trim() === selCountryLower;
       });
       if (!matchesCountry) return false;
     }
 
     // 6. Continent Filter
     if (activeContinent !== 'All') {
-      const matchesContinent = regs.some(r => {
-        const def = MENU_HUBS_DEF[r];
-        return def && def.continent === activeContinent;
+      const selContLower = activeContinent.toLowerCase().trim();
+      const matchesContinent = regs.includes('all') || regs.some(r => {
+        const def = allHubs[r];
+        return def && (def.continent || '').toLowerCase().trim() === selContLower;
       });
       if (!matchesContinent) return false;
     }
@@ -961,7 +1006,7 @@ function renderMenuItems() {
           <div class="text-[11px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">
             Hot In Red Box
           </div>
-          <button onclick="handleDishOrderClick('${dish.id}')" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-full font-heading font-extrabold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 hover:scale-102 cursor-pointer">
+          <button onclick="handleDishOrderClick('${dish.id}', '${(dish.name || '').replace(/'/g, "\\'")}')" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-full font-heading font-extrabold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 hover:scale-102 cursor-pointer">
             <span>${(typeof userFulfillment !== 'undefined' && userFulfillment.isOutOfZone) ? 'Order / Inquire' : ((typeof userFulfillment !== 'undefined' && userFulfillment.mode === 'takeaway') ? 'Takeaway' : 'Order')}</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
@@ -1030,6 +1075,7 @@ async function loadBranchesData() {
     }
 
     console.log(`Loaded ${branchesData.length} global Red Box branches`);
+    updateDynamicBranchCounters();
 
     // If on branches locator page (branches.html or branches.html)
     if (document.getElementById('branchCardsContainer')) {
@@ -1043,7 +1089,10 @@ async function loadBranchesData() {
       initMenuBranchContext();
     }
 
-    // Initialize Menu Location & Fulfillment Pipeline
+    // Initialize Global Location State & Nearest Hub Routing across all pages
+    initGlobalLocationState();
+
+    // Initialize Menu Location & Fulfillment Pipeline if on menu.html
     if (document.getElementById('menuFulfillmentBar')) {
       initMenuLocationPipeline();
     }
@@ -1053,7 +1102,71 @@ async function loadBranchesData() {
   }
 }
 
+// ================= DYNAMIC REGIONAL STATS & COUNTERS =================
+function updateDynamicBranchCounters() {
+  if (!branchesData || branchesData.length === 0) return;
+  const count = branchesData.length;
+  const uniqueCities = getWebsiteCanonicalGeographicList('city');
+  const uniqueCountries = getWebsiteCanonicalGeographicList('country');
+
+  // Hero section stats on homepage
+  const elBranchCount = document.getElementById('hero-stat-branches-count');
+  if (elBranchCount) elBranchCount.innerText = `${count}+`;
+
+  const elRegionCount = document.getElementById('hero-stat-regions-count');
+  if (elRegionCount) elRegionCount.innerText = `Across ${uniqueCities.length} Regions`;
+
+  // Mobile nav badges
+  const elNavCount = document.getElementById('nav-branches-badge');
+  if (elNavCount) elNavCount.innerText = `${count}+ Hubs`;
+  document.querySelectorAll('.nav-branches-count-badge').forEach(el => {
+    el.innerText = `${count}+ Hubs`;
+  });
+
+  // Footer Regional Hubs text
+  const elFooterHubs = document.getElementById('footer-regional-hubs-text');
+  if (elFooterHubs) {
+    const cityCounts = {};
+    branchesData.forEach(b => {
+      const c = (b.city || '').trim();
+      if (c) cityCounts[c] = (cityCounts[c] || 0) + 1;
+    });
+    const sortedCities = Object.entries(cityCounts).sort((a, b) => b[1] - a[1]);
+    const summaryStr = sortedCities.slice(0, 11).map(([city, num]) => num > 1 ? `${city} (${num})` : city).join(' · ');
+    elFooterHubs.innerText = summaryStr;
+  }
+}
+
 // ================= DEEP HIERARCHICAL FILTERS =================
+function getWebsiteCanonicalGeographicList(key, parentFilters = {}) {
+  let list = branchesData || [];
+  if (parentFilters.continent && parentFilters.continent !== 'All') {
+    const pCont = parentFilters.continent.toLowerCase().trim();
+    list = list.filter(b => (b.continent || '').toLowerCase().trim() === pCont);
+  }
+  if (parentFilters.country && parentFilters.country !== 'All') {
+    const pCount = parentFilters.country.toLowerCase().trim();
+    list = list.filter(b => (b.country || '').toLowerCase().trim() === pCount);
+  }
+  if (parentFilters.state && parentFilters.state !== 'All') {
+    const pState = parentFilters.state.toLowerCase().trim();
+    list = list.filter(b => (b.state || '').toLowerCase().trim() === pState);
+  }
+  if (parentFilters.city && parentFilters.city !== 'All') {
+    const pCity = parentFilters.city.toLowerCase().trim();
+    list = list.filter(b => (b.city || '').toLowerCase().trim() === pCity);
+  }
+
+  const map = new Map();
+  list.forEach(b => {
+    const raw = (b[key] || '').trim();
+    if (raw && !map.has(raw.toLowerCase())) {
+      map.set(raw.toLowerCase(), raw);
+    }
+  });
+  return Array.from(map.values()).sort((a, b) => a.localeCompare(b));
+}
+
 function initDeepBranchFilters() {
   populateContinentFilter();
   populateCountryFilter('All');
@@ -1066,10 +1179,11 @@ function initDeepBranchFilters() {
 function populateContinentFilter() {
   const el = document.getElementById('filterContinent');
   if (!el) return;
-  const continents = ['All', ...new Set(branchesData.map(b => b.continent).filter(Boolean))];
+  const rawContinents = getWebsiteCanonicalGeographicList('continent');
+  const continents = ['All', ...rawContinents];
   el.innerHTML = continents.map(c => `
-    <option value="${c}" ${c === selectedContinent ? 'selected' : ''}>
-      ${c === 'All' ? 'All Continents (Global Network)' : c}
+    <option value="${c}" ${c.toLowerCase() === selectedContinent.toLowerCase() ? 'selected' : ''}>
+      ${c === 'All' ? `All Continents (${rawContinents.length} Global Hubs)` : c}
     </option>
   `).join('');
 }
@@ -1077,14 +1191,11 @@ function populateContinentFilter() {
 function populateCountryFilter(continent) {
   const el = document.getElementById('filterCountry');
   if (!el) return;
-  let pool = branchesData;
-  if (continent !== 'All') {
-    pool = pool.filter(b => b.continent === continent);
-  }
-  const countries = ['All', ...new Set(pool.map(b => b.country).filter(Boolean))];
+  const rawCountries = getWebsiteCanonicalGeographicList('country', { continent });
+  const countries = ['All', ...rawCountries];
   el.innerHTML = countries.map(c => `
-    <option value="${c}" ${c === selectedCountry ? 'selected' : ''}>
-      ${c === 'All' ? 'All Countries' : c}
+    <option value="${c}" ${c.toLowerCase() === selectedCountry.toLowerCase() ? 'selected' : ''}>
+      ${c === 'All' ? `All Countries (${rawCountries.length})` : c}
     </option>
   `).join('');
 }
@@ -1092,13 +1203,11 @@ function populateCountryFilter(continent) {
 function populateStateFilter(continent, country) {
   const el = document.getElementById('filterState');
   if (!el) return;
-  let pool = branchesData;
-  if (continent !== 'All') pool = pool.filter(b => b.continent === continent);
-  if (country !== 'All') pool = pool.filter(b => b.country === country);
-  const states = ['All', ...new Set(pool.map(b => b.state).filter(Boolean))];
+  const rawStates = getWebsiteCanonicalGeographicList('state', { continent, country });
+  const states = ['All', ...rawStates];
   el.innerHTML = states.map(s => `
-    <option value="${s}" ${s === selectedState ? 'selected' : ''}>
-      ${s === 'All' ? 'All States / Provinces' : s}
+    <option value="${s}" ${s.toLowerCase() === selectedState.toLowerCase() ? 'selected' : ''}>
+      ${s === 'All' ? `All States / Provinces (${rawStates.length})` : s}
     </option>
   `).join('');
 }
@@ -1106,24 +1215,21 @@ function populateStateFilter(continent, country) {
 function populateCityFilter(continent, country, state) {
   const el = document.getElementById('filterCity');
   if (!el) return;
-  let pool = branchesData;
-  if (continent !== 'All') pool = pool.filter(b => b.continent === continent);
-  if (country !== 'All') pool = pool.filter(b => b.country === country);
-  if (state !== 'All') pool = pool.filter(b => b.state === state);
-  const cities = ['All', ...new Set(pool.map(b => b.city).filter(Boolean))];
+  const rawCities = getWebsiteCanonicalGeographicList('city', { continent, country, state });
+  const cities = ['All', ...rawCities];
   
   // Sort with Chennai first
   cities.sort((a, b) => {
     if (a === 'All') return -1;
     if (b === 'All') return 1;
-    if (a === 'Chennai') return -1;
-    if (b === 'Chennai') return 1;
+    if (a.toLowerCase() === 'chennai') return -1;
+    if (b.toLowerCase() === 'chennai') return 1;
     return a.localeCompare(b);
   });
 
   el.innerHTML = cities.map(c => `
-    <option value="${c}" ${c === selectedCity ? 'selected' : ''}>
-      ${c === 'All' ? 'All Cities' : c}
+    <option value="${c}" ${c.toLowerCase() === selectedCity.toLowerCase() ? 'selected' : ''}>
+      ${c === 'All' ? `All Cities (${rawCities.length})` : c}
     </option>
   `).join('');
 }
@@ -1131,17 +1237,13 @@ function populateCityFilter(continent, country, state) {
 function populateAreaFilter(continent, country, state, city) {
   const el = document.getElementById('filterArea');
   if (!el) return;
-  let pool = branchesData;
-  if (continent !== 'All') pool = pool.filter(b => b.continent === continent);
-  if (country !== 'All') pool = pool.filter(b => b.country === country);
-  if (state !== 'All') pool = pool.filter(b => b.state === state);
-  if (city !== 'All') pool = pool.filter(b => b.city === city);
-  const areas = ['All', ...new Set(pool.map(b => b.area).filter(Boolean))];
+  const rawAreas = getWebsiteCanonicalGeographicList('area', { continent, country, state, city });
+  const areas = ['All', ...rawAreas];
   areas.sort((a, b) => a === 'All' ? -1 : b === 'All' ? 1 : a.localeCompare(b));
 
   el.innerHTML = areas.map(a => `
-    <option value="${a}" ${a === selectedArea ? 'selected' : ''}>
-      ${a === 'All' ? 'All Areas / Neighborhoods' : a}
+    <option value="${a}" ${a.toLowerCase() === selectedArea.toLowerCase() ? 'selected' : ''}>
+      ${a === 'All' ? `All Areas (${rawAreas.length})` : a}
     </option>
   `).join('');
 }
@@ -1281,11 +1383,11 @@ function updateFilterBreadcrumbs() {
 // ================= RENDER BRANCHES LIST =================
 function getFilteredBranches() {
   return branchesData.filter(b => {
-    if (selectedContinent !== 'All' && b.continent !== selectedContinent) return false;
-    if (selectedCountry !== 'All' && b.country !== selectedCountry) return false;
-    if (selectedState !== 'All' && b.state !== selectedState) return false;
-    if (selectedCity !== 'All' && b.city !== selectedCity) return false;
-    if (selectedArea !== 'All' && b.area !== selectedArea) return false;
+    if (selectedContinent !== 'All' && (b.continent || '').toLowerCase().trim() !== selectedContinent.toLowerCase().trim()) return false;
+    if (selectedCountry !== 'All' && (b.country || '').toLowerCase().trim() !== selectedCountry.toLowerCase().trim()) return false;
+    if (selectedState !== 'All' && (b.state || '').toLowerCase().trim() !== selectedState.toLowerCase().trim()) return false;
+    if (selectedCity !== 'All' && (b.city || '').toLowerCase().trim() !== selectedCity.toLowerCase().trim()) return false;
+    if (selectedArea !== 'All' && (b.area || '').toLowerCase().trim() !== selectedArea.toLowerCase().trim()) return false;
 
     if (filterDineInOnly && (!b.facilities || !b.facilities.some(f => f.toLowerCase().includes('dine')))) return false;
     if (filterLateNightOnly && (!b.facilities || !b.facilities.some(f => f.toLowerCase().includes('late') || (b.hours && (b.hours.includes('01:') || b.hours.includes('02:') || b.hours.includes('12:00 AM')))))) return false;
@@ -1765,6 +1867,42 @@ let userFulfillment = {
   pendingDishId: null
 };
 
+// Initialize global location state across all pages (index, menu, branches, etc.)
+function initGlobalLocationState() {
+  if (!branchesData || branchesData.length === 0) return;
+
+  // 1. Check saved session in localStorage
+  try {
+    const saved = localStorage.getItem('redbox_fulfillment');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.isVerified && parsed.nearestBranch) {
+        userFulfillment = { ...userFulfillment, ...parsed };
+        updateGlobalDeliveryLinks(userFulfillment.nearestBranch);
+        return;
+      }
+    }
+  } catch (e) {}
+
+  // 2. Default active branch so all pages have an active nearest outlet
+  const defaultBranch = branchesData.find(b => b.id === 'rbx-chn-tnagar') || branchesData[0];
+  if (defaultBranch) {
+    userFulfillment = {
+      ...userFulfillment,
+      isVerified: true,
+      localityName: `${defaultBranch.area || defaultBranch.name}, ${defaultBranch.city}`,
+      fullAddress: defaultBranch.address || `${defaultBranch.area}, ${defaultBranch.city}`,
+      latitude: defaultBranch.latitude,
+      longitude: defaultBranch.longitude,
+      nearestBranch: defaultBranch,
+      distanceKm: 2.2,
+      isOutOfZone: false,
+      isTakeawayOnly: false
+    };
+    updateGlobalDeliveryLinks(defaultBranch);
+  }
+}
+
 // Initialize pipeline on menu page load
 function initMenuLocationPipeline() {
   const fulfillmentBar = document.getElementById('menuFulfillmentBar');
@@ -1794,6 +1932,7 @@ function initMenuLocationPipeline() {
         updateFulfillmentBarUI();
         updateOutOfServiceBannerUI();
         renderMenuItems();
+        updateGlobalDeliveryLinks(userFulfillment.nearestBranch);
         return;
       }
     }
@@ -1988,6 +2127,7 @@ function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress
   updateFulfillmentBarUI();
   updateOutOfServiceBannerUI();
   renderMenuItems();
+  updateGlobalDeliveryLinks(branch);
 
   // If there was a pending dish order waiting for location verification, execute it
   if (userFulfillment.pendingDishId) {
@@ -2313,15 +2453,29 @@ function selectBranchFromModal(branchId) {
 }
 
 // Handle clicking "Order" on any dish card
-function handleDishOrderClick(dishId) {
-  // If location is unverified, prompt location access first
-  if (!userFulfillment.isVerified) {
-    openLocationSelectorModal(dishId);
-    return;
+function handleDishOrderClick(dishId, dishName = null) {
+  // If location is unverified, prompt location access first and save target dish
+  if (typeof userFulfillment !== 'undefined' && !userFulfillment.isVerified) {
+    const locModal = document.getElementById('locationSelectorModal');
+    if (locModal) {
+      userFulfillment.pendingDishId = dishId || dishName;
+      openLocationSelectorModal(dishId);
+      return;
+    } else {
+      // Auto verify with default branch if on page without selector modal
+      const defaultBranch = (typeof branchesData !== 'undefined' && branchesData.length > 0)
+        ? (branchesData.find(b => b.id === 'rbx-chn-tnagar') || branchesData[0])
+        : null;
+      if (defaultBranch) {
+        userFulfillment.isVerified = true;
+        userFulfillment.nearestBranch = defaultBranch;
+        updateGlobalDeliveryLinks(defaultBranch);
+      }
+    }
   }
 
   // If user is out of service zone
-  if (userFulfillment.isOutOfZone) {
+  if (typeof userFulfillment !== 'undefined' && userFulfillment.isOutOfZone) {
     const banner = document.getElementById('outOfServiceZoneBanner');
     if (banner) {
       banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2330,7 +2484,7 @@ function handleDishOrderClick(dishId) {
     }
     const proceed = confirm(`We haven't launched hot delivery in ${userFulfillment.localityName} yet (>25 km from nearest hub).\n\nWould you like to pre-order takeaway from ${userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'our nearest hub'} or vote for your city?`);
     if (proceed) {
-      openOrderModal();
+      openOrderModal(dishId || dishName);
     } else {
       openCityNotifyModal();
     }
@@ -2338,7 +2492,7 @@ function handleDishOrderClick(dishId) {
   }
 
   // Verified & within service or takeaway zone
-  openOrderModal();
+  openOrderModal(dishId || dishName);
 }
 
 // City Notification Modal Controls
@@ -2388,43 +2542,151 @@ function submitCityNotify(event) {
 }
 
 // ================= MODAL CONTROLLERS =================
-function openOrderModal() {
+let currentModalDish = null;
+
+function resolveDishObject(dishOrDishId) {
+  if (!dishOrDishId) return null;
+  if (typeof dishOrDishId === 'object') return dishOrDishId;
+
+  // Search by id in menuItemsData
+  if (typeof menuItemsData !== 'undefined' && Array.isArray(menuItemsData)) {
+    const found = menuItemsData.find(d => d.id === dishOrDishId || (d.name && d.name.toLowerCase() === dishOrDishId.toLowerCase()));
+    if (found) return found;
+  }
+
+  // Search in homepageContent featuredSignatures or newReleases
+  if (typeof homepageContent !== 'undefined' && homepageContent) {
+    const fsItems = homepageContent.featuredSignatures?.items || [];
+    const nrItems = homepageContent.newReleases?.items || [];
+    const found = [...fsItems, ...nrItems].find(d => d.id === dishOrDishId || (d.name && d.name.toLowerCase() === dishOrDishId.toLowerCase()));
+    if (found) return found;
+  }
+
+  return {
+    id: 'custom-' + toSlug(dishOrDishId),
+    name: dishOrDishId,
+    price: 249,
+    category: 'Signature Bestseller',
+    image: 'assets/images/img-08.png'
+  };
+}
+
+function openOrderModal(dishOrDishId = null) {
   const modal = document.getElementById('orderModal');
   if (!modal) return;
 
-  const b = userFulfillment.nearestBranch || (branchesData && branchesData[0]);
-  const heading = document.getElementById('orderModalHeading');
-  const subtitle = document.getElementById('orderModalSubtitle');
+  currentModalDish = resolveDishObject(dishOrDishId);
+  const dish = currentModalDish;
+  const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+
+  const heading = document.getElementById('orderModalHeading') || modal.querySelector('h3');
+  const subtitle = document.getElementById('orderModalSubtitle') || modal.querySelector('p.text-xs');
   const swiggyBranch = document.getElementById('orderModalSwiggyNote');
   const zomatoBranch = document.getElementById('orderModalZomatoNote');
   const whatsappBranch = document.getElementById('orderModalWhatsappNote');
-  const swiggyLink = document.getElementById('orderModalSwiggyLink');
-  const zomatoLink = document.getElementById('orderModalZomatoLink');
-  const whatsappLink = document.getElementById('orderModalWhatsappLink');
+  const swiggyLink = document.getElementById('orderModalSwiggyLink') || modal.querySelector('a[href*="swiggy"]');
+  const zomatoLink = document.getElementById('orderModalZomatoLink') || modal.querySelector('a[href*="zomato"]');
+  const whatsappLink = document.getElementById('orderModalWhatsappLink') || modal.querySelector('a[href*="wa.me"]');
 
   if (b) {
     if (heading) {
-      heading.textContent = userFulfillment.mode === 'takeaway' 
-        ? `Takeaway Pre-Order: ${b.name}` 
-        : `Order from ${b.name}`;
+      if (dish) {
+        heading.textContent = `Order ${dish.name}`;
+      } else {
+        heading.textContent = (typeof userFulfillment !== 'undefined' && userFulfillment.mode === 'takeaway') 
+          ? `Takeaway Pre-Order: ${b.name}` 
+          : `Order from ${b.name}`;
+      }
     }
+
     if (subtitle) {
-      subtitle.textContent = userFulfillment.mode === 'takeaway'
-        ? `Ready for curbside pickup in 15-20 min · ${b.address}`
-        : `Hot delivery within ${b.deliveryTime || '30-40 min'} · ${b.area || b.name}, ${b.city}`;
+      if (dish) {
+        subtitle.textContent = `Fulfilling from ${b.name} (${b.area || b.city}) · Active Offer REDWOK20 Ready`;
+      } else {
+        subtitle.textContent = (typeof userFulfillment !== 'undefined' && userFulfillment.mode === 'takeaway')
+          ? `Ready for curbside pickup in 15-20 min · ${b.address}`
+          : `Hot delivery within ${b.deliveryTime || '30-40 min'} · ${b.area || b.name}, ${b.city}`;
+      }
     }
-    if (swiggyBranch) swiggyBranch.textContent = `Fulfill via ${b.name}`;
-    if (zomatoBranch) zomatoBranch.textContent = `Direct dispatch from ${b.name}`;
+
+    if (swiggyBranch) swiggyBranch.textContent = `Fulfill via ${b.name} · Code REDWOK20 Auto-Copied`;
+    if (zomatoBranch) zomatoBranch.textContent = `Direct dispatch from ${b.name} · Code REDWOK20 Auto-Copied`;
     if (whatsappBranch) whatsappBranch.textContent = `Call/Chat Store Manager: ${b.phone || '044 4353 3333'}`;
 
-    if (b.deliveryLinks) {
-      if (swiggyLink && b.deliveryLinks.swiggy) swiggyLink.href = b.deliveryLinks.swiggy;
-      if (zomatoLink && b.deliveryLinks.zomato) zomatoLink.href = b.deliveryLinks.zomato;
+    const swiggyUrl = buildPartnerDeliveryUrl('swiggy', b, dish ? dish.name : null);
+    const zomatoUrl = buildPartnerDeliveryUrl('zomato', b, dish ? dish.name : null);
+    const whatsappUrl = buildPartnerDeliveryUrl('whatsapp', b, dish ? dish.name : null);
+
+    if (swiggyLink) {
+      swiggyLink.href = swiggyUrl;
+      swiggyLink.onclick = (e) => {
+        e.preventDefault();
+        handleSmartPartnerOrder('swiggy', dish ? dish.name : null, 'REDWOK20');
+        return false;
+      };
     }
-    if (whatsappLink && b.phone) {
-      const cleanPhone = b.phone.replace(/\D/g, '');
-      const msg = encodeURIComponent(`Hi ${b.name}, I would like to place a ${userFulfillment.mode} order.`);
-      whatsappLink.href = `https://wa.me/${cleanPhone.length >= 10 ? cleanPhone : '918939444411'}?text=${msg}`;
+    if (zomatoLink) {
+      zomatoLink.href = zomatoUrl;
+      zomatoLink.onclick = (e) => {
+        e.preventDefault();
+        handleSmartPartnerOrder('zomato', dish ? dish.name : null, 'REDWOK20');
+        return false;
+      };
+    }
+    if (whatsappLink) {
+      whatsappLink.href = whatsappUrl;
+      whatsappLink.onclick = (e) => {
+        e.preventDefault();
+        handleSmartPartnerOrder('whatsapp', dish ? dish.name : null, 'REDWOK20');
+        return false;
+      };
+    }
+  }
+
+  // Ensure dish preview block inside order modal
+  let dishPreview = document.getElementById('orderModalDishPreview');
+  if (!dishPreview) {
+    dishPreview = document.createElement('div');
+    dishPreview.id = 'orderModalDishPreview';
+    const linkContainer = modal.querySelector('.space-y-3') || modal.querySelector('.space-y-4');
+    if (linkContainer && linkContainer.parentNode) {
+      linkContainer.parentNode.insertBefore(dishPreview, linkContainer);
+    }
+  }
+
+  if (dishPreview) {
+    if (dish) {
+      dishPreview.className = 'mb-4 p-3 bg-gradient-to-r from-red-50 to-amber-50 border border-red-200/80 rounded-2xl flex items-center justify-between gap-3 shadow-xs';
+      const imgUrl = dish.image || (dish.food_type === 'veg' ? 'assets/images/img-03.png' : 'assets/images/img-08.png');
+      const priceVal = dish.price ? `₹ ${dish.price}` : '';
+      dishPreview.innerHTML = `
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="${imgUrl}" alt="${dish.name}" class="w-12 h-12 rounded-xl object-cover border border-red-200 shadow-xs flex-shrink-0">
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-[9px] font-heading font-extrabold uppercase px-1.5 py-0.5 rounded bg-brand-red text-white">Selected Item</span>
+              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded border border-emerald-300">⚡ Code REDWOK20 (20% OFF) Ready</span>
+            </div>
+            <h4 class="font-heading font-extrabold text-xs sm:text-sm text-zinc-900 truncate mt-0.5">${dish.name}</h4>
+            <p class="font-mono text-xs font-bold text-brand-red">${priceVal}</p>
+          </div>
+        </div>
+        <div class="hidden sm:flex flex-col items-end text-right flex-shrink-0">
+          <span class="text-[10px] font-extrabold text-amber-800 uppercase tracking-wider bg-amber-100/90 px-2 py-0.5 rounded">Auto Copy</span>
+          <span class="text-[10px] text-zinc-500 mt-0.5">Paste at Checkout</span>
+        </div>
+      `;
+      dishPreview.classList.remove('hidden');
+    } else {
+      dishPreview.className = 'mb-4 p-2.5 bg-zinc-50 border border-zinc-200/80 rounded-2xl flex items-center justify-between gap-2 text-xs';
+      dishPreview.innerHTML = `
+        <div class="flex items-center gap-2 text-zinc-700 min-w-0">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0 animate-ping"></span>
+          <span class="font-bold truncate text-[11px] sm:text-xs">Nearest Hub: ${b ? b.name : 'Red Box'}</span>
+        </div>
+        <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 flex-shrink-0">Code: REDWOK20 (20% OFF)</span>
+      `;
+      dishPreview.classList.remove('hidden');
     }
   }
 
@@ -2758,7 +3020,7 @@ function renderNewReleases() {
               <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
               Fresh Wok Prepped
             </span>
-            <button onclick="openOrderModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
+            <button onclick="handleDishOrderClick('${dish.id || ''}', '${(dish.name || '').replace(/'/g, "\\'")}')" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
               Order Now
             </button>
           </div>
@@ -2859,7 +3121,7 @@ function renderFeaturedDishes() {
                 <i data-lucide="award" class="w-3.5 h-3.5 text-amber-500"></i>
                 ${tagText}
               </span>
-              <button onclick="openOrderModal()" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
+              <button onclick="handleDishOrderClick('${dish.id || ''}', '${(dish.name || '').replace(/'/g, "\\'")}')" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
                 Add to Box
               </button>
             </div>
@@ -2935,7 +3197,7 @@ function renderFeaturedDishes() {
         <!-- Card Action Footer -->
         <div class="px-5 pb-5 pt-3 border-t border-zinc-100 flex items-center justify-between">
           <span class="text-[10px] font-bold text-brand-gold uppercase tracking-wider">Bestseller</span>
-          <button onclick="openOrderModal()" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
+          <button onclick="handleDishOrderClick('${dish.id || ''}', '${(dish.name || '').replace(/'/g, "\\'")}')" class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider rounded-full shadow hover:scale-102 transition-all cursor-pointer">
             Add to Box
           </button>
         </div>
@@ -3027,7 +3289,7 @@ async function initDynamicTestimonials() {
 }
 
 // ========================================================
-// TRANSPARENT ADAPTIVE NAVBAR & SWIGGY/ZOMATO QUICK ROUTING
+// TRANSPARENT ADAPTIVE NAVBAR & LOCATION-BASED SWIGGY/ZOMATO QUICK ROUTING
 // ========================================================
 const CITY_SLUG_MAP = {
   'chennai': 'chennai',
@@ -3038,25 +3300,232 @@ const CITY_SLUG_MAP = {
   'madurai': 'madurai',
   'puducherry': 'pondicherry',
   'pondicherry': 'pondicherry',
+  'visakhapatnam': 'visakhapatnam',
+  'vizag': 'visakhapatnam',
+  'vijayawada': 'vijayawada',
+  'rajahmundry': 'rajahmundry',
+  'vellore': 'vellore',
+  'kancheepuram': 'kanchipuram',
+  'kanchipuram': 'kanchipuram',
+  'thiruvananthapuram': 'thiruvananthapuram',
+  'trivandrum': 'thiruvananthapuram',
+  'kochi': 'kochi',
+  'nagpur': 'nagpur',
   'all': 'chennai'
 };
 
-function updateOrderPlatformLinks(cityName = 'chennai') {
-  const cityKey = (cityName || 'chennai').toLowerCase().trim();
-  const swiggyCity = CITY_SLUG_MAP[cityKey] || 'chennai';
-  const zomatoCity = (cityKey === 'bengaluru' ? 'bangalore' : (CITY_SLUG_MAP[cityKey] || 'chennai'));
+function toSlug(text) {
+  if (!text) return '';
+  return text.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 
-  const swiggyUrl = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
-  const zomatoUrl = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+// Build accurate city and outlet URL with optional dish query
+function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
+  const b = branch || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+  const cityRaw = (b && b.city) ? b.city.toLowerCase().trim() : 'chennai';
+  const swiggyCity = CITY_SLUG_MAP[cityRaw] || toSlug(cityRaw) || 'chennai';
+  const zomatoCity = (cityRaw === 'bengaluru' || cityRaw === 'bangalore') ? 'bangalore' : (CITY_SLUG_MAP[cityRaw] || toSlug(cityRaw) || 'chennai');
+  const areaSlug = b && b.area ? toSlug(b.area) : '';
+
+  if (platform === 'swiggy') {
+    // If international branch
+    if (b && b.country && b.country.toLowerCase() !== 'india' && b.deliveryLinks && b.deliveryLinks.swiggy) {
+      let url = b.deliveryLinks.swiggy;
+      if (dishName) url += (url.includes('?') ? '&' : '?') + `search=${encodeURIComponent(dishName)}`;
+      return url;
+    }
+
+    // If branch has a specific swiggy URL configured in deliveryLinks
+    if (b && b.deliveryLinks && b.deliveryLinks.swiggy && !b.deliveryLinks.swiggy.includes('swiggy-direct')) {
+      let url = b.deliveryLinks.swiggy;
+      if (dishName) url += (url.includes('?') ? '&' : '?') + `search=${encodeURIComponent(dishName)}`;
+      return url;
+    }
+
+    let url = areaSlug 
+      ? `https://www.swiggy.com/city/${swiggyCity}/the-red-box-${areaSlug}` 
+      : `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
+    if (dishName) {
+      url += `?search=${encodeURIComponent(dishName)}`;
+    }
+    return url;
+  }
+
+  if (platform === 'zomato') {
+    // If international branch
+    if (b && b.country && b.country.toLowerCase() !== 'india' && b.deliveryLinks && b.deliveryLinks.zomato) {
+      let url = b.deliveryLinks.zomato;
+      if (dishName) url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
+      return url;
+    }
+
+    // If branch has a specific zomato URL configured
+    if (b && b.deliveryLinks && b.deliveryLinks.zomato && !b.deliveryLinks.zomato.includes('query=RedBox')) {
+      let url = b.deliveryLinks.zomato;
+      if (dishName) url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
+      return url;
+    }
+
+    let url = areaSlug
+      ? `https://www.zomato.com/${zomatoCity}/the-red-box-${areaSlug}/order`
+      : `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+    if (dishName) {
+      url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
+    }
+    return url;
+  }
+
+  if (platform === 'whatsapp') {
+    const phone = (b && (b.managerPhone || b.phone)) ? (b.managerPhone || b.phone).replace(/\D/g, '') : '918939444411';
+    const bName = b ? b.name : 'The Red Box';
+    const loc = (typeof userFulfillment !== 'undefined' && userFulfillment.fullAddress) 
+      ? userFulfillment.fullAddress 
+      : (typeof userFulfillment !== 'undefined' && userFulfillment.localityName ? userFulfillment.localityName : 'Chennai');
+    let text = `Hi ${bName}! I would like to place an order`;
+    if (dishName) {
+      text += ` for *${dishName}*`;
+    }
+    text += ` with offer code *REDWOK20* (Flat 20% OFF).\n\n📍 Delivery Location: ${loc}`;
+    return `https://wa.me/${phone.length >= 10 ? phone : '918939444411'}?text=${encodeURIComponent(text)}`;
+  }
+
+  return '#';
+}
+
+// Global smart delivery toast notification with copy feedback & countdown bar
+function showSmartDeliveryToast(title, message, durationMs = 4500) {
+  let toast = document.getElementById('smartDeliveryToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'smartDeliveryToast';
+    toast.className = 'fixed bottom-6 right-6 z-[99999] max-w-sm w-[calc(100vw-3rem)] sm:w-96 bg-zinc-950/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl border border-red-500/40 transition-all duration-300 transform translate-y-12 opacity-0 pointer-events-none flex flex-col gap-2.5';
+    document.body.appendChild(toast);
+  }
+
+  toast.innerHTML = `
+    <div class="flex items-start justify-between gap-3">
+      <div class="flex items-start gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-brand-red flex items-center justify-center flex-shrink-0 shadow-md">
+          <i data-lucide="check" class="w-4 h-4 text-white stroke-[3]"></i>
+        </div>
+        <div>
+          <h4 class="font-heading font-extrabold text-xs sm:text-sm text-white tracking-wide flex items-center gap-1.5">
+            ${title}
+          </h4>
+          <p class="text-[11px] text-zinc-300 mt-0.5 leading-relaxed">
+            ${message}
+          </p>
+        </div>
+      </div>
+      <button onclick="dismissSmartDeliveryToast()" class="text-zinc-400 hover:text-white transition-colors cursor-pointer text-base leading-none p-1" aria-label="Close Toast">&times;</button>
+    </div>
+    <div class="w-full bg-zinc-800/80 h-1 rounded-full overflow-hidden">
+      <div id="smartToastProgress" class="bg-gradient-to-r from-brand-red via-amber-400 to-emerald-400 h-full w-full origin-left"></div>
+    </div>
+  `;
+
+  if (window.lucide) window.lucide.createIcons();
+
+  toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+  toast.classList.add('translate-y-0', 'opacity-100');
+
+  const prog = document.getElementById('smartToastProgress');
+  if (prog) {
+    prog.style.transition = `transform ${durationMs}ms linear`;
+    prog.style.transform = 'scaleX(1)';
+    requestAnimationFrame(() => {
+      prog.style.transform = 'scaleX(0)';
+    });
+  }
+
+  if (window._smartToastTimer) clearTimeout(window._smartToastTimer);
+  window._smartToastTimer = setTimeout(() => {
+    dismissSmartDeliveryToast();
+  }, durationMs);
+}
+
+function dismissSmartDeliveryToast() {
+  const toast = document.getElementById('smartDeliveryToast');
+  if (toast) {
+    toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+  }
+}
+
+function showToast(msg) {
+  showSmartDeliveryToast('Notification', msg, 3500);
+}
+
+// Handle Smart Partner Order: copies promo code, toasts, and opens nearest branch outlet
+function handleSmartPartnerOrder(platform, dishName = null, promoCode = 'REDWOK20') {
+  const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+  const bName = b ? b.name : 'Nearest Red Box Hub';
+  const url = buildPartnerDeliveryUrl(platform, b, dishName);
+
+  // Auto-copy promo code to clipboard
+  const codeToCopy = promoCode || 'REDWOK20';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(codeToCopy).catch(() => {});
+  }
+
+  // Display Toast Notification
+  const platformName = platform === 'swiggy' ? 'Swiggy' : (platform === 'zomato' ? 'Zomato' : 'WhatsApp');
+  const dishInfo = dishName ? `"${dishName}"` : 'signature menu';
+  showSmartDeliveryToast(
+    `📋 Code ${codeToCopy} copied! (20% OFF)`,
+    `Opening nearest ${bName} on ${platformName} with ${dishInfo}... Ready to paste discount code at checkout!`
+  );
+
+  // Close order modal smoothly if open
+  closeOrderModal();
+
+  // Open the resolved outlet URL in a new window/tab
+  setTimeout(() => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, 350);
+}
+
+// Update all navbar pills and ordering buttons across the page
+function updateGlobalDeliveryLinks(branchOrCity = null, dishName = null) {
+  let b = null;
+  if (typeof branchOrCity === 'string') {
+    const cityKey = branchOrCity.toLowerCase().trim();
+    if (typeof branchesData !== 'undefined') {
+      b = branchesData.find(x => (x.city || '').toLowerCase().trim() === cityKey) || branchesData[0];
+    }
+  } else if (branchOrCity && typeof branchOrCity === 'object') {
+    b = branchOrCity;
+  } else {
+    b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+  }
+
+  const swiggyUrl = buildPartnerDeliveryUrl('swiggy', b, dishName);
+  const zomatoUrl = buildPartnerDeliveryUrl('zomato', b, dishName);
+  const branchTitle = b ? `${b.name} (${b.city})` : 'Nearest Hub';
 
   document.querySelectorAll('.nav-order-pill-swiggy').forEach(el => {
     el.href = swiggyUrl;
-    el.title = `Order The Red Box on Swiggy (${swiggyCity.toUpperCase()})`;
+    el.title = `Order The Red Box on Swiggy · ${branchTitle} (Code REDWOK20 Auto-Copied)`;
+    el.onclick = (e) => {
+      e.preventDefault();
+      handleSmartPartnerOrder('swiggy', dishName, 'REDWOK20');
+      return false;
+    };
   });
+
   document.querySelectorAll('.nav-order-pill-zomato').forEach(el => {
     el.href = zomatoUrl;
-    el.title = `Order The Red Box on Zomato (${zomatoCity.toUpperCase()})`;
+    el.title = `Order The Red Box on Zomato · ${branchTitle} (Code REDWOK20 Auto-Copied)`;
+    el.onclick = (e) => {
+      e.preventDefault();
+      handleSmartPartnerOrder('zomato', dishName, 'REDWOK20');
+      return false;
+    };
   });
+}
+
+function updateOrderPlatformLinks(cityName = 'chennai') {
+  updateGlobalDeliveryLinks(cityName);
 }
 
 function initAdaptiveNavbar() {
@@ -3101,5 +3570,6 @@ function initAdaptiveNavbar() {
   window.addEventListener('scroll', handleNavScroll, { passive: true });
   window.addEventListener('resize', handleNavScroll, { passive: true });
   handleNavScroll(); // Immediate initial evaluation
-  updateOrderPlatformLinks('chennai');
+  const initialBranch = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) ? userFulfillment.nearestBranch : 'chennai';
+  updateGlobalDeliveryLinks(initialBranch);
 }
