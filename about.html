@@ -113,7 +113,6 @@
         <a href="about.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>About Us</span></a>
         <a href="catering.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
         <a href="franchise.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
-        <a href="blog.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Stories</span></a>
       </nav>
 
       <!-- Header Right: Swiggy & Zomato Quick Order Buttons -->
@@ -773,7 +772,44 @@
     </section>
 
     <!-- ---------------------------------------------------- -->
-    <!-- SECTION 7: FOUNDER'S PLEDGE & SEAL (WHITE LUXURY)    -->
+    <!-- SECTION 7: CULINARY STORIES & WOK CHRONICLES         -->
+    <!-- ---------------------------------------------------- -->
+    <section id="stories" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-[#EADBCA] bg-[#F8F5EE] scroll-mt-20 relative overflow-hidden">
+      <!-- Ambient Dragon Lattice Watermark Background -->
+      <div class="dragon-watermark-right opacity-20"></div>
+
+      <div class="max-w-7xl mx-auto space-y-8 sm:space-y-10 relative z-10">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-heading font-extrabold uppercase tracking-widest border border-red-200">
+            <span>印 · BEHIND THE WOK</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900 tracking-tight leading-tight">
+            Culinary Stories & <span class="text-brand-red italic font-serif">Wok Hei</span> Craft
+          </h2>
+          <p class="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
+            Behind-the-scenes master wok techniques, thermal box engineering, secret spices, and growth chronicles across our 105 hubs.
+          </p>
+
+          <!-- Category Filter Pills -->
+          <div id="storyCategoryFilters" class="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <button onclick="filterStoryCategory('All')" class="story-cat-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-red text-white transition-all shadow-sm cursor-pointer">All Stories</button>
+            <button onclick="filterStoryCategory('Culinary Secrets')" class="story-cat-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-zinc-600 hover:text-brand-red hover:bg-zinc-100 border border-zinc-200 transition-all cursor-pointer">Culinary Secrets</button>
+            <button onclick="filterStoryCategory('Packaging Innovation')" class="story-cat-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-zinc-600 hover:text-brand-red hover:bg-zinc-100 border border-zinc-200 transition-all cursor-pointer">Packaging</button>
+            <button onclick="filterStoryCategory('Franchise & Growth')" class="story-cat-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-zinc-600 hover:text-brand-red hover:bg-zinc-100 border border-zinc-200 transition-all cursor-pointer">Franchise & Growth</button>
+          </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="blogArticlesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div class="col-span-full text-center py-12 text-zinc-400">Loading culinary stories...</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SECTION 8: FOUNDER'S PLEDGE & SEAL (WHITE LUXURY)    -->
     <!-- ---------------------------------------------------- -->
     <section class="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-stone-200 bg-white">
       <div class="max-w-4xl mx-auto">
@@ -888,8 +924,9 @@
             <li><a href="index.html" class="hover:text-brand-red transition-colors">Home</a></li>
             <li><a href="menu.html" class="hover:text-brand-red transition-colors">Food Menu (271 Dishes)</a></li>
             <li><a href="branches.html" class="hover:text-brand-red transition-colors">57 Branches & Hubs</a></li>
-            <li><a href="about.html" class="hover:text-brand-red transition-colors text-white font-bold">About Us</a></li>
+            <li><a href="about.html" class="hover:text-brand-red transition-colors text-white font-bold">About Us & Stories</a></li>
             <li><a href="about.html#the-box" class="hover:text-brand-red transition-colors">The 45-Min Box (USP)</a></li>
+            <li><a href="about.html#stories" class="hover:text-brand-red transition-colors">Culinary Stories</a></li>
             <li><a href="catering.html" class="hover:text-brand-red transition-colors">Catering Calculator</a></li>
             <li><a href="franchise.html" class="hover:text-brand-red transition-colors">Franchise Partnership</a></li>
             <li><a href="admin.html" class="hover:text-brand-red transition-colors">Admin Console</a></li>
@@ -996,6 +1033,41 @@
           <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
           <span>Find Branches</span>
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article Detail Modal -->
+  <div id="articleModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+      <!-- Modal Header -->
+      <div class="relative h-60 sm:h-72 w-full overflow-hidden shrink-0">
+        <img id="modalArticleImg" src="" alt="" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+        <button onclick="closeArticleModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-zinc-800 flex items-center justify-center shadow-lg transition-all cursor-pointer" aria-label="Close modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="absolute bottom-4 left-6 right-6 text-white">
+          <span id="modalArticleCategory" class="inline-block px-3 py-1 bg-brand-red text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md mb-2"></span>
+          <h2 id="modalArticleTitle" class="text-xl sm:text-2xl font-serif font-bold leading-snug"></h2>
+        </div>
+      </div>
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 overflow-y-auto custom-scroll space-y-4">
+        <div class="flex items-center justify-between text-xs text-zinc-500 border-b border-zinc-200 pb-3">
+          <span id="modalArticleAuthor" class="font-bold text-zinc-700"></span>
+          <span id="modalArticleDate"></span>
+        </div>
+        <div id="modalArticleContent" class="text-zinc-700 leading-relaxed text-sm sm:text-base space-y-4 font-sans"></div>
+      </div>
+      <!-- Modal Footer -->
+      <div class="p-4 bg-zinc-50 border-t border-zinc-200 flex items-center justify-between shrink-0">
+        <a href="menu.html" class="px-5 py-2.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-md transition-all">
+          Explore Dishes Mentioned
+        </a>
+        <button onclick="closeArticleModal()" class="px-4 py-2 border border-zinc-300 text-zinc-700 hover:bg-zinc-100 text-xs font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer">
+          Close Article
+        </button>
       </div>
     </div>
   </div>
@@ -1233,7 +1305,122 @@
         console.warn('Dynamic about content load fallback:', err);
       }
     }
-    document.addEventListener('DOMContentLoaded', loadDynamicAboutContent);
+
+    // --------------------------------------------------------
+    // CULINARY STORIES & ARTICLES ENGINE
+    // --------------------------------------------------------
+    let allStories = [];
+    let currentStoryCategory = 'All';
+
+    async function initCulinaryStories() {
+      try {
+        const res = await fetch('/api/blogs');
+        if (res.ok) {
+          allStories = await res.json();
+        } else {
+          const resFallback = await fetch('data/blogs.json');
+          allStories = await resFallback.json();
+        }
+      } catch (e) {
+        try {
+          const resFallback = await fetch('data/blogs.json');
+          allStories = await resFallback.json();
+        } catch (err) {
+          console.error('Failed to load culinary stories:', err);
+        }
+      }
+      renderStoryCards();
+
+      // Check if deep-linked to #stories
+      if (window.location.hash === '#stories') {
+        setTimeout(() => {
+          const el = document.getElementById('stories');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+
+    function renderStoryCards() {
+      const grid = document.getElementById('blogArticlesGrid');
+      if (!grid) return;
+
+      const filtered = currentStoryCategory === 'All'
+        ? allStories.filter(s => s.published !== false)
+        : allStories.filter(s => s.published !== false && s.category === currentStoryCategory);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full text-center py-12 text-zinc-400 font-medium">No stories found in this category.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(b => `
+        <article class="bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div class="relative h-52 overflow-hidden bg-zinc-100">
+            <img src="${b.image || b.coverImage || 'assets/images/dishes/dish-1.jpg'}" alt="${b.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='assets/images/hdr-bnr-01.jpg'">
+            <span class="absolute top-4 left-4 px-3 py-1 bg-brand-red text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-md">
+              ${b.category}
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs text-zinc-400 font-medium mb-2.5">
+                <span>${b.date}</span>
+                <span>•</span>
+                <span>${b.readTime || '4 min read'}</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-serif font-bold text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-2 mb-3">
+                ${b.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-zinc-600 line-clamp-3 leading-relaxed mb-4">
+                ${b.excerpt}
+              </p>
+            </div>
+            <button onclick="openArticleModal('${b.id}')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-red hover:text-brand-red-dark transition-colors cursor-pointer pt-3 border-t border-zinc-100">
+              <span>Read Full Story</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function filterStoryCategory(cat) {
+      currentStoryCategory = cat;
+      document.querySelectorAll('.story-cat-btn').forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(cat.toLowerCase()) || (cat === 'All' && btn.innerText.includes('All'))) {
+          btn.className = 'story-cat-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-red text-white transition-all shadow-sm cursor-pointer';
+        } else {
+          btn.className = 'story-cat-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-zinc-600 hover:text-brand-red hover:bg-zinc-100 border border-zinc-200 transition-all cursor-pointer';
+        }
+      });
+      renderStoryCards();
+    }
+
+    function openArticleModal(id) {
+      const article = allStories.find(b => String(b.id) === String(id));
+      if (!article) return;
+      document.getElementById('modalArticleImg').src = article.image || article.coverImage || 'assets/images/hdr-bnr-01.jpg';
+      document.getElementById('modalArticleCategory').innerText = article.category;
+      document.getElementById('modalArticleTitle').innerText = article.title;
+      document.getElementById('modalArticleAuthor').innerText = 'By ' + (article.author || 'The Red Box Culinary Council');
+      document.getElementById('modalArticleDate').innerText = article.date + ' • ' + (article.readTime || '4 min read');
+      document.getElementById('modalArticleContent').innerHTML = article.content || '<p>' + article.excerpt + '</p>';
+      document.getElementById('articleModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDynamicAboutContent();
+      initCulinaryStories();
+    });
   </script>
   <script src="app.js?v=2.2"></script>
 </body>

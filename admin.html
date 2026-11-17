@@ -102,7 +102,7 @@
             <span>Edit Home Page</span>
           </button>
           <button onclick="switchView('about')" id="nav-about" class="nav-item w-full flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors text-xs font-medium cursor-pointer">
-            <span>Edit About Us</span>
+            <span>About Us & Stories CMS</span>
           </button>
           <button onclick="switchView('branches')" id="nav-branches" class="nav-item w-full flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors text-xs font-medium cursor-pointer">
             <span>Branches & Hubs</span>
@@ -116,9 +116,6 @@
           </button>
           <button onclick="switchView('testimonials')" id="nav-testimonials" class="nav-item w-full flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors text-xs font-medium cursor-pointer">
             <span>Testimonials & Reviews</span>
-          </button>
-          <button onclick="switchView('blogs')" id="nav-blogs" class="nav-item w-full flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors text-xs font-medium cursor-pointer">
-            <span>Blog & Stories CMS</span>
           </button>
           <button onclick="switchView('media')" id="nav-media" class="nav-item w-full flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors text-xs font-medium cursor-pointer">
             <span>Media Library</span>
@@ -712,9 +709,9 @@
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
 
-            <h2 class="text-2xl font-black text-slate-900">About Us Page Manager</h2>
+            <h2 class="text-2xl font-black text-slate-900">About Us & Stories Manager</h2>
             <p class="text-sm text-slate-500 mt-1 max-w-2xl">
-              Full visual CMS for non-coders. Switch images, edit stories & quotes, manage the 4 pillars with card-top images, extend or retract the timeline branchline, and edit the sensory kitchen craft gallery.
+              Full visual CMS for non-coders. Manage Hero & philosophy, 4 pillars, branchline timeline, sensory kitchen craft gallery, patented box packaging, and publish culinary stories & articles.
             </p>
           </div>
 
@@ -756,6 +753,12 @@
           <button onclick="switchAboutTab('box')" id="tabBtn-about-box" class="about-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
             <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
             <span>The Box & Founder Pledge</span>
+          </button>
+
+          <button onclick="switchAboutTab('stories')" id="tabBtn-about-stories" class="about-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>Culinary Stories & Articles</span>
+            <span id="tabCount-about-stories" class="px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-extrabold">0</span>
           </button>
         </div>
 
@@ -1098,6 +1101,51 @@
         </div>
 
         <!-- ======================================================== -->
+        <!-- TAB 6: CULINARY STORIES & ARTICLES                       -->
+        <!-- ======================================================== -->
+        <div id="aboutTabContent-stories" class="about-tab-content space-y-6 hidden">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-1 rounded-md bg-rose-50 text-rose-700 text-[11px] font-bold">Section 7: Culinary Stories</span>
+                <span id="storiesCountBadge" class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">0 Articles</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900">Culinary Stories & Blog CMS</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Publish wok craft articles, recipe spotlights, brand heritage notes, and packaging stories directly integrated into About Us.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="about.html#stories" target="_blank" class="px-3.5 py-2 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+                <span>View on Public Page ↗</span>
+              </a>
+              <button onclick="openAddBlogModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                <span>+ Write New Article</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-slate-600">
+                <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
+                  <tr>
+                    <th class="px-4 py-3">Article Title</th>
+                    <th class="px-4 py-3">Category</th>
+                    <th class="px-4 py-3">Author</th>
+                    <th class="px-4 py-3">Date</th>
+                    <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="blogsTableBody" class="divide-y divide-slate-100">
+                  <!-- Populated by renderBlogs() -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================== -->
         <!-- LIVE REFLECTION CANVAS: DESKTOP PREVIEW OF ABOUT.HTML    -->
         <!-- ======================================================== -->
         <div class="pt-6 border-t border-slate-200">
@@ -1195,6 +1243,19 @@
                 </div>
 
                 <div id="refAboutCraftGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- REFLECTION 4.5: CULINARY STORIES PREVIEW -->
+              <div class="px-6 space-y-4">
+                <div class="text-center max-w-xl mx-auto space-y-1">
+                  <span class="text-[10px] font-bold text-brand-red uppercase tracking-widest">印 · BEHIND THE WOK</span>
+                  <h2 class="text-lg font-serif font-bold text-zinc-900">Culinary Stories & <span class="text-brand-red italic">Wok Hei</span> Craft</h2>
+                  <p class="text-[10px] text-zinc-500">Live reflection of published articles from the Stories CMS tab.</p>
+                </div>
+
+                <div id="refAboutStoriesGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <!-- Populated by JS -->
                 </div>
               </div>
@@ -2429,47 +2490,6 @@
 
         <div id="testimonialsCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <!-- Populated by renderTestimonialsTable() -->
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- VIEW: BLOG & STORIES CMS                                 -->
-      <!-- ======================================================== -->
-      <section id="view-blogs" class="hidden space-y-5">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Culinary Stories & Blog CMS</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Create, edit, and publish wok craft articles, recipe spotlights, and brand stories.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <a href="blog.html" target="_blank" class="px-3.5 py-2 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
-              <span>View Public Blog ↗</span>
-            </a>
-            <button onclick="openAddBlogModal()" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Write Article</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-600">
-              <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[11px] border-b border-slate-200">
-                <tr>
-                  <th class="px-4 py-3">Article Title</th>
-                  <th class="px-4 py-3">Category</th>
-                  <th class="px-4 py-3">Author</th>
-                  <th class="px-4 py-3">Date</th>
-                  <th class="px-4 py-3">Status</th>
-                  <th class="px-4 py-3 text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="blogsTableBody" class="divide-y divide-slate-100">
-                <!-- Populated by renderBlogsTable() -->
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
 
@@ -3973,6 +3993,11 @@
 
     function switchView(viewName) {
       if (viewName === 'slider') viewName = 'homepage';
+      if (viewName === 'blogs') {
+        switchView('about');
+        switchAboutTab('stories');
+        return;
+      }
 
       const views = ['dashboard', 'homepage', 'about', 'branches', 'menu', 'testimonials', 'blogs', 'media', 'promotions', 'reservations', 'enquiries', 'franchises', 'catering', 'careers', 'settings', 'users', 'audit'];
       views.forEach(v => {
@@ -3996,11 +4021,11 @@
       const titles = {
         dashboard: "Dashboard Overview",
         homepage: "Edit Home Page · Visual CMS",
-        about: "Edit About Us · Visual CMS",
+        about: "Edit About Us & Stories · Visual CMS",
         branches: "Branches & Regional Hubs Management",
         menu: "Food Menu & Pricing Catalog",
         testimonials: "Customer Testimonials & Verified Reviews",
-        blogs: "Stories & Editorial Blog CMS",
+        blogs: "Culinary Stories & Editorial Blog CMS",
         media: "Media Asset Library & File Storage",
         promotions: "Promotions, Banners & Promo Codes",
         reservations: "Table Bookings & Diners",
@@ -4035,6 +4060,7 @@
       };
 
       // Trigger lazy renders
+      if (viewName === 'about') renderBlogs();
       if (viewName === 'testimonials') renderTestimonials();
       if (viewName === 'blogs') renderBlogs();
       if (viewName === 'media') loadMediaLibrary();
@@ -7669,7 +7695,7 @@ function renderCareersCards() {
 
     function switchAboutTab(tabName) {
       currentAboutTab = tabName;
-      ['hero', 'pillars', 'timeline', 'craft', 'box'].forEach(t => {
+      ['hero', 'pillars', 'timeline', 'craft', 'box', 'stories'].forEach(t => {
         const btn = document.getElementById(`tabBtn-about-${t}`);
         const content = document.getElementById(`aboutTabContent-${t}`);
         if (btn) {
@@ -7684,6 +7710,9 @@ function renderCareersCards() {
           else content.classList.add('hidden');
         }
       });
+      if (tabName === 'stories') {
+        renderBlogs();
+      }
     }
 
     // Render Four Pillars Cards (Image 1) with optional top image editing
@@ -8348,6 +8377,28 @@ function renderCareersCards() {
       const pledgeCouncil = document.getElementById('aboutPledgeNameInput')?.value || 'THE RED BOX CULINARY COUNCIL';
       if (document.getElementById('refAboutPledgeQuote')) document.getElementById('refAboutPledgeQuote').innerText = `"${pledgeQuote}"`;
       if (document.getElementById('refAboutPledgeCouncil')) document.getElementById('refAboutPledgeCouncil').innerText = pledgeCouncil.toUpperCase();
+
+      // 6. Culinary Stories Live Reflection
+      const storiesGrid = document.getElementById('refAboutStoriesGrid');
+      if (storiesGrid && appState.blogs) {
+        const publishedBlogs = appState.blogs.filter(b => b.published !== false).slice(0, 3);
+        if (publishedBlogs.length === 0) {
+          storiesGrid.innerHTML = '<div class="col-span-full text-center py-4 text-xs text-slate-400">No published articles yet.</div>';
+        } else {
+          storiesGrid.innerHTML = publishedBlogs.map(b => `
+            <div class="bg-stone-50 rounded-xl overflow-hidden border border-zinc-200 text-left">
+              <div class="h-20 overflow-hidden relative">
+                <img src="${b.coverImage || b.image || 'assets/images/dishes/dish-1.jpg'}" onerror="this.src='assets/images/dish-placeholder.jpg'" class="w-full h-full object-cover">
+                <span class="absolute top-2 left-2 px-1.5 py-0.5 bg-brand-red text-white text-[8px] font-extrabold uppercase rounded">${b.category || 'Story'}</span>
+              </div>
+              <div class="p-2.5">
+                <h4 class="font-bold text-[11px] text-zinc-900 truncate">${b.title}</h4>
+                <p class="text-[9px] text-zinc-500 line-clamp-2 mt-1">${b.excerpt || ''}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
     }
 
 
@@ -8492,16 +8543,21 @@ function renderCareersCards() {
     // ========================================================
     function renderBlogs() {
       const tbody = document.getElementById('blogsTableBody');
+      const tabBadge = document.getElementById('tabCount-about-stories');
+      if (tabBadge) tabBadge.innerText = (appState.blogs && appState.blogs.length) || 0;
+      const countBadge = document.getElementById('storiesCountBadge');
+      if (countBadge) countBadge.innerText = `${(appState.blogs && appState.blogs.length) || 0} Articles`;
+
       if (!tbody) return;
       if (!appState.blogs || appState.blogs.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="px-4 py-8 text-center text-slate-400">No blog posts found. Click "+ Create Article" to publish your first story.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="px-4 py-8 text-center text-slate-400">No blog posts found. Click "+ Write New Article" to publish your first story.</td></tr>`;
         return;
       }
       tbody.innerHTML = appState.blogs.map((b, idx) => `
         <tr class="hover:bg-slate-50 transition border-b border-slate-100">
           <td class="px-4 py-3">
             <div class="flex items-center gap-3">
-              <img src="${b.coverImage || 'assets/images/dishes/dish-1.jpg'}" onerror="this.src='assets/images/dish-placeholder.jpg'" class="w-12 h-10 rounded-lg object-cover border border-slate-200">
+              <img src="${b.coverImage || b.image || 'assets/images/dishes/dish-1.jpg'}" onerror="this.src='assets/images/dish-placeholder.jpg'" class="w-12 h-10 rounded-lg object-cover border border-slate-200">
               <div>
                 <h4 class="font-bold text-slate-900 text-xs max-w-xs truncate">${b.title}</h4>
                 <p class="text-[10px] text-slate-500">${b.author || 'Executive Chef Chen'} · ${b.readTime || '4 min'}</p>
@@ -8519,7 +8575,7 @@ function renderCareersCards() {
           </td>
           <td class="px-4 py-3 text-right">
             <div class="flex items-center justify-end gap-2">
-              <a href="blog.html" target="_blank" class="p-1 text-slate-400 hover:text-brand-red text-[11px] font-medium" title="Preview on live site">Preview ↗</a>
+              <a href="about.html#stories" target="_blank" class="p-1 text-slate-400 hover:text-brand-red text-[11px] font-medium" title="Preview on live site">Preview ↗</a>
               <button onclick="editBlog(${idx})" class="p-1 text-slate-600 hover:text-slate-900 text-[11px] font-medium cursor-pointer">Edit</button>
               <button onclick="deleteBlog(${idx})" class="p-1 text-red-600 hover:text-red-700 text-[11px] font-medium cursor-pointer">Delete</button>
             </div>
@@ -8586,6 +8642,7 @@ function renderCareersCards() {
       }
       closeBlogModal();
       renderBlogs();
+      updateAboutLiveReflection();
       showToast("Publishing article to blog...");
       try {
         await fetch('/api/blogs', {
@@ -8604,6 +8661,7 @@ function renderCareersCards() {
       if (confirm(`Delete article "${appState.blogs[idx].title}"?`)) {
         appState.blogs.splice(idx, 1);
         renderBlogs();
+        updateAboutLiveReflection();
         await fetch('/api/blogs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

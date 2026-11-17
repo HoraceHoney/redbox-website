@@ -28,12 +28,10 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
         clean = path.split('?')[0].rstrip('/')
         if clean in ['/admin', '/admin/dashboard', '/admin/login']:
             return os.path.join(DIRECTORY, 'admin.html')
-        elif clean in ['/about', '/about-us', '/our-story', '/story', '/the-box', '/thebox']:
+        elif clean in ['/about', '/about-us', '/our-story', '/story', '/the-box', '/thebox', '/blog', '/blogs', '/blog.html', '/stories']:
             return os.path.join(DIRECTORY, 'about.html')
         elif clean in ['/branches', '/branches/', '/outlets', '/outlets/', '/locations']:
             return os.path.join(DIRECTORY, 'branches.html')
-        elif clean in ['/blog', '/blogs', '/blog.html']:
-            return os.path.join(DIRECTORY, 'blog.html')
         return super().translate_path(path)
 
     def end_headers(self):
