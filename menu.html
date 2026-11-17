@@ -242,6 +242,37 @@
         </div>
       </div>
 
+      <!-- Nearest Operational Kitchen Hubs Deck (2-3 closest branches with direct Swiggy/Zomato & Table Booking) -->
+      <section id="nearbyHubsSection" class="mb-10 transition-all">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-heading font-extrabold uppercase tracking-wider bg-red-50 text-brand-red border border-red-200">
+                Proximity Kitchens
+              </span>
+              <span class="text-xs text-zinc-500 font-medium flex items-center gap-1">
+                <i data-lucide="compass" class="w-3.5 h-3.5 text-zinc-400"></i>
+                Nearest operating branches to your location
+              </span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-heading font-black text-zinc-900 tracking-tight mt-1">
+              Serving Branches Near You
+            </h3>
+          </div>
+          <div class="text-xs text-zinc-500 flex items-center gap-2">
+            <span>Wrong neighborhood?</span>
+            <button onclick="openLocationSelectorModal()" class="text-brand-red font-bold hover:underline cursor-pointer flex items-center gap-1">
+              Change Location <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Hub Cards Grid -->
+        <div id="nearbyHubsCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated by renderNearbyHubsCards() -->
+        </div>
+      </section>
+
       <!-- Out-of-Service Zone Experience Card (Displayed when user is > 25km from nearest branch) -->
       <div id="outOfServiceZoneBanner" class="hidden out-of-zone-container mb-12 rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all">
         <!-- Background Watermark Accent -->
@@ -678,6 +709,147 @@
         <p class="text-xs text-zinc-600">We've registered your interest for <span id="cityNotifyConfirmedCity" class="font-bold text-brand-red"></span>. You'll receive opening updates and your complimentary Wok Box voucher on opening week!</p>
         <button onclick="closeCityNotifyModal()" class="mt-3 px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold rounded-xl transition cursor-pointer">Continue Browsing Showcase</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Table Reservation Modal -->
+  <div id="tableBookingModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[92vh] overflow-y-auto animate-in fade-in zoom-in duration-200">
+      <button onclick="closeTableBookingModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition cursor-pointer p-1" aria-label="Close Modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- FORM VIEW -->
+      <div id="tableBookingFormView">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0 shadow-xs">
+            <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="text-[10px] font-heading font-extrabold uppercase tracking-widest text-brand-red">Dine-In Reservation</span>
+            <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Book a Table</h3>
+            <p class="text-xs text-zinc-500 mt-0.5">Instant table hold at your nearest Red Box kitchen</p>
+          </div>
+        </div>
+
+        <form id="tableBookingForm" onsubmit="handleTableBookingSubmit(event)" class="space-y-4">
+          <!-- Branch Selector -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5 flex items-center justify-between">
+              <span>Branch / Location *</span>
+              <span class="text-[10px] text-zinc-400 lowercase font-normal">57 global outlets</span>
+            </label>
+            <div class="relative">
+              <select id="tableBookingBranchSelect" required class="w-full pl-3 pr-8 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Date & Time Slot Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Date *</label>
+              <input type="date" id="tableBookingDate" required class="w-full px-3 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Time Slot *</label>
+              <select id="tableBookingTimeSlot" required class="w-full px-3 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+                <optgroup label="Lunch (12:00 PM - 3:30 PM)">
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="12:30 PM">12:30 PM</option>
+                  <option value="1:00 PM" selected>1:00 PM</option>
+                  <option value="1:30 PM">1:30 PM</option>
+                  <option value="2:00 PM">2:00 PM</option>
+                  <option value="2:30 PM">2:30 PM</option>
+                </optgroup>
+                <optgroup label="Dinner (7:00 PM - 11:00 PM)">
+                  <option value="7:00 PM">7:00 PM</option>
+                  <option value="7:30 PM">7:30 PM</option>
+                  <option value="8:00 PM">8:00 PM</option>
+                  <option value="8:30 PM">8:30 PM</option>
+                  <option value="9:00 PM">9:00 PM</option>
+                  <option value="9:30 PM">9:30 PM</option>
+                  <option value="10:00 PM">10:00 PM</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <!-- Number of Guests with Quick Buttons -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5 flex items-center justify-between">
+              <span>Guests *</span>
+              <span class="text-[10px] text-zinc-400 lowercase font-normal">select or type</span>
+            </label>
+            <div class="flex items-center gap-2 mb-2">
+              <button type="button" onclick="setTableGuests(2, this)" class="table-guest-btn flex-1 py-1.5 text-xs font-bold rounded-lg border bg-brand-red text-white border-brand-red transition cursor-pointer">2</button>
+              <button type="button" onclick="setTableGuests(4, this)" class="table-guest-btn flex-1 py-1.5 text-xs font-bold rounded-lg border bg-zinc-100 text-zinc-700 border-zinc-200 hover:border-zinc-300 transition cursor-pointer">4</button>
+              <button type="button" onclick="setTableGuests(6, this)" class="table-guest-btn flex-1 py-1.5 text-xs font-bold rounded-lg border bg-zinc-100 text-zinc-700 border-zinc-200 hover:border-zinc-300 transition cursor-pointer">6</button>
+              <button type="button" onclick="setTableGuests(8, this)" class="table-guest-btn flex-1 py-1.5 text-xs font-bold rounded-lg border bg-zinc-100 text-zinc-700 border-zinc-200 hover:border-zinc-300 transition cursor-pointer">8</button>
+              <button type="button" onclick="setTableGuests(12, this)" class="table-guest-btn flex-1 py-1.5 text-xs font-bold rounded-lg border bg-zinc-100 text-zinc-700 border-zinc-200 hover:border-zinc-300 transition cursor-pointer">12+</button>
+            </div>
+            <input type="number" id="tableBookingGuests" value="2" min="1" max="50" required class="w-full px-3 py-2 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition" placeholder="Number of guests">
+          </div>
+
+          <!-- Contact Information -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Your Name *</label>
+              <input type="text" id="tableBookingName" required placeholder="John Doe" class="w-full px-3 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Phone Number *</label>
+              <input type="tel" id="tableBookingPhone" required placeholder="+91 98765 43210" class="w-full px-3 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+            </div>
+          </div>
+
+          <!-- Special Request / Occasion -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Special Request / Occasion (Optional)</label>
+            <input type="text" id="tableBookingNotes" placeholder="e.g. Birthday, Anniversary celebration, High-chair needed" class="w-full px-3 py-2.5 text-xs bg-zinc-50 border border-zinc-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-red transition">
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Confirm Table Reservation</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- SUCCESS VIEW (Hidden by default, shown upon submit) -->
+      <div id="tableBookingSuccessView" class="hidden text-center py-4 space-y-4">
+        <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
+          <i data-lucide="check" class="w-7 h-7 stroke-[3]"></i>
+        </div>
+        <div>
+          <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-600">Reservation Confirmed</span>
+          <h3 class="text-2xl font-serif font-bold text-zinc-900 mt-1">Table Reserved!</h3>
+          <p class="text-xs text-zinc-500 mt-1">Booking Reference: <strong id="tableSuccessBookingRef" class="font-mono text-zinc-900">RBX-000000</strong></p>
+        </div>
+
+        <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 text-xs text-zinc-700 leading-relaxed text-left space-y-1.5">
+          <div id="tableSuccessSummary" class="font-medium text-zinc-900">
+            2 Guests at The Red Box - T. Nagar
+          </div>
+          <p class="text-zinc-500 text-[11px]">
+            Your table will be held for 15 minutes past your reserved time slot. Our restaurant host has received your reservation.
+          </p>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <a id="tableSuccessWhatsAppBtn" href="#" target="_blank" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <img src="assets/images/whatsapp-icon.png" alt="WhatsApp" class="h-4 w-4">
+            <span>Send Booking Details to Branch on WhatsApp</span>
+          </a>
+          <button onclick="closeTableBookingModal()" class="w-full py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
+            Done / Close
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 

@@ -1097,6 +1097,12 @@ async function loadBranchesData() {
       initMenuLocationPipeline();
     }
 
+    // Initialize Catering Deck if on catering.html
+    if (document.getElementById('cateringNearbyHubsCardsGrid')) {
+      renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering');
+      updateCateringFulfillmentBarUI();
+    }
+
   } catch (err) {
     console.error('Error loading branches:', err);
   }
@@ -1879,6 +1885,9 @@ function initGlobalLocationState() {
       if (parsed && parsed.isVerified && parsed.nearestBranch) {
         userFulfillment = { ...userFulfillment, ...parsed };
         updateGlobalDeliveryLinks(userFulfillment.nearestBranch);
+        renderNearbyHubsCards('nearbyHubsCardsGrid', 'menu');
+        renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering');
+        updateCateringFulfillmentBarUI();
         return;
       }
     }
@@ -1900,6 +1909,9 @@ function initGlobalLocationState() {
       isTakeawayOnly: false
     };
     updateGlobalDeliveryLinks(defaultBranch);
+    renderNearbyHubsCards('nearbyHubsCardsGrid', 'menu');
+    renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering');
+    updateCateringFulfillmentBarUI();
   }
 }
 
@@ -2098,6 +2110,17 @@ function findNearestBranch(lat, lon) {
   return { branch: nearestBranch, distance: minDistance };
 }
 
+// Find N nearest branches from coordinate (sorted by distance)
+function findNearestBranches(lat, lon, count = 3) {
+  if (!branchesData || branchesData.length === 0) return [];
+  const list = branchesData.map(b => {
+    const dist = calculateDistanceKm(lat, lon, b.latitude, b.longitude);
+    return { branch: b, distance: Math.round(dist * 10) / 10 };
+  });
+  list.sort((a, b) => a.distance - b.distance);
+  return list.slice(0, count);
+}
+
 // Set user location state with complete fullAddress
 function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress = null, accuracy = null) {
   const isOutOfZone = distanceKm > 25;
@@ -2128,6 +2151,9 @@ function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress
   updateOutOfServiceBannerUI();
   renderMenuItems();
   updateGlobalDeliveryLinks(branch);
+  renderNearbyHubsCards('nearbyHubsCardsGrid', 'menu');
+  renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering');
+  updateCateringFulfillmentBarUI();
 
   // If there was a pending dish order waiting for location verification, execute it
   if (userFulfillment.pendingDishId) {
@@ -2571,13 +2597,13 @@ function resolveDishObject(dishOrDishId) {
   };
 }
 
-function openOrderModal(dishOrDishId = null) {
+function openOrderModal(dishOrDishId = null, overrideBranch = null) {
   const modal = document.getElementById('orderModal');
   if (!modal) return;
 
   currentModalDish = resolveDishObject(dishOrDishId);
   const dish = currentModalDish;
-  const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+  const b = overrideBranch || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
 
   const heading = document.getElementById('orderModalHeading') || modal.querySelector('h3');
   const subtitle = document.getElementById('orderModalSubtitle') || modal.querySelector('p.text-xs');
@@ -2621,7 +2647,7 @@ function openOrderModal(dishOrDishId = null) {
       swiggyLink.href = swiggyUrl;
       swiggyLink.onclick = (e) => {
         e.preventDefault();
-        handleSmartPartnerOrder('swiggy', dish ? dish.name : null, 'REDWOK20');
+        handleSmartPartnerOrder('swiggy', dish ? dish.name : null, 'REDWOK20', b);
         return false;
       };
     }
@@ -2629,7 +2655,7 @@ function openOrderModal(dishOrDishId = null) {
       zomatoLink.href = zomatoUrl;
       zomatoLink.onclick = (e) => {
         e.preventDefault();
-        handleSmartPartnerOrder('zomato', dish ? dish.name : null, 'REDWOK20');
+        handleSmartPartnerOrder('zomato', dish ? dish.name : null, 'REDWOK20', b);
         return false;
       };
     }
@@ -2637,7 +2663,7 @@ function openOrderModal(dishOrDishId = null) {
       whatsappLink.href = whatsappUrl;
       whatsappLink.onclick = (e) => {
         e.preventDefault();
-        handleSmartPartnerOrder('whatsapp', dish ? dish.name : null, 'REDWOK20');
+        handleSmartPartnerOrder('whatsapp', dish ? dish.name : null, 'REDWOK20', b);
         return false;
       };
     }
@@ -2701,6 +2727,18 @@ function closeOrderModal() {
     modal.classList.add('hidden');
     document.body.classList.remove('overflow-hidden');
   }
+}
+
+// Open order prompt specifically for a chosen branch (Swiggy / Zomato / WhatsApp)
+function openBranchOrderPrompt(branchId, dishOrDishId = null) {
+  let branch = null;
+  if (typeof branchesData !== 'undefined' && branchesData.length > 0) {
+    branch = branchesData.find(b => b.id === branchId || String(b.id) === String(branchId));
+  }
+  if (!branch && typeof userFulfillment !== 'undefined') {
+    branch = userFulfillment.nearestBranch;
+  }
+  openOrderModal(dishOrDishId, branch);
 }
 
 function openWhatsAppModal() {
@@ -2773,11 +2811,36 @@ async function handleFranchiseSubmit(e) {
   closeFranchiseModal();
 }
 
-function openCateringModal(packageName) {
+function populateCateringBranchSelect(selectedBranchId = null) {
+  const select = document.getElementById('cateringModalHubSelect');
+  if (!select) return;
+
+  const currentActive = selectedBranchId 
+    || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch && userFulfillment.nearestBranch.id)
+    || 'rbx-chn-tnagar';
+
+  if (typeof branchesData !== 'undefined' && branchesData.length > 0) {
+    select.innerHTML = branchesData.map(b => {
+      const isSel = (b.id === currentActive || String(b.id) === String(currentActive)) ? 'selected' : '';
+      return `<option value="${b.id}" ${isSel}>${b.name} (${b.city})</option>`;
+    }).join('');
+  }
+}
+
+function openCateringModal(packageName = 'Live Wok Counter', branchId = null) {
   const modal = document.getElementById('cateringModal');
   const pkgInput = document.getElementById('cateringModalPackage');
   if (pkgInput) pkgInput.value = packageName || 'Live Wok Counter';
-  if (modal) modal.classList.remove('hidden');
+  populateCateringBranchSelect(branchId);
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    if (window.lucide) window.lucide.createIcons();
+  }
+}
+
+function openCateringModalForBranch(branchId, packageName = 'Live Wok Counter') {
+  openCateringModal(packageName, branchId);
 }
 
 function openCateringModalWithEstimate() {
@@ -2792,12 +2855,20 @@ function openCateringModalWithEstimate() {
 
   if (pkgInput) pkgInput.value = selectedText;
   if (guestsInput) guestsInput.value = guests;
-  if (modal) modal.classList.remove('hidden');
+  populateCateringBranchSelect();
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    if (window.lucide) window.lucide.createIcons();
+  }
 }
 
 function closeCateringModal() {
   const modal = document.getElementById('cateringModal');
-  if (modal) modal.classList.add('hidden');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
 }
 
 async function handleCateringSubmit(e) {
@@ -2819,6 +2890,8 @@ async function handleCateringSubmit(e) {
 
   const pkgValue = document.getElementById('cateringModalPackage')?.value || 'Live Wok Station';
   const guestValue = document.getElementById('cateringModalGuests')?.value || 100;
+  const hubSelect = document.getElementById('cateringModalHubSelect');
+  const selectedHub = hubSelect ? hubSelect.options[hubSelect.selectedIndex]?.text : 'Chennai Central Hub';
 
   const payload = {
     name: nameInput ? nameInput.value : 'Catering Client',
@@ -2827,9 +2900,10 @@ async function handleCateringSubmit(e) {
     event_type: pkgValue,
     event_date: dateInput ? dateInput.value : new Date().toISOString().split('T')[0],
     guest_count: parseInt(guestValue, 10) || 100,
-    location: 'Chennai / Regional Hub',
+    dispatch_hub: selectedHub,
+    location: (typeof userFulfillment !== 'undefined' && userFulfillment.fullAddress) ? userFulfillment.fullAddress : 'Chennai / Regional Hub',
     food_preference: 'Indo-Chinese Party Box Menu',
-    message: messageInput ? messageInput.value : `Bulk party catering request for ${guestValue} guests`,
+    message: messageInput ? messageInput.value : `Bulk party catering request for ${guestValue} guests via ${selectedHub}`,
     source: 'Website Catering Calculator'
   };
 
@@ -2846,7 +2920,7 @@ async function handleCateringSubmit(e) {
 
   showRedBoxToast(
     'Catering Inquiry Received!',
-    'Your bulk catering request has been registered in the RedBox Admin system. An event coordinator will call you shortly to confirm menu preferences and logistical arrangements.',
+    `Your bulk catering request has been assigned to ${selectedHub}. An event coordinator will call you shortly to confirm menu details and logistics.`,
     'success'
   );
 
@@ -3319,13 +3393,12 @@ function toSlug(text) {
   return text.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-// Build accurate city and outlet URL with optional dish query
+// Build accurate city and outlet URL with optional dish query (canonical chain routes avoid 404 dead-ends)
 function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
   const b = branch || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
   const cityRaw = (b && b.city) ? b.city.toLowerCase().trim() : 'chennai';
   const swiggyCity = CITY_SLUG_MAP[cityRaw] || toSlug(cityRaw) || 'chennai';
   const zomatoCity = (cityRaw === 'bengaluru' || cityRaw === 'bangalore') ? 'bangalore' : (CITY_SLUG_MAP[cityRaw] || toSlug(cityRaw) || 'chennai');
-  const areaSlug = b && b.area ? toSlug(b.area) : '';
 
   if (platform === 'swiggy') {
     // If international branch
@@ -3338,13 +3411,16 @@ function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
     // If branch has a specific swiggy URL configured in deliveryLinks
     if (b && b.deliveryLinks && b.deliveryLinks.swiggy && !b.deliveryLinks.swiggy.includes('swiggy-direct')) {
       let url = b.deliveryLinks.swiggy;
+      // Strip fragile synthetic area sub-slugs like /the-red-box-t-nagar that 404 on Swiggy
+      if (url.includes('/the-red-box-') && !url.includes('/the-red-box?')) {
+        url = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
+      }
       if (dishName) url += (url.includes('?') ? '&' : '?') + `search=${encodeURIComponent(dishName)}`;
       return url;
     }
 
-    let url = areaSlug 
-      ? `https://www.swiggy.com/city/${swiggyCity}/the-red-box-${areaSlug}` 
-      : `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
+    // Canonical City Brand Route (Swiggy auto-routes via user GPS/IP to nearest operational kitchen)
+    let url = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
     if (dishName) {
       url += `?search=${encodeURIComponent(dishName)}`;
     }
@@ -3362,13 +3438,15 @@ function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
     // If branch has a specific zomato URL configured
     if (b && b.deliveryLinks && b.deliveryLinks.zomato && !b.deliveryLinks.zomato.includes('query=RedBox')) {
       let url = b.deliveryLinks.zomato;
+      if (url.includes('/the-red-box-')) {
+        url = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+      }
       if (dishName) url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
       return url;
     }
 
-    let url = areaSlug
-      ? `https://www.zomato.com/${zomatoCity}/the-red-box-${areaSlug}/order`
-      : `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+    // Canonical Zomato Chain Route
+    let url = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
     if (dishName) {
       url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
     }
@@ -3457,8 +3535,8 @@ function showToast(msg) {
 }
 
 // Handle Smart Partner Order: copies promo code, toasts, and opens nearest branch outlet
-function handleSmartPartnerOrder(platform, dishName = null, promoCode = 'REDWOK20') {
-  const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
+function handleSmartPartnerOrder(platform, dishName = null, promoCode = 'REDWOK20', branch = null) {
+  const b = branch || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
   const bName = b ? b.name : 'Nearest Red Box Hub';
   const url = buildPartnerDeliveryUrl(platform, b, dishName);
 
@@ -3573,3 +3651,374 @@ function initAdaptiveNavbar() {
   const initialBranch = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) ? userFulfillment.nearestBranch : 'chennai';
   updateGlobalDeliveryLinks(initialBranch);
 }
+
+// ========================================================
+// PROXIMITY KITCHEN HUBS DECK & TABLE RESERVATIONS ENGINE
+// ========================================================
+
+// Switch user active kitchen hub directly from 2-3 proximity cards deck
+function selectActiveBranchFromDeck(branchId) {
+  if (!branchesData || branchesData.length === 0) return;
+  const b = branchesData.find(x => x.id === branchId || String(x.id) === String(branchId));
+  if (!b) return;
+
+  // Calculate distance from current user coords if available
+  let dist = 1.8;
+  if (userFulfillment && userFulfillment.latitude && userFulfillment.longitude) {
+    dist = Math.round(calculateDistanceKm(userFulfillment.latitude, userFulfillment.longitude, b.latitude, b.longitude) * 10) / 10;
+  }
+
+  userFulfillment.nearestBranch = b;
+  userFulfillment.distanceKm = dist;
+  userFulfillment.isOutOfZone = dist > 25;
+  userFulfillment.isTakeawayOnly = dist > 12 && dist <= 25;
+
+  try {
+    localStorage.setItem('redbox_fulfillment', JSON.stringify(userFulfillment));
+  } catch (e) {}
+
+  updateFulfillmentBarUI();
+  updateOutOfServiceBannerUI();
+  renderMenuItems();
+  updateGlobalDeliveryLinks(b);
+  renderNearbyHubsCards('nearbyHubsCardsGrid', 'menu');
+  renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering');
+  updateCateringFulfillmentBarUI();
+
+  showSmartDeliveryToast(
+    '📍 Active Kitchen Switched',
+    `Fulfillment set to ${b.name} (${dist} km away). Ready for delivery or pickup!`
+  );
+}
+
+// Render 2 or 3 closest operational kitchen hubs
+function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu') {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (!branchesData || branchesData.length === 0) {
+    container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-zinc-500">Locating nearest Red Box kitchens...</div>`;
+    return;
+  }
+
+  const lat = (userFulfillment && userFulfillment.latitude) || 13.0418;
+  const lon = (userFulfillment && userFulfillment.longitude) || 80.2341;
+  const nearestList = findNearestBranches(lat, lon, 3);
+
+  if (!nearestList || nearestList.length === 0) {
+    container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-zinc-500">No operational hubs found in this zone.</div>`;
+    return;
+  }
+
+  const activeBranchId = (userFulfillment && userFulfillment.nearestBranch) ? userFulfillment.nearestBranch.id : null;
+
+  container.innerHTML = nearestList.map((item, idx) => {
+    const b = item.branch;
+    const dist = item.distance;
+    const isActive = activeBranchId === b.id;
+
+    // Visual distance pill status
+    let distBadgeClass = 'bg-emerald-50 text-emerald-700 border-emerald-200/80';
+    let distIcon = 'zap';
+    if (dist > 12 && dist <= 25) {
+      distBadgeClass = 'bg-amber-50 text-amber-800 border-amber-200/80';
+      distIcon = 'clock';
+    } else if (dist > 25) {
+      distBadgeClass = 'bg-zinc-100 text-zinc-700 border-zinc-200';
+      distIcon = 'map-pin';
+    }
+
+    if (mode === 'catering') {
+      return `
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border ${isActive ? 'border-brand-red ring-2 ring-brand-red/10 shadow-md' : 'border-zinc-200 shadow-xs hover:shadow-md'} transition-all flex flex-col justify-between relative group">
+          ${isActive ? `
+            <div class="absolute -top-3 left-6 bg-brand-red text-white text-[10px] font-heading font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
+              <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i> Primary Event Base
+            </div>
+          ` : ''}
+
+          <div>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-heading font-bold border ${distBadgeClass}">
+                <i data-lucide="${distIcon}" class="w-3 h-3"></i>
+                <span>${dist} km from event</span>
+              </span>
+              <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">${b.city}</span>
+            </div>
+
+            <h4 class="font-heading font-black text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
+              ${b.name}
+            </h4>
+            <p class="text-xs text-zinc-500 line-clamp-2 mt-1 mb-3">
+              ${b.address || `${b.area}, ${b.city}`}
+            </p>
+
+            <div class="flex flex-wrap items-center gap-1.5 mb-4 text-[10px] font-medium text-zinc-600">
+              <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+                <i data-lucide="flame" class="w-3 h-3 text-brand-red"></i> Live Wok Fleet
+              </span>
+              <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+                <i data-lucide="package" class="w-3 h-3 text-amber-600"></i> 50-5,000 Boxes
+              </span>
+              <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+                <i data-lucide="utensils" class="w-3 h-3 text-emerald-600"></i> Dine-In Seating
+              </span>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2 border-t border-zinc-100">
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="openCateringModalForBranch('${b.id}')" class="py-2.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <span>Request Quote</span>
+              </button>
+              <button onclick="openTableBookingModal('${b.id}')" class="py-2.5 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span>Book Table</span>
+              </button>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
+              <span>Manager: <strong class="text-zinc-700">${b.managerPhone || b.phone || '044 4353 3333'}</strong></span>
+              <a href="tel:${(b.managerPhone || b.phone || '0444353333').replace(/\D/g, '')}" class="text-brand-red font-bold hover:underline">Direct Call</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Default: Menu Page Mode
+    return `
+      <div class="bg-white rounded-3xl p-5 sm:p-6 border ${isActive ? 'border-brand-red ring-2 ring-brand-red/10 shadow-md' : 'border-zinc-200 shadow-xs hover:shadow-md'} transition-all flex flex-col justify-between relative group">
+        ${isActive ? `
+          <div class="absolute -top-3 left-6 bg-brand-red text-white text-[10px] font-heading font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i> Active Serving Kitchen
+          </div>
+        ` : ''}
+
+        <div>
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-heading font-bold border ${distBadgeClass}">
+              <i data-lucide="${distIcon}" class="w-3 h-3"></i>
+              <span>${dist} km away</span>
+            </span>
+            <span class="text-[10px] font-bold text-zinc-500 flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-zinc-400"></i>
+              <span>${b.deliveryTime || '25-35 mins'}</span>
+            </span>
+          </div>
+
+          <h4 class="font-heading font-black text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
+            ${b.name}
+          </h4>
+          <p class="text-xs text-zinc-500 line-clamp-2 mt-1 mb-3">
+            ${b.address || `${b.area}, ${b.city}`}
+          </p>
+
+          <div class="flex flex-wrap items-center gap-1.5 mb-4 text-[10px] font-medium text-zinc-600">
+            <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+              <i data-lucide="bike" class="w-3 h-3 text-brand-red"></i> Delivery
+            </span>
+            <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+              <i data-lucide="shopping-bag" class="w-3 h-3 text-amber-600"></i> Takeaway
+            </span>
+            <span class="px-2 py-0.5 rounded-md bg-zinc-100 border border-zinc-200 flex items-center gap-1">
+              <i data-lucide="utensils" class="w-3 h-3 text-emerald-600"></i> Dine-In
+            </span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2 border-t border-zinc-100">
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="openBranchOrderPrompt('${b.id}')" class="py-2.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+              <span>Order Online</span>
+            </button>
+            <button onclick="openTableBookingModal('${b.id}')" class="py-2.5 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="utensils-crossed" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Book Table</span>
+            </button>
+          </div>
+
+          <div>
+            ${isActive ? `
+              <div class="w-full py-1.5 text-center text-[11px] font-bold text-emerald-700 bg-emerald-50 rounded-lg border border-emerald-200/60 flex items-center justify-center gap-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                <span>Currently Active for Dishes Below</span>
+              </div>
+            ` : `
+              <button onclick="selectActiveBranchFromDeck('${b.id}')" class="w-full py-1.5 text-[11px] font-bold text-zinc-600 hover:text-brand-red hover:bg-zinc-50 border border-zinc-200 rounded-lg transition flex items-center justify-center gap-1 cursor-pointer">
+                <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                <span>Switch Dishes To This Hub</span>
+              </button>
+            `}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+// Update Catering Top Location Bar UI
+function updateCateringFulfillmentBarUI() {
+  const localityDisplay = document.getElementById('cateringCurrentLocalityDisplay');
+  const nearestHubDisplay = document.getElementById('cateringNearestHubDisplay');
+  const statusChip = document.getElementById('cateringServiceZoneChip');
+  const statusText = document.getElementById('cateringServiceZoneText');
+
+  if (!localityDisplay) return;
+
+  const addr = (typeof userFulfillment !== 'undefined' && (userFulfillment.fullAddress || userFulfillment.localityName)) || '45, G.N. Chetty Road, T. Nagar, Chennai - 600017';
+  localityDisplay.textContent = addr;
+  localityDisplay.title = addr;
+
+  if (nearestHubDisplay) {
+    if (userFulfillment && userFulfillment.nearestBranch) {
+      nearestHubDisplay.textContent = `${userFulfillment.nearestBranch.name} (${userFulfillment.distanceKm} km)`;
+    } else {
+      nearestHubDisplay.textContent = 'Regional Central Hub (Chennai)';
+    }
+  }
+
+  if (statusChip && statusText) {
+    const dist = (userFulfillment && userFulfillment.distanceKm) || 2.2;
+    if (dist <= 50) {
+      statusChip.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center gap-1';
+      statusText.textContent = `Direct Wok Fleet Dispatch (${dist} km)`;
+    } else {
+      statusChip.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200/60 flex items-center gap-1';
+      statusText.textContent = `Regional Event Logistics (>50 km)`;
+    }
+  }
+}
+
+// Table Booking System Functions
+function openTableBookingModal(branchId = null) {
+  const modal = document.getElementById('tableBookingModal');
+  if (!modal) return;
+
+  populateTableBookingBranchSelect(branchId);
+
+  // Default date to today
+  const dateInput = document.getElementById('tableBookingDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    if (!dateInput.value) dateInput.value = today;
+  }
+
+  // Ensure form view is visible and success view hidden
+  const formView = document.getElementById('tableBookingFormView');
+  const successView = document.getElementById('tableBookingSuccessView');
+  if (formView) formView.classList.remove('hidden');
+  if (successView) successView.classList.add('hidden');
+
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeTableBookingModal() {
+  const modal = document.getElementById('tableBookingModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+}
+
+function populateTableBookingBranchSelect(selectedBranchId = null) {
+  const select = document.getElementById('tableBookingBranchSelect');
+  if (!select) return;
+
+  const currentActive = selectedBranchId 
+    || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch && userFulfillment.nearestBranch.id)
+    || 'rbx-chn-tnagar';
+
+  if (typeof branchesData !== 'undefined' && branchesData.length > 0) {
+    select.innerHTML = branchesData.map(b => {
+      const isSel = (b.id === currentActive || String(b.id) === String(currentActive)) ? 'selected' : '';
+      return `<option value="${b.id}" ${isSel}>${b.name} (${b.city})</option>`;
+    }).join('');
+  }
+}
+
+function setTableGuests(count, btnElement) {
+  const input = document.getElementById('tableBookingGuests');
+  if (input) input.value = count;
+
+  document.querySelectorAll('.table-guest-btn').forEach(btn => {
+    btn.classList.remove('bg-brand-red', 'text-white', 'border-brand-red');
+    btn.classList.add('bg-zinc-100', 'text-zinc-700', 'border-zinc-200');
+  });
+  if (btnElement) {
+    btnElement.classList.remove('bg-zinc-100', 'text-zinc-700', 'border-zinc-200');
+    btnElement.classList.add('bg-brand-red', 'text-white', 'border-brand-red');
+  }
+}
+
+function handleTableBookingSubmit(e) {
+  e.preventDefault();
+  const branchSelect = document.getElementById('tableBookingBranchSelect');
+  const branchId = branchSelect ? branchSelect.value : null;
+  const branch = (typeof branchesData !== 'undefined') ? branchesData.find(b => b.id === branchId) : null;
+  const branchName = branch ? branch.name : 'The Red Box';
+  const branchPhone = (branch && (branch.managerPhone || branch.phone)) ? (branch.managerPhone || branch.phone).replace(/\D/g, '') : '918939444411';
+
+  const name = document.getElementById('tableBookingName')?.value || 'Guest';
+  const phone = document.getElementById('tableBookingPhone')?.value || '';
+  const date = document.getElementById('tableBookingDate')?.value || '';
+  const time = document.getElementById('tableBookingTimeSlot')?.value || '1:00 PM';
+  const guests = document.getElementById('tableBookingGuests')?.value || '2';
+  const notes = document.getElementById('tableBookingNotes')?.value || 'Standard Table';
+
+  const bookingRef = 'RBX-' + Math.floor(100000 + Math.random() * 900000);
+
+  const reservation = {
+    bookingRef,
+    branchId,
+    branchName,
+    name,
+    phone,
+    date,
+    time,
+    guests,
+    notes,
+    createdAt: new Date().toISOString()
+  };
+
+  try {
+    const list = JSON.parse(localStorage.getItem('redbox_table_reservations') || '[]');
+    list.unshift(reservation);
+    localStorage.setItem('redbox_table_reservations', JSON.stringify(list));
+  } catch (err) {}
+
+  // Update success view
+  const formView = document.getElementById('tableBookingFormView');
+  const successView = document.getElementById('tableBookingSuccessView');
+  const refDisplay = document.getElementById('tableSuccessBookingRef');
+  const summaryDisplay = document.getElementById('tableSuccessSummary');
+  const waBtn = document.getElementById('tableSuccessWhatsAppBtn');
+
+  if (refDisplay) refDisplay.textContent = bookingRef;
+  if (summaryDisplay) {
+    summaryDisplay.innerHTML = `<strong>${guests} Guests</strong> at <strong>${branchName}</strong><br>📅 ${date} at ⏰ ${time}`;
+  }
+
+  if (waBtn) {
+    const waText = `Hi ${branchName}! I have reserved a table for ${guests} guests on ${date} at ${time} under name ${name}. Booking Ref: ${bookingRef}. Please confirm reservation.`;
+    waBtn.href = `https://wa.me/${branchPhone.length >= 10 ? branchPhone : '918939444411'}?text=${encodeURIComponent(waText)}`;
+  }
+
+  if (formView) formView.classList.add('hidden');
+  if (successView) successView.classList.remove('hidden');
+
+  showSmartDeliveryToast(
+    '🎉 Table Reserved!',
+    `Ref #${bookingRef} confirmed at ${branchName} for ${guests} guests.`
+  );
+}
+
+// Global Aliases
+window.openLocationModal = openLocationSelectorModal;
+
