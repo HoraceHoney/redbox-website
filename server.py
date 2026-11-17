@@ -28,7 +28,7 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
         clean = path.split('?')[0].rstrip('/')
         if clean in ['/admin', '/admin/dashboard', '/admin/login']:
             return os.path.join(DIRECTORY, 'admin.html')
-        elif clean in ['/about', '/about-us', '/our-story', '/story', '/the-box', '/thebox', '/blog', '/blogs', '/blog.html', '/stories']:
+        elif clean in ['/about', '/about-us', '/our-story', '/the-box', '/thebox']:
             return os.path.join(DIRECTORY, 'about.html')
         elif clean in ['/branches', '/branches/', '/outlets', '/outlets/', '/locations']:
             return os.path.join(DIRECTORY, 'branches.html')
@@ -71,6 +71,13 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         clean = self.path.split('?')[0].rstrip('/')
+
+        # 0. Legacy Stories & Blog Redirects to About Us Section
+        if clean in ['/blog', '/blogs', '/blog.html', '/stories', '/story', '/story.html']:
+            self.send_response(302)
+            self.send_header('Location', '/about.html#stories')
+            self.end_headers()
+            return
 
         # 1. Homepage & Slides
         if clean in ['/api/homepage', '/api/homepage-content']:
