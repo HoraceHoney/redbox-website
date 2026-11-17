@@ -1594,7 +1594,8 @@ function syncMapToFilter() {
 
   // Global All
   mapInstance.flyTo([20, 55], 3, { duration: 1.2 });
-  document.getElementById('mapScopeTitle').textContent = `Interactive World & Regional Map (57+ Hubs)`;
+  const totalCount = branchesData && branchesData.length ? branchesData.length : 105;
+  document.getElementById('mapScopeTitle').textContent = `Interactive World & Regional Map (${totalCount}+ Hubs)`;
   updateMapMarkers();
 }
 
@@ -2099,7 +2100,10 @@ function findNearestBranch(lat, lon) {
   let minDistance = Infinity;
   let nearestBranch = null;
 
-  branchesData.forEach(branch => {
+  const operational = branchesData.filter(b => b.isOpen !== false && b.status !== 'coming_soon');
+  const pool = operational.length > 0 ? operational : branchesData;
+
+  pool.forEach(branch => {
     const dist = calculateDistanceKm(lat, lon, branch.latitude, branch.longitude);
     if (dist < minDistance) {
       minDistance = dist;
@@ -2110,10 +2114,13 @@ function findNearestBranch(lat, lon) {
   return { branch: nearestBranch, distance: minDistance };
 }
 
-// Find N nearest branches from coordinate (sorted by distance)
+// Find N nearest branches from coordinate (sorted by distance, prioritizing operational hubs)
 function findNearestBranches(lat, lon, count = 3) {
   if (!branchesData || branchesData.length === 0) return [];
-  const list = branchesData.map(b => {
+  const operational = branchesData.filter(b => b.isOpen !== false && b.status !== 'coming_soon');
+  const pool = operational.length > 0 ? operational : branchesData;
+
+  const list = pool.map(b => {
     const dist = calculateDistanceKm(lat, lon, b.latitude, b.longitude);
     return { branch: b, distance: Math.round(dist * 10) / 10 };
   });
@@ -2315,19 +2322,19 @@ function updateFulfillmentBarUI() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Update Out of Service Zone Banner UI
+// Update Out of Service Zone Banner UI (renders when user is outside domain of all operating branches)
 function updateOutOfServiceBannerUI() {
-  const banner = document.getElementById('outOfServiceNoticeBanner');
+  const banner = document.getElementById('outOfServiceZoneBanner') || document.getElementById('outOfServiceNoticeBanner');
   if (!banner) return;
 
   if (userFulfillment.isVerified && userFulfillment.isOutOfZone) {
     banner.classList.remove('hidden');
-    const locName = document.getElementById('outOfServiceLocalityName');
-    const distEl = document.getElementById('outOfServiceDistanceKm');
-    const branchName = document.getElementById('outOfServiceNearestBranchName');
+    const locName = document.getElementById('outOfZoneUserLocality') || document.getElementById('outOfServiceLocalityName');
+    const distEl = document.getElementById('outOfZoneDistanceKm') || document.getElementById('outOfServiceDistanceKm');
+    const branchName = document.getElementById('outOfZoneNearestBranchName') || document.getElementById('outOfServiceNearestBranchName');
     if (locName) locName.textContent = userFulfillment.localityName || 'your area';
     if (distEl) distEl.textContent = `${userFulfillment.distanceKm || 320} km`;
-    if (branchName) branchName.textContent = userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'RedBox Anna Nagar Hub';
+    if (branchName) branchName.textContent = userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'Nearest Red Box Hub';
   } else {
     banner.classList.add('hidden');
   }
@@ -2353,7 +2360,7 @@ function setFulfillmentMode(mode) {
 function setTestPresetLocation(preset) {
   if (preset === 'in-zone' || preset === 'tnagar') {
     // 45, G.N. Chetty Road, T. Nagar, Chennai - 600017
-    const b = branchesData.find(x => x.id === 'rbx-chn-tnagar') || branchesData[0];
+    const b = branchesData.find(x => x.id === 'rbx-chn-tnagar') || branchesData.find(x => (x.city || '').toLowerCase() === 'chennai') || branchesData[0];
     setUserLocation(
       13.0418,
       80.2341,
@@ -2362,6 +2369,58 @@ function setTestPresetLocation(preset) {
       2.2,
       '45, G.N. Chetty Road, T. Nagar, Chennai - 600017',
       12
+    );
+  } else if (preset === 'bengaluru') {
+    // 100ft Road, Indiranagar, Bengaluru - 560038
+    const b = branchesData.find(x => (x.name || '').toLowerCase().includes('indiranagar')) || branchesData.find(x => (x.city || '').toLowerCase() === 'bengaluru') || branchesData[0];
+    const nearest = findNearestBranch(12.9784, 77.6408);
+    setUserLocation(
+      12.9784,
+      77.6408,
+      'Indiranagar, Bengaluru',
+      b || nearest.branch,
+      nearest.distance || 1.4,
+      '100ft Road, Indiranagar, Bengaluru, Karnataka - 560038',
+      15
+    );
+  } else if (preset === 'trichy') {
+    // K K Nagar, Tiruchirappalli - 620021
+    const b = branchesData.find(x => (x.name || '').toLowerCase().includes('k k nagar')) || branchesData.find(x => (x.city || '').toLowerCase() === 'tiruchirappalli') || branchesData[0];
+    const nearest = findNearestBranch(10.7538, 78.6951);
+    setUserLocation(
+      10.7538,
+      78.6951,
+      'KK Nagar, Tiruchirappalli',
+      b || nearest.branch,
+      nearest.distance || 1.1,
+      'K K Nagar Main Road, Tiruchirappalli, Tamil Nadu - 620021',
+      14
+    );
+  } else if (preset === 'coimbatore') {
+    // Avinashi Road, Peelamedu, Coimbatore - 641004
+    const b = branchesData.find(x => (x.name || '').toLowerCase().includes('peelamedu')) || branchesData.find(x => (x.city || '').toLowerCase() === 'coimbatore') || branchesData[0];
+    const nearest = findNearestBranch(11.0255, 77.0151);
+    setUserLocation(
+      11.0255,
+      77.0151,
+      'Peelamedu, Coimbatore',
+      b || nearest.branch,
+      nearest.distance || 1.6,
+      'Avinashi Road, Peelamedu, Coimbatore, Tamil Nadu - 641004',
+      18
+    );
+  } else if (preset === 'hyderabad') {
+    // Cyber Towers, Hitec City, Hyderabad - 500081
+    const b = branchesData.find(x => (x.name || '').toLowerCase().includes('kondapur') || (x.name || '').toLowerCase().includes('gachibowli')) || branchesData.find(x => (x.city || '').toLowerCase() === 'hyderabad') || branchesData[0];
+    const nearest = findNearestBranch(17.4492, 78.3841);
+    setUserLocation(
+      17.4492,
+      78.3841,
+      'Hitec City, Hyderabad',
+      b || nearest.branch,
+      nearest.distance || 2.4,
+      'Cyber Towers Road, Hitec City, Hyderabad, Telangana - 500081',
+      20
     );
   } else if (preset === 'annanagar') {
     // Plot 104, 2nd Avenue, Anna Nagar East, Chennai - 600040
@@ -2387,16 +2446,16 @@ function setTestPresetLocation(preset) {
       'Plot 15, Kundrathur Main Road, Near Bus Terminus, Chennai - 600069',
       25
     );
-  } else if (preset === 'out-of-zone') {
-    // Flat 102, Connaught Circus, New Delhi - 110001 (> 300km)
-    const nearest = findNearestBranch(28.6139, 77.2090);
+  } else if (preset === 'out-of-zone' || preset === 'mumbai') {
+    // Marine Drive, Nariman Point, Mumbai - 400021 (> 500km from any active hub)
+    const nearest = findNearestBranch(19.0760, 72.8777);
     setUserLocation(
-      28.6139,
-      77.2090,
-      'Connaught Place, New Delhi',
+      19.0760,
+      72.8777,
+      'Marine Drive, Mumbai',
       nearest.branch,
-      nearest.distance,
-      'Flat 102, Block B, Connaught Circus, New Delhi - 110001',
+      nearest.distance || 950,
+      'Flat 4B, Marine Drive, Nariman Point, Mumbai, Maharashtra - 400021',
       50
     );
   }
@@ -3889,6 +3948,22 @@ function updateCateringFulfillmentBarUI() {
     } else {
       statusChip.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200/60 flex items-center gap-1';
       statusText.textContent = `Regional Event Logistics (>50 km)`;
+    }
+  }
+
+  // Toggle Catering Out-of-Service Area Experience Banner
+  const cateringBanner = document.getElementById('cateringOutOfServiceBanner');
+  if (cateringBanner) {
+    if (userFulfillment && (userFulfillment.isOutOfZone || (userFulfillment.distanceKm && userFulfillment.distanceKm > 25))) {
+      cateringBanner.classList.remove('hidden');
+      const locEl = document.getElementById('cateringOutOfZoneLocality');
+      const distEl = document.getElementById('cateringOutOfZoneDistance');
+      const branchEl = document.getElementById('cateringOutOfZoneNearestBranch');
+      if (locEl) locEl.textContent = userFulfillment.localityName || 'your area';
+      if (distEl) distEl.textContent = `${userFulfillment.distanceKm || 320} km`;
+      if (branchEl) branchEl.textContent = userFulfillment.nearestBranch ? userFulfillment.nearestBranch.name : 'Nearest Hub';
+    } else {
+      cateringBanner.classList.add('hidden');
     }
   }
 }

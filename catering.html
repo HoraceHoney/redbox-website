@@ -219,6 +219,56 @@
           <!-- Populated dynamically by renderNearbyHubsCards('cateringNearbyHubsCardsGrid', 'catering') -->
         </div>
       </section>
+
+      <!-- Out of Service Area / Regional Logistics Notice for Catering -->
+      <div id="cateringOutOfServiceBanner" class="hidden mb-12 rounded-3xl p-6 sm:p-8 bg-amber-50/70 border border-amber-200/90 shadow-sm relative overflow-hidden transition-all">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-[10px] sm:text-xs font-heading font-extrabold uppercase tracking-wider border border-amber-300/80">
+                <i data-lucide="map-pin-off" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>Outside Standard Local Kitchen Radius</span>
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white text-zinc-700 text-[10px] font-bold border border-zinc-200">
+                Interstate & Event Logistics Available
+              </span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900 tracking-tight leading-tight">
+              Planning An Event Outside Our Hub Cities?
+            </h2>
+
+            <p class="text-xs sm:text-sm text-zinc-700 leading-relaxed">
+              Your location in <span id="cateringOutOfZoneLocality" class="font-bold text-brand-red">your area</span> is approximately <strong id="cateringOutOfZoneDistance" class="text-zinc-900 font-extrabold">-- km</strong> away from our nearest operational hub (<span id="cateringOutOfZoneNearestBranch" class="font-bold text-zinc-900">Nearest Hub</span>). While standard 45-minute hot delivery is not accessible, our <strong>Mobile Event Fleet & Interstate Catering Unit</strong> specializes in setting up live wok stations for 100+ guests anywhere across the subcontinent.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button onclick="document.getElementById('cateringEnquirySection')?.scrollIntoView({ behavior: 'smooth' })" class="px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>Submit Interstate Catering Enquiry</span>
+              </button>
+              <button onclick="openLocationSelectorModal()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-zinc-50 text-zinc-700 text-xs font-heading font-bold border border-zinc-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-zinc-400"></i>
+                <span>Select Nearest Operating Hub</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-amber-200/90 bg-white group">
+              <img src="assets/images/out-of-service-zone.jpg" alt="Interstate Event Logistics" class="w-full h-56 sm:h-64 object-cover group-hover:scale-103 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/90 text-[10px] font-heading font-black tracking-wider uppercase mb-1">
+                  100+ Live Counters Deployed
+                </span>
+                <h4 class="font-serif font-bold text-sm sm:text-base leading-snug">Theatrical Live Wok Stations Anywhere</h4>
+                <p class="text-[10px] sm:text-[11px] text-zinc-200 mt-0.5">Full mobile kitchen setup with master chefs, induction woks, and hot meal boxes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div class="text-center max-w-2xl mx-auto mb-12">
         <div id="cateringHeroBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-wider uppercase mb-2">
@@ -438,36 +488,36 @@
               <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Chennai T. Nagar Hub
               </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">2.2 km</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">2.2 km · In Zone</span>
             </div>
             <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">45, G.N. Chetty Road, T. Nagar, Chennai</p>
           </button>
-          <button onclick="setTestPresetLocation('annanagar')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+          <button onclick="setTestPresetLocation('bengaluru')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
             <div class="flex items-center justify-between">
               <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Chennai Anna Nagar
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Bengaluru Indiranagar
               </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.8 km</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.4 km · In Zone</span>
             </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Plot 104, 2nd Ave, Anna Nagar East, Chennai</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">100ft Road, Indiranagar, Bengaluru</p>
           </button>
-          <button onclick="setTestPresetLocation('out-of-zone')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+          <button onclick="setTestPresetLocation('trichy')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
             <div class="flex items-center justify-between">
               <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Bengaluru (Indiranagar)
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Trichy KK Nagar
               </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Bengaluru Base</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.1 km · In Zone</span>
             </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">100 Feet Road, Indiranagar, Bengaluru</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">KK Nagar Main Road, Tiruchirappalli</p>
           </button>
-          <button onclick="setTestPresetLocation('takeaway-zone')" class="p-2.5 rounded-xl border border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-left transition cursor-pointer">
+          <button onclick="setTestPresetLocation('mumbai')" class="p-2.5 rounded-xl border border-red-200 bg-red-50/60 hover:bg-red-100/70 text-left transition cursor-pointer">
             <div class="flex items-center justify-between">
-              <span class="text-amber-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Kundrathur Corridor
+              <span class="text-red-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> Remote Event (Mumbai)
               </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">17.6 km</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold">>500 km · Interstate</span>
             </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Kundrathur Main Rd, Chennai</p>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Marine Drive, Nariman Point, Mumbai</p>
           </button>
         </div>
       </div>

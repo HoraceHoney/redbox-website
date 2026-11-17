@@ -1,0 +1,1650 @@
+[
+  {
+    "name": "MKB NAGAR Radius",
+    "folder": "Tamil Nadu",
+    "description": "Taramani Link Rd, Baby Nagar, Velachery, Chennai, Tamil Nadu 600042",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 13.1606021,
+        "lon": 80.2318312
+      },
+      {
+        "lat": 13.1137869,
+        "lon": 80.2403394
+      },
+      {
+        "lat": 13.112123,
+        "lon": 80.2562072
+      },
+      {
+        "lat": 13.1195214,
+        "lon": 80.2767563
+      },
+      {
+        "lat": 13.1408773,
+        "lon": 80.2874495
+      }
+    ]
+  },
+  {
+    "name": "Manapakkam Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 13.0093246,
+        "lon": 80.1485254
+      },
+      {
+        "lat": 13.0104954,
+        "lon": 80.1692963
+      },
+      {
+        "lat": 13.0041397,
+        "lon": 80.2015684
+      },
+      {
+        "lat": 13.018189,
+        "lon": 80.2055166
+      },
+      {
+        "lat": 13.0274711,
+        "lon": 80.20792
+      }
+    ]
+  },
+  {
+    "name": "Adyar radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 13.0220461,
+        "lon": 80.2790952
+      },
+      {
+        "lat": 13.0269798,
+        "lon": 80.243733
+      },
+      {
+        "lat": 13.0077041,
+        "lon": 80.2377678
+      },
+      {
+        "lat": 12.9936125,
+        "lon": 80.2400423
+      },
+      {
+        "lat": 12.9772199,
+        "lon": 80.2459646
+      }
+    ]
+  },
+  {
+    "name": "Ashok nagar radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 13,
+    "polygon_points": [
+      {
+        "lat": 13.0463688,
+        "lon": 80.1910972
+      },
+      {
+        "lat": 13.0334917,
+        "lon": 80.1959037
+      },
+      {
+        "lat": 13.0177708,
+        "lon": 80.2090358
+      },
+      {
+        "lat": 13.0140911,
+        "lon": 80.2245705
+      },
+      {
+        "lat": 13.027387,
+        "lon": 80.2288618
+      }
+    ]
+  },
+  {
+    "name": "Ambattur radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 13.1402289,
+        "lon": 80.1435462
+      },
+      {
+        "lat": 13.0900575,
+        "lon": 80.1165822
+      },
+      {
+        "lat": 13.0691722,
+        "lon": 80.1310112
+      },
+      {
+        "lat": 13.083959,
+        "lon": 80.1554697
+      },
+      {
+        "lat": 13.0987488,
+        "lon": 80.1728579
+      }
+    ]
+  },
+  {
+    "name": "Mogappair radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 13.1098665,
+        "lon": 80.1958611
+      },
+      {
+        "lat": 13.1079857,
+        "lon": 80.161829
+      },
+      {
+        "lat": 13.0982885,
+        "lon": 80.1460361
+      },
+      {
+        "lat": 13.0618371,
+        "lon": 80.137453
+      },
+      {
+        "lat": 13.0638437,
+        "lon": 80.1604557
+      }
+    ]
+  },
+  {
+    "name": "Parrys radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 16,
+    "polygon_points": [
+      {
+        "lat": 13.1167629,
+        "lon": 80.2924633
+      },
+      {
+        "lat": 13.1195214,
+        "lon": 80.2767563
+      },
+      {
+        "lat": 13.1137535,
+        "lon": 80.2598476
+      },
+      {
+        "lat": 13.102192,
+        "lon": 80.2547554
+      },
+      {
+        "lat": 13.0903455,
+        "lon": 80.2582249
+      }
+    ]
+  },
+  {
+    "name": "Thoraipakkam radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 12.9480179,
+        "lon": 80.2091217
+      },
+      {
+        "lat": 12.9073615,
+        "lon": 80.2271461
+      },
+      {
+        "lat": 12.8989115,
+        "lon": 80.2379608
+      },
+      {
+        "lat": 12.9340516,
+        "lon": 80.2438504
+      },
+      {
+        "lat": 12.9611608,
+        "lon": 80.2463079
+      }
+    ]
+  },
+  {
+    "name": "Navalur Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 12.8979912,
+        "lon": 80.2379608
+      },
+      {
+        "lat": 12.9073615,
+        "lon": 80.2271461
+      },
+      {
+        "lat": 12.874075,
+        "lon": 80.2075195
+      },
+      {
+        "lat": 12.8372562,
+        "lon": 80.2105236
+      },
+      {
+        "lat": 12.8375909,
+        "lon": 80.2228831
+      }
+    ]
+  },
+  {
+    "name": "Kattupakkam radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 13.0667194,
+        "lon": 80.1409048
+      },
+      {
+        "lat": 13.0673477,
+        "lon": 80.1120354
+      },
+      {
+        "lat": 13.0536675,
+        "lon": 80.0872079
+      },
+      {
+        "lat": 13.0337102,
+        "lon": 80.0706502
+      },
+      {
+        "lat": 12.9992477,
+        "lon": 80.0907731
+      }
+    ]
+  },
+  {
+    "name": "Alandur radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 12.9976149,
+        "lon": 80.1724793
+      },
+      {
+        "lat": 12.9780458,
+        "lon": 80.1618371
+      },
+      {
+        "lat": 12.9668383,
+        "lon": 80.1601205
+      },
+      {
+        "lat": 12.9594789,
+        "lon": 80.1831215
+      },
+      {
+        "lat": 12.9571362,
+        "lon": 80.2047495
+      }
+    ]
+  },
+  {
+    "name": "medavakkam radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 12.8786638,
+        "lon": 80.2097229
+      },
+      {
+        "lat": 12.9073615,
+        "lon": 80.2271461
+      },
+      {
+        "lat": 12.9480179,
+        "lon": 80.2091217
+      },
+      {
+        "lat": 12.9496072,
+        "lon": 80.2014831
+      },
+      {
+        "lat": 12.9213326,
+        "lon": 80.1662925
+      }
+    ]
+  },
+  {
+    "name": "Chrompet Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 12.9780756,
+        "lon": 80.1519443
+      },
+      {
+        "lat": 12.9804176,
+        "lon": 80.1387258
+      },
+      {
+        "lat": 12.9740609,
+        "lon": 80.115894
+      },
+      {
+        "lat": 12.9498033,
+        "lon": 80.1086839
+      },
+      {
+        "lat": 12.9340764,
+        "lon": 80.1182974
+      }
+    ]
+  },
+  {
+    "name": "Urapakkam Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 12.8758298,
+        "lon": 80.0396328
+      },
+      {
+        "lat": 12.8520656,
+        "lon": 80.0324229
+      },
+      {
+        "lat": 12.8282155,
+        "lon": 80.0426368
+      },
+      {
+        "lat": 12.8262907,
+        "lon": 80.0779132
+      },
+      {
+        "lat": 12.8491368,
+        "lon": 80.1035766
+      }
+    ]
+  },
+  {
+    "name": "Peelamedu Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 11.0513167,
+        "lon": 76.9951267
+      },
+      {
+        "lat": 11.039523,
+        "lon": 76.9820804
+      },
+      {
+        "lat": 11.0215788,
+        "lon": 76.9835395
+      },
+      {
+        "lat": 10.9970618,
+        "lon": 76.9964141
+      },
+      {
+        "lat": 11.0044761,
+        "lon": 77.0389862
+      }
+    ]
+  },
+  {
+    "name": "JP Nagar radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 12.9357035,
+        "lon": 77.5943817
+      },
+      {
+        "lat": 12.9241592,
+        "lon": 77.5748123
+      },
+      {
+        "lat": 12.9062561,
+        "lon": 77.574469
+      },
+      {
+        "lat": 12.8886198,
+        "lon": 77.5863827
+      },
+      {
+        "lat": 12.8873694,
+        "lon": 77.6074875
+      }
+    ]
+  },
+  {
+    "name": "SELAIYUR radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 12.918279,
+        "lon": 80.1421469
+      },
+      {
+        "lat": 12.8851482,
+        "lon": 80.1356238
+      },
+      {
+        "lat": 12.8730941,
+        "lon": 80.1109056
+      },
+      {
+        "lat": 12.8476561,
+        "lon": 80.1394014
+      },
+      {
+        "lat": 12.8627184,
+        "lon": 80.18472
+      }
+    ]
+  },
+  {
+    "name": "PADUR Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 12.8388139,
+        "lon": 80.2041178
+      },
+      {
+        "lat": 12.8086856,
+        "lon": 80.1848917
+      },
+      {
+        "lat": 12.7440649,
+        "lon": 80.2446299
+      },
+      {
+        "lat": 12.7996464,
+        "lon": 80.2487498
+      },
+      {
+        "lat": 12.8391487,
+        "lon": 80.24051
+      }
+    ]
+  },
+  {
+    "name": "sai baba colony Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 11.0524953,
+        "lon": 76.9716541
+      },
+      {
+        "lat": 11.0703335,
+        "lon": 76.9433781
+      },
+      {
+        "lat": 11.0600532,
+        "lon": 76.9190341
+      },
+      {
+        "lat": 11.0165267,
+        "lon": 76.9322502
+      },
+      {
+        "lat": 11.0188179,
+        "lon": 76.96071
+      }
+    ]
+  },
+  {
+    "name": "Valasaravakkam Raius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 13.0591594,
+        "lon": 80.1402891
+      },
+      {
+        "lat": 13.0386967,
+        "lon": 80.149575
+      },
+      {
+        "lat": 13.037626,
+        "lon": 80.1665585
+      },
+      {
+        "lat": 13.0466679,
+        "lon": 80.1842751
+      },
+      {
+        "lat": 13.072539,
+        "lon": 80.1995086
+      }
+    ]
+  },
+  {
+    "name": "Palavakkam Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 12.9699956,
+        "lon": 80.2503602
+      },
+      {
+        "lat": 12.9611608,
+        "lon": 80.2463079
+      },
+      {
+        "lat": 12.9321118,
+        "lon": 80.2436065
+      },
+      {
+        "lat": 12.8997349,
+        "lon": 80.239605
+      },
+      {
+        "lat": 12.8926817,
+        "lon": 80.253201
+      }
+    ]
+  },
+  {
+    "name": "Avadi Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 13.1469895,
+        "lon": 80.0943893
+      },
+      {
+        "lat": 13.1246401,
+        "lon": 80.0709663
+      },
+      {
+        "lat": 13.0813353,
+        "lon": 80.0792926
+      },
+      {
+        "lat": 13.0680262,
+        "lon": 80.1250154
+      },
+      {
+        "lat": 13.1039496,
+        "lon": 80.1240501
+      }
+    ]
+  },
+  {
+    "name": "Egmore Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 13.0938416,
+        "lon": 80.2624249
+      },
+      {
+        "lat": 13.0944809,
+        "lon": 80.2547426
+      },
+      {
+        "lat": 13.0861396,
+        "lon": 80.2509701
+      },
+      {
+        "lat": 13.0757609,
+        "lon": 80.2475797
+      },
+      {
+        "lat": 13.0556565,
+        "lon": 80.2467855
+      }
+    ]
+  },
+  {
+    "name": "Anna Nagar Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 17,
+    "polygon_points": [
+      {
+        "lat": 13.0941921,
+        "lon": 80.2334118
+      },
+      {
+        "lat": 13.103273,
+        "lon": 80.2240993
+      },
+      {
+        "lat": 13.1049345,
+        "lon": 80.2196791
+      },
+      {
+        "lat": 13.1088425,
+        "lon": 80.2128125
+      },
+      {
+        "lat": 13.1090723,
+        "lon": 80.2045726
+      }
+    ]
+  },
+  {
+    "name": "Perambur Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 13.1403682,
+        "lon": 80.1914159
+      },
+      {
+        "lat": 13.1098665,
+        "lon": 80.1958611
+      },
+      {
+        "lat": 13.1088425,
+        "lon": 80.2128125
+      },
+      {
+        "lat": 13.103273,
+        "lon": 80.2240993
+      },
+      {
+        "lat": 13.0941921,
+        "lon": 80.2334118
+      }
+    ]
+  },
+  {
+    "name": "PORUR Radius",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 14,
+    "polygon_points": [
+      {
+        "lat": 13.0404566,
+        "lon": 80.1548712
+      },
+      {
+        "lat": 13.0226459,
+        "lon": 80.1585618
+      },
+      {
+        "lat": 13.0063392,
+        "lon": 80.1507514
+      },
+      {
+        "lat": 12.9941293,
+        "lon": 80.1574461
+      },
+      {
+        "lat": 12.9887769,
+        "lon": 80.1682605
+      }
+    ]
+  },
+  {
+    "name": "the red box kundrathur",
+    "folder": "Tamil Nadu",
+    "description": "radius",
+    "polygon_points_count": 25,
+    "polygon_points": [
+      {
+        "lat": 13.0211801,
+        "lon": 80.1157639
+      },
+      {
+        "lat": 13.0203439,
+        "lon": 80.1106141
+      },
+      {
+        "lat": 13.0170824,
+        "lon": 80.1052926
+      },
+      {
+        "lat": 13.0042663,
+        "lon": 80.1055929
+      },
+      {
+        "lat": 12.9930388,
+        "lon": 80.1066659
+      }
+    ]
+  },
+  {
+    "name": "the red box new",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 11.0191924,
+        "lon": 76.9616875
+      },
+      {
+        "lat": 11.0042379,
+        "lon": 76.956366
+      },
+      {
+        "lat": 10.9857018,
+        "lon": 76.9620737
+      },
+      {
+        "lat": 10.980225,
+        "lon": 76.9889388
+      },
+      {
+        "lat": 10.9979189,
+        "lon": 76.9946894
+      }
+    ]
+  },
+  {
+    "name": "saravanapatti",
+    "folder": "Tamil Nadu",
+    "description": "new place",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 11.1012469,
+        "lon": 76.9800933
+      },
+      {
+        "lat": 11.088276,
+        "lon": 76.9618972
+      },
+      {
+        "lat": 11.0710929,
+        "lon": 76.9605239
+      },
+      {
+        "lat": 11.0554251,
+        "lon": 76.9704802
+      },
+      {
+        "lat": 11.0488545,
+        "lon": 76.9885047
+      }
+    ]
+  },
+  {
+    "name": "madurai",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 12,
+    "polygon_points": [
+      {
+        "lat": 9.9248278,
+        "lon": 78.0985027
+      },
+      {
+        "lat": 9.9334091,
+        "lon": 78.1032663
+      },
+      {
+        "lat": 9.9282096,
+        "lon": 78.0927091
+      },
+      {
+        "lat": 9.9227141,
+        "lon": 78.090735
+      },
+      {
+        "lat": 9.9158235,
+        "lon": 78.0904346
+      }
+    ]
+  },
+  {
+    "name": "The Red Box Banjara Hills",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 14,
+    "polygon_points": [
+      {
+        "lat": 17.460076,
+        "lon": 78.4375029
+      },
+      {
+        "lat": 17.4514264,
+        "lon": 78.4307647
+      },
+      {
+        "lat": 17.4253569,
+        "lon": 78.4170073
+      },
+      {
+        "lat": 17.4079089,
+        "lon": 78.4134204
+      },
+      {
+        "lat": 17.397552,
+        "lon": 78.4291266
+      }
+    ]
+  },
+  {
+    "name": "The Red Box",
+    "folder": "Tamil Nadu",
+    "description": "LB NAGAR",
+    "polygon_points_count": 16,
+    "polygon_points": [
+      {
+        "lat": 17.3711604,
+        "lon": 78.580038
+      },
+      {
+        "lat": 17.3726835,
+        "lon": 78.5686225
+      },
+      {
+        "lat": 17.3770089,
+        "lon": 78.5516595
+      },
+      {
+        "lat": 17.3742154,
+        "lon": 78.5370445
+      },
+      {
+        "lat": 17.3588989,
+        "lon": 78.526072
+      }
+    ]
+  },
+  {
+    "name": "The Red Box",
+    "folder": "Tamil Nadu",
+    "description": "Narayanguda",
+    "polygon_points_count": 15,
+    "polygon_points": [
+      {
+        "lat": 17.434637,
+        "lon": 78.5101458
+      },
+      {
+        "lat": 17.4344183,
+        "lon": 78.4934084
+      },
+      {
+        "lat": 17.4315499,
+        "lon": 78.4818354
+      },
+      {
+        "lat": 17.4145097,
+        "lon": 78.477473
+      },
+      {
+        "lat": 17.4048071,
+        "lon": 78.4699709
+      }
+    ]
+  },
+  {
+    "name": "Radius Rajajinagar",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 12,
+    "polygon_points": [
+      {
+        "lat": 13.0260229,
+        "lon": 77.5371495
+      },
+      {
+        "lat": 13.0214516,
+        "lon": 77.5327246
+      },
+      {
+        "lat": 13.011677,
+        "lon": 77.5253243
+      },
+      {
+        "lat": 12.9988913,
+        "lon": 77.5219674
+      },
+      {
+        "lat": 12.9849155,
+        "lon": 77.5326865
+      }
+    ]
+  },
+  {
+    "name": "trichy thilli nagar grid",
+    "folder": "Tamil Nadu",
+    "description": "",
+    "polygon_points_count": 22,
+    "polygon_points": [
+      {
+        "lat": 10.7870777,
+        "lon": 78.6541438
+      },
+      {
+        "lat": 10.7850297,
+        "lon": 78.6603792
+      },
+      {
+        "lat": 10.7764717,
+        "lon": 78.6728529
+      },
+      {
+        "lat": 10.7781651,
+        "lon": 78.6775162
+      },
+      {
+        "lat": 10.7780174,
+        "lon": 78.6854555
+      }
+    ]
+  },
+  {
+    "name": "Tambaram Radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 12.9381226,
+        "lon": 80.073294
+      },
+      {
+        "lat": 12.9044604,
+        "lon": 80.0636484
+      },
+      {
+        "lat": 12.8889294,
+        "lon": 80.0854827
+      },
+      {
+        "lat": 12.8791085,
+        "lon": 80.1045909
+      },
+      {
+        "lat": 12.8929453,
+        "lon": 80.1399008
+      }
+    ]
+  },
+  {
+    "name": "kilpauk radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 17,
+    "polygon_points": [
+      {
+        "lat": 13.0742111,
+        "lon": 80.224657
+      },
+      {
+        "lat": 13.0683587,
+        "lon": 80.2256012
+      },
+      {
+        "lat": 13.0633422,
+        "lon": 80.2236271
+      },
+      {
+        "lat": 13.0576149,
+        "lon": 80.228219
+      },
+      {
+        "lat": 13.0537269,
+        "lon": 80.233755
+      }
+    ]
+  },
+  {
+    "name": "MARATHAHALLI Radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 12.9447569,
+        "lon": 77.7380036
+      },
+      {
+        "lat": 12.9625383,
+        "lon": 77.7365122
+      },
+      {
+        "lat": 12.9718019,
+        "lon": 77.7206325
+      },
+      {
+        "lat": 12.9766216,
+        "lon": 77.7091473
+      },
+      {
+        "lat": 12.9684697,
+        "lon": 77.6954627
+      }
+    ]
+  },
+  {
+    "name": "Velachery radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 13.0067321,
+        "lon": 80.248046
+      },
+      {
+        "lat": 13.0126697,
+        "lon": 80.2385188
+      },
+      {
+        "lat": 13.0176873,
+        "lon": 80.2366305
+      },
+      {
+        "lat": 13.012586,
+        "lon": 80.2201509
+      },
+      {
+        "lat": 12.978464,
+        "lon": 80.2043581
+      }
+    ]
+  },
+  {
+    "name": "Alwarpet radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 13,
+    "polygon_points": [
+      {
+        "lat": 13.0637339,
+        "lon": 80.2800479
+      },
+      {
+        "lat": 13.0550933,
+        "lon": 80.2617329
+      },
+      {
+        "lat": 13.0562986,
+        "lon": 80.2519771
+      },
+      {
+        "lat": 13.05772,
+        "lon": 80.2366131
+      },
+      {
+        "lat": 13.0450101,
+        "lon": 80.2331358
+      }
+    ]
+  },
+  {
+    "name": "Indira nagar radius",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 12.9722885,
+        "lon": 77.6215428
+      },
+      {
+        "lat": 12.9622936,
+        "lon": 77.6264567
+      },
+      {
+        "lat": 12.9573172,
+        "lon": 77.63652
+      },
+      {
+        "lat": 12.9568571,
+        "lon": 77.6476134
+      },
+      {
+        "lat": 12.9590732,
+        "lon": 77.6587069
+      }
+    ]
+  },
+  {
+    "name": "nenmeli",
+    "folder": "Company outlets ",
+    "description": "",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 12.8123716,
+        "lon": 79.9816576
+      },
+      {
+        "lat": 12.7939536,
+        "lon": 79.9751328
+      },
+      {
+        "lat": 12.7638121,
+        "lon": 79.9658607
+      },
+      {
+        "lat": 12.7122337,
+        "lon": 79.9833754
+      },
+      {
+        "lat": 12.7060395,
+        "lon": 80.0276727
+      }
+    ]
+  },
+  {
+    "name": "Indira Nagar Radius",
+    "folder": "Bangalore",
+    "description": "",
+    "polygon_points_count": 4,
+    "polygon_points": [
+      {
+        "lat": 12.9485541,
+        "lon": 77.6281757
+      },
+      {
+        "lat": 12.9397815,
+        "lon": 77.6331281
+      },
+      {
+        "lat": 12.9499868,
+        "lon": 77.6274633
+      },
+      {
+        "lat": 12.9485541,
+        "lon": 77.6281757
+      }
+    ]
+  },
+  {
+    "name": "Electronic city radius",
+    "folder": "Bangalore",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 12.8257185,
+        "lon": 77.6361349
+      },
+      {
+        "lat": 12.8214503,
+        "lon": 77.6491811
+      },
+      {
+        "lat": 12.8249653,
+        "lon": 77.6638581
+      },
+      {
+        "lat": 12.8345057,
+        "lon": 77.6766469
+      },
+      {
+        "lat": 12.8454683,
+        "lon": 77.6743295
+      }
+    ]
+  },
+  {
+    "name": "HSR Radius",
+    "folder": "Bangalore",
+    "description": "",
+    "polygon_points_count": 14,
+    "polygon_points": [
+      {
+        "lat": 12.9295624,
+        "lon": 77.6195892
+      },
+      {
+        "lat": 12.9158423,
+        "lon": 77.618216
+      },
+      {
+        "lat": 12.8894912,
+        "lon": 77.6163645
+      },
+      {
+        "lat": 12.8832754,
+        "lon": 77.6255374
+      },
+      {
+        "lat": 12.8817668,
+        "lon": 77.6373343
+      }
+    ]
+  },
+  {
+    "name": "nizampet radius",
+    "folder": "Bangalore",
+    "description": "",
+    "polygon_points_count": 11,
+    "polygon_points": [
+      {
+        "lat": 17.5266465,
+        "lon": 78.3486225
+      },
+      {
+        "lat": 17.5210805,
+        "lon": 78.35094
+      },
+      {
+        "lat": 17.5117482,
+        "lon": 78.361592
+      },
+      {
+        "lat": 17.4997973,
+        "lon": 78.3665621
+      },
+      {
+        "lat": 17.4923885,
+        "lon": 78.3817121
+      }
+    ]
+  },
+  {
+    "name": "PONDICHERY Radius",
+    "folder": "pondichery",
+    "description": "",
+    "polygon_points_count": 10,
+    "polygon_points": [
+      {
+        "lat": 11.9562145,
+        "lon": 79.8260238
+      },
+      {
+        "lat": 11.957306,
+        "lon": 79.8162391
+      },
+      {
+        "lat": 11.9506725,
+        "lon": 79.8007038
+      },
+      {
+        "lat": 11.9350535,
+        "lon": 79.7941806
+      },
+      {
+        "lat": 11.9152346,
+        "lon": 79.7978714
+      }
+    ]
+  },
+  {
+    "name": "Gachibowli Radius",
+    "folder": "hyderabad",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 17.4451767,
+        "lon": 78.3326742
+      },
+      {
+        "lat": 17.4346326,
+        "lon": 78.3158594
+      },
+      {
+        "lat": 17.4092895,
+        "lon": 78.3090833
+      },
+      {
+        "lat": 17.3967622,
+        "lon": 78.3477397
+      },
+      {
+        "lat": 17.4122026,
+        "lon": 78.3667539
+      }
+    ]
+  },
+  {
+    "name": "Kondapur Radius",
+    "folder": "hyderabad",
+    "description": "KONDAPUR",
+    "polygon_points_count": 15,
+    "polygon_points": [
+      {
+        "lat": 17.4804787,
+        "lon": 78.3272367
+      },
+      {
+        "lat": 17.4919486,
+        "lon": 78.3228633
+      },
+      {
+        "lat": 17.4863902,
+        "lon": 78.3040698
+      },
+      {
+        "lat": 17.460355,
+        "lon": 78.2901661
+      },
+      {
+        "lat": 17.4360362,
+        "lon": 78.3123106
+      }
+    ]
+  },
+  {
+    "name": "THE RED BOX MIYAPUR",
+    "folder": "hyderabad",
+    "description": "",
+    "polygon_points_count": 16,
+    "polygon_points": [
+      {
+        "lat": 17.4919535,
+        "lon": 78.3217539
+      },
+      {
+        "lat": 17.4815977,
+        "lon": 78.3269467
+      },
+      {
+        "lat": 17.4834397,
+        "lon": 78.3347573
+      },
+      {
+        "lat": 17.4790189,
+        "lon": 78.3438553
+      },
+      {
+        "lat": 17.4809837,
+        "lon": 78.3605065
+      }
+    ]
+  },
+  {
+    "name": "Hi-tech city",
+    "folder": "hyderabad",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 17.4295108,
+        "lon": 78.3594867
+      },
+      {
+        "lat": 17.4196367,
+        "lon": 78.3897981
+      },
+      {
+        "lat": 17.4393844,
+        "lon": 78.4158179
+      },
+      {
+        "lat": 17.4734465,
+        "lon": 78.4184173
+      },
+      {
+        "lat": 17.4832008,
+        "lon": 78.3941143
+      }
+    ]
+  },
+  {
+    "name": "The Red Box",
+    "folder": "hyderabad",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 17.424083,
+        "lon": 78.3746235
+      },
+      {
+        "lat": 17.3949398,
+        "lon": 78.3535873
+      },
+      {
+        "lat": 17.3787785,
+        "lon": 78.3651055
+      },
+      {
+        "lat": 17.3729912,
+        "lon": 78.3950735
+      },
+      {
+        "lat": 17.3800489,
+        "lon": 78.4167649
+      }
+    ]
+  },
+  {
+    "name": "The Red Box Embassy",
+    "folder": "hyderabad",
+    "description": "",
+    "polygon_points_count": 14,
+    "polygon_points": [
+      {
+        "lat": 12.9840634,
+        "lon": 80.1660107
+      },
+      {
+        "lat": 12.9799919,
+        "lon": 80.1433157
+      },
+      {
+        "lat": 12.9671683,
+        "lon": 80.132365
+      },
+      {
+        "lat": 12.9497701,
+        "lon": 80.1303051
+      },
+      {
+        "lat": 12.9340439,
+        "lon": 80.1380299
+      }
+    ]
+  },
+  {
+    "name": "Rajamundry Radius",
+    "folder": "Andhra pradesh",
+    "description": "",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 17.1470612,
+        "lon": 81.7883399
+      },
+      {
+        "lat": 17.1605973,
+        "lon": 81.7487524
+      },
+      {
+        "lat": 17.1204529,
+        "lon": 81.6539381
+      },
+      {
+        "lat": 17.0060411,
+        "lon": 81.6221704
+      },
+      {
+        "lat": 16.9144612,
+        "lon": 81.6715325
+      }
+    ]
+  },
+  {
+    "name": "Gajuwaka Radius",
+    "folder": "Andhra pradesh",
+    "description": "",
+    "polygon_points_count": 8,
+    "polygon_points": [
+      {
+        "lat": 17.745287,
+        "lon": 83.1980741
+      },
+      {
+        "lat": 17.7211098,
+        "lon": 83.1681359
+      },
+      {
+        "lat": 17.6913243,
+        "lon": 83.1726572
+      },
+      {
+        "lat": 17.6720077,
+        "lon": 83.1952636
+      },
+      {
+        "lat": 17.6700095,
+        "lon": 83.2332666
+      }
+    ]
+  },
+  {
+    "name": "Benz circle Radius",
+    "folder": "Andhra pradesh",
+    "description": "FUN TIME CLUB",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 16.5146309,
+        "lon": 80.6480198
+      },
+      {
+        "lat": 16.5034391,
+        "lon": 80.6469898
+      },
+      {
+        "lat": 16.4879671,
+        "lon": 80.6571178
+      },
+      {
+        "lat": 16.483029,
+        "lon": 80.6792622
+      },
+      {
+        "lat": 16.498666,
+        "lon": 80.6895618
+      }
+    ]
+  },
+  {
+    "name": "Satya Narayan puram radius",
+    "folder": "Andhra pradesh",
+    "description": "AVAILABLE",
+    "polygon_points_count": 9,
+    "polygon_points": [
+      {
+        "lat": 16.5268221,
+        "lon": 80.6658011
+      },
+      {
+        "lat": 16.5518356,
+        "lon": 80.6606512
+      },
+      {
+        "lat": 16.5525271,
+        "lon": 80.6263988
+      },
+      {
+        "lat": 16.5355455,
+        "lon": 80.6122271
+      },
+      {
+        "lat": 16.5306459,
+        "lon": 80.6015618
+      }
+    ]
+  },
+  {
+    "name": "Trivandrum Radius",
+    "folder": "kerala",
+    "description": "",
+    "polygon_points_count": 7,
+    "polygon_points": [
+      {
+        "lat": 8.4868107,
+        "lon": 76.9571834
+      },
+      {
+        "lat": 8.4974396,
+        "lon": 76.977588
+      },
+      {
+        "lat": 8.5244938,
+        "lon": 76.9725785
+      },
+      {
+        "lat": 8.5327063,
+        "lon": 76.9489971
+      },
+      {
+        "lat": 8.513624,
+        "lon": 76.9274101
+      }
+    ]
+  },
+  {
+    "name": "The red box kompali",
+    "folder": "kerala",
+    "description": "",
+    "polygon_points_count": 15,
+    "polygon_points": [
+      {
+        "lat": 17.487296,
+        "lon": 78.4985318
+      },
+      {
+        "lat": 17.4962182,
+        "lon": 78.5133258
+      },
+      {
+        "lat": 17.5064096,
+        "lon": 78.5241714
+      },
+      {
+        "lat": 17.5259442,
+        "lon": 78.5290254
+      },
+      {
+        "lat": 17.5422332,
+        "lon": 78.5270281
+      }
+    ]
+  }
+]
