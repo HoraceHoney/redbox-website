@@ -36,13 +36,21 @@ class RedBoxRequestHandler(http.server.SimpleHTTPRequestHandler):
             return os.path.join(DIRECTORY, 'blog.html')
         return super().translate_path(path)
 
+    def end_headers(self):
+        # Guarantee browsers never serve stale cached CSS, JS, or HTML
+        headers_sent = [h.lower() for h in getattr(self, '_headers_buffer', []) if isinstance(h, str)]
+        if not any('cache-control' in h for h in headers_sent):
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
+        super().end_headers()
+
     def send_json(self, data, status=200):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
-        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2, ensure_ascii=False).encode('utf-8'))
 

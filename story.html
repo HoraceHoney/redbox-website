@@ -51,7 +51,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.2">
 
   <style>
     /* Clean luxury white theme with subtle oriental lattice pattern */
@@ -96,6 +96,8 @@
   <!-- RESPONSIVE NAVBAR: INLINE DESKTOP LINKS & COMPACT MOBILE -->
   <!-- ======================================================== -->
   <header class="sticky top-0 z-40 bg-white/95 border-b border-zinc-200 shadow-xs backdrop-blur-md">
+    <!-- Promotional Offer Announcement Bar Container -->
+    <div id="promoAnnouncementBar"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6">
       
       <!-- Brand Logo Left -->
@@ -103,8 +105,8 @@
         <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
       </a>
 
-      <!-- Desktop Nav: Inline Navigation Links (Visible on tablets and desktop: md and up) -->
-      <nav class="hidden md:flex items-center gap-1.5 xl:gap-3">
+      <!-- Desktop Nav: Inline Navigation Links (Visible on desktop: lg and up) -->
+      <nav class="hidden lg:flex items-center gap-1.5 xl:gap-3">
         <a href="index.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
         <a href="menu.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Menu</span></a>
         <a href="branches.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
@@ -123,7 +125,7 @@
           <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
           <span>Order Online</span>
         </button>
-        <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="md:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
+        <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="lg:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
           <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
         </button>
       </div>
@@ -131,7 +133,7 @@
     </div>
 
         <!-- Neat Compact Mobile Dropdown (Directly below navbar, NOT a screen-blocking modal) -->
-    <div id="mobileDropdown" class="hidden md:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
+    <div id="mobileDropdown" class="hidden lg:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
       <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
         <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
         <a href="menu.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
@@ -1063,5 +1065,6 @@
       }
     });
   </script>
+  <script src="app.js?v=2.2"></script>
 </body>
 </html>

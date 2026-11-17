@@ -3375,7 +3375,10 @@ async function initPromotionsBanner() {
     } else {
       const header = document.getElementById('mainHeader') || document.querySelector('header');
       if (header) {
-        header.prepend(bar);
+        const container = document.createElement('div');
+        container.id = 'promoAnnouncementBar';
+        container.appendChild(bar);
+        header.prepend(container);
       } else {
         document.body.prepend(bar);
       }
