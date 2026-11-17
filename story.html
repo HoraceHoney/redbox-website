@@ -102,33 +102,33 @@
   <header class="sticky top-0 z-40 bg-white/95 border-b border-zinc-200 shadow-xs backdrop-blur-md">
     <!-- Promotional Offer Announcement Bar Container -->
     <div id="promoAnnouncementBar"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6">
+    <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-2.5 sm:py-3 flex items-center justify-between">
       
-      <!-- Brand Logo Left -->
-      <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
-        <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
-      </a>
+      <!-- Column 1: Brand Logo Left -->
+      <div class="flex-1 flex items-center justify-start min-w-0">
+        <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
+          <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+        </a>
+      </div>
 
-      <!-- Desktop Nav: Inline Navigation Links (Visible on desktop: lg and up) -->
-      <nav class="hidden lg:flex items-center gap-1.5 xl:gap-3">
-        <a href="index.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
-        <a href="menu.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Menu</span></a>
-        <a href="branches.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
-        <a href="about.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>About Us</span></a>
-        <a href="catering.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
-        <a href="franchise.html" class="px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
+      <!-- Column 2: Desktop Nav in Middle with Appropriate Space -->
+      <nav class="hidden lg:flex items-center justify-center gap-1 xl:gap-2.5 2xl:gap-4 flex-shrink-0">
+        <a href="index.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
+        <a href="menu.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Menu</span></a>
+        <a href="branches.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
+        <a href="about.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>About Us</span></a>
+        <a href="catering.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
+        <a href="franchise.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Franchise</span></a>
       </nav>
 
-      <!-- Header Right: WOK HEI Badge & Order Online Button -->
-      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[#C5A059] font-heading font-extrabold text-xs tracking-wider uppercase select-none whitespace-nowrap">
-          
-          <span>WOK HEI FRESH</span>
-        </div>
-        <button onclick="openOrderModal()" class="inline-flex items-center gap-1.5 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-heading font-extrabold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 active:scale-98 transition-all cursor-pointer whitespace-nowrap flex-shrink-0">
-          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-          <span>Order Online</span>
-        </button>
+      <!-- Column 3: Header Right (Order Buttons on Desktop, Nav Ham on Reduced/Folded Screen) -->
+      <div class="flex-1 flex items-center justify-end gap-2.5 flex-shrink-0">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy">
+          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 sm:h-5 w-auto object-contain">
+        </a>
+        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato">
+          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 sm:h-4 w-auto object-contain">
+        </a>
         <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="lg:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
           <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
         </button>

@@ -692,6 +692,18 @@ h3, h4 {
   flex-shrink: 0;
 }
 
+.nav-order-pill.hidden,
+.hidden.nav-order-pill {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .lg\:inline-flex.nav-order-pill,
+  .nav-order-pill.lg\:inline-flex {
+    display: inline-flex !important;
+  }
+}
+
 @media (min-width: 640px) {
   .nav-order-pill {
     padding: 0.35rem 0.75rem;
