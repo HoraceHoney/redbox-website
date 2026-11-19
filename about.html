@@ -350,82 +350,174 @@
           </div>
         </div>
 
-        <!-- 4 Pillars Grid -->
-        <div id="aboutPillarsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 4 Pillars Grid (Grand Restaurant Editorial Card Styling) -->
+        <div id="aboutPillarsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           
           <!-- Pillar 1 -->
-          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">01</span>
-                <span class="text-2xl font-serif font-black text-brand-red">正宗</span>
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200/90 hover:border-brand-red/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col group hover:-translate-y-1.5">
+            <!-- Grand Restaurant Image with Crosshair Hover & Floating Chips -->
+            <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-900 shrink-0">
+              <img src="assets/images/hdr-bnr-01.jpg" alt="Authenticity of Origin" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-107">
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-500"></div>
+              
+              <!-- Grand Restaurant Signature Subtle Hover Crosshair -->
+              <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-9 h-px bg-white/90"></div>
+                <div class="w-px h-9 bg-white/90 absolute"></div>
               </div>
-              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
-                Authenticity of Origin
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
-                Recipes passed down from ancestral Hakka Cantonese settlements in Kolkata. No artificial colors, no MSG additions — just century-old spice alchemy.
-              </p>
+
+              <!-- Floating Badges: Number Pill & Chinese Seal -->
+              <div class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-heading font-extrabold text-zinc-900 shadow-md">
+                01
+              </div>
+              <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 font-serif font-black text-sm tracking-wider shadow-md">
+                正宗
+              </div>
             </div>
-            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
-              Century-Old Lineage
+
+            <!-- Editorial Typography Below Image -->
+            <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+              <div>
+                <span class="text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-widest text-[#B4843A] group-hover:text-brand-red transition-colors block mb-2">
+                  CENTURY-OLD LINEAGE
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-brand-red transition-colors tracking-tight leading-snug mb-3">
+                  Authenticity of Origin
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-600 font-sans leading-relaxed">
+                  Recipes passed down from ancestral Hakka Cantonese settlements in Kolkata. No artificial colors, no MSG additions — just century-old spice alchemy.
+                </p>
+              </div>
+              <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center justify-between text-[11px] font-heading font-bold text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                <span>EST. 2015</span>
+                <span class="inline-flex items-center gap-1 text-brand-red">
+                  <span>ORIGIN</span>
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
             </div>
           </div>
 
           <!-- Pillar 2 -->
-          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">02</span>
-                <span class="text-2xl font-serif font-black text-brand-red">火候</span>
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200/90 hover:border-brand-red/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col group hover:-translate-y-1.5">
+            <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-900 shrink-0">
+              <img src="assets/images/hdr-bnr-06.jpg" alt="The Theatre of Wok Hei" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-107">
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-500"></div>
+              
+              <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-9 h-px bg-white/90"></div>
+                <div class="w-px h-9 bg-white/90 absolute"></div>
               </div>
-              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
-                The Theatre of Wok Hei
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
-                Heavy cast-iron woks blast over high-pressure jet burners at 1000°F. The rapid 90-second sear locks nutrients, crispness, and smoky wok aroma.
-              </p>
+
+              <div class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-heading font-extrabold text-zinc-900 shadow-md">
+                02
+              </div>
+              <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-red-400 font-serif font-black text-sm tracking-wider shadow-md">
+                火候
+              </div>
             </div>
-            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-brand-red uppercase tracking-wider">
-              1000°F Cast Iron Sear
+
+            <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+              <div>
+                <span class="text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-widest text-brand-red block mb-2">
+                  1000°F CAST IRON SEAR
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-brand-red transition-colors tracking-tight leading-snug mb-3">
+                  The Theatre of Wok Hei
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-600 font-sans leading-relaxed">
+                  Heavy cast-iron woks blast over high-pressure jet burners at 1000°F. The rapid 90-second sear locks nutrients, crispness, and smoky wok aroma.
+                </p>
+              </div>
+              <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center justify-between text-[11px] font-heading font-bold text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                <span>1000°F SEAR</span>
+                <span class="inline-flex items-center gap-1 text-brand-red">
+                  <span>FLAME</span>
+                  <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
             </div>
           </div>
 
           <!-- Pillar 3 -->
-          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">03</span>
-                <span class="text-2xl font-serif font-black text-brand-red">匠心</span>
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200/90 hover:border-brand-red/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col group hover:-translate-y-1.5">
+            <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-900 shrink-0">
+              <img src="assets/images/hdr-bnr-04.jpg" alt="The Art of the Fold" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-107">
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-500"></div>
+              
+              <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-9 h-px bg-white/90"></div>
+                <div class="w-px h-9 bg-white/90 absolute"></div>
               </div>
-              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
-                The Art of the Fold
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
-                From delicate translucent dumpling pleats crafted every morning to our patented 45-minute heat-lock box that unfolds into an instant plate.
-              </p>
+
+              <div class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-heading font-extrabold text-zinc-900 shadow-md">
+                03
+              </div>
+              <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 font-serif font-black text-sm tracking-wider shadow-md">
+                匠心
+              </div>
             </div>
-            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
-              Precision Engineering
+
+            <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+              <div>
+                <span class="text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-widest text-[#B4843A] group-hover:text-brand-red transition-colors block mb-2">
+                  PRECISION ENGINEERING
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-brand-red transition-colors tracking-tight leading-snug mb-3">
+                  The Art of the Fold
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-600 font-sans leading-relaxed">
+                  From delicate translucent dumpling pleats crafted every morning to our patented 45-minute heat-lock box that unfolds into an instant plate.
+                </p>
+              </div>
+              <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center justify-between text-[11px] font-heading font-bold text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                <span>PATENTED</span>
+                <span class="inline-flex items-center gap-1 text-brand-red">
+                  <span>ORIGAMI</span>
+                  <i data-lucide="box" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
             </div>
           </div>
 
           <!-- Pillar 4 -->
-          <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">04</span>
-                <span class="text-2xl font-serif font-black text-brand-red">礼待</span>
+          <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200/90 hover:border-brand-red/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col group hover:-translate-y-1.5">
+            <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-900 shrink-0">
+              <img src="assets/images/hdr-bnr-05.jpg" alt="Gracious Hospitality" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-107">
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-500"></div>
+              
+              <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-9 h-px bg-white/90"></div>
+                <div class="w-px h-9 bg-white/90 absolute"></div>
               </div>
-              <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
-                Gracious Hospitality
-              </h3>
-              <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
-                Whether dining at our sleek takeaway hubs across 57 branches or opening a steaming Red Box at your midnight desk, every guest is treated like royalty.
-              </p>
+
+              <div class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-heading font-extrabold text-zinc-900 shadow-md">
+                04
+              </div>
+              <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 font-serif font-black text-sm tracking-wider shadow-md">
+                礼待
+              </div>
             </div>
-            <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
-              57 Branches · Family Warmth
+
+            <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+              <div>
+                <span class="text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-widest text-[#B4843A] group-hover:text-brand-red transition-colors block mb-2">
+                  57 BRANCHES · FAMILY WARMTH
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-brand-red transition-colors tracking-tight leading-snug mb-3">
+                  Gracious Hospitality
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-600 font-sans leading-relaxed">
+                  Whether dining at our sleek takeaway hubs across 57 branches or opening a steaming Red Box at your midnight desk, every guest is treated like royalty.
+                </p>
+              </div>
+              <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center justify-between text-[11px] font-heading font-bold text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                <span>57 HUBS</span>
+                <span class="inline-flex items-center gap-1 text-brand-red">
+                  <span>SERVICE</span>
+                  <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -848,46 +940,6 @@
       </div>
     </section>
 
-    <!-- ---------------------------------------------------- -->
-    <!-- SECTION 8: GRAND DUAL CONVERSION CTA (WHITE LUXURY)  -->
-    <!-- ---------------------------------------------------- -->
-    <section class="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4EA] to-[#F4EDE0] border-b border-[#EADBCA]">
-      <div class="max-w-4xl mx-auto text-center space-y-6">
-        
-        <div class="inline-flex items-center gap-2 text-xs font-heading font-extrabold uppercase tracking-widest text-brand-red">
-          <span>READY TO EXPERIENCE THE FIRE?</span>
-        </div>
-
-        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-zinc-900">
-          Taste Eleven Years of <span class="text-brand-red font-cinzel">WOK MASTERY</span>
-        </h2>
-
-        <p class="text-zinc-600 text-sm sm:text-base font-sans max-w-2xl mx-auto">
-          Explore 271 authentic dishes, locate your nearest branch across 17 regional hubs, or order delivery straight to your door.
-        </p>
-
-        <!-- 3 Primary Conversion Actions -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4">
-          
-          <a href="menu.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-md shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-102 transition-all cursor-pointer">
-            <i data-lucide="utensils" class="w-4 h-4"></i>
-            <span>EXPLORE 271-DISH MENU</span>
-          </a>
-
-          <a href="branches.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-zinc-50 border-2 border-zinc-300 hover:border-brand-red text-zinc-800 hover:text-brand-red font-heading font-bold text-xs uppercase tracking-wider transition-all">
-            <i data-lucide="map-pin" class="w-4 h-4 text-brand-red"></i>
-            <span>LOCATE 57 GLOBAL BRANCHES</span>
-          </a>
-
-          <button onclick="openOrderModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm hover:scale-102 transition-all cursor-pointer">
-            <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-red"></i>
-            <span>ORDER ON SWIGGY / ZOMATO</span>
-          </button>
-
-        </div>
-
-      </div>
-    </section>
 
   </main>
 
@@ -1206,34 +1258,71 @@
           }
         }
 
-        // 3. Four Pillars of Mastery (With Freedom to Place Images on Top)
+        // 3. Four Pillars of Mastery (Grand Restaurant Editorial Card Styling with Image on Top)
         if (data.fourPillars && data.fourPillars.pillars && Array.isArray(data.fourPillars.pillars)) {
           const grid = document.getElementById('aboutPillarsGrid');
           if (grid) {
-            grid.innerHTML = data.fourPillars.pillars.map((p, idx) => `
-              <div class="bg-white p-7 rounded-2xl border border-zinc-200 hover:border-brand-red transition-all shadow-sm hover:shadow-xl group flex flex-col justify-between">
-                <div>
-                  ${p.image ? `
-                    <div class="h-36 w-full rounded-xl overflow-hidden mb-4 border border-zinc-100 group-hover:scale-102 transition-transform duration-300 bg-zinc-50">
-                      <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+            grid.innerHTML = data.fourPillars.pillars.map((p, idx) => {
+              const numStr = p.num || String(idx + 1).padStart(2, '0');
+              const defaultImgs = [
+                'assets/images/hdr-bnr-01.jpg',
+                'assets/images/hdr-bnr-06.jpg',
+                'assets/images/hdr-bnr-04.jpg',
+                'assets/images/hdr-bnr-05.jpg'
+              ];
+              const imgSrc = p.image || defaultImgs[idx % defaultImgs.length];
+              const sealChar = p.seal || (idx === 0 ? '正宗' : idx === 1 ? '火候' : idx === 2 ? '匠心' : '礼待');
+              const sealColor = idx === 1 ? 'text-red-400' : 'text-amber-300';
+              const footerBadge = idx === 0 ? { label: 'ORIGIN', icon: 'sparkles' } :
+                                  idx === 1 ? { label: 'FLAME', icon: 'flame' } :
+                                  idx === 2 ? { label: 'ORIGAMI', icon: 'box' } :
+                                              { label: 'SERVICE', icon: 'heart-handshake' };
+              return `
+                <div class="bg-white rounded-2xl overflow-hidden border border-zinc-200/90 hover:border-brand-red/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col group hover:-translate-y-1.5">
+                  <!-- Grand Restaurant Top Image with Crosshair Hover & Floating Badges -->
+                  <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-900 shrink-0">
+                    <img src="${imgSrc}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-107">
+                    <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    
+                    <!-- Grand Restaurant Signature Subtle Hover Crosshair -->
+                    <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div class="w-9 h-px bg-white/90"></div>
+                      <div class="w-px h-9 bg-white/90 absolute"></div>
                     </div>
-                  ` : ''}
-                  <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-heading font-bold text-zinc-500 bg-zinc-100 group-hover:bg-red-50 group-hover:text-brand-red px-2.5 py-1 rounded-full transition-colors">${p.num || String(idx+1).padStart(2, '0')}</span>
-                    <span class="text-2xl font-serif font-black text-brand-red">${p.seal || '正宗'}</span>
+
+                    <!-- Floating Badges: Number Pill & Chinese Seal -->
+                    <div class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-heading font-extrabold text-zinc-900 shadow-md">
+                      ${numStr}
+                    </div>
+                    <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md ${sealColor} font-serif font-black text-sm tracking-wider shadow-md">
+                      ${sealChar}
+                    </div>
                   </div>
-                  <h3 class="font-heading font-extrabold text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors tracking-wide uppercase">
-                    ${p.title}
-                  </h3>
-                  <p class="text-xs sm:text-sm text-zinc-600 mt-3 font-sans leading-relaxed">
-                    ${p.desc}
-                  </p>
+
+                  <!-- Editorial Typography Below Image -->
+                  <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+                    <div>
+                      <span class="text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-widest text-[#B4843A] group-hover:text-brand-red transition-colors block mb-2">
+                        ${p.tag || 'CULINARY CRAFT'}
+                      </span>
+                      <h3 class="font-serif text-xl sm:text-2xl font-bold text-zinc-900 group-hover:text-brand-red transition-colors tracking-tight leading-snug mb-3">
+                        ${p.title}
+                      </h3>
+                      <p class="text-xs sm:text-sm text-zinc-600 font-sans leading-relaxed">
+                        ${p.desc}
+                      </p>
+                    </div>
+                    <div class="pt-4 mt-5 border-t border-zinc-100 flex items-center justify-between text-[11px] font-heading font-bold text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                      <span>EST. 2015</span>
+                      <span class="inline-flex items-center gap-1 text-brand-red">
+                        <span>${footerBadge.label}</span>
+                        <i data-lucide="${footerBadge.icon}" class="w-3.5 h-3.5"></i>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div class="pt-5 mt-4 border-t border-zinc-100 text-[11px] font-heading font-bold text-zinc-500 uppercase tracking-wider">
-                  ${p.tag || ''}
-                </div>
-              </div>
-            `).join('');
+              `;
+            }).join('');
           }
         }
 

@@ -8288,24 +8288,28 @@ function renderCareersCards() {
       const pGrid = document.getElementById('refAboutPillarsGrid');
       const pillars = (appState.aboutContent.fourPillars && appState.aboutContent.fourPillars.pillars) || [];
       if (pGrid) {
-        pGrid.innerHTML = pillars.map(p => `
-          <div class="bg-white p-4 rounded-xl border border-zinc-200 flex flex-col justify-between shadow-2xs">
-            <div>
-              ${p.image ? `
-                <div class="h-24 w-full rounded-lg overflow-hidden mb-2.5 border border-zinc-100 bg-zinc-50">
-                  <img src="${p.image}" class="w-full h-full object-cover">
-                </div>
-              ` : ''}
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[9px] font-bold text-zinc-500 bg-zinc-100 px-2 py-0.5 rounded-full">${p.num}</span>
-                <span class="text-base font-serif font-black text-brand-red">${p.seal}</span>
+        pGrid.innerHTML = pillars.map((p, idx) => {
+          const defaultImgs = ['assets/images/hdr-bnr-01.jpg', 'assets/images/hdr-bnr-06.jpg', 'assets/images/hdr-bnr-04.jpg', 'assets/images/hdr-bnr-05.jpg'];
+          const imgSrc = p.image || defaultImgs[idx % defaultImgs.length];
+          return `
+            <div class="bg-white rounded-xl overflow-hidden border border-zinc-200 flex flex-col justify-between shadow-2xs group hover:border-brand-red transition-all">
+              <div class="relative h-28 w-full overflow-hidden bg-zinc-900 shrink-0">
+                <img src="${imgSrc}" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/20"></div>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-white/95 text-[9px] font-bold text-zinc-800">${p.num || String(idx+1).padStart(2, '0')}</span>
+                <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-black/60 text-amber-300 font-serif font-black text-xs">${p.seal || '正宗'}</span>
               </div>
-              <h4 class="font-bold text-xs text-zinc-900 uppercase tracking-wide">${p.title}</h4>
-              <p class="text-[10px] text-zinc-500 line-clamp-3 mt-1.5 leading-relaxed">${p.desc}</p>
+              <div class="p-3.5 flex flex-col justify-between flex-1">
+                <div>
+                  <span class="text-[9px] font-extrabold text-[#B4843A] uppercase tracking-wider block mb-1">${p.tag || ''}</span>
+                  <h4 class="font-serif font-bold text-xs text-zinc-900 leading-snug mb-1">${p.title}</h4>
+                  <p class="text-[10px] text-zinc-500 line-clamp-3 leading-relaxed">${p.desc}</p>
+                </div>
+                <div class="pt-2 mt-2 border-t border-zinc-100 text-[9px] font-bold text-zinc-400 uppercase tracking-wider">EST. 2015</div>
+              </div>
             </div>
-            <div class="pt-2.5 mt-2 border-t border-zinc-100 text-[9px] font-bold text-zinc-400 uppercase tracking-wider">${p.tag}</div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       }
 
       // 3. Branchline Timeline (Image 2)
