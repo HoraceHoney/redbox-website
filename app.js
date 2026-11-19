@@ -3808,7 +3808,7 @@ function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu
               <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">${b.city}</span>
             </div>
 
-            <h4 class="font-heading font-black text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
+            <h4 class="font-heading font-bold text-sm sm:text-base text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
               ${b.name}
             </h4>
             <p class="text-xs text-zinc-500 line-clamp-2 mt-1 mb-3">
@@ -3830,11 +3830,11 @@ function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu
 
           <div class="space-y-2 pt-2 border-t border-zinc-100">
             <div class="grid grid-cols-2 gap-2">
-              <button onclick="openCateringModalForBranch('${b.id}')" class="py-2.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <button onclick="openCateringModalForBranch('${b.id}')" class="py-2 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-semibold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
                 <i data-lucide="send" class="w-3.5 h-3.5"></i>
                 <span>Request Quote</span>
               </button>
-              <button onclick="openTableBookingModal('${b.id}')" class="py-2.5 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <button onclick="openTableBookingModal('${b.id}')" class="py-2 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
                 <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-400"></i>
                 <span>Book Table</span>
               </button>
@@ -3852,7 +3852,7 @@ function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu
     return `
       <div class="bg-white rounded-3xl p-5 sm:p-6 border ${isActive ? 'border-brand-red ring-2 ring-brand-red/10 shadow-md' : 'border-zinc-200 shadow-xs hover:shadow-md'} transition-all flex flex-col justify-between relative group">
         ${isActive ? `
-          <div class="absolute -top-3 left-6 bg-brand-red text-white text-[10px] font-heading font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
+          <div class="absolute -top-3 left-6 bg-brand-red text-white text-[10px] font-heading font-bold uppercase px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
             <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i> Active Serving Kitchen
           </div>
         ` : ''}
@@ -3869,7 +3869,7 @@ function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu
             </span>
           </div>
 
-          <h4 class="font-heading font-black text-base sm:text-lg text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
+          <h4 class="font-heading font-bold text-sm sm:text-base text-zinc-900 group-hover:text-brand-red transition-colors line-clamp-1">
             ${b.name}
           </h4>
           <p class="text-xs text-zinc-500 line-clamp-2 mt-1 mb-3">
@@ -3891,11 +3891,11 @@ function renderNearbyHubsCards(containerId = 'nearbyHubsCardsGrid', mode = 'menu
 
         <div class="space-y-2 pt-2 border-t border-zinc-100">
           <div class="grid grid-cols-2 gap-2">
-            <button onclick="openBranchOrderPrompt('${b.id}')" class="py-2.5 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+            <button onclick="openBranchOrderPrompt('${b.id}')" class="py-2 px-3 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-semibold uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
               <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
               <span>Order Online</span>
             </button>
-            <button onclick="openTableBookingModal('${b.id}')" class="py-2.5 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+            <button onclick="openTableBookingModal('${b.id}')" class="py-2 px-3 bg-zinc-900 hover:bg-black text-white rounded-xl text-xs font-heading font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer">
               <i data-lucide="utensils-crossed" class="w-3.5 h-3.5 text-amber-400"></i>
               <span>Book Table</span>
             </button>

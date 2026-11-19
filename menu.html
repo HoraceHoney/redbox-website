@@ -84,7 +84,7 @@
       <!-- Column 2: Desktop Nav in Middle with Appropriate Space -->
       <nav class="hidden lg:flex items-center justify-center gap-1 xl:gap-2.5 2xl:gap-4 flex-shrink-0">
         <a href="index.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Home</span></a>
-        <a href="menu.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-black border-b-2 border-brand-red"><span>Menu</span></a>
+        <a href="menu.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-brand-red font-bold border-b-2 border-brand-red"><span>Menu</span></a>
         <a href="branches.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Branches</span></a>
         <a href="about.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>About Us</span></a>
         <a href="catering.html" class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-heading transition-all tracking-wider uppercase whitespace-nowrap text-zinc-700 hover:text-brand-red font-bold border-b-2 border-transparent hover:border-brand-red/40"><span>Catering</span></a>
@@ -121,7 +121,7 @@
       </div>
       <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
         <a href="index.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Home</span></a>
-        <a href="menu.html" class="px-3 py-2 text-xs font-heading font-black text-brand-red border-l-2 border-brand-red bg-zinc-100/70 rounded-md flex items-center justify-between"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
+        <a href="menu.html" class="px-3 py-2 text-xs font-heading font-bold text-brand-red border-l-2 border-brand-red bg-zinc-100/70 rounded-md flex items-center justify-between"><span>Menu</span><span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-red-50 text-brand-red">271</span></a>
         <a href="branches.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Branches</span><span class="nav-branches-count-badge text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700">57+ Hubs</span></a>
         <a href="about.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>About Us</span></a>
         <a href="catering.html" class="px-3 py-2 text-xs font-heading font-medium text-zinc-700 hover:text-brand-red hover:bg-zinc-50 rounded-md flex items-center justify-between transition-colors"><span>Catering</span></a>
@@ -196,7 +196,7 @@
             </div>
             <div class="min-w-0">
               <div class="flex items-center gap-2 flex-wrap">
-                <span id="fulfillmentModeLabel" class="text-[10px] font-heading font-extrabold uppercase tracking-wider text-zinc-400">Delivering To</span>
+                <span id="fulfillmentModeLabel" class="text-[10px] font-heading font-bold uppercase tracking-wider text-zinc-400">Delivering To</span>
                 <span id="serviceZoneStatusChip" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center gap-1">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span id="serviceZoneStatusText">In Hot Delivery Radius (&lt;12 km)</span>
@@ -204,7 +204,7 @@
                 <span id="gpsAccuracyBadge" class="hidden px-2 py-0.5 rounded-full text-[9px] font-mono bg-zinc-100 text-zinc-600 border border-zinc-200">GPS ±15m</span>
               </div>
               <div class="flex items-center gap-2 mt-0.5">
-                <h3 id="currentLocalityDisplay" class="font-heading font-black text-sm sm:text-base text-zinc-900 truncate" title="Delivery Address">
+                <h3 id="currentLocalityDisplay" class="font-heading font-bold text-xs sm:text-sm text-zinc-900 truncate" title="Delivery Address">
                   45, G.N. Chetty Road, T. Nagar, Chennai - 600017
                 </h3>
                 <button onclick="openLocationSelectorModal()" class="px-2.5 py-0.5 text-xs font-bold text-brand-red hover:text-brand-red-dark hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 cursor-pointer flex-shrink-0" title="Change Location or Address">
@@ -221,12 +221,12 @@
           <!-- Right: Interactive Delivery vs Takeaway Segmented Toggle -->
           <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 self-start md:self-auto">
             <div class="inline-flex p-1 bg-zinc-100/90 rounded-2xl border border-zinc-200/70 shadow-inner" role="group">
-              <button id="toggleBtnDelivery" onclick="setFulfillmentMode('delivery')" class="fulfillment-toggle-pill active px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-extrabold flex items-center gap-1.5 cursor-pointer">
+              <button id="toggleBtnDelivery" onclick="setFulfillmentMode('delivery')" class="fulfillment-toggle-pill active px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-semibold flex items-center gap-1.5 cursor-pointer">
                 <i data-lucide="bike" class="w-3.5 h-3.5"></i>
                 <span>Order Delivery</span>
                 <span id="deliveryEtaBadge" class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded font-sans font-bold bg-black/20 text-white ml-1">30-40m</span>
               </button>
-              <button id="toggleBtnTakeaway" onclick="setFulfillmentMode('takeaway')" class="fulfillment-toggle-pill inactive px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-extrabold flex items-center gap-1.5 cursor-pointer">
+              <button id="toggleBtnTakeaway" onclick="setFulfillmentMode('takeaway')" class="fulfillment-toggle-pill inactive px-3.5 sm:px-4 py-2 rounded-xl text-xs font-heading font-semibold flex items-center gap-1.5 cursor-pointer">
                 <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
                 <span>Takeaway</span>
                 <span id="takeawayEtaBadge" class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded font-sans font-bold bg-zinc-200 text-zinc-700 ml-1">15m ready</span>
@@ -248,7 +248,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-heading font-extrabold uppercase tracking-wider bg-red-50 text-brand-red border border-red-200">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-heading font-bold uppercase tracking-wider bg-red-50 text-brand-red border border-red-200">
                 Proximity Kitchens
               </span>
               <span class="text-xs text-zinc-500 font-medium flex items-center gap-1">
@@ -256,7 +256,7 @@
                 Nearest operating branches to your location
               </span>
             </div>
-            <h3 class="text-lg sm:text-xl font-heading font-black text-zinc-900 tracking-tight mt-1">
+            <h3 class="text-base sm:text-lg font-heading font-bold text-zinc-900 tracking-tight mt-1">
               Serving Branches Near You
             </h3>
           </div>
@@ -338,7 +338,7 @@
               <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
               
               <div class="absolute bottom-4 left-4 right-4 text-white">
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/90 text-[10px] font-heading font-black tracking-wider uppercase mb-1">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/90 text-[10px] font-heading font-bold tracking-wider uppercase mb-1">
                   Global Expansion 2026
                 </span>
                 <h4 class="font-serif font-bold text-base sm:text-lg leading-snug">Bringing Authentic Wok Hei to New Cities</h4>
@@ -401,7 +401,7 @@
             <!-- Summary Strip -->
             <div class="p-3 sm:p-4 bg-zinc-50 rounded-2xl border border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="font-heading font-black text-brand-slate text-sm sm:text-base" id="webCategoryHeadingTitle">All Dishes</span>
+                <span class="font-heading font-bold text-brand-slate text-sm sm:text-base" id="webCategoryHeadingTitle">All Dishes</span>
                 <span class="px-2.5 py-0.5 rounded-full bg-zinc-200 text-zinc-700 font-bold text-xs" id="webCategoryCountBadge">271 dishes</span>
                 <span class="hidden xl:inline-block text-xs text-zinc-400 font-medium">
                   (Showing <span id="displayedCount" class="font-bold text-zinc-700">12</span> of <span id="totalFilteredCount" class="font-bold text-zinc-700">271</span> dishes)
