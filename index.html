@@ -69,7 +69,7 @@
       <!-- Column 1: Brand Logo Left -->
       <div class="flex-1 flex items-center justify-start min-w-0">
         <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
-          <img id="navBrandLogoImg" src="assets/images/logo-white-text.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105">
+          <img id="navBrandLogoImg" src="assets/images/logo-white-text.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105">
         </a>
       </div>
 
@@ -85,11 +85,11 @@
 
       <!-- Column 3: Header Right (Order Buttons on Desktop, Nav Ham on Reduced/Folded Screen) -->
       <div class="flex-1 flex items-center justify-end gap-2.5 flex-shrink-0">
-        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy">
-          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 sm:h-5 w-auto object-contain">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" onclick="openPartnerOrderPrompt('swiggy'); return false;" class="hidden lg:inline-flex nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy · Share location or custom address">
+          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-3.5 sm:h-4 w-auto object-contain">
         </a>
-        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato">
-          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 sm:h-4 w-auto object-contain">
+        <a href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" onclick="openPartnerOrderPrompt('zomato'); return false;" class="hidden lg:inline-flex nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato · Share location or custom address">
+          <img src="assets/images/zomato.svg" alt="Zomato" class="h-3 sm:h-3.5 w-auto object-contain">
         </a>
         <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="lg:hidden p-1.5 rounded-lg nav-mobile-btn transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
           <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
@@ -102,13 +102,11 @@
     <div id="mobileDropdown" class="hidden lg:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
       <!-- Mobile Swiggy & Zomato Quick Action -->
       <div class="flex items-center gap-2 pb-2.5 border-b border-zinc-100 mb-2">
-        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-swiggy py-2 justify-center gap-1.5">
-          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
-          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 w-auto object-contain">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" onclick="openPartnerOrderPrompt('swiggy'); return false;" class="flex-1 nav-order-pill nav-order-pill-swiggy py-2 justify-center gap-1.5">
+          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-5 w-auto object-contain">
         </a>
-        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-zomato py-2 justify-center gap-1.5">
-          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
-          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 w-auto object-contain">
+        <a href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" onclick="openPartnerOrderPrompt('zomato'); return false;" class="flex-1 nav-order-pill nav-order-pill-zomato py-2 justify-center gap-1.5">
+          <img src="assets/images/zomato.svg" alt="Zomato" class="h-4.5 w-auto object-contain">
         </a>
       </div>
 
@@ -725,7 +723,7 @@
           </div>
           <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
         </a>
-        <a id="orderModalZomatoLink" href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
+        <a id="orderModalZomatoLink" href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
           <div class="flex items-center gap-3">
             <img src="assets/images/zomato.png" alt="Zomato" class="h-6 w-auto">
             <div>
@@ -752,24 +750,39 @@
   <!-- Location Selection & Verification Modal -->
   <div id="locationSelectorModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeLocationSelectorModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition">
+      <button onclick="closeLocationSelectorModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition cursor-pointer" aria-label="Close modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
+        <div id="modalHeaderIconWrap" class="w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
           <i data-lucide="map-pin" class="w-5 h-5"></i>
         </div>
         <div>
-          <h3 class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Delivery Location</h3>
-          <p class="text-xs text-zinc-500">Verify branch proximity and route directly to nearest outlet</p>
+          <h3 id="modalLocationTitle" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Delivery Location</h3>
+          <p id="modalLocationSubtitle" class="text-xs text-zinc-500">Verify branch proximity (12 km hot delivery radius) and nearest kitchen hub</p>
         </div>
+      </div>
+
+      <!-- Active Location Confirmation Banner (if already verified) -->
+      <div id="modalActiveLocationBanner" class="hidden p-3.5 mb-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 text-emerald-800 text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Current Delivery Address</span>
+          </div>
+          <p id="modalActiveLocationText" class="text-xs font-semibold text-zinc-900 truncate mt-0.5">45, G.N. Chetty Road, T. Nagar, Chennai</p>
+          <span id="modalActiveLocationHub" class="text-[10px] text-zinc-500">Nearest Kitchen: The Red Box - T. Nagar (2.2 km away)</span>
+        </div>
+        <button id="modalBtnConfirmCurrentOrder" onclick="confirmCurrentLocationOrder()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
+          <span id="modalBtnConfirmCurrentText">Continue ➔</span>
+        </button>
       </div>
 
       <!-- Option 1: Live GPS Detection -->
       <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
         <div class="flex items-center gap-3 min-w-0">
-          <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0">
+          <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
             <i data-lucide="navigation" class="w-4 h-4"></i>
           </div>
           <div class="min-w-0">
@@ -780,6 +793,31 @@
         <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
           <span id="btnModalDetectGpsText">Detect Location</span>
           <i data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Option 2: Enter Delivery Street Address -->
+      <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 mb-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-lg bg-zinc-200 text-zinc-700 flex items-center justify-center">
+              <i data-lucide="home" class="w-3.5 h-3.5"></i>
+            </div>
+            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Enter Delivery Address</h4>
+          </div>
+          <span class="text-[10px] text-zinc-500 font-medium">Exact street / door delivery</span>
+        </div>
+        <div class="space-y-2">
+          <input type="text" id="manualAddressFlat" placeholder="Flat / House / Building No. (e.g. Flat 4B, Ruby Towers)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <input type="text" id="manualAddressStreet" placeholder="Street / Road / Landmark (e.g. 45, G.N. Chetty Road, Near Vani Mahal)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="manualAddressArea" placeholder="Area / Locality (e.g. T. Nagar)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+            <input type="text" id="manualAddressPincode" placeholder="Pincode (e.g. 600017)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          </div>
+        </div>
+        <button onclick="saveManualDeliveryAddress()" class="w-full py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          <span>Save & Route to Nearest Kitchen</span>
         </button>
       </div>
 

@@ -1844,9 +1844,30 @@ function openBranchDetailModal(branchId) {
   const swiggy = document.getElementById('modalSwiggyLink');
   const zomato = document.getElementById('modalZomatoLink');
   const whatsapp = document.getElementById('modalWhatsappLink');
-  if (swiggy) swiggy.href = (b.deliveryLinks && b.deliveryLinks.swiggy) || 'https://www.swiggy.com/direct/brand/1636';
-  if (zomato) zomato.href = (b.deliveryLinks && b.deliveryLinks.zomato) || 'https://www.zomato.com/search?query=RedBox';
-  if (whatsapp) whatsapp.href = (b.deliveryLinks && b.deliveryLinks.whatsapp) || `https://wa.me/918939444411?text=Hi%20Red%20Box%20${encodeURIComponent(b.name)}`;
+  if (swiggy) {
+    swiggy.href = buildPartnerDeliveryUrl('swiggy', b);
+    swiggy.onclick = (e) => {
+      e.preventDefault();
+      handleSmartPartnerOrder('swiggy', null, 'REDWOK20', b);
+      return false;
+    };
+  }
+  if (zomato) {
+    zomato.href = buildPartnerDeliveryUrl('zomato', b);
+    zomato.onclick = (e) => {
+      e.preventDefault();
+      handleSmartPartnerOrder('zomato', null, 'REDWOK20', b);
+      return false;
+    };
+  }
+  if (whatsapp) {
+    whatsapp.href = buildPartnerDeliveryUrl('whatsapp', b);
+    whatsapp.onclick = (e) => {
+      e.preventDefault();
+      handleSmartPartnerOrder('whatsapp', null, 'REDWOK20', b);
+      return false;
+    };
+  }
 
   modal.classList.remove('hidden');
   document.body.classList.add('overflow-hidden');
@@ -2530,16 +2551,287 @@ function setTestPresetLocation(preset) {
 }
 
 
-// Location Selector Modal Controls
-function openLocationSelectorModal(dishId = null) {
+// Location Selector & Address Prompt Modal Controls
+function openLocationSelectorModal(dishId = null, targetPartner = null) {
   if (dishId) userFulfillment.pendingDishId = dishId;
+  if (targetPartner) userFulfillment.pendingPartnerOrder = targetPartner;
+
+  ensureLocationSelectorModalInDOM();
+
   const modal = document.getElementById('locationSelectorModal');
   if (modal) {
+    // If opened without a specific partner, reset to default titles
+    if (!targetPartner && (!userFulfillment || !userFulfillment.pendingPartnerOrder)) {
+      const titleEl = document.getElementById('modalLocationTitle');
+      const subEl = document.getElementById('modalLocationSubtitle');
+      const iconWrap = document.getElementById('modalHeaderIconWrap');
+      if (titleEl) titleEl.textContent = 'Select Delivery Location';
+      if (subEl) subEl.textContent = 'Verify branch proximity (12 km hot delivery radius) and nearest kitchen hub';
+      if (iconWrap) {
+        iconWrap.className = 'w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0';
+        iconWrap.innerHTML = '<i data-lucide="map-pin" class="w-5 h-5"></i>';
+      }
+    }
+
+    updateModalActiveLocationBanner(targetPartner || (userFulfillment ? userFulfillment.pendingPartnerOrder : null));
+
     modal.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
     populateModalBranches();
     if (window.lucide) window.lucide.createIcons();
   }
+}
+
+// Open Location & Address Prompt for Partner Orders (Swiggy / Zomato)
+function openPartnerOrderPrompt(platform = 'swiggy') {
+  if (typeof userFulfillment === 'undefined') {
+    window.userFulfillment = { isVerified: false, mode: 'delivery', pendingPartnerOrder: platform };
+  } else {
+    userFulfillment.pendingPartnerOrder = platform;
+  }
+
+  ensureLocationSelectorModalInDOM();
+
+  const modal = document.getElementById('locationSelectorModal');
+  if (!modal) return;
+
+  const titleEl = document.getElementById('modalLocationTitle');
+  const subEl = document.getElementById('modalLocationSubtitle');
+  const iconWrap = document.getElementById('modalHeaderIconWrap');
+
+  if (platform === 'swiggy') {
+    if (titleEl) {
+      titleEl.innerHTML = `
+        <span class="inline-flex items-center gap-2">
+          <span>Order on</span>
+          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-6 w-auto inline-block">
+        </span>
+      `;
+    }
+    if (subEl) subEl.textContent = 'Share current location or enter your street address to route to your nearest Swiggy kitchen with 20% OFF (Code: REDWOK20)';
+    if (iconWrap) {
+      iconWrap.className = 'w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0';
+      iconWrap.innerHTML = '<i data-lucide="map-pin" class="w-5 h-5"></i>';
+    }
+  } else if (platform === 'zomato') {
+    if (titleEl) {
+      titleEl.innerHTML = `
+        <span class="inline-flex items-center gap-2">
+          <span>Order on</span>
+          <img src="assets/images/zomato.svg" alt="Zomato" class="h-5.5 w-auto inline-block">
+        </span>
+      `;
+    }
+    if (subEl) subEl.textContent = 'Share current location or enter your street address to route to your nearest Zomato kitchen with 20% OFF (Code: REDWOK20)';
+    if (iconWrap) {
+      iconWrap.className = 'w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0';
+      iconWrap.innerHTML = '<i data-lucide="map-pin" class="w-5 h-5"></i>';
+    }
+  }
+
+  updateModalActiveLocationBanner(platform);
+
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+  populateModalBranches();
+  if (window.lucide) window.lucide.createIcons();
+}
+
+// Update Active Location Confirmation Banner in modal
+function updateModalActiveLocationBanner(platform = null) {
+  const banner = document.getElementById('modalActiveLocationBanner');
+  if (!banner) return;
+
+  const isVerified = (typeof userFulfillment !== 'undefined' && userFulfillment.isVerified);
+  if (isVerified) {
+    banner.classList.remove('hidden');
+    const addrText = document.getElementById('modalActiveLocationText');
+    const hubText = document.getElementById('modalActiveLocationHub');
+    const btnConfirm = document.getElementById('modalBtnConfirmCurrentOrder');
+    const btnConfirmText = document.getElementById('modalBtnConfirmCurrentText');
+
+    const address = userFulfillment.fullAddress || userFulfillment.localityName || '45, G.N. Chetty Road, T. Nagar';
+    const b = userFulfillment.nearestBranch || (typeof branchesData !== 'undefined' ? branchesData[0] : null);
+    const bName = b ? b.name : 'The Red Box';
+    const dist = userFulfillment.distanceKm ? `${userFulfillment.distanceKm} km away` : 'Within delivery radius';
+
+    if (addrText) addrText.textContent = address;
+    if (hubText) hubText.textContent = `Nearest Kitchen: ${bName} (${dist})`;
+
+    const target = platform || (userFulfillment ? userFulfillment.pendingPartnerOrder : null);
+    if (target === 'swiggy') {
+      if (btnConfirmText) btnConfirmText.textContent = 'Continue to Swiggy ➔';
+      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
+    } else if (target === 'zomato') {
+      if (btnConfirmText) btnConfirmText.textContent = 'Continue to Zomato ➔';
+      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
+    } else {
+      if (btnConfirmText) btnConfirmText.textContent = 'Confirm Location ➔';
+      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
+    }
+  } else {
+    banner.classList.add('hidden');
+  }
+}
+
+// Confirm order with current location
+function confirmCurrentLocationOrder() {
+  const platform = (typeof userFulfillment !== 'undefined' && userFulfillment.pendingPartnerOrder) ? userFulfillment.pendingPartnerOrder : null;
+  const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' ? branchesData[0] : null);
+
+  closeLocationSelectorModal();
+
+  if (platform) {
+    userFulfillment.pendingPartnerOrder = null;
+    handleSmartPartnerOrder(platform, null, 'REDWOK20', b);
+  }
+}
+
+// Ensure location selector modal is present in DOM on any page
+function ensureLocationSelectorModalInDOM() {
+  if (document.getElementById('locationSelectorModal')) return;
+
+  const modalHtml = `
+  <!-- Location Selection & Verification Modal -->
+  <div id="locationSelectorModal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeLocationSelectorModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 transition cursor-pointer" aria-label="Close modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      
+      <div class="flex items-center gap-3 mb-5">
+        <div id="modalHeaderIconWrap" class="w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 id="modalLocationTitle" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Delivery Location</h3>
+          <p id="modalLocationSubtitle" class="text-xs text-zinc-500">Verify branch proximity (12 km hot delivery radius) and nearest kitchen hub</p>
+        </div>
+      </div>
+
+      <!-- Active Location Confirmation Banner (if already verified) -->
+      <div id="modalActiveLocationBanner" class="hidden p-3.5 mb-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 text-emerald-800 text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Current Delivery Address</span>
+          </div>
+          <p id="modalActiveLocationText" class="text-xs font-semibold text-zinc-900 truncate mt-0.5">45, G.N. Chetty Road, T. Nagar, Chennai</p>
+          <span id="modalActiveLocationHub" class="text-[10px] text-zinc-500">Nearest Kitchen: The Red Box - T. Nagar (2.2 km away)</span>
+        </div>
+        <button id="modalBtnConfirmCurrentOrder" onclick="confirmCurrentLocationOrder()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
+          <span id="modalBtnConfirmCurrentText">Continue ➔</span>
+        </button>
+      </div>
+
+      <!-- Option 1: Live GPS Detection -->
+      <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
+            <i data-lucide="navigation" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0">
+            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
+            <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">High-accuracy satellite pinpoint & reverse geocode</p>
+          </div>
+        </div>
+        <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+          <span id="btnModalDetectGpsText">Detect Location</span>
+          <i data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Option 2: Enter Delivery Street Address -->
+      <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 mb-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-lg bg-zinc-200 text-zinc-700 flex items-center justify-center">
+              <i data-lucide="home" class="w-3.5 h-3.5"></i>
+            </div>
+            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Enter Delivery Address</h4>
+          </div>
+          <span class="text-[10px] text-zinc-500 font-medium">Exact street / door delivery</span>
+        </div>
+        <div class="space-y-2">
+          <input type="text" id="manualAddressFlat" placeholder="Flat / House / Building No. (e.g. Flat 4B, Ruby Towers)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <input type="text" id="manualAddressStreet" placeholder="Street / Road / Landmark (e.g. 45, G.N. Chetty Road, Near Vani Mahal)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="manualAddressArea" placeholder="Area / Locality (e.g. T. Nagar)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+            <input type="text" id="manualAddressPincode" placeholder="Pincode (e.g. 600017)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
+          </div>
+        </div>
+        <button onclick="saveManualDeliveryAddress()" class="w-full py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          <span>Save & Route to Nearest Kitchen</span>
+        </button>
+      </div>
+
+      <!-- Quick Test Presets -->
+      <div class="mb-5">
+        <div class="flex items-center justify-between mb-2">
+          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">Quick Address Presets</label>
+          <span class="text-[10px] text-zinc-400">Click to switch branch outlet</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button onclick="setTestPresetLocation('tnagar')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Chennai T. Nagar Hub
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">2.2 km · In Zone</span>
+            </div>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">45, G.N. Chetty Road, T. Nagar, Chennai - 600017</p>
+          </button>
+          <button onclick="setTestPresetLocation('bengaluru')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Bengaluru Indiranagar
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.4 km · In Zone</span>
+            </div>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">100ft Road, Indiranagar, Bengaluru - 560038</p>
+          </button>
+          <button onclick="setTestPresetLocation('trichy')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Trichy KK Nagar
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.1 km · In Zone</span>
+            </div>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">KK Nagar Main Road, Tiruchirappalli - 620021</p>
+          </button>
+          <button onclick="setTestPresetLocation('mumbai')" class="p-2.5 rounded-xl border border-red-200 bg-red-50/60 hover:bg-red-100/70 text-left transition cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-red-800 text-[11px] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> Out of Service (Mumbai)
+              </span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold">>500 km · Out of Zone</span>
+            </div>
+            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Marine Drive, Nariman Point, Mumbai - 400021</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Branches & Areas -->
+      <div class="mb-3">
+        <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1.5">Or Choose from 100+ Kitchen Hubs</label>
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-3"></i>
+          <input type="text" id="modalBranchSearchInput" oninput="filterModalBranches(this.value)" placeholder="Search city or branch (e.g. Anna Nagar, Indiranagar, Dubai...)" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none">
+        </div>
+      </div>
+
+      <!-- Scrollable Branch List -->
+      <div id="modalBranchListContainer" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+    </div>
+  </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function closeLocationSelectorModal() {
@@ -3528,6 +3820,13 @@ const CITY_SLUG_MAP = {
   'trivandrum': 'thiruvananthapuram',
   'kochi': 'kochi',
   'nagpur': 'nagpur',
+  'kolkata': 'kolkata',
+  'ahmedabad': 'ahmedabad',
+  'salem': 'salem',
+  'tiruchirappalli': 'trichy',
+  'trichy': 'trichy',
+  'new delhi': 'delhi',
+  'delhi': 'delhi',
   'all': 'chennai'
 };
 
@@ -3573,27 +3872,45 @@ function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
   if (platform === 'zomato') {
     // If international branch
     if (b && b.country && b.country.toLowerCase() !== 'india' && b.deliveryLinks && b.deliveryLinks.zomato) {
-      let url = b.deliveryLinks.zomato;
-      if (dishName) url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
-      return url;
+      return b.deliveryLinks.zomato;
     }
 
-    // If branch has a specific zomato URL configured
-    if (b && b.deliveryLinks && b.deliveryLinks.zomato && !b.deliveryLinks.zomato.includes('query=RedBox')) {
-      let url = b.deliveryLinks.zomato;
-      if (url.includes('/the-red-box-')) {
-        url = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
+    // If branch has a direct verified Zomato outlet URL configured
+    if (b && b.deliveryLinks && b.deliveryLinks.zomato) {
+      const url = b.deliveryLinks.zomato.trim();
+      // Ensure it is not the legacy broken URLs
+      if (!url.includes('query=RedBox') && !url.includes('/restaurants/the-red-box')) {
+        return url;
       }
-      if (dishName) url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
-      return url;
     }
 
-    // Canonical Zomato Chain Route
-    let url = `https://www.zomato.com/${zomatoCity}/restaurants/the-red-box`;
-    if (dishName) {
-      url += (url.includes('?') ? '&' : '?') + `query=${encodeURIComponent(dishName)}`;
-    }
-    return url;
+    // Map known neighborhood slugs to primary Zomato fulfilling kitchen hub
+    const areaRaw = (b && (b.area || b.name)) ? (b.area || b.name.replace(/^The\s+Red\s+Box\s*[-–—:]\s*/i, '')) : '';
+    const rawSlug = toSlug(areaRaw);
+    const ZOMATO_SLUG_ALIAS = {
+      't-nagar': 'kodambakkam',
+      'thyagaraya-nagar': 'kodambakkam',
+      'vadapalani': 'kodambakkam',
+      'kattupakkam': 'porur',
+      'kaatupakkam': 'porur',
+      'urapakkam': 'tambaram',
+      'sholinganallur': 'thuraipakkam',
+      'thoraipakkam': 'thuraipakkam',
+      'omr-thoraipakkam': 'thuraipakkam',
+      'thiruvanmiyur': 'adyar',
+      'kolathur': 'perambur',
+      'royapettah': 'alwarpet',
+      'mylapore': 'alwarpet',
+      'guindy': 'ashok-nagar',
+      'perungudi': 'thuraipakkam',
+      'manapakkam': 'ramapuram',
+      'mkb-nagar': 'perambur',
+      'parrys': 'egmore'
+    };
+    const targetSlug = ZOMATO_SLUG_ALIAS[rawSlug] || rawSlug || (zomatoCity === 'chennai' ? 'nungambakkam' : 'indiranagar');
+
+    // Canonical direct online ordering outlet on Zomato
+    return `https://www.zomato.com/${zomatoCity}/the-red-box-${targetSlug}/order`;
   }
 
   if (platform === 'whatsapp') {
@@ -3726,20 +4043,20 @@ function updateGlobalDeliveryLinks(branchOrCity = null, dishName = null) {
 
   document.querySelectorAll('.nav-order-pill-swiggy').forEach(el => {
     el.href = swiggyUrl;
-    el.title = `Order The Red Box on Swiggy · ${branchTitle} (Code REDWOK20 Auto-Copied)`;
+    el.title = `Order The Red Box on Swiggy · Share location or custom address (Code REDWOK20)`;
     el.onclick = (e) => {
       e.preventDefault();
-      handleSmartPartnerOrder('swiggy', dishName, 'REDWOK20');
+      openPartnerOrderPrompt('swiggy');
       return false;
     };
   });
 
   document.querySelectorAll('.nav-order-pill-zomato').forEach(el => {
     el.href = zomatoUrl;
-    el.title = `Order The Red Box on Zomato · ${branchTitle} (Code REDWOK20 Auto-Copied)`;
+    el.title = `Order The Red Box on Zomato · Share location or custom address (Code REDWOK20)`;
     el.onclick = (e) => {
       e.preventDefault();
-      handleSmartPartnerOrder('zomato', dishName, 'REDWOK20');
+      openPartnerOrderPrompt('zomato');
       return false;
     };
   });
@@ -4180,4 +4497,7 @@ function handleTableBookingSubmit(e) {
 
 // Global Aliases
 window.openLocationModal = openLocationSelectorModal;
+window.openPartnerOrderPrompt = openPartnerOrderPrompt;
+window.confirmCurrentLocationOrder = confirmCurrentLocationOrder;
+window.saveManualDeliveryAddress = saveManualDeliveryAddress;
 

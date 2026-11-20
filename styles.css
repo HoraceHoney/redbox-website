@@ -1183,7 +1183,7 @@ button[class*="font-heading"][class*="uppercase"] {
 /* ==========================================================================
    Responsive Navigation Fallback Utilities (Ensures robust desktop & mobile nav)
    ========================================================================== */
-@media (min-width: 1024px) {
+@media (min-width: 1000px) {
   .hidden.md\:flex,
   .hidden.lg\:flex,
   nav.md\:flex,
@@ -1199,7 +1199,7 @@ button[class*="font-heading"][class*="uppercase"] {
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 999px) {
   nav.md\:flex,
   nav.lg\:flex,
   .hidden.md\:flex,
@@ -1373,7 +1373,7 @@ button[class*="font-heading"][class*="uppercase"] {
   padding: 0 0.85rem;
   border-radius: 9999px;
   background: transparent;
-  border: 1.5px solid rgba(228, 228, 231, 0.7);
+  border: 1.5px solid rgba(228, 228, 231, 0.8);
   box-shadow: none;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -1389,7 +1389,7 @@ button[class*="font-heading"][class*="uppercase"] {
   display: none !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1000px) {
   .lg\:inline-flex.nav-order-pill,
   .nav-order-pill.lg\:inline-flex {
     display: inline-flex !important;
@@ -1398,35 +1398,49 @@ button[class*="font-heading"][class*="uppercase"] {
 
 @media (min-width: 640px) {
   .nav-order-pill {
-    padding: 0 0.95rem;
+    padding: 0 1rem;
   }
 }
 
 .nav-order-pill:hover {
-  transform: translateY(-1px) scale(1.03);
+  transform: translateY(-1px) scale(1.02);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .nav-order-pill-swiggy {
-  border-color: rgba(252, 128, 25, 0.35);
+  border-color: rgba(252, 128, 25, 0.45);
   background: rgba(252, 128, 25, 0.04);
+}
+
+.nav-order-pill-swiggy img {
+  height: 20px !important;
+  max-height: 20px !important;
+  width: auto !important;
+  object-fit: contain;
 }
 
 .nav-order-pill-swiggy:hover {
   border-color: #FC8019;
-  background: rgba(254, 243, 199, 0.45);
-  box-shadow: 0 4px 14px rgba(252, 128, 25, 0.2);
+  background: rgba(252, 128, 25, 0.08);
+  box-shadow: 0 4px 14px rgba(252, 128, 25, 0.18);
 }
 
 .nav-order-pill-zomato {
-  border-color: rgba(226, 55, 68, 0.35);
+  border-color: rgba(226, 55, 68, 0.45);
   background: rgba(226, 55, 68, 0.04);
+}
+
+.nav-order-pill-zomato img {
+  height: 17px !important;
+  max-height: 17px !important;
+  width: auto !important;
+  object-fit: contain;
 }
 
 .nav-order-pill-zomato:hover {
   border-color: #E23744;
-  background: rgba(254, 226, 226, 0.45);
-  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.2);
+  background: rgba(226, 55, 68, 0.08);
+  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.18);
 }
 
 /* Mobile dropdown open state override */
@@ -1448,17 +1462,29 @@ button[class*="font-heading"][class*="uppercase"] {
   text-shadow: none !important;
 }
 
-/* Promotional Offer Announcement Bar & Header Vertical Flow Architecture */
-#mainHeader,
-header.nav-transparent-floating,
-header.sticky {
+/* Floating Transparent Navigation on Hero / Video Pages (index.html) */
+#mainHeader.nav-transparent-floating,
+header.nav-transparent-floating {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
   box-sizing: border-box !important;
+}
+
+/* Sticky Navigation on Interior Pages (menu.html, about.html, branches.html, catering.html, franchise.html, etc.) */
+header.sticky {
   position: sticky !important;
   top: 0 !important;
   z-index: 50 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 #promoAnnouncementBar {

@@ -103,7 +103,7 @@
       <!-- Column 1: Brand Logo Left -->
       <div class="flex-1 flex items-center justify-start min-w-0">
         <a href="index.html" class="inline-flex items-center py-0.5 flex-shrink-0 group">
-          <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+          <img src="assets/images/logo.png" alt="The Red Box - Fresh Indo-Chinese Food On The Go" class="h-10 sm:h-11 md:h-12 lg:h-14 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
         </a>
       </div>
 
@@ -119,11 +119,11 @@
 
       <!-- Column 3: Header Right (Order Buttons on Desktop, Nav Ham on Reduced/Folded Screen) -->
       <div class="flex-1 flex items-center justify-end gap-2.5 flex-shrink-0">
-        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy">
-          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 sm:h-5 w-auto object-contain">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" onclick="openPartnerOrderPrompt('swiggy'); return false;" class="hidden lg:inline-flex nav-order-pill nav-order-pill-swiggy group" title="Order The Red Box on Swiggy · Share location or custom address">
+          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-3.5 sm:h-4 w-auto object-contain">
         </a>
-        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato">
-          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 sm:h-4 w-auto object-contain">
+        <a href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" onclick="openPartnerOrderPrompt('zomato'); return false;" class="hidden lg:inline-flex nav-order-pill nav-order-pill-zomato group" title="Order The Red Box on Zomato · Share location or custom address">
+          <img src="assets/images/zomato.svg" alt="Zomato" class="h-3 sm:h-3.5 w-auto object-contain">
         </a>
         <button onclick="toggleMobileNav()" id="mobileMenuBtn" class="lg:hidden p-1.5 rounded-lg text-zinc-800 hover:text-brand-red hover:bg-zinc-100 transition-colors cursor-pointer focus:outline-none flex items-center justify-center" aria-label="Toggle Mobile Menu">
           <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6 stroke-[2.2]"></i>
@@ -136,13 +136,11 @@
     <div id="mobileDropdown" class="hidden lg:hidden border-t border-zinc-200 bg-white/98 backdrop-blur-md px-4 py-3 shadow-lg text-zinc-700 transition-all duration-200">
       <!-- Mobile Swiggy & Zomato Quick Action -->
       <div class="flex items-center gap-2 pb-2.5 border-b border-zinc-100 mb-2">
-        <a href="https://www.swiggy.com/city/chennai/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-swiggy py-2 justify-center gap-1.5">
-          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
-          <img src="assets/images/swiggy.png" alt="Swiggy" class="h-4 w-auto object-contain">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" onclick="openPartnerOrderPrompt('swiggy'); return false;" class="flex-1 nav-order-pill nav-order-pill-swiggy py-2 justify-center gap-1.5">
+          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-5 w-auto object-contain">
         </a>
-        <a href="https://www.zomato.com/chennai/restaurants/the-red-box" target="_blank" rel="noopener noreferrer" class="flex-1 nav-order-pill nav-order-pill-zomato py-2 justify-center gap-1.5">
-          <span class="text-[10px] font-bold text-zinc-600">Order on</span>
-          <img src="assets/images/zomato.png" alt="Zomato" class="h-3.5 w-auto object-contain">
+        <a href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" onclick="openPartnerOrderPrompt('zomato'); return false;" class="flex-1 nav-order-pill nav-order-pill-zomato py-2 justify-center gap-1.5">
+          <img src="assets/images/zomato.svg" alt="Zomato" class="h-4.5 w-auto object-contain">
         </a>
       </div>
       <div class="grid grid-cols-2 gap-1.5 pb-2.5 border-b border-zinc-100 mb-2">
@@ -1205,9 +1203,9 @@
         <p class="text-xs text-zinc-500 font-sans mt-1">Select your preferred delivery platform</p>
       </div>
       <div class="space-y-3">
-        <a href="https://www.swiggy.com/direct/brand/1636?source=swiggy-direct&subSource=branches" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 transition-all">
+        <a href="https://www.swiggy.com/city/chennai/the-red-box" onclick="openPartnerOrderPrompt('swiggy'); return false;" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-amber-500 hover:bg-amber-50/50 transition-all cursor-pointer">
           <div class="flex items-center gap-3">
-            <img src="assets/images/swiggy.png" alt="Swiggy" class="h-7 w-auto object-contain">
+            <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-6 w-auto object-contain">
             <div>
               <div class="font-bold text-sm text-zinc-900">Swiggy Direct</div>
               <div class="text-xs text-zinc-500 font-sans">Official delivery across 57 branches</div>
@@ -1215,9 +1213,9 @@
           </div>
           <i data-lucide="external-link" class="w-4 h-4 text-zinc-400"></i>
         </a>
-        <a href="https://www.zomato.com/search?query=RedBox" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all">
+        <a href="https://www.zomato.com/chennai/the-red-box-nungambakkam/order" onclick="openPartnerOrderPrompt('zomato'); return false;" class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 hover:border-red-500 hover:bg-red-50/50 transition-all cursor-pointer">
           <div class="flex items-center gap-3">
-            <img src="assets/images/zomato.png" alt="Zomato" class="h-6 w-auto object-contain">
+            <img src="assets/images/zomato.svg" alt="Zomato" class="h-5.5 w-auto object-contain">
             <div>
               <div class="font-bold text-sm text-zinc-900">Zomato</div>
               <div class="text-xs text-zinc-500 font-sans">Fast delivery to your location</div>
