@@ -2227,6 +2227,16 @@ function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress
       handleDishOrderClick(dishId);
     }, 400);
   }
+
+  // If there was a pending partner order (Swiggy / Zomato) waiting for location verification, execute it
+  if (userFulfillment.pendingPartnerOrder) {
+    const platform = userFulfillment.pendingPartnerOrder;
+    userFulfillment.pendingPartnerOrder = null;
+    closeLocationSelectorModal();
+    setTimeout(() => {
+      handleSmartPartnerOrder(platform, null, 'REDWOK20', branch);
+    }, 400);
+  }
 }
 
 // Manual delivery address save handler

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logo Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #F4F4F5;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .header-mock {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 14px 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid #E4E4E7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .header-mock-dark {
+      background: #18191B;
+      padding: 14px 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-order-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: transparent;
+      border: 1.5px solid rgba(228, 228, 231, 0.8);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .nav-order-pill:hover {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    .nav-order-pill-swiggy {
+      border-color: rgba(252, 128, 25, 0.3);
+    }
+    .nav-order-pill-swiggy:hover {
+      border-color: #FC8019;
+      background: rgba(254, 243, 199, 0.4);
+    }
+    .nav-order-pill-zomato {
+      border-color: rgba(226, 55, 68, 0.3);
+    }
+    .nav-order-pill-zomato:hover {
+      border-color: #E23744;
+      background: rgba(254, 226, 226, 0.4);
+    }
+    .logo-swiggy {
+      height: 24px;
+      width: auto;
+      object-contain: contain;
+    }
+    .logo-zomato {
+      height: 20px;
+      width: auto;
+      object-contain: contain;
+    }
+  </style>
+</head>
+<body>
+  <h2>Transparent Header Order Pills (Light Background)</h2>
+  <div class="header-mock">
+    <span style="font-weight: bold; margin-right: 20px;">The Red Box Header</span>
+    <a href="#" class="nav-order-pill nav-order-pill-swiggy">
+      <img src="/assets/images/swiggy.svg" alt="Swiggy" class="logo-swiggy">
+    </a>
+    <a href="#" class="nav-order-pill nav-order-pill-zomato">
+      <img src="/assets/images/zomato.svg" alt="Zomato" class="logo-zomato">
+    </a>
+  </div>
+
+  <h2>Transparent Header Order Pills (Dark Hero Background)</h2>
+  <div class="header-mock-dark">
+    <span style="font-weight: bold; color: white; margin-right: 20px;">The Red Box Header (Floating Hero)</span>
+    <a href="#" class="nav-order-pill nav-order-pill-swiggy" style="border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
+      <img src="/assets/images/swiggy.svg" alt="Swiggy" class="logo-swiggy">
+    </a>
+    <a href="#" class="nav-order-pill nav-order-pill-zomato" style="border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
+      <img src="/assets/images/zomato.svg" alt="Zomato" class="logo-zomato">
+    </a>
+  </div>
+</body>
+</html>

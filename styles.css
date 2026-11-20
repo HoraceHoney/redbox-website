@@ -829,45 +829,198 @@ button[class*="font-heading"][class*="uppercase"] {
    Golden Dragon Highlight Watermark & Product Section Highlighting
    ========================================================================== */
 
-/* Golden Dragon Highlight Watermarks */
-/* Golden Dragon Highlight Watermarks - High Visibility Imperial Gold */
+/* ==========================================================================
+   TRADITIONAL CHINESE IMPERIAL ANIMAL WATERMARK SYSTEM (REFINED SUBTLE PRESENCE)
+   ========================================================================== */
+
+/* 1. Vermilion Phoenix (Fenghuang / 凤凰) - Flame, Grace & Rebirth */
+.watermark-phoenix-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 520px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/phoenix-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.watermark-phoenix-left {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/phoenix-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  transform: scaleX(-1);
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 2. Amber Bronze Tiger (Hu / 猛虎) - Raw Wok Heat & Strength */
+.watermark-tiger-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/tiger-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.watermark-tiger-left {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/tiger-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  transform: scaleX(-1);
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 3. Jade Celadon Crane (Xianhe / 仙鹤) - Harmony, Hospitality & Elevation */
+.watermark-crane-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/crane-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.11;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.watermark-crane-left {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/crane-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  transform: scaleX(-1);
+  opacity: 0.11;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 4. Antique Gold Qilin (Kirin / 麒麟) - Prosperity & Good Fortune */
+.watermark-qilin-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/qilin-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.watermark-qilin-left {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/qilin-watermark.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  transform: scaleX(-1);
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 5. Legacy Dragon Watermark (Presence Subtly Reduced to 0.08) */
 .dragon-watermark-right {
   position: absolute;
   top: 0;
   right: 0;
-  width: 620px;
-  height: 620px;
-  max-width: 50vw;
-  max-height: 50vw;
+  width: 520px;
+  height: 520px;
+  max-width: 45vw;
+  max-height: 45vw;
   background-image: url('assets/images/golden-dragon-watermark.png');
   background-repeat: no-repeat;
   background-position: top right;
   background-size: contain;
-  opacity: 0.30;
-  filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.5)) contrast(1.18) brightness(1.08);
+  opacity: 0.08;
   pointer-events: none;
   z-index: 0;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .dragon-watermark-left {
   position: absolute;
   top: 5%;
   left: 0;
-  width: 560px;
-  height: 560px;
-  max-width: 50vw;
-  max-height: 50vw;
+  width: 480px;
+  height: 480px;
+  max-width: 45vw;
+  max-height: 45vw;
   background-image: url('assets/images/golden-dragon-watermark.png');
   background-repeat: no-repeat;
   background-position: top left;
   background-size: contain;
   transform: scaleX(-1);
-  opacity: 0.28;
-  filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.5)) contrast(1.18) brightness(1.08);
+  opacity: 0.08;
   pointer-events: none;
   z-index: 0;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .dragon-watermark-center {
@@ -875,19 +1028,18 @@ button[class*="font-heading"][class*="uppercase"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 720px;
-  height: 720px;
-  max-width: 75vw;
-  max-height: 75vw;
+  width: 600px;
+  height: 600px;
+  max-width: 65vw;
+  max-height: 65vw;
   background-image: url('assets/images/golden-dragon-watermark.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.32;
-  filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.55)) contrast(1.2) brightness(1.1);
+  opacity: 0.07;
   pointer-events: none;
   z-index: 0;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 /* Subtle Layered Culinary Background Accents */
@@ -1215,17 +1367,18 @@ button[class*="font-heading"][class*="uppercase"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem 0.6rem;
+  height: 38px;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: 0 0.85rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(228, 228, 231, 0.85);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease,
-              background-color 0.25s ease;
+  background: transparent;
+  border: 1.5px solid rgba(228, 228, 231, 0.7);
+  box-shadow: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease,
+              background-color 0.22s ease;
   cursor: pointer;
   text-decoration: none;
   flex-shrink: 0;
@@ -1245,32 +1398,35 @@ button[class*="font-heading"][class*="uppercase"] {
 
 @media (min-width: 640px) {
   .nav-order-pill {
-    padding: 0.35rem 0.75rem;
+    padding: 0 0.95rem;
   }
 }
 
 .nav-order-pill:hover {
-  transform: translateY(-1.5px) scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  background: #FFFFFF;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .nav-order-pill-swiggy {
   border-color: rgba(252, 128, 25, 0.35);
+  background: rgba(252, 128, 25, 0.04);
 }
 
 .nav-order-pill-swiggy:hover {
   border-color: #FC8019;
-  box-shadow: 0 6px 16px rgba(252, 128, 25, 0.25);
+  background: rgba(254, 243, 199, 0.45);
+  box-shadow: 0 4px 14px rgba(252, 128, 25, 0.2);
 }
 
 .nav-order-pill-zomato {
-  border-color: rgba(203, 32, 45, 0.35);
+  border-color: rgba(226, 55, 68, 0.35);
+  background: rgba(226, 55, 68, 0.04);
 }
 
 .nav-order-pill-zomato:hover {
-  border-color: #CB202D;
-  box-shadow: 0 6px 16px rgba(203, 32, 45, 0.25);
+  border-color: #E23744;
+  background: rgba(254, 226, 226, 0.45);
+  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.2);
 }
 
 /* Mobile dropdown open state override */
