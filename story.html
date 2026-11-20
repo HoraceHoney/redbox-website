@@ -1254,25 +1254,311 @@
       }
     }
 
-    // Box Hotspot Activation for White Theme
-    function activateBoxHotspot(num) {
-      for (let i = 1; i <= 4; i++) {
-        const card = document.getElementById(`hotspotCard-${i}`);
-        const pin = document.getElementById(`pin-${i}`);
-        if (card && pin) {
-          if (i === num) {
-            card.className = 'hotspot-card bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer';
+    // =========================================================================
+    // Interactive 3D Red Box Packaging Animation & Hotspot Auto-Cycle Engine
+    // =========================================================================
+    const RedBox3DExperience = {
+      current: 1,
+      isPlaying: true,
+      isPausedByHover: false,
+      isDragging: false,
+      duration: 4500, // 4.5s per card
+      startTime: 0,
+      elapsedBeforePause: 0,
+      rafId: null,
+      inactivityTimeout: null,
+      currentAngles: { rotX: -10, rotY: 16, rotZ: 0 },
+      dragStart: { x: 0, y: 0, rotX: 0, rotY: 0 },
+
+      features: {
+        1: {
+          name: 'Feature 1 · 45-Min Thermal Insulation',
+          badgeText: 'Thermal Core Locked',
+          angles: { rotX: -10, rotY: 16, rotZ: 0 },
+          steam: true,
+          shadow: 'translateX(-50%) scale(1) translateY(0)'
+        },
+        2: {
+          name: 'Feature 2 · Spill-Proof Origami Lock',
+          badgeText: 'Origami Flap Seal',
+          angles: { rotX: 42, rotY: -25, rotZ: -6 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.92) translateY(6px)'
+        },
+        3: {
+          name: 'Feature 3 · 100% Virgin Eco-Board',
+          badgeText: 'Eco Purity Certified',
+          angles: { rotX: -8, rotY: -82, rotZ: 2 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.96) translateY(2px)'
+        },
+        4: {
+          name: 'Feature 4 · Instant Dining Plate',
+          badgeText: 'Unfolds Into Plate',
+          angles: { rotX: -34, rotY: 48, rotZ: 8 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.95) translateY(4px)'
+        }
+      },
+
+      init() {
+        this.pivot = document.getElementById('box3dPivot');
+        this.stage = document.getElementById('box3dStage');
+        this.container = document.getElementById('box3dStageContainer');
+        this.cardsDeck = document.getElementById('hotspotCardsDeck');
+        this.steamWrap = document.getElementById('boxSteamWrap');
+        this.shadow = document.getElementById('boxGroundShadow');
+        this.badgeName = document.getElementById('boxActiveFeatureName');
+        this.toggleBtn = document.getElementById('boxAutoPlayToggleBtn');
+        this.toggleIcon = document.getElementById('boxAutoPlayIcon');
+        this.toggleLabel = document.getElementById('boxAutoPlayLabel');
+
+        if (!this.pivot || !this.stage) return;
+
+        // Initialize listeners
+        this.bindEvents();
+
+        // Start initial feature state
+        this.activate(1, false);
+        this.startTimer();
+      },
+
+      bindEvents() {
+        // Pointer / Touch Drag on 3D Stage
+        this.stage.addEventListener('pointerdown', (e) => this.onPointerDown(e));
+        window.addEventListener('pointermove', (e) => this.onPointerMove(e));
+        window.addEventListener('pointerup', () => this.onPointerUp());
+        window.addEventListener('pointercancel', () => this.onPointerUp());
+
+        // Hover to Pause
+        const pauseTarget = this.container;
+        if (pauseTarget) {
+          pauseTarget.addEventListener('mouseenter', () => {
+            this.isPausedByHover = true;
+            this.pauseTimer();
+          });
+          pauseTarget.addEventListener('mouseleave', () => {
+            this.isPausedByHover = false;
+            if (this.isPlaying && !this.isDragging) this.resumeTimer();
+          });
+        }
+
+        if (this.cardsDeck) {
+          this.cardsDeck.addEventListener('mouseenter', () => {
+            this.isPausedByHover = true;
+            this.pauseTimer();
+          });
+          this.cardsDeck.addEventListener('mouseleave', () => {
+            this.isPausedByHover = false;
+            if (this.isPlaying && !this.isDragging) this.resumeTimer();
+          });
+        }
+      },
+
+      onPointerDown(e) {
+        if (e.button !== 0) return;
+        this.isDragging = true;
+        this.dragStart.x = e.clientX;
+        this.dragStart.y = e.clientY;
+        this.dragStart.rotX = this.currentAngles.rotX;
+        this.dragStart.rotY = this.currentAngles.rotY;
+
+        if (this.pivot) this.pivot.classList.add('is-dragging');
+        this.pauseTimer();
+        clearTimeout(this.inactivityTimeout);
+      },
+
+      onPointerMove(e) {
+        if (!this.isDragging || !this.pivot) return;
+        const deltaX = e.clientX - this.dragStart.x;
+        const deltaY = e.clientY - this.dragStart.y;
+
+        const newRotY = this.dragStart.rotY + deltaX * 0.65;
+        const newRotX = Math.max(-65, Math.min(65, this.dragStart.rotX - deltaY * 0.65));
+
+        this.currentAngles.rotX = newRotX;
+        this.currentAngles.rotY = newRotY;
+
+        this.pivot.style.transform = `rotateX(${newRotX}deg) rotateY(${newRotY}deg) rotateZ(0deg)`;
+        
+        if (this.shadow) {
+          this.shadow.style.transform = `translateX(-50%) rotate(${deltaX * 0.1}deg) scale(${1 - Math.abs(deltaY) * 0.002})`;
+        }
+      },
+
+      onPointerUp() {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        if (this.pivot) this.pivot.classList.remove('is-dragging');
+
+        clearTimeout(this.inactivityTimeout);
+        this.inactivityTimeout = setTimeout(() => {
+          if (!this.isPausedByHover) {
+            this.applyFeatureAngles(this.current);
+            if (this.isPlaying) this.startTimer();
+          }
+        }, 3200);
+      },
+
+      activate(num, isManual = false) {
+        this.current = num;
+        const feat = this.features[num];
+        if (!feat) return;
+
+        for (let i = 1; i <= 4; i++) {
+          const bar = document.getElementById(`hotspotCardProgress-${i}`);
+          if (bar) bar.style.width = '0%';
+        }
+
+        for (let i = 1; i <= 4; i++) {
+          const card = document.getElementById(`hotspotCard-${i}`);
+          const pin = document.getElementById(`pin-${i}`);
+          const dot = document.getElementById(`boxDot-${i}`);
+
+          if (card) {
             const numBadge = card.querySelector('span');
-            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading';
-            pin.style.transform = 'scale(1.25)';
-          } else {
-            card.className = 'hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs';
-            const numBadge = card.querySelector('span');
-            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading';
-            pin.style.transform = 'scale(1)';
+            if (i === num) {
+              card.className = 'hotspot-card relative overflow-hidden bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer group opacity-100 scale-[1.01]';
+              if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading shadow-xs';
+            } else {
+              card.className = 'hotspot-card relative overflow-hidden bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-70 hover:opacity-100 cursor-pointer shadow-2xs group scale-100';
+              if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading';
+            }
+          }
+
+          if (pin) {
+            if (i === num) {
+              pin.style.transform = 'scale(1.28)';
+              pin.style.zIndex = '30';
+              pin.style.background = '#D9232D';
+              pin.style.boxShadow = '0 0 0 6px rgba(217, 35, 45, 0.25), 0 4px 12px rgba(217, 35, 45, 0.5)';
+            } else {
+              pin.style.transform = 'scale(1)';
+              pin.style.zIndex = '10';
+              pin.style.background = '#18191B';
+              pin.style.boxShadow = 'none';
+            }
+          }
+
+          if (dot) {
+            if (i === num) {
+              dot.className = 'w-5 h-2 rounded-full bg-brand-red transition-all cursor-pointer shadow-2xs';
+            } else {
+              dot.className = 'w-2 h-2 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all cursor-pointer';
+            }
           }
         }
+
+        if (this.badgeName) {
+          this.badgeName.textContent = feat.name;
+        }
+
+        this.applyFeatureAngles(num);
+
+        if (isManual) {
+          clearTimeout(this.inactivityTimeout);
+          this.elapsedBeforePause = 0;
+          if (this.isPlaying && !this.isPausedByHover) {
+            this.startTimer();
+          }
+        }
+      },
+
+      applyFeatureAngles(num) {
+        const feat = this.features[num];
+        if (!feat || !this.pivot) return;
+
+        this.currentAngles = { ...feat.angles };
+        this.pivot.style.transform = `rotateX(${feat.angles.rotX}deg) rotateY(${feat.angles.rotY}deg) rotateZ(${feat.angles.rotZ}deg)`;
+
+        if (this.steamWrap) {
+          this.steamWrap.style.opacity = feat.steam ? '0.9' : '0.1';
+        }
+
+        if (this.shadow) {
+          this.shadow.style.transform = feat.shadow;
+        }
+      },
+
+      startTimer() {
+        cancelAnimationFrame(this.rafId);
+        this.startTime = performance.now() - this.elapsedBeforePause;
+        const tick = (now) => {
+          if (!this.isPlaying || this.isPausedByHover || this.isDragging) return;
+          const elapsed = now - this.startTime;
+          const pct = Math.min(100, (elapsed / this.duration) * 100);
+
+          const activeBar = document.getElementById(`hotspotCardProgress-${this.current}`);
+          if (activeBar) {
+            activeBar.style.width = pct + '%';
+          }
+
+          if (elapsed >= this.duration) {
+            this.elapsedBeforePause = 0;
+            const next = (this.current % 4) + 1;
+            this.activate(next, false);
+            this.startTime = performance.now();
+          }
+
+          this.rafId = requestAnimationFrame(tick);
+        };
+        this.rafId = requestAnimationFrame(tick);
+      },
+
+      pauseTimer() {
+        cancelAnimationFrame(this.rafId);
+        this.elapsedBeforePause = performance.now() - this.startTime;
+      },
+
+      resumeTimer() {
+        this.startTimer();
+      },
+
+      togglePlay() {
+        this.isPlaying = !this.isPlaying;
+        if (this.toggleIcon && this.toggleLabel) {
+          if (this.isPlaying) {
+            this.toggleIcon.setAttribute('data-lucide', 'pause');
+            this.toggleLabel.textContent = 'Pause';
+            this.startTimer();
+          } else {
+            this.toggleIcon.setAttribute('data-lucide', 'play');
+            this.toggleLabel.textContent = 'Play';
+            this.pauseTimer();
+          }
+          if (window.lucide) window.lucide.createIcons();
+        }
+      },
+
+      next() {
+        const nextIdx = (this.current % 4) + 1;
+        this.activate(nextIdx, true);
+      },
+
+      prev() {
+        const prevIdx = this.current === 1 ? 4 : this.current - 1;
+        this.activate(prevIdx, true);
       }
+    };
+
+    function activateBoxHotspot(num, isManual = true) {
+      RedBox3DExperience.activate(num, isManual);
+    }
+    function toggleBoxAutoPlay() {
+      RedBox3DExperience.togglePlay();
+    }
+    function nextBoxFeature() {
+      RedBox3DExperience.next();
+    }
+    function prevBoxFeature() {
+      RedBox3DExperience.prev();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      RedBox3DExperience.init();
+    });
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(() => RedBox3DExperience.init(), 100);
     }
 
     document.addEventListener('keydown', (e) => {
