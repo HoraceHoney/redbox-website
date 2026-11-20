@@ -456,16 +456,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Section Tag Badge</label>
-                <input type="text" id="nrMetaTag" oninput="updateNrMeta()" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-red" placeholder="JUST LAUNCHED · SEASONAL WOK CREATIONS">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Section Tag Badge (Optional)</label>
+                <input type="text" id="nrMetaTag" oninput="updateNrMeta()" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-red" placeholder="e.g. CHEF SPECIALS">
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Main Heading</label>
                 <input type="text" id="nrMetaTitle" oninput="updateNrMeta()" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-red" placeholder="New Releases & Chef Specials">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Section Subtitle</label>
-                <input type="text" id="nrMetaSubtitle" oninput="updateNrMeta()" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-red" placeholder="Freshly crafted recipes from our master chefs...">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Section Subtitle (Optional)</label>
+                <input type="text" id="nrMetaSubtitle" oninput="updateNrMeta()" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs focus:ring-2 focus:ring-brand-red" placeholder="Optional description...">
               </div>
             </div>
           </div>
@@ -641,15 +641,13 @@
                 
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
                   <div>
-                    <div id="refNrTag" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold tracking-wider uppercase mb-1.5">
-                      <span>JUST LAUNCHED · SEASONAL WOK CREATIONS</span>
+                    <div id="refNrTag" class="hidden inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold tracking-wider uppercase mb-1.5">
+                      <span></span>
                     </div>
                     <h3 id="refNrTitle" class="text-2xl font-heading font-black text-brand-slate uppercase tracking-tight">
                       New Releases & Chef Specials
                     </h3>
-                    <p id="refNrSubtitle" class="text-xs text-zinc-600 max-w-xl">
-                      Freshly crafted recipes from our master chefs, tossed in blistering 1000°F woks and packed steaming hot.
-                    </p>
+                    <p id="refNrSubtitle" class="hidden text-xs text-zinc-600 max-w-xl"></p>
                   </div>
                   <span class="text-xs font-bold text-brand-red uppercase tracking-wider">
                     View All New Launches →
@@ -5937,9 +5935,9 @@ function renderCareersCards() {
         }
       ],
       newReleases: {
-        sectionTag: 'JUST LAUNCHED · SEASONAL WOK CREATIONS',
+        sectionTag: '',
         sectionTitle: 'New Releases & Chef Specials',
-        sectionSubtitle: 'Freshly crafted recipes from our master chefs, tossed in blistering 1000°F woks and packed steaming hot in our 45-min fold box.',
+        sectionSubtitle: '',
         items: [
           {
             id: 'rel-1',
@@ -7412,9 +7410,25 @@ function renderCareersCards() {
       const nrSubEl = document.getElementById('refNrSubtitle');
       const nrGridEl = document.getElementById('refNrCardsGrid');
 
-      if (nrTagEl) nrTagEl.innerHTML = `<span>${nr.sectionTag || 'NEW RELEASES'}</span>`;
+      if (nrTagEl) {
+        if (nr.sectionTag) {
+          nrTagEl.innerHTML = `<span>${nr.sectionTag}</span>`;
+          nrTagEl.classList.remove('hidden');
+        } else {
+          nrTagEl.innerHTML = '';
+          nrTagEl.classList.add('hidden');
+        }
+      }
       if (nrTitleEl) nrTitleEl.innerText = nr.sectionTitle || 'New Releases & Chef Specials';
-      if (nrSubEl) nrSubEl.innerText = nr.sectionSubtitle || '';
+      if (nrSubEl) {
+        if (nr.sectionSubtitle) {
+          nrSubEl.innerText = nr.sectionSubtitle;
+          nrSubEl.classList.remove('hidden');
+        } else {
+          nrSubEl.innerText = '';
+          nrSubEl.classList.add('hidden');
+        }
+      }
 
       const activeNrItems = (nr.items || []).filter(item => item.active !== false);
       if (nrGridEl) {

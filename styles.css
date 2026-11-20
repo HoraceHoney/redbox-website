@@ -411,6 +411,260 @@ button[class*="font-heading"][class*="uppercase"] {
   }
 }
 
+/* ==========================================================================
+   Interactive 3D Red Box Packaging Animation & Hotspot Showcase
+   ========================================================================== */
+
+.box-3d-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 45%;
+  position: relative;
+  width: 100%;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+.box-3d-stage:active {
+  cursor: grabbing;
+}
+
+.box-3d-pivot {
+  position: relative;
+  width: 180px;
+  height: 190px;
+  transform-style: preserve-3d;
+  transition: transform 0.95s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.box-3d-pivot.is-dragging {
+  transition: none !important;
+}
+
+/* Individual 3D Faces */
+.box-face {
+  position: absolute;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.04);
+}
+
+/* Specific Face Dimensions & 3D Positions (Box is 180px W x 190px H x 180px D) */
+.box-face-front {
+  width: 180px;
+  height: 190px;
+  transform: translateZ(90px);
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFF5F5 60%, #FEE2E2 100%);
+  border: 1.5px solid #FCA5A5;
+}
+
+.box-face-back {
+  width: 180px;
+  height: 190px;
+  transform: rotateY(180deg) translateZ(90px);
+  background: linear-gradient(145deg, #FFFFFF 0%, #FAFAF9 60%, #F5F5F4 100%);
+  border: 1.5px solid #E7E5E4;
+}
+
+.box-face-right {
+  width: 180px;
+  height: 190px;
+  transform: rotateY(90deg) translateZ(90px);
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF5 60%, #FEF3C7 100%);
+  border: 1.5px solid #FDE68A;
+}
+
+.box-face-left {
+  width: 180px;
+  height: 190px;
+  transform: rotateY(-90deg) translateZ(90px);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F0FDF4 60%, #DCFCE7 100%);
+  border: 1.5px solid #BBF7D0;
+}
+
+.box-face-top {
+  width: 180px;
+  height: 180px;
+  top: 5px;
+  transform: rotateX(90deg) translateZ(95px);
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+  border: 1.5px solid #FECDD3;
+  overflow: visible;
+}
+
+.box-face-bottom {
+  width: 180px;
+  height: 180px;
+  top: 5px;
+  transform: rotateX(-90deg) translateZ(95px);
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1.5px solid #CBD5E1;
+}
+
+/* Origami Top Flaps */
+.origami-flap {
+  position: absolute;
+  background: linear-gradient(135deg, #D9232D 0%, #B51B24 100%);
+  border: 1px solid #991B1B;
+  box-shadow: 0 4px 10px rgba(181, 27, 36, 0.35);
+  border-radius: 4px;
+}
+
+.origami-flap-front {
+  width: 140px;
+  height: 38px;
+  top: -12px;
+  left: 20px;
+  transform: rotateX(25deg);
+  transform-origin: bottom center;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+.origami-flap-back {
+  width: 140px;
+  height: 38px;
+  bottom: -12px;
+  left: 20px;
+  transform: rotateX(-25deg);
+  transform-origin: top center;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+}
+
+.origami-flap-left {
+  width: 38px;
+  height: 140px;
+  top: 20px;
+  left: -12px;
+  transform: rotateY(-25deg);
+  transform-origin: right center;
+  clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%);
+}
+
+.origami-flap-right {
+  width: 38px;
+  height: 140px;
+  top: 20px;
+  right: -12px;
+  transform: rotateY(25deg);
+  transform-origin: left center;
+  clip-path: polygon(0% 0%, 100% 15%, 100% 85%, 0% 100%);
+}
+
+/* 3D Bamboo Chopsticks */
+.chopstick-pair {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(105px) rotateZ(-32deg);
+  pointer-events: none;
+  display: flex;
+  gap: 7px;
+  z-index: 20;
+}
+
+.chopstick {
+  width: 7px;
+  height: 175px;
+  background: linear-gradient(to right, #D4A373 0%, #FAEDCD 45%, #CCD5AE 70%, #B08968 100%);
+  border-radius: 3px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+  border: 0.5px solid #99582A;
+  position: relative;
+}
+
+.chopstick::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: #D9232D;
+  border-radius: 1px;
+}
+
+/* Dynamic 3D Ground Shadow */
+.box-ground-shadow {
+  position: absolute;
+  width: 220px;
+  height: 90px;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(28, 29, 31, 0.22) 0%, rgba(28, 29, 31, 0.08) 45%, transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+  transition: transform 0.95s ease, opacity 0.95s ease;
+}
+
+/* Steam Wisps rising from box */
+.box-steam-wrap {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+.steam-particle {
+  position: absolute;
+  bottom: 0;
+  width: 14px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(248, 113, 113, 0.4) 40%, transparent 80%);
+  filter: blur(4px);
+  animation: steamRise 3s infinite ease-out;
+}
+
+.steam-p1 { left: 15px; animation-delay: 0s; }
+.steam-p2 { left: 35px; animation-delay: 0.8s; width: 18px; height: 34px; }
+.steam-p3 { left: 55px; animation-delay: 1.6s; width: 12px; height: 26px; }
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(1) scaleY(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  60% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-55px) scaleX(2.2) scaleY(1.8);
+    opacity: 0;
+  }
+}
+
+/* Card Progress Countdown Bar */
+.hotspot-card-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: var(--brand-red);
+  width: 0%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  transition: width 0.1s linear;
+}
+
 /* Food Type Badge (Veg / Non-Veg) */
 .badge-veg {
   display: inline-flex;

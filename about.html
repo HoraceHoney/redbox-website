@@ -549,68 +549,248 @@
           </p>
         </div>
 
-        <!-- Interactive Hotspot Showcase Grid -->
+        <!-- Interactive Hotspot Showcase Grid with 3D Rotating Box -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
           
-          <!-- Interactive Visual Center Left -->
+          <!-- Interactive 3D Visual Center Left -->
           <div class="lg:col-span-6 relative">
-            <div class="relative bg-white rounded-3xl p-8 sm:p-12 border border-zinc-200 shadow-xl flex items-center justify-center min-h-[420px] overflow-hidden group">
+            <div id="box3dStageContainer" class="relative bg-gradient-to-b from-white via-[#FAF7F2]/60 to-white rounded-3xl p-4 sm:p-6 border border-zinc-200 shadow-xl flex flex-col items-center justify-between min-h-[460px] overflow-hidden group">
               
-              <!-- Subtle Amber Gradient in Center -->
-              <div class="absolute inset-0 bg-radial-gradient from-amber-50/50 via-transparent to-transparent pointer-events-none"></div>
+              <!-- Subtle Radial Glow Behind Box -->
+              <div class="absolute inset-0 bg-radial-gradient from-red-500/5 via-amber-500/5 to-transparent pointer-events-none"></div>
 
-              <!-- Packshot Image -->
-              <img src="assets/images/redbox-logo.png" alt="The Red Box Packshot" class="w-72 max-w-full h-auto object-contain filter drop-shadow-[0_15px_30px_rgba(217,35,45,0.25)] transition-transform duration-500 group-hover:scale-105">
+              <!-- Active Feature Floating Badge (Top Left) -->
+              <div class="w-full flex items-center justify-between z-20 px-2 pt-1">
+                <span id="boxActiveFeatureBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-heading font-bold bg-white/95 text-brand-red border border-red-200/80 shadow-xs backdrop-blur-xs transition-all">
+                  <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                  <span id="boxActiveFeatureName">Feature 1 · Thermal Core</span>
+                </span>
+                <span class="text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-widest bg-zinc-100/80 px-2.5 py-0.5 rounded-full">
+                  3D Interactive Box
+                </span>
+              </div>
 
-              <!-- Hotspot Interactive Pins -->
-              <button onclick="activateBoxHotspot(1)" id="pin-1" class="hotspot-pin top-20 left-16 sm:left-20" title="Thermal Insulation">1</button>
-              <button onclick="activateBoxHotspot(2)" id="pin-2" class="hotspot-pin top-24 right-16 sm:right-20" title="Origami Leak-Proofing">2</button>
-              <button onclick="activateBoxHotspot(3)" id="pin-3" class="hotspot-pin bottom-24 left-16 sm:left-24" title="100% Virgin Eco-Board">3</button>
-              <button onclick="activateBoxHotspot(4)" id="pin-4" class="hotspot-pin bottom-20 right-16 sm:right-24" title="Instant Dining Plate">4</button>
+              <!-- 3D Perspective Stage -->
+              <div id="box3dStage" class="box-3d-stage my-auto" aria-label="Interactive 3D Red Box Takeaway Container. Click or drag to rotate.">
+                
+                <!-- Dynamic Ground Contact Shadow -->
+                <div id="boxGroundShadow" class="box-ground-shadow"></div>
+
+                <!-- 3D Rotating Pivot Model -->
+                <div id="box3dPivot" class="box-3d-pivot">
+
+                  <!-- Rising Steam Particles (Active on Feature 1) -->
+                  <div id="boxSteamWrap" class="box-steam-wrap">
+                    <div class="steam-particle steam-p1"></div>
+                    <div class="steam-particle steam-p2"></div>
+                    <div class="steam-particle steam-p3"></div>
+                  </div>
+
+                  <!-- 3D Bamboo Chopsticks Rested Across Top -->
+                  <div class="chopstick-pair">
+                    <div class="chopstick"></div>
+                    <div class="chopstick" style="transform: rotateZ(3deg);"></div>
+                  </div>
+
+                  <!-- FACE 1: FRONT (Thermal Core & Iconic Red Box Logo) -->
+                  <div class="box-face box-face-front p-4 flex flex-col justify-between text-center select-none">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[9px] font-heading font-black tracking-wider text-brand-red uppercase px-1.5 py-0.5 rounded bg-red-50 border border-red-200">1000°F</span>
+                      <span class="font-serif font-black text-xs text-brand-red">正宗</span>
+                    </div>
+
+                    <div class="my-auto py-1">
+                      <img src="assets/images/logo.png" alt="The Red Box" class="h-10 w-auto mx-auto object-contain filter drop-shadow-sm mb-1.5">
+                      <div class="px-2 py-1 rounded-xl bg-gradient-to-r from-red-600/10 via-red-600/20 to-red-600/10 border border-red-300 text-center shadow-2xs">
+                        <span class="text-[11px] font-heading font-black text-brand-red block tracking-wide">65°C+ HEAT LOCK</span>
+                        <span class="text-[9px] font-bold text-zinc-600 block uppercase">45-Min Thermal Seal</span>
+                      </div>
+                    </div>
+
+                    <div class="text-[9px] font-heading font-bold text-zinc-500 uppercase tracking-widest border-t border-red-100 pt-1">
+                      Wok Hei Sealed Inside
+                    </div>
+                  </div>
+
+                  <!-- FACE 2: TOP & FOLDING FLAPS (Origami Spill-Proof Lock) -->
+                  <div class="box-face box-face-top p-3 flex flex-col items-center justify-center text-center select-none">
+                    <div class="origami-flap origami-flap-front"></div>
+                    <div class="origami-flap origami-flap-back"></div>
+                    <div class="origami-flap origami-flap-left"></div>
+                    <div class="origami-flap origami-flap-right"></div>
+                    
+                    <div class="relative z-10 bg-white/90 backdrop-blur-xs rounded-xl p-2.5 border border-red-200/90 shadow-sm max-w-[140px]">
+                      <i data-lucide="lock" class="w-4 h-4 text-brand-red mx-auto mb-0.5"></i>
+                      <span class="text-[10px] font-heading font-black text-zinc-900 uppercase block tracking-wider leading-tight">Origami Fold</span>
+                      <span class="text-[8px] font-bold text-zinc-500 uppercase tracking-wide block">Spill-Proof Locking</span>
+                    </div>
+                  </div>
+
+                  <!-- FACE 3: LEFT SIDE (100% Virgin Eco-Board & Purity) -->
+                  <div class="box-face box-face-left p-3.5 flex flex-col justify-between text-center select-none">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[8px] font-heading font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded uppercase">Eco Purity</span>
+                      <i data-lucide="leaf" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    </div>
+
+                    <div class="my-auto">
+                      <div class="w-9 h-9 rounded-full bg-emerald-50 border border-emerald-300 flex items-center justify-center mx-auto mb-1 text-emerald-700 shadow-2xs">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                      </div>
+                      <span class="text-[10px] font-heading font-black text-emerald-900 uppercase block tracking-wide">100% Virgin Pulp</span>
+                      <span class="text-[8.5px] text-zinc-600 leading-tight block mt-0.5 font-medium">FSC Certified • Zero Harmful Plastics</span>
+                    </div>
+
+                    <div class="text-[8.5px] font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50/80 rounded py-0.5 border border-emerald-200/60">
+                      90-Day Compostable
+                    </div>
+                  </div>
+
+                  <!-- FACE 4: RIGHT SIDE (Syndicate Brand Heritage) -->
+                  <div class="box-face box-face-right p-3.5 flex flex-col justify-between text-center select-none">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[8px] font-heading font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded uppercase">Heritage</span>
+                      <span class="font-serif font-black text-xs text-[#B4843A]">匠心</span>
+                    </div>
+
+                    <div class="my-auto">
+                      <div class="w-9 h-9 rounded-full bg-amber-50 border border-amber-300 flex items-center justify-center mx-auto mb-1 text-[#B4843A] shadow-2xs">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                      </div>
+                      <span class="text-[10px] font-heading font-black text-amber-950 uppercase block tracking-wide">The Vault Box</span>
+                      <span class="text-[8.5px] text-zinc-600 leading-tight block mt-0.5 font-medium">Patented Engineering • Est. 2015</span>
+                    </div>
+
+                    <div class="text-[8.5px] font-bold text-amber-800 uppercase tracking-wider bg-amber-50/80 rounded py-0.5 border border-amber-200/60">
+                      57 Regional Hubs
+                    </div>
+                  </div>
+
+                  <!-- FACE 5: BOTTOM BASE (Instant Unfolding Dining Plate) -->
+                  <div class="box-face box-face-bottom p-3 flex flex-col justify-between text-center select-none border-2 border-dashed border-zinc-400">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[8px] font-bold uppercase text-zinc-500">Tear Line</span>
+                      <i data-lucide="scissors" class="w-3.5 h-3.5 text-zinc-400"></i>
+                    </div>
+
+                    <div class="my-auto py-1">
+                      <div class="w-8 h-8 rounded-full bg-zinc-100 border border-zinc-300 flex items-center justify-center mx-auto mb-1 text-zinc-700">
+                        <i data-lucide="utensils" class="w-4 h-4"></i>
+                      </div>
+                      <span class="text-[10px] font-heading font-black text-zinc-900 uppercase block tracking-wider">Instant Plate</span>
+                      <span class="text-[8px] font-bold text-zinc-600 block mt-0.5">Unfolds Flat For Dining</span>
+                    </div>
+
+                    <div class="text-[8px] font-bold text-brand-red uppercase tracking-wider bg-red-50 rounded py-0.5 border border-red-200">
+                      No Dishwashing Needed
+                    </div>
+                  </div>
+
+                  <!-- FACE 6: BACK (Hakka Wok Flame Seal) -->
+                  <div class="box-face box-face-back p-4 flex flex-col justify-between text-center select-none">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[8px] font-heading font-bold text-zinc-500 uppercase">Vault #1636</span>
+                      <span class="font-serif font-black text-xs text-brand-red">火候</span>
+                    </div>
+
+                    <div class="my-auto">
+                      <i data-lucide="flame" class="w-8 h-8 text-brand-red mx-auto mb-1"></i>
+                      <span class="text-[11px] font-heading font-black text-zinc-900 uppercase block tracking-wider">Master Wok Hei</span>
+                      <span class="text-[9px] text-zinc-500 font-medium block">Hot Indo-Chinese Flavors</span>
+                    </div>
+
+                    <div class="text-[9px] font-heading font-bold text-brand-red uppercase tracking-wider">
+                      The Red Box Syndicate
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Hotspot Interactive Pins in Stage -->
+                <button onclick="activateBoxHotspot(1, true)" id="pin-1" class="hotspot-pin top-16 left-8 sm:left-12" title="1. Thermal Insulation">1</button>
+                <button onclick="activateBoxHotspot(2, true)" id="pin-2" class="hotspot-pin top-16 right-8 sm:right-12" title="2. Origami Locking Fold">2</button>
+                <button onclick="activateBoxHotspot(3, true)" id="pin-3" class="hotspot-pin bottom-20 left-8 sm:left-12" title="3. 100% Virgin Eco-Board">3</button>
+                <button onclick="activateBoxHotspot(4, true)" id="pin-4" class="hotspot-pin bottom-20 right-8 sm:right-12" title="4. Instant Dining Plate">4</button>
+
+              </div>
+
+              <!-- Interactive Controls Footer -->
+              <div class="w-full flex items-center justify-between pt-2 border-t border-zinc-100 z-20">
+                <div class="flex items-center gap-1.5 text-zinc-500">
+                  <i data-lucide="orbit" class="w-3.5 h-3.5 text-brand-red animate-spin" style="animation-duration: 10s;"></i>
+                  <span class="text-[11px] font-heading font-bold uppercase tracking-wider text-zinc-600 hidden sm:inline">Drag to spin in 3D</span>
+                </div>
+
+                <!-- 4 Dot Step Indicators -->
+                <div class="flex items-center gap-1.5">
+                  <button onclick="activateBoxHotspot(1, true)" id="boxDot-1" class="w-2.5 h-2.5 rounded-full bg-brand-red transition-all cursor-pointer" title="Go to Feature 1"></button>
+                  <button onclick="activateBoxHotspot(2, true)" id="boxDot-2" class="w-2.5 h-2.5 rounded-full bg-zinc-200 hover:bg-zinc-400 transition-all cursor-pointer" title="Go to Feature 2"></button>
+                  <button onclick="activateBoxHotspot(3, true)" id="boxDot-3" class="w-2.5 h-2.5 rounded-full bg-zinc-200 hover:bg-zinc-400 transition-all cursor-pointer" title="Go to Feature 3"></button>
+                  <button onclick="activateBoxHotspot(4, true)" id="boxDot-4" class="w-2.5 h-2.5 rounded-full bg-zinc-200 hover:bg-zinc-400 transition-all cursor-pointer" title="Go to Feature 4"></button>
+                </div>
+
+                <!-- Auto-Cycle Play / Pause & Navigation Buttons -->
+                <div class="flex items-center gap-1">
+                  <button onclick="prevBoxFeature()" class="w-7 h-7 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center transition cursor-pointer" title="Previous Feature" aria-label="Previous Feature">
+                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                  </button>
+                  <button id="boxAutoPlayToggleBtn" onclick="toggleBoxAutoPlay()" class="h-7 px-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center gap-1 text-[11px] font-heading font-bold transition cursor-pointer" title="Pause / Resume Auto-Cycle">
+                    <i data-lucide="pause" id="boxAutoPlayIcon" class="w-3 h-3 text-brand-red"></i>
+                    <span id="boxAutoPlayLabel">Pause</span>
+                  </button>
+                  <button onclick="nextBoxFeature()" class="w-7 h-7 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center transition cursor-pointer" title="Next Feature" aria-label="Next Feature">
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
 
             </div>
             <p class="text-center text-xs text-zinc-500 mt-3 font-heading font-bold tracking-wider uppercase">
-              • Click any numbered pin to inspect thermal engineering •
+              • Click any card or numbered pin to rotate & inspect in 3D •
             </p>
           </div>
 
-          <!-- Hotspot Explainer Cards Right -->
-          <div class="lg:col-span-6 space-y-4">
+          <!-- Hotspot Explainer Cards Right with Animated Progress Countdown -->
+          <div id="hotspotCardsDeck" class="lg:col-span-6 space-y-4">
             
-            <div id="hotspotCard-1" onclick="activateBoxHotspot(1)" class="hotspot-card bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer">
+            <div id="hotspotCard-1" onclick="activateBoxHotspot(1, true)" class="hotspot-card relative overflow-hidden bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer group">
+              <div id="hotspotCardProgress-1" class="hotspot-card-progress"></div>
               <div class="flex items-center gap-3 mb-2">
                 <span class="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading">1</span>
-                <h4 class="font-heading font-extrabold text-base text-zinc-900">45-Minute Thermal Insulation</h4>
+                <h4 class="font-heading font-bold text-base text-zinc-900 group-hover:text-brand-red transition-colors">45-Minute Thermal Insulation</h4>
               </div>
               <p class="text-xs text-zinc-600 font-sans leading-relaxed">
                 Internal multi-layer thermal reflective barriers keep steaming noodles and fried rice above 65°C for 45 minutes, ensuring your meal arrives at true wok-tossed temperature.
               </p>
             </div>
 
-            <div id="hotspotCard-2" onclick="activateBoxHotspot(2)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+            <div id="hotspotCard-2" onclick="activateBoxHotspot(2, true)" class="hotspot-card relative overflow-hidden bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs group">
+              <div id="hotspotCardProgress-2" class="hotspot-card-progress"></div>
               <div class="flex items-center gap-3 mb-2">
                 <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">2</span>
-                <h4 class="font-heading font-extrabold text-base text-zinc-900">Spill-Proof Origami Locking Fold</h4>
+                <h4 class="font-heading font-bold text-base text-zinc-900 group-hover:text-brand-red transition-colors">Spill-Proof Origami Locking Fold</h4>
               </div>
               <p class="text-xs text-zinc-600 font-sans leading-relaxed">
                 Tightly interlocking tab folds eliminate clumsy plastic bags. Even rich Manchurian, Schezwan, and garlic chili gravies stay locked inside during rapid transit.
               </p>
             </div>
 
-            <div id="hotspotCard-3" onclick="activateBoxHotspot(3)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+            <div id="hotspotCard-3" onclick="activateBoxHotspot(3, true)" class="hotspot-card relative overflow-hidden bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs group">
+              <div id="hotspotCardProgress-3" class="hotspot-card-progress"></div>
               <div class="flex items-center gap-3 mb-2">
                 <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">3</span>
-                <h4 class="font-heading font-extrabold text-base text-zinc-900">100% Food-Grade Virgin Eco-Board</h4>
+                <h4 class="font-heading font-bold text-base text-zinc-900 group-hover:text-brand-red transition-colors">100% Food-Grade Virgin Eco-Board</h4>
               </div>
               <p class="text-xs text-zinc-600 font-sans leading-relaxed">
                 Certified chlorine-free, unbleached, and microwave-safe paperboard. Zero harmful microplastics or petroleum liners ever come into contact with your hot food.
               </p>
             </div>
 
-            <div id="hotspotCard-4" onclick="activateBoxHotspot(4)" class="hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs">
+            <div id="hotspotCard-4" onclick="activateBoxHotspot(4, true)" class="hotspot-card relative overflow-hidden bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs group">
+              <div id="hotspotCardProgress-4" class="hotspot-card-progress"></div>
               <div class="flex items-center gap-3 mb-2">
                 <span class="w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading">4</span>
-                <h4 class="font-heading font-extrabold text-base text-zinc-900">Unfolds Into An Instant Dining Plate</h4>
+                <h4 class="font-heading font-bold text-base text-zinc-900 group-hover:text-brand-red transition-colors">Unfolds Into An Instant Dining Plate</h4>
               </div>
               <p class="text-xs text-zinc-600 font-sans leading-relaxed">
                 Simply tear along the side tab perforations and your Red Box unfolds flat into an instant, spill-proof dining plate at your work desk, home, or on the go.
@@ -906,33 +1086,66 @@
     <!-- SECTION 8: FOUNDER'S PLEDGE & SEAL (WHITE LUXURY)    -->
     <!-- ---------------------------------------------------- -->
     <section class="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-stone-200 bg-white">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-7xl mx-auto">
         
-        <div class="relative bg-gradient-to-br from-stone-50 via-white to-red-50/25 border-2 border-red-200 rounded-3xl p-8 sm:p-14 text-center shadow-md overflow-hidden">
-          
-          <!-- Wax Seal Stamp Emblem -->
-          <div class="w-16 h-16 rounded-full bg-brand-red text-white flex items-center justify-center font-serif font-black text-2xl shadow-lg shadow-brand-red/30 mx-auto mb-6 select-none">
-            印
-          </div>
+        <div class="relative bg-gradient-to-br from-stone-50 via-white to-red-50/25 border-2 border-red-200 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-sm overflow-hidden">
+          <!-- Golden Dragon Watermark in Background -->
+          <div class="dragon-watermark-right opacity-20 pointer-events-none"></div>
 
-          <h3 class="text-2xl sm:text-4xl font-serif font-bold text-zinc-900 mb-4">
-            Our Unwavering Culinary Pledge
-          </h3>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Left Column: Wax Seal Emblem & Title & Council -->
+            <div class="lg:col-span-5 text-center lg:text-left space-y-4">
+              <div class="flex items-center justify-center lg:justify-start gap-4">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-red text-white flex items-center justify-center font-serif font-black text-2xl sm:text-3xl shadow-lg shadow-brand-red/30 select-none flex-shrink-0">
+                  印
+                </div>
+                <div>
+                  <span class="inline-block text-[11px] font-heading font-extrabold uppercase tracking-widest text-brand-red">誓约 · CULINARY CREED</span>
+                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-zinc-900 tracking-tight leading-snug">
+                    Our Unwavering Culinary Pledge
+                  </h3>
+                </div>
+              </div>
 
-          <p id="aboutPledgeQuote" class="text-zinc-700 text-base sm:text-lg italic font-serif leading-relaxed max-w-2xl mx-auto mb-8">
-            "We do not merely assemble meals; we orchestrate an ancient dialogue between fire, steel, and spice. Every box that leaves our woks is an unyielding pledge to true craft, uncompromised heat, and heartfelt hospitality."
-          </p>
+              <p class="text-xs sm:text-sm text-zinc-500 font-sans leading-relaxed">
+                Authored by the Master Chefs of Tangra and Sichuan culinary lineages, governing every single dish served across our 57 branches worldwide.
+              </p>
 
-          <div class="pt-6 border-t border-zinc-200/80 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs">
-            <div>
-              <span id="aboutPledgeCouncil" class="block font-heading font-extrabold text-zinc-900 uppercase tracking-wider">THE RED BOX CULINARY COUNCIL</span>
-              <span id="aboutPledgeSub" class="block text-zinc-500 font-sans mt-0.5">Master Chef Syndicate & Founding Partners</span>
+              <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <span class="px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-brand-red font-heading font-extrabold text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                  100% GENUINE WOK HEI
+                </span>
+                <span class="px-3.5 py-1.5 rounded-full bg-stone-100 border border-zinc-300 text-zinc-700 font-heading font-bold text-[11px] uppercase tracking-wider">
+                  EST. 2015 · CHENNAI
+                </span>
+              </div>
             </div>
-            <div class="hidden sm:block h-6 w-px bg-zinc-300"></div>
-            <div class="flex items-center gap-2">
-              <span class="px-3 py-1 rounded-full bg-red-50 border border-red-200 text-brand-red font-heading font-bold text-[11px]">100% GENUINE WOK HEI</span>
-              <span class="px-3 py-1 rounded-full bg-stone-100 border border-zinc-300 text-zinc-700 font-heading font-bold text-[11px]">EST. 2015</span>
+
+            <!-- Right Column: Grand Quote & Signatory Details -->
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6 lg:pl-6 lg:border-l lg:border-red-100">
+              <div class="relative">
+                <span class="text-6xl sm:text-7xl font-serif text-brand-red/20 absolute -top-8 -left-3 select-none">“</span>
+                <blockquote id="aboutPledgeQuote" class="relative z-10 text-base sm:text-xl lg:text-2xl italic font-serif text-zinc-800 leading-relaxed pl-4 sm:pl-6 border-l-2 border-brand-red/40">
+                  We do not merely assemble meals; we orchestrate an ancient dialogue between fire, steel, and spice. Every box that leaves our woks is an unyielding pledge to true craft, uncompromised heat, and heartfelt hospitality.
+                </blockquote>
+              </div>
+
+              <!-- Signatory Info & 3 Feature Badges -->
+              <div class="pt-4 border-t border-zinc-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                  <span id="aboutPledgeCouncil" class="block font-heading font-extrabold text-zinc-900 uppercase tracking-wider text-xs sm:text-sm">THE RED BOX CULINARY COUNCIL</span>
+                  <span id="aboutPledgeSub" class="block text-zinc-500 font-sans text-xs mt-0.5">Master Chef Syndicate & Founding Partners</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-zinc-400 font-mono">
+                  <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+                  <span>FSSAI Lic. 12421008000456</span>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
         </div>
@@ -1175,25 +1388,323 @@
       }
     }
 
-    // Box Hotspot Activation for White Theme
-    function activateBoxHotspot(num) {
-      for (let i = 1; i <= 4; i++) {
-        const card = document.getElementById(`hotspotCard-${i}`);
-        const pin = document.getElementById(`pin-${i}`);
-        if (card && pin) {
-          if (i === num) {
-            card.className = 'hotspot-card bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer';
+    // =========================================================================
+    // Interactive 3D Red Box Packaging Animation & Hotspot Auto-Cycle Engine
+    // =========================================================================
+    const RedBox3DExperience = {
+      current: 1,
+      isPlaying: true,
+      isPausedByHover: false,
+      isDragging: false,
+      duration: 4500, // 4.5s per card
+      startTime: 0,
+      elapsedBeforePause: 0,
+      rafId: null,
+      inactivityTimeout: null,
+      currentAngles: { rotX: -10, rotY: 16, rotZ: 0 },
+      dragStart: { x: 0, y: 0, rotX: 0, rotY: 0 },
+
+      features: {
+        1: {
+          name: 'Feature 1 · 45-Min Thermal Insulation',
+          badgeText: 'Thermal Core Locked',
+          angles: { rotX: -10, rotY: 16, rotZ: 0 },
+          steam: true,
+          shadow: 'translateX(-50%) scale(1) translateY(0)'
+        },
+        2: {
+          name: 'Feature 2 · Spill-Proof Origami Lock',
+          badgeText: 'Origami Flap Seal',
+          angles: { rotX: 42, rotY: -25, rotZ: -6 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.92) translateY(6px)'
+        },
+        3: {
+          name: 'Feature 3 · 100% Virgin Eco-Board',
+          badgeText: 'Eco Purity Certified',
+          angles: { rotX: -8, rotY: -82, rotZ: 2 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.96) translateY(2px)'
+        },
+        4: {
+          name: 'Feature 4 · Instant Dining Plate',
+          badgeText: 'Unfolds Into Plate',
+          angles: { rotX: -34, rotY: 48, rotZ: 8 },
+          steam: false,
+          shadow: 'translateX(-50%) scale(0.95) translateY(4px)'
+        }
+      },
+
+      init() {
+        this.pivot = document.getElementById('box3dPivot');
+        this.stage = document.getElementById('box3dStage');
+        this.container = document.getElementById('box3dStageContainer');
+        this.cardsDeck = document.getElementById('hotspotCardsDeck');
+        this.steamWrap = document.getElementById('boxSteamWrap');
+        this.shadow = document.getElementById('boxGroundShadow');
+        this.badgeName = document.getElementById('boxActiveFeatureName');
+        this.toggleBtn = document.getElementById('boxAutoPlayToggleBtn');
+        this.toggleIcon = document.getElementById('boxAutoPlayIcon');
+        this.toggleLabel = document.getElementById('boxAutoPlayLabel');
+
+        if (!this.pivot || !this.stage) return;
+
+        // Initialize listeners
+        this.bindEvents();
+
+        // Start initial feature state
+        this.activate(1, false);
+        this.startTimer();
+      },
+
+      bindEvents() {
+        // Pointer / Touch Drag on 3D Stage
+        this.stage.addEventListener('pointerdown', (e) => this.onPointerDown(e));
+        window.addEventListener('pointermove', (e) => this.onPointerMove(e));
+        window.addEventListener('pointerup', () => this.onPointerUp());
+        window.addEventListener('pointercancel', () => this.onPointerUp());
+
+        // Hover to Pause
+        const pauseTarget = this.container;
+        if (pauseTarget) {
+          pauseTarget.addEventListener('mouseenter', () => {
+            this.isPausedByHover = true;
+            this.pauseTimer();
+          });
+          pauseTarget.addEventListener('mouseleave', () => {
+            this.isPausedByHover = false;
+            if (this.isPlaying && !this.isDragging) this.resumeTimer();
+          });
+        }
+
+        if (this.cardsDeck) {
+          this.cardsDeck.addEventListener('mouseenter', () => {
+            this.isPausedByHover = true;
+            this.pauseTimer();
+          });
+          this.cardsDeck.addEventListener('mouseleave', () => {
+            this.isPausedByHover = false;
+            if (this.isPlaying && !this.isDragging) this.resumeTimer();
+          });
+        }
+      },
+
+      onPointerDown(e) {
+        if (e.button !== 0) return; // Left click only
+        this.isDragging = true;
+        this.dragStart.x = e.clientX;
+        this.dragStart.y = e.clientY;
+        this.dragStart.rotX = this.currentAngles.rotX;
+        this.dragStart.rotY = this.currentAngles.rotY;
+
+        if (this.pivot) this.pivot.classList.add('is-dragging');
+        this.pauseTimer();
+        clearTimeout(this.inactivityTimeout);
+      },
+
+      onPointerMove(e) {
+        if (!this.isDragging || !this.pivot) return;
+        const deltaX = e.clientX - this.dragStart.x;
+        const deltaY = e.clientY - this.dragStart.y;
+
+        const newRotY = this.dragStart.rotY + deltaX * 0.65;
+        const newRotX = Math.max(-65, Math.min(65, this.dragStart.rotX - deltaY * 0.65));
+
+        this.currentAngles.rotX = newRotX;
+        this.currentAngles.rotY = newRotY;
+
+        this.pivot.style.transform = `rotateX(${newRotX}deg) rotateY(${newRotY}deg) rotateZ(0deg)`;
+        
+        // Tilt shadow slightly
+        if (this.shadow) {
+          this.shadow.style.transform = `translateX(-50%) rotate(${deltaX * 0.1}deg) scale(${1 - Math.abs(deltaY) * 0.002})`;
+        }
+      },
+
+      onPointerUp() {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        if (this.pivot) this.pivot.classList.remove('is-dragging');
+
+        // After 3.5s of drag release, smoothly return to current feature angle and resume auto-cycle
+        clearTimeout(this.inactivityTimeout);
+        this.inactivityTimeout = setTimeout(() => {
+          if (!this.isPausedByHover) {
+            this.applyFeatureAngles(this.current);
+            if (this.isPlaying) this.startTimer();
+          }
+        }, 3200);
+      },
+
+      activate(num, isManual = false) {
+        this.current = num;
+        const feat = this.features[num];
+        if (!feat) return;
+
+        // Reset progress bar on all cards
+        for (let i = 1; i <= 4; i++) {
+          const bar = document.getElementById(`hotspotCardProgress-${i}`);
+          if (bar) bar.style.width = '0%';
+        }
+
+        // Update cards visual states
+        for (let i = 1; i <= 4; i++) {
+          const card = document.getElementById(`hotspotCard-${i}`);
+          const pin = document.getElementById(`pin-${i}`);
+          const dot = document.getElementById(`boxDot-${i}`);
+
+          if (card) {
             const numBadge = card.querySelector('span');
-            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading';
-            pin.style.transform = 'scale(1.25)';
-          } else {
-            card.className = 'hotspot-card bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-75 hover:opacity-100 cursor-pointer shadow-2xs';
-            const numBadge = card.querySelector('span');
-            if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading';
-            pin.style.transform = 'scale(1)';
+            if (i === num) {
+              card.className = 'hotspot-card relative overflow-hidden bg-red-50/80 border-2 border-brand-red rounded-2xl p-5 transition-all shadow-sm cursor-pointer group opacity-100 scale-[1.01]';
+              if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs font-heading shadow-xs';
+            } else {
+              card.className = 'hotspot-card relative overflow-hidden bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 transition-all opacity-70 hover:opacity-100 cursor-pointer shadow-2xs group scale-100';
+              if (numBadge) numBadge.className = 'w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 flex items-center justify-center font-bold text-xs font-heading';
+            }
+          }
+
+          if (pin) {
+            if (i === num) {
+              pin.style.transform = 'scale(1.28)';
+              pin.style.zIndex = '30';
+              pin.style.background = '#D9232D';
+              pin.style.boxShadow = '0 0 0 6px rgba(217, 35, 45, 0.25), 0 4px 12px rgba(217, 35, 45, 0.5)';
+            } else {
+              pin.style.transform = 'scale(1)';
+              pin.style.zIndex = '10';
+              pin.style.background = '#18191B';
+              pin.style.boxShadow = 'none';
+            }
+          }
+
+          if (dot) {
+            if (i === num) {
+              dot.className = 'w-5 h-2 rounded-full bg-brand-red transition-all cursor-pointer shadow-2xs';
+            } else {
+              dot.className = 'w-2 h-2 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all cursor-pointer';
+            }
           }
         }
+
+        // Update floating badge name
+        if (this.badgeName) {
+          this.badgeName.textContent = feat.name;
+        }
+
+        // Rotate 3D box model
+        this.applyFeatureAngles(num);
+
+        // Reset timer if triggered manually
+        if (isManual) {
+          clearTimeout(this.inactivityTimeout);
+          this.elapsedBeforePause = 0;
+          if (this.isPlaying && !this.isPausedByHover) {
+            this.startTimer();
+          }
+        }
+      },
+
+      applyFeatureAngles(num) {
+        const feat = this.features[num];
+        if (!feat || !this.pivot) return;
+
+        this.currentAngles = { ...feat.angles };
+        this.pivot.style.transform = `rotateX(${feat.angles.rotX}deg) rotateY(${feat.angles.rotY}deg) rotateZ(${feat.angles.rotZ}deg)`;
+
+        // Steam particle visibility
+        if (this.steamWrap) {
+          this.steamWrap.style.opacity = feat.steam ? '0.9' : '0.1';
+        }
+
+        // Shadow dynamics
+        if (this.shadow) {
+          this.shadow.style.transform = feat.shadow;
+        }
+      },
+
+      startTimer() {
+        cancelAnimationFrame(this.rafId);
+        this.startTime = performance.now() - this.elapsedBeforePause;
+        const tick = (now) => {
+          if (!this.isPlaying || this.isPausedByHover || this.isDragging) return;
+          const elapsed = now - this.startTime;
+          const pct = Math.min(100, (elapsed / this.duration) * 100);
+
+          const activeBar = document.getElementById(`hotspotCardProgress-${this.current}`);
+          if (activeBar) {
+            activeBar.style.width = pct + '%';
+          }
+
+          if (elapsed >= this.duration) {
+            this.elapsedBeforePause = 0;
+            const next = (this.current % 4) + 1;
+            this.activate(next, false);
+            this.startTime = performance.now();
+          }
+
+          this.rafId = requestAnimationFrame(tick);
+        };
+        this.rafId = requestAnimationFrame(tick);
+      },
+
+      pauseTimer() {
+        cancelAnimationFrame(this.rafId);
+        this.elapsedBeforePause = performance.now() - this.startTime;
+      },
+
+      resumeTimer() {
+        this.startTimer();
+      },
+
+      togglePlay() {
+        this.isPlaying = !this.isPlaying;
+        if (this.toggleIcon && this.toggleLabel) {
+          if (this.isPlaying) {
+            this.toggleIcon.setAttribute('data-lucide', 'pause');
+            this.toggleLabel.textContent = 'Pause';
+            this.startTimer();
+          } else {
+            this.toggleIcon.setAttribute('data-lucide', 'play');
+            this.toggleLabel.textContent = 'Play';
+            this.pauseTimer();
+          }
+          if (window.lucide) window.lucide.createIcons();
+        }
+      },
+
+      next() {
+        const nextIdx = (this.current % 4) + 1;
+        this.activate(nextIdx, true);
+      },
+
+      prev() {
+        const prevIdx = this.current === 1 ? 4 : this.current - 1;
+        this.activate(prevIdx, true);
       }
+    };
+
+    // Global Handlers
+    function activateBoxHotspot(num, isManual = true) {
+      RedBox3DExperience.activate(num, isManual);
+    }
+    function toggleBoxAutoPlay() {
+      RedBox3DExperience.togglePlay();
+    }
+    function nextBoxFeature() {
+      RedBox3DExperience.next();
+    }
+    function prevBoxFeature() {
+      RedBox3DExperience.prev();
+    }
+
+    // Initialize 3D Experience on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      RedBox3DExperience.init();
+    });
+    // Fallback if DOM already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(() => RedBox3DExperience.init(), 100);
     }
 
     document.addEventListener('keydown', (e) => {

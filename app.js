@@ -3095,13 +3095,27 @@ function renderNewReleases() {
   const nr = homepageContent.newReleases;
 
   const tagEl = document.getElementById('newReleasesTag');
-  if (tagEl && nr.sectionTag) {
-    tagEl.innerHTML = `<span>${nr.sectionTag}</span>`;
+  if (tagEl) {
+    if (nr.sectionTag) {
+      tagEl.innerHTML = `<span>${nr.sectionTag}</span>`;
+      tagEl.classList.remove('hidden');
+    } else {
+      tagEl.innerHTML = '';
+      tagEl.classList.add('hidden');
+    }
   }
   const titleEl = document.getElementById('newReleasesTitle');
   if (titleEl && nr.sectionTitle) titleEl.textContent = nr.sectionTitle;
   const subEl = document.getElementById('newReleasesSubtitle');
-  if (subEl && nr.sectionSubtitle) subEl.textContent = nr.sectionSubtitle;
+  if (subEl) {
+    if (nr.sectionSubtitle) {
+      subEl.textContent = nr.sectionSubtitle;
+      subEl.classList.remove('hidden');
+    } else {
+      subEl.textContent = '';
+      subEl.classList.add('hidden');
+    }
+  }
 
   const items = (nr.items || []).filter(item => item.active !== false);
   if (items.length === 0) {
