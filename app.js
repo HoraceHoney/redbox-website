@@ -1268,6 +1268,7 @@ function onContinentChange(val) {
   populateAreaFilter(selectedContinent, selectedCountry, selectedState, selectedCity);
   
   updateFilterBreadcrumbs();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   syncMapToFilter();
 }
@@ -1283,6 +1284,7 @@ function onCountryChange(val) {
   populateAreaFilter(selectedContinent, selectedCountry, selectedState, selectedCity);
 
   updateFilterBreadcrumbs();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   syncMapToFilter();
 }
@@ -1296,6 +1298,7 @@ function onStateChange(val) {
   populateAreaFilter(selectedContinent, selectedCountry, selectedState, selectedCity);
 
   updateFilterBreadcrumbs();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   syncMapToFilter();
 }
@@ -1307,6 +1310,7 @@ function onCityChange(val) {
   populateAreaFilter(selectedContinent, selectedCountry, selectedState, selectedCity);
 
   updateFilterBreadcrumbs();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   syncMapToFilter();
 }
@@ -1314,6 +1318,7 @@ function onCityChange(val) {
 function onAreaChange(val) {
   selectedArea = val;
   updateFilterBreadcrumbs();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   syncMapToFilter();
 }
@@ -1327,12 +1332,14 @@ function applyFacilityFilters() {
   filterLateNightOnly = lateEl ? lateEl.checked : false;
   filterCateringOnly = caterEl ? caterEl.checked : false;
 
+  branchesDisplayLimit = 15;
   renderBranchesList();
   updateMapMarkers();
 }
 
 function handleBranchSearch(val) {
   branchSearchQuery = val.toLowerCase().trim();
+  branchesDisplayLimit = 15;
   renderBranchesList();
   updateMapMarkers();
 }
@@ -1348,6 +1355,7 @@ function resetAllFilters() {
   filterDineInOnly = false;
   filterLateNightOnly = false;
   filterCateringOnly = false;
+  branchesDisplayLimit = 15;
 
   const searchInput = document.getElementById('branchSearchInput');
   if (searchInput) searchInput.value = '';
@@ -1413,8 +1421,23 @@ function getFilteredBranches() {
   });
 }
 
+let branchesDisplayLimit = 15;
+
+function showMoreBranches() {
+  branchesDisplayLimit += 15;
+  renderBranchesList();
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function resetBranchesLimit() {
+  branchesDisplayLimit = 15;
+  renderBranchesList();
+  if (window.lucide) window.lucide.createIcons();
+}
+
 function renderBranchesList() {
   const container = document.getElementById('branchCardsContainer');
+  const moreBtnContainer = document.getElementById('loadMoreBranchesContainer');
   const countEl = document.getElementById('visibleBranchCount');
   const totalEl = document.getElementById('totalBranchCount');
 
@@ -1437,11 +1460,14 @@ function renderBranchesList() {
         </button>
       </div>
     `;
+    if (moreBtnContainer) moreBtnContainer.innerHTML = '';
     if (window.lucide) window.lucide.createIcons();
     return;
   }
 
-  container.innerHTML = filtered.map(b => {
+  const toShow = filtered.slice(0, branchesDisplayLimit);
+
+  container.innerHTML = toShow.map(b => {
     const isNearest = (b.id === nearestBranchId);
     const distanceBadge = (b.distanceKm !== undefined) ?
       `<span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px] flex items-center gap-1">
@@ -1520,6 +1546,37 @@ function renderBranchesList() {
       </div>
     `;
   }).join('');
+
+  if (moreBtnContainer) {
+    if (filtered.length > toShow.length) {
+      const remaining = filtered.length - toShow.length;
+      moreBtnContainer.innerHTML = `
+        <div class="pt-4 pb-2 w-full flex flex-col items-center gap-2.5">
+          <button onclick="showMoreBranches()" class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-zinc-50 text-zinc-900 border-2 border-zinc-200 hover:border-brand-red font-heading font-extrabold text-xs uppercase tracking-wider rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-brand-red group-hover:scale-110 transition-transform"></i>
+            <span>Show More Branches (${remaining} more)</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 group-hover:translate-y-0.5 transition-transform"></i>
+          </button>
+          <span class="text-[11px] text-zinc-400 font-medium">Displaying <strong class="text-zinc-700">${toShow.length}</strong> of <strong class="text-zinc-700">${filtered.length}</strong> active branches</span>
+        </div>
+      `;
+    } else if (filtered.length > 15) {
+      moreBtnContainer.innerHTML = `
+        <div class="pt-4 pb-2 w-full flex flex-col items-center gap-2">
+          <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 shadow-2xs">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Showing all ${filtered.length} branches</span>
+          </div>
+          <button onclick="resetBranchesLimit()" class="text-[11px] font-bold text-zinc-400 hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer pt-1">
+            <i data-lucide="chevron-up" class="w-3 h-3"></i>
+            <span>Show Fewer (15)</span>
+          </button>
+        </div>
+      `;
+    } else {
+      moreBtnContainer.innerHTML = '';
+    }
+  }
 
   if (window.lucide) window.lucide.createIcons();
 }
