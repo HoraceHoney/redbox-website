@@ -211,48 +211,79 @@
     </section>
 
     <!-- ================= BRAND INTRODUCTION & PERFECTLY FITTED BADGE ================= -->
-    <section id="brandIntroSection" class="py-10 sm:py-12 bg-white border-b border-[#EBE3D5] relative overflow-hidden">
+    <section id="brandIntroSection" class="py-12 sm:py-16 bg-lattice-light border-b border-[#EBE3D5] relative overflow-hidden">
       <!-- Golden Dragon Highlight Watermark -->
-      <div class="dragon-watermark-right"></div>
+      <div class="dragon-watermark-right opacity-25"></div>
+      
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <div class="max-w-3xl space-y-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-zinc-900 tracking-tight leading-[1.12]">
-            Real Wok Craft. <br>
-            <span class="text-brand-red font-serif italic inline-block relative">
-              Iconic Red Box.
-              <svg class="absolute -bottom-1.5 left-0 w-full h-2 text-brand-gold/60" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M0,10 Q50,0 100,10 Q50,20 0,10" fill="currentColor"/>
-              </svg>
-            </span>
-          </h2>
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-heading font-extrabold uppercase tracking-widest border border-red-200">
+              <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+              <span>印 · SINCE 2015 · MASTER WOK HEI</span>
+            </div>
 
-          <p class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-xl font-normal pt-1">
-            Steaming, high-heat wok tossed noodles, sizzling chillies, and secret spice gravies—packed hot in our legendary 45-minute heat-retention fold box. Fresh comfort food on the go.
-          </p>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-zinc-900 tracking-tight leading-[1.12]">
+              Real Wok Craft. <br>
+              <span class="text-brand-red font-serif italic inline-block relative">
+                Iconic Red Box.
+                <svg class="absolute -bottom-1.5 left-0 w-full h-2 text-brand-gold/60" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <path d="M0,10 Q50,0 100,10 Q50,20 0,10" fill="currentColor"/>
+                </svg>
+              </span>
+            </h2>
 
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="menu.html" class="px-7 py-3 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider rounded-full shadow-md shadow-brand-red/30 transition-all flex items-center gap-2">
-              <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
-              <span>Explore Full Menu</span>
-            </a>
-            <a href="branches.html" class="px-7 py-3 bg-zinc-900 hover:bg-black text-white font-extrabold text-xs uppercase tracking-wider rounded-full shadow-sm transition-all flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-gold"></i>
-              <span>Explore 57 Branches</span>
-            </a>
+            <p class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-xl font-normal">
+              Steaming, high-heat wok tossed noodles, sizzling chillies, and secret spice gravies—packed hot in our legendary 45-minute heat-retention fold box. Fresh comfort food on the go.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="menu.html" class="px-7 py-3 bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider rounded-full shadow-md shadow-brand-red/30 transition-all flex items-center gap-2">
+                <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
+                <span>Explore Full Menu</span>
+              </a>
+              <a href="branches.html" class="px-7 py-3 bg-zinc-900 hover:bg-black text-white font-extrabold text-xs uppercase tracking-wider rounded-full shadow-sm transition-all flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-gold"></i>
+                <span>Explore 57 Branches</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Culinary Craft Card with Wok Stir-Fry Backdrop -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-200/80 bg-zinc-950 group">
+              <img src="assets/images/bg-wok-stirfry-tablet.webp" alt="Authentic Wok Stir-Fry" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
+              
+              <!-- Floating Culinary Badges -->
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-brand-red text-white text-[10px] font-heading font-extrabold uppercase tracking-wider shadow-md flex items-center gap-1.5">
+                  <i data-lucide="flame" class="w-3 h-3 text-amber-300"></i>
+                  <span>500°C Blast Heat</span>
+                </span>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <div class="flex items-center gap-2 text-amber-400 text-xs font-serif italic mb-1">
+                  <span>❖ Tangra & Sichuan Culinary Tradition</span>
+                </div>
+                <h4 class="font-serif font-bold text-lg leading-snug">Sealed Fresh in 180 Seconds</h4>
+                <p class="text-xs text-zinc-300 mt-1 line-clamp-2">Hand-tossed with house soya, roasted garlic, and master spices in high-temperature iron woks.</p>
+              </div>
+            </div>
           </div>
 
         </div>
-
       </div>
     </section>
 
     <!-- ================= THE 3 CRAFT PILLARS ================= -->
     <section class="py-10 sm:py-12 bg-[#F8F5EE] border-b border-[#E7DDCD] relative overflow-hidden">
-      <!-- Golden Dragon Highlight Watermark -->
-      <div class="dragon-watermark-left"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Golden Dragon & Culinary Spice Layered Watermarks -->
+      <div class="dragon-watermark-left opacity-20"></div>
+      <div class="culinary-spice-watermark"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
           <h3 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-zinc-900 tracking-tight">
@@ -381,10 +412,11 @@
     </section>
 
     <!-- ================= SIGNATURE BESTSELLERS (6 DISHES) ================= -->
-    <section id="bestsellers" class="product-section-highlight py-10 sm:py-12 relative overflow-hidden">
-      <!-- Golden Dragon Highlight Watermark -->
-      <div class="dragon-watermark-right"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="bestsellers" class="product-section-highlight py-12 sm:py-16 relative overflow-hidden bg-lattice-light">
+      <!-- Golden Dragon & Culinary Wok Toss Watermarks -->
+      <div class="dragon-watermark-right opacity-25"></div>
+      <div class="culinary-wok-watermark"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
           <div>
@@ -417,6 +449,57 @@
           </a>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ================= CINEMATIC CULINARY WOK HEI BANNER ================= -->
+    <section class="relative bg-culinary-wok-fire py-14 sm:py-20 px-4 sm:px-6 lg:px-8 text-white border-y border-zinc-800 shadow-inner overflow-hidden">
+      <!-- Radial Shadow Overlay -->
+      <div class="absolute inset-0 bg-radial-gradient from-transparent via-black/40 to-black/80 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-600/40 border border-red-500/50 backdrop-blur-xs text-xs font-bold uppercase tracking-widest text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+            <span>印 · 1000°F TRUE FLAME CRAFT</span>
+          </div>
+          <h3 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white leading-tight">
+            The Soul of the Wok. <br>
+            <span class="text-amber-400 italic font-serif">Sealed Piping Hot</span> In 45 Minutes.
+          </h3>
+          <p class="text-sm sm:text-base text-zinc-300 font-sans max-w-2xl leading-relaxed">
+            Every dish begins with cast-iron steel over roaring blast flames. The intense heat vaporizes microscopic oil droplets, imbuing each noodle with the legendary smoky essence of authentic Wok Hei.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="menu.html" class="px-7 py-3 rounded-full bg-brand-red hover:bg-brand-red-dark text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-brand-red/40 transition-all flex items-center gap-2">
+              <i data-lucide="flame" class="w-4 h-4 text-amber-300"></i>
+              <span>Taste Authentic Wok Hei</span>
+            </a>
+            <a href="about.html" class="px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+              <span>Read The Culinary Story</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 grid grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 text-center space-y-1">
+            <div class="text-2xl sm:text-3xl font-heading font-black text-amber-400">500°C</div>
+            <div class="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Jet Flame Heat</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 text-center space-y-1">
+            <div class="text-2xl sm:text-3xl font-heading font-black text-brand-red">45 Min</div>
+            <div class="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Thermal Lock</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 text-center space-y-1">
+            <div class="text-2xl sm:text-3xl font-heading font-black text-amber-400">14 Spices</div>
+            <div class="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Master Szechuan</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 text-center space-y-1">
+            <div class="text-2xl sm:text-3xl font-heading font-black text-emerald-400">100%</div>
+            <div class="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Zero Chemical Color</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -501,10 +584,11 @@
     </section>
 
     <!-- ================= SOCIAL PROOF ================= -->
-    <section id="testimonialsSection" class="py-10 sm:py-12 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4EA] to-[#F3EDE0] border-b border-[#E6DCC8] relative overflow-hidden">
-      <!-- Golden Dragon Highlight Watermark -->
-      <div class="dragon-watermark-right"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonialsSection" class="py-12 sm:py-16 bg-lattice-light border-b border-[#E6DCC8] relative overflow-hidden">
+      <!-- Golden Dragon & Spice Watermarks -->
+      <div class="dragon-watermark-right opacity-25"></div>
+      <div class="culinary-spice-watermark"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
           <h3 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-zinc-900 tracking-tight">

@@ -890,6 +890,47 @@ button[class*="font-heading"][class*="uppercase"] {
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
+/* Subtle Layered Culinary Background Accents */
+.culinary-spice-watermark {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 420px;
+  height: 380px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/bg-asian-spices-mobile.webp');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: cover;
+  opacity: 0.12;
+  border-radius: 2rem 0 0 0;
+  mask-image: radial-gradient(circle at bottom right, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at bottom right, black 40%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.culinary-wok-watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 400px;
+  max-width: 45vw;
+  max-height: 45vw;
+  background-image: url('assets/images/bg-wok-stirfry-mobile.webp');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+  opacity: 0.10;
+  border-radius: 0 0 2rem 0;
+  mask-image: radial-gradient(circle at top left, black 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at top left, black 35%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Distinct Section Background Styles & Medium Professional Spacing */
 .section-medium-gap {
   padding-top: 2.5rem;   /* 40px */
