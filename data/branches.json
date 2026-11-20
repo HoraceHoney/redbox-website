@@ -13,13 +13,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10000",
     "email": "perambur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.121465,
     "longitude": 80.224056,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -29,13 +29,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-vyasarpadi-rest588206",
       "zomato": "https://www.zomato.com/chennai/the-red-box-perambur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-perambur"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 250
+    "reviewsCount": 250,
+    "swiggy_rest_id": "588206"
   },
   {
     "id": "rbx-che-urapakkam",
@@ -51,13 +52,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10001",
     "email": "urapakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.865527,
     "longitude": 80.074367,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -67,13 +68,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-west-tambaram-rest333546",
       "zomato": "https://www.zomato.com/chennai/the-red-box-tambaram/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-urapakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 267
+    "reviewsCount": 267,
+    "swiggy_rest_id": "333546"
   },
   {
     "id": "rbx-che-kaatupakkam",
@@ -89,13 +91,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10002",
     "email": "kaatupakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.043087,
     "longitude": 80.122381,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -105,13 +107,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-kattupakkam-rest86233",
       "zomato": "https://www.zomato.com/chennai/the-red-box-porur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-kaatupakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 284
+    "reviewsCount": 284,
+    "swiggy_rest_id": "86233"
   },
   {
     "id": "rbx-che-manapakkam",
@@ -127,13 +130,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10003",
     "email": "manapakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.016684,
     "longitude": 80.177257,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -143,13 +146,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-valasaravakkam-rest837208",
       "zomato": "https://www.zomato.com/chennai/the-red-box-ramapuram/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-manapakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 301
+    "reviewsCount": 301,
+    "swiggy_rest_id": "837208"
   },
   {
     "id": "rbx-che-mkb-nagar",
@@ -165,13 +169,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10004",
     "email": "mkb-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.126523,
     "longitude": 80.259772,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -181,13 +185,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-vyasarpadi-rest588206",
       "zomato": "https://www.zomato.com/chennai/the-red-box-perambur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-mkb-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 318
+    "reviewsCount": 318,
+    "swiggy_rest_id": "588206"
   },
   {
     "id": "rbx-che-ashok-nagar",
@@ -203,13 +208,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10005",
     "email": "ashok-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.047059,
     "longitude": 80.213177,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -219,13 +224,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-kodambakkam-rest57557",
       "zomato": "https://www.zomato.com/chennai/the-red-box-ashok-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-ashok-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 335
+    "reviewsCount": 335,
+    "swiggy_rest_id": "57557"
   },
   {
     "id": "rbx-che-parrys",
@@ -241,13 +247,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10006",
     "email": "parrys@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.102662,
     "longitude": 80.290462,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -257,13 +263,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-egmore-rest76702",
       "zomato": "https://www.zomato.com/chennai/the-red-box-egmore/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-parrys"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 352
+    "reviewsCount": 352,
+    "swiggy_rest_id": "76702"
   },
   {
     "id": "rbx-che-adyar",
@@ -279,13 +286,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10007",
     "email": "adyar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.995411,
     "longitude": 80.253072,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -295,13 +302,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-sardar-patel-road-adyar-rest680350",
       "zomato": "https://www.zomato.com/chennai/the-red-box-adyar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-adyar"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 369
+    "reviewsCount": 369,
+    "swiggy_rest_id": "680350"
   },
   {
     "id": "rbx-che-mogappair",
@@ -317,13 +325,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10008",
     "email": "mogappair@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.086292,
     "longitude": 80.16979,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -333,13 +341,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-mogappair-rest646736",
       "zomato": "https://www.zomato.com/chennai/the-red-box-mogappair/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-mogappair"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 386
+    "reviewsCount": 386,
+    "swiggy_rest_id": "646736"
   },
   {
     "id": "rbx-che-omr-thoraipakkam",
@@ -355,13 +364,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10009",
     "email": "omr-thoraipakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.928172,
     "longitude": 80.230891,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -371,13 +380,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-navalur-rest85662",
       "zomato": "https://www.zomato.com/chennai/the-red-box-thuraipakkam/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-omr-thoraipakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 403
+    "reviewsCount": 403,
+    "swiggy_rest_id": "85662"
   },
   {
     "id": "rbx-che-navalur",
@@ -393,13 +403,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10010",
     "email": "navalur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.860653,
     "longitude": 80.226631,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -409,13 +419,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-navalur-rest85662",
       "zomato": "https://www.zomato.com/chennai/the-red-box-navalur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-navalur"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 420
+    "reviewsCount": 420,
+    "swiggy_rest_id": "85662"
   },
   {
     "id": "rbx-coi-peelamedu",
@@ -431,13 +442,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10011",
     "email": "peelamedu@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 11.025536,
     "longitude": 77.015101,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -447,13 +458,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/coimbatore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/coimbatore/the-red-box-peelamedu-rest189293",
       "zomato": "https://www.zomato.com/coimbatore/the-red-box-peelamedu/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-peelamedu"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 437
+    "reviewsCount": 437,
+    "swiggy_rest_id": "189293"
   },
   {
     "id": "rbx-che-the-re-box-selaiyur",
@@ -469,13 +481,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10012",
     "email": "the-re-box-selaiyur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.905502,
     "longitude": 80.151246,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -485,13 +497,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-kancheepuram-selaiyur-rest981426",
       "zomato": "https://www.zomato.com/chennai/the-red-box-selaiyur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-the-re-box-selaiyur"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 454
+    "reviewsCount": 454,
+    "swiggy_rest_id": "981426"
   },
   {
     "id": "rbx-coi-sai-baba-colony",
@@ -507,13 +520,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10013",
     "email": "sai-baba-colony@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 11.040657,
     "longitude": 76.941431,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -523,13 +536,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/coimbatore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/coimbatore/the-red-box-saravanampatti-rest1165180",
       "zomato": "https://www.zomato.com/coimbatore/the-red-box-sai-baba-colony/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-sai-baba-colony"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 471
+    "reviewsCount": 471,
+    "swiggy_rest_id": "1165180"
   },
   {
     "id": "rbx-che-valasaravakkam",
@@ -545,13 +559,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10014",
     "email": "valasaravakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.042861,
     "longitude": 80.174628,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -561,13 +575,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-sri-devi-kuppam-main-road-valasaravakkam-rest837208",
       "zomato": "https://www.zomato.com/chennai/the-red-box-valasaravakkam/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-valasaravakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 488
+    "reviewsCount": 488,
+    "swiggy_rest_id": "837208"
   },
   {
     "id": "rbx-che-neelankarai",
@@ -583,13 +598,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10015",
     "email": "neelankarai@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.959955,
     "longitude": 80.255903,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -599,13 +614,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-neelankarai-rest447816",
       "zomato": "https://www.zomato.com/chennai/the-red-box-neelankarai/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-neelankarai"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 505
+    "reviewsCount": 505,
+    "swiggy_rest_id": "447816"
   },
   {
     "id": "rbx-che-pallikarani",
@@ -621,13 +637,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10016",
     "email": "pallikarani@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.927987,
     "longitude": 80.198323,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -637,13 +653,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-grace-compound-pallikaranai-rest142623",
       "zomato": "https://www.zomato.com/chennai/the-red-box-pallikarani/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-pallikarani"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 522
+    "reviewsCount": 522,
+    "swiggy_rest_id": "142623"
   },
   {
     "id": "rbx-che-padur",
@@ -659,13 +676,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10017",
     "email": "padur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.807259,
     "longitude": 80.226785,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -675,13 +692,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-navalur-rest85662",
       "zomato": "https://www.zomato.com/chennai/the-red-box-padur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-padur"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 539
+    "reviewsCount": 539,
+    "swiggy_rest_id": "85662"
   },
   {
     "id": "rbx-che-chrompet",
@@ -697,13 +715,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10018",
     "email": "chrompet@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.952877,
     "longitude": 80.135404,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -713,13 +731,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-new-colony-chrompet-rest598023",
       "zomato": "https://www.zomato.com/chennai/the-red-box-chrompet/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-chrompet"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 556
+    "reviewsCount": 556,
+    "swiggy_rest_id": "598023"
   },
   {
     "id": "rbx-che-avadi",
@@ -735,13 +754,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10019",
     "email": "avadi@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.119025,
     "longitude": 80.101004,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -751,13 +770,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-mth-road-avadi-rest89836",
       "zomato": "https://www.zomato.com/chennai/the-red-box-avadi/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-avadi"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 573
+    "reviewsCount": 573,
+    "swiggy_rest_id": "89836"
   },
   {
     "id": "rbx-che-adambakkam",
@@ -773,13 +793,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10020",
     "email": "adambakkam@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.985534,
     "longitude": 80.204405,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -789,13 +809,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-adambakkam-rest187971",
       "zomato": "https://www.zomato.com/chennai/the-red-box-adambakkam/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-adambakkam"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 590
+    "reviewsCount": 590,
+    "swiggy_rest_id": "187971"
   },
   {
     "id": "rbx-che-annanagar",
@@ -811,13 +832,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10021",
     "email": "annanagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.082561,
     "longitude": 80.211357,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -827,13 +848,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-anna-nagar-rest21776",
       "zomato": "https://www.zomato.com/chennai/the-red-box-annanagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-annanagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 257
+    "reviewsCount": 257,
+    "swiggy_rest_id": "21776"
   },
   {
     "id": "rbx-che-egmore",
@@ -849,13 +871,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10022",
     "email": "egmore@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.065352,
     "longitude": 80.257935,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -865,13 +887,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-egmore-rest76702",
       "zomato": "https://www.zomato.com/chennai/the-red-box-egmore/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-egmore"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 274
+    "reviewsCount": 274,
+    "swiggy_rest_id": "76702"
   },
   {
     "id": "rbx-che-chennai",
@@ -887,13 +910,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10023",
     "email": "chennai@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.036611,
     "longitude": 80.161394,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -903,13 +926,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-kodambakkam-rest57557",
       "zomato": "https://www.zomato.com/chennai/the-red-box-chennai/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-chinese-story-chennai"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 291
+    "reviewsCount": 291,
+    "swiggy_rest_id": "57557"
   },
   {
     "id": "rbx-che-kundrathur",
@@ -925,13 +949,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10024",
     "email": "kundrathur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.012575,
     "longitude": 80.131451,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -941,13 +965,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-kovur-rest1001623",
       "zomato": "https://www.zomato.com/chennai/the-red-box-kundrathur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-kundrathur"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 308
+    "reviewsCount": 308,
+    "swiggy_rest_id": "1001623"
   },
   {
     "id": "rbx-mad-madurai",
@@ -963,13 +988,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10025",
     "email": "madurai@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 9.916869,
     "longitude": 78.100862,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -979,13 +1004,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/madurai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/madurai/the-red-box-anna-nagar-rest1143103",
       "zomato": "https://www.zomato.com/madurai/the-red-box-madurai/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-madurai"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 325
+    "reviewsCount": 325,
+    "swiggy_rest_id": "1143103"
   },
   {
     "id": "rbx-vel-krs-nagar",
@@ -1001,13 +1027,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10026",
     "email": "krs-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.977357,
     "longitude": 79.140742,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1017,13 +1043,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/vellore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/vellore/the-red-box-vellore-fort-rest1188660",
       "zomato": "https://www.zomato.com/vellore/the-red-box-krs-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-krs-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 342
+    "reviewsCount": 342,
+    "swiggy_rest_id": "1188660"
   },
   {
     "id": "rbx-vel-vellore-chennai-road",
@@ -1039,13 +1066,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10027",
     "email": "vellore-chennai-road@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.913488,
     "longitude": 79.313884,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1055,13 +1082,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/vellore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/vellore/the-red-box-vellore-fort-rest1188660",
       "zomato": "https://www.zomato.com/vellore/the-red-box-vellore-chennai-road/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-vellore-chennai-road"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 359
+    "reviewsCount": 359,
+    "swiggy_rest_id": "1188660"
   },
   {
     "id": "rbx-sal-dharman-nagar",
@@ -1077,13 +1105,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10028",
     "email": "dharman-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 11.674771,
     "longitude": 78.116512,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1115,13 +1143,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10029",
     "email": "k-k-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 10.75377,
     "longitude": 78.695125,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1131,13 +1159,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/trichy/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/trichy/the-red-box-thillai-nagar-rest1419512",
       "zomato": "https://www.zomato.com/trichy/the-red-box-k-k-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-k-k-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 393
+    "reviewsCount": 393,
+    "swiggy_rest_id": "1419512"
   },
   {
     "id": "rbx-ben-rajaji-nagar",
@@ -1153,13 +1182,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10030",
     "email": "rajaji-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.004482,
     "longitude": 77.553536,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1169,13 +1198,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-rajaji-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-rajaji-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 410
+    "reviewsCount": 410,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-hyd-hyderabad",
@@ -1191,13 +1221,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10031",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.420532,
     "longitude": 78.444634,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1207,13 +1237,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 427
+    "reviewsCount": 427,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-l-b-nagar",
@@ -1229,13 +1260,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10032",
     "email": "l-b-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.345718,
     "longitude": 78.55223,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1245,13 +1276,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-l-b-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-l-b-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 444
+    "reviewsCount": 444,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-hyderabad-1",
@@ -1267,13 +1299,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10033",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.395537,
     "longitude": 78.489687,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1283,13 +1315,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 461
+    "reviewsCount": 461,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-ben-point-71",
@@ -1305,13 +1338,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10034",
     "email": "point-71@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.009398,
     "longitude": 77.541336,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1321,13 +1354,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-point-71/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-point-71"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 478
+    "reviewsCount": 478,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-bengaluru-palace",
@@ -1343,13 +1377,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10035",
     "email": "bengaluru-palace@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.003507,
     "longitude": 77.589095,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1359,13 +1393,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-bengaluru-palace/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-bengaluru-palace"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 495
+    "reviewsCount": 495,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-tir-tiruchirappalli",
@@ -1381,13 +1416,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10036",
     "email": "tiruchirappalli@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 10.82365,
     "longitude": 78.687158,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1397,13 +1432,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/trichy/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/trichy/the-red-box-thillai-nagar-rest1419512",
       "zomato": "https://www.zomato.com/trichy/the-red-box-tiruchirappalli/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-tiruchirappalli"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 512
+    "reviewsCount": 512,
+    "swiggy_rest_id": "1419512"
   },
   {
     "id": "rbx-che-tambaram",
@@ -1419,13 +1455,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10037",
     "email": "tambaram@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 12.928931,
     "longitude": 80.118506,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1435,13 +1471,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-west-tambaram-rest333546",
       "zomato": "https://www.zomato.com/chennai/the-red-box-tambaram/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-tambaram"
     },
     "menuRegion": "india-north",
     "rating": 4.8,
-    "reviewsCount": 529
+    "reviewsCount": 529,
+    "swiggy_rest_id": "333546"
   },
   {
     "id": "rbx-che-kilpauk",
@@ -1457,13 +1494,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10038",
     "email": "kilpauk@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 13.079087,
     "longitude": 80.240943,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1473,13 +1510,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-chetpet-rest632593",
       "zomato": "https://www.zomato.com/chennai/the-red-box-kilpauk/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-green-box-kilpauk"
     },
     "menuRegion": "india-north",
     "rating": 4.9,
-    "reviewsCount": 546
+    "reviewsCount": 546,
+    "swiggy_rest_id": "632593"
   },
   {
     "id": "rbx-ben-marathahalli",
@@ -1495,13 +1533,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10039",
     "email": "marathahalli@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 12.957905,
     "longitude": 77.710091,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1511,13 +1549,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-marathahalli-rest309676",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-marathahalli/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-marathahalli"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 563
+    "reviewsCount": 563,
+    "swiggy_rest_id": "309676"
   },
   {
     "id": "rbx-che-alwarpet",
@@ -1533,13 +1572,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10040",
     "email": "alwarpet@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 13.034202,
     "longitude": 80.253882,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1549,13 +1588,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-mig-colony-alwarpet-rest17136",
       "zomato": "https://www.zomato.com/chennai/the-red-box-alwarpet/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-alwarpet"
     },
     "menuRegion": "india-north",
     "rating": 4.8,
-    "reviewsCount": 580
+    "reviewsCount": 580,
+    "swiggy_rest_id": "17136"
   },
   {
     "id": "rbx-che-velachery",
@@ -1571,13 +1611,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10041",
     "email": "velachery@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 12.981923,
     "longitude": 80.231603,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1587,13 +1627,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/chennai/the-red-box-velachery-rest32064",
       "zomato": "https://www.zomato.com/chennai/the-red-box-velachery/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-velachery"
     },
     "menuRegion": "india-north",
     "rating": 4.9,
-    "reviewsCount": 597
+    "reviewsCount": 597,
+    "swiggy_rest_id": "32064"
   },
   {
     "id": "rbx-ben-indiranagar",
@@ -1609,13 +1650,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10042",
     "email": "indiranagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 12.969984,
     "longitude": 77.648725,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1625,13 +1666,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-indiranagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-indiranagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 264
+    "reviewsCount": 264,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-point-14",
@@ -1647,13 +1689,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10043",
     "email": "point-14@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Company-Owned",
     "latitude": 12.986314,
     "longitude": 77.610586,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -1663,13 +1705,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-bellandur-rest1453885",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-point-14/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-point-14"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 281
+    "reviewsCount": 281,
+    "swiggy_rest_id": "1453885"
   },
   {
     "id": "rbx-ben-marathalli-sarjaput-orr",
@@ -1685,7 +1728,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10044",
     "email": "marathalli-sarjaput-orr@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1698,13 +1741,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-marathahalli-rest309676",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-marathalli-sarjaput-orr/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-marathalli-sarjaput-orr"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 298
+    "reviewsCount": 298,
+    "swiggy_rest_id": "309676"
   },
   {
     "id": "rbx-ben-koramangala",
@@ -1720,7 +1764,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10045",
     "email": "koramangala@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1733,13 +1777,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-koramangala/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-koramangala"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 315
+    "reviewsCount": 315,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-mysore-road",
@@ -1755,7 +1800,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10046",
     "email": "mysore-road@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1768,13 +1813,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-jp-nagar-rest154998",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-mysore-road/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-mysore-road"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 332
+    "reviewsCount": 332,
+    "swiggy_rest_id": "154998"
   },
   {
     "id": "rbx-ben-richmond-town",
@@ -1790,7 +1836,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10047",
     "email": "richmond-town@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1803,13 +1849,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-richmond-town/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-richmond-town"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 349
+    "reviewsCount": 349,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-majestic",
@@ -1825,7 +1872,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10048",
     "email": "majestic@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1838,13 +1885,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-majestic/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-majestic"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 366
+    "reviewsCount": 366,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-whitefield",
@@ -1860,7 +1908,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10049",
     "email": "whitefield@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1873,13 +1921,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-marathahalli-rest309676",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-whitefield/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-whitefield"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 383
+    "reviewsCount": 383,
+    "swiggy_rest_id": "309676"
   },
   {
     "id": "rbx-ben-electronic-city",
@@ -1895,7 +1944,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10050",
     "email": "electronic-city@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1908,13 +1957,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-bellandur-rest1453885",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-electronic-city/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-electronic-city"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 400
+    "reviewsCount": 400,
+    "swiggy_rest_id": "1453885"
   },
   {
     "id": "rbx-ben-jp-nagar",
@@ -1930,7 +1980,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10051",
     "email": "jp-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1943,13 +1993,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-jp-nagar-rest154998",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-jp-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-jp-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 417
+    "reviewsCount": 417,
+    "swiggy_rest_id": "154998"
   },
   {
     "id": "rbx-ben-jaya-nagar",
@@ -1965,7 +2016,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10052",
     "email": "jaya-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -1978,13 +2029,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-jp-nagar-rest154998",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-jaya-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-jaya-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 434
+    "reviewsCount": 434,
+    "swiggy_rest_id": "154998"
   },
   {
     "id": "rbx-ben-hebbal",
@@ -2000,7 +2052,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10053",
     "email": "hebbal@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2013,13 +2065,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-hebbal/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-hebbal"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 451
+    "reviewsCount": 451,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-kalyan-nagar",
@@ -2035,7 +2088,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10054",
     "email": "kalyan-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2048,13 +2101,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-kalyan-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-kalyan-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 468
+    "reviewsCount": 468,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-yeshwantpur",
@@ -2070,7 +2124,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10055",
     "email": "yeshwantpur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2083,13 +2137,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-yeshwantpur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-yeshwantpur"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 485
+    "reviewsCount": 485,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-nehru-puram",
@@ -2105,7 +2160,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10056",
     "email": "nehru-puram@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2118,13 +2173,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-nehru-puram/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-nehru-puram"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 502
+    "reviewsCount": 502,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-kasthuriba-nagar",
@@ -2140,7 +2196,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10057",
     "email": "kasthuriba-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2153,13 +2209,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-kasthuriba-nagar/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-kasthuriba-nagar"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 519
+    "reviewsCount": 519,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-brookefield",
@@ -2175,7 +2232,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10058",
     "email": "brookefield@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2188,13 +2245,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-marathahalli-rest309676",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-brookefield/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-brookefield"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 536
+    "reviewsCount": 536,
+    "swiggy_rest_id": "309676"
   },
   {
     "id": "rbx-ben-hsr-layout",
@@ -2210,13 +2268,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10059",
     "email": "hsr-layout@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.915407,
     "longitude": 77.635623,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2226,13 +2284,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-bellandur-rest1453885",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-hsr-layout/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hsr-layout"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 553
+    "reviewsCount": 553,
+    "swiggy_rest_id": "1453885"
   },
   {
     "id": "rbx-ben-hms-layout",
@@ -2248,7 +2307,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10060",
     "email": "hms-layout@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2261,13 +2320,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-hms-layout/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-hms-layout"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 570
+    "reviewsCount": 570,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-kempegowda-layout",
@@ -2283,7 +2343,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10061",
     "email": "kempegowda-layout@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2296,13 +2356,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-kempegowda-layout/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-kempegowda-layout"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 587
+    "reviewsCount": 587,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-nagarbhavi",
@@ -2318,7 +2379,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10062",
     "email": "nagarbhavi@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2331,13 +2392,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-jp-nagar-rest154998",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-nagarbhavi/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-planned-hub-nagarbhavi"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 254
+    "reviewsCount": 254,
+    "swiggy_rest_id": "154998"
   },
   {
     "id": "rbx-ben-indira-nagar-potential-outlet",
@@ -2353,7 +2415,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10063",
     "email": "indira-nagar-potential-outlet@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2366,13 +2428,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-indira-nagar-potential-outlet/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-indira-nagar-potential-outlet"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 271
+    "reviewsCount": 271,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-redhills-potential-outlet",
@@ -2388,7 +2451,7 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10064",
     "email": "redhills-potential-outlet@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": false,
     "status": "coming_soon",
     "category": "Potential Expansion",
@@ -2401,13 +2464,14 @@
       "Express Wok Counter"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-redhills-potential-outlet/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-redhills-potential-outlet"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 288
+    "reviewsCount": 288,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-bannerughatta",
@@ -2423,13 +2487,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10065",
     "email": "bannerughatta@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.812942,
     "longitude": 77.58053,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2439,13 +2503,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-jp-nagar-rest154998",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-bannerughatta/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-bannerughatta"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 305
+    "reviewsCount": 305,
+    "swiggy_rest_id": "154998"
   },
   {
     "id": "rbx-ben-sarjapur-road",
@@ -2461,13 +2526,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10066",
     "email": "sarjapur-road@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.911517,
     "longitude": 77.680243,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2477,13 +2542,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-bellandur-rest1453885",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-sarjapur-road/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-sarjapur-road"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 322
+    "reviewsCount": 322,
+    "swiggy_rest_id": "1453885"
   },
   {
     "id": "rbx-ben-nagavara",
@@ -2499,13 +2565,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10067",
     "email": "nagavara@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.042157,
     "longitude": 77.613578,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2515,13 +2581,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-nagavara/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-nagavara"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 339
+    "reviewsCount": 339,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-kammanahalli",
@@ -2537,13 +2604,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10068",
     "email": "kammanahalli@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.015904,
     "longitude": 77.637862,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2553,13 +2620,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-kammanahalli/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-kammanahalli"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 356
+    "reviewsCount": 356,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-btm-layout",
@@ -2575,13 +2643,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10069",
     "email": "btm-layout@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.916576,
     "longitude": 77.610116,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2591,13 +2659,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-btm-layout/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-btm-layout"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 373
+    "reviewsCount": 373,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-koramangala-1",
@@ -2613,13 +2682,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10070",
     "email": "koramangala@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.93524,
     "longitude": 77.624532,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2629,13 +2698,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-btm-rest1280126",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-koramangala/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-koramangala"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 390
+    "reviewsCount": 390,
+    "swiggy_rest_id": "1280126"
   },
   {
     "id": "rbx-ben-jalahalli",
@@ -2651,13 +2721,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10071",
     "email": "jalahalli@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 13.045431,
     "longitude": 77.54787,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2667,13 +2737,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-jalahalli/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-jalahalli"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 407
+    "reviewsCount": 407,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-bhopal",
@@ -2689,13 +2760,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10072",
     "email": "bhopal@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.259933,
     "longitude": 77.412615,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2705,13 +2776,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-bhopal/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-bhopal"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 424
+    "reviewsCount": 424,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-vastrapur",
@@ -2727,13 +2799,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10073",
     "email": "vastrapur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.037624,
     "longitude": 72.527785,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2743,13 +2815,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-vastrapur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-vastrapur"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 441
+    "reviewsCount": 441,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-infocity",
@@ -2765,13 +2838,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10074",
     "email": "infocity@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.193509,
     "longitude": 72.634591,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2781,13 +2854,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-infocity/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-infocity"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 458
+    "reviewsCount": 458,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ben-nizampet",
@@ -2803,13 +2877,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10075",
     "email": "nizampet@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.519354,
     "longitude": 78.378069,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2819,13 +2893,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/bangalore/the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365",
       "zomato": "https://www.zomato.com/bangalore/the-red-box-nizampet/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-nizampet"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 475
+    "reviewsCount": 475,
+    "swiggy_rest_id": "154365"
   },
   {
     "id": "rbx-ahm-nikol",
@@ -2841,13 +2916,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10076",
     "email": "nikol@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.049989,
     "longitude": 72.669967,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2879,13 +2954,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10077",
     "email": "prahlad-nagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.012034,
     "longitude": 72.510754,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2917,13 +2992,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10078",
     "email": "navrangpura@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.036544,
     "longitude": 72.561139,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2955,13 +3030,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10079",
     "email": "bopal@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 23.033677,
     "longitude": 72.463412,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -2993,13 +3068,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10080",
     "email": "maninagar@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 22.995165,
     "longitude": 72.604097,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3031,13 +3106,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10081",
     "email": "pondicherry@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 11.935225,
     "longitude": 79.82485,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3047,13 +3122,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/pondicherry/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/pondicherry/the-red-box-heritage-town-rest160226",
       "zomato": "https://www.zomato.com/pondicherry/the-red-box-pondicherry/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-pondicherry"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 577
+    "reviewsCount": 577,
+    "swiggy_rest_id": "160226"
   },
   {
     "id": "rbx-hyd-flipside",
@@ -3069,13 +3145,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10082",
     "email": "flipside@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.415737,
     "longitude": 78.329858,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3085,13 +3161,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-flipside/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-flipside"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 594
+    "reviewsCount": 594,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-hitec-city",
@@ -3107,13 +3184,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10083",
     "email": "hitec-city@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.449211,
     "longitude": 78.384124,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3123,13 +3200,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hitec-city/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hitec-city"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 261
+    "reviewsCount": 261,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-hyderabad-2",
@@ -3145,13 +3223,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10084",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.494654,
     "longitude": 78.344493,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3161,13 +3239,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 278
+    "reviewsCount": 278,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-hyderabad-3",
@@ -3183,13 +3262,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10085",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.494654,
     "longitude": 78.344493,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3199,13 +3278,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 295
+    "reviewsCount": 295,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-hyderabad-4",
@@ -3221,13 +3301,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10086",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.407456,
     "longitude": 78.375914,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3237,13 +3317,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 312
+    "reviewsCount": 312,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-nallagandla-tellapur",
@@ -3259,13 +3340,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10087",
     "email": "nallagandla-tellapur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.476467,
     "longitude": 78.303598,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3275,13 +3356,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-hafeezpet-rest914268",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-nallagandla-tellapur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-nallagandla-tellapur"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 329
+    "reviewsCount": 329,
+    "swiggy_rest_id": "914268"
   },
   {
     "id": "rbx-hyd-embassy",
@@ -3297,13 +3379,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10088",
     "email": "embassy@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 12.956382,
     "longitude": 80.160517,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3313,13 +3395,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-embassy/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-embassy"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 346
+    "reviewsCount": 346,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-vis-gajuwaka",
@@ -3335,13 +3418,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98409 10089",
     "email": "gajuwaka@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.687815,
     "longitude": 83.201048,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3351,13 +3434,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/visakhapatnam/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/vizag/the-red-box-dwarka-nagar-rest1165188",
       "zomato": "https://www.zomato.com/visakhapatnam/the-red-box-gajuwaka/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-gajuwaka"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 363
+    "reviewsCount": 363,
+    "swiggy_rest_id": "1165188"
   },
   {
     "id": "rbx-raj-rajamundry",
@@ -3373,13 +3457,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98400 10090",
     "email": "rajamundry@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.015383,
     "longitude": 81.784094,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3389,13 +3473,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/rajahmundry/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/rajahmundry/the-red-box-ava-road-tilak-road-rest699359",
       "zomato": "https://www.zomato.com/rajahmundry/the-red-box-rajamundry/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-rajamundry"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 380
+    "reviewsCount": 380,
+    "swiggy_rest_id": "699359"
   },
   {
     "id": "rbx-vij-vijayawada",
@@ -3411,13 +3496,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98401 10091",
     "email": "vijayawada@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 16.500525,
     "longitude": 80.664146,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3427,13 +3512,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/vijayawada/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/vijayawada/the-red-box-patamata-guru-nanak-colony-rest496968",
       "zomato": "https://www.zomato.com/vijayawada/the-red-box-vijayawada/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-vijayawada"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 397
+    "reviewsCount": 397,
+    "swiggy_rest_id": "496968"
   },
   {
     "id": "rbx-new-dwarka",
@@ -3449,13 +3535,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98402 10092",
     "email": "dwarka@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 28.5823,
     "longitude": 77.049976,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3465,7 +3551,7 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/delhi/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/new delhi/the-red-box",
       "zomato": "https://www.zomato.com/delhi/the-red-box-dwarka/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-dwarka"
     },
@@ -3487,13 +3573,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98403 10093",
     "email": "delhi@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 28.608865,
     "longitude": 77.423957,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3503,7 +3589,7 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/delhi/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/new delhi/the-red-box",
       "zomato": "https://www.zomato.com/delhi/the-red-box-delhi/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-delhi"
     },
@@ -3525,13 +3611,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98404 10094",
     "email": "rohini@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 28.738268,
     "longitude": 77.082215,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3541,7 +3627,7 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/delhi/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/new delhi/the-red-box",
       "zomato": "https://www.zomato.com/delhi/the-red-box-rohini/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-rohini"
     },
@@ -3558,18 +3644,18 @@
     "state": "Kerala",
     "city": "Thiruvananthapuram",
     "area": "Trivandrum",
-    "address": "Bava\u2019s Arcade, S.Roerich Road, Bakery Junction - Palayam Service Rd, opp. SNV Sadanam, Vanross, Palayam, Thiruvananthapuram, Kerala 695034",
+    "address": "Bava’s Arcade, S.Roerich Road, Bakery Junction - Palayam Service Rd, opp. SNV Sadanam, Vanross, Palayam, Thiruvananthapuram, Kerala 695034",
     "postalCode": "695034",
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98405 10095",
     "email": "trivandrum@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 8.501184,
     "longitude": 76.954866,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3579,13 +3665,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/thiruvananthapuram/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/thiruvananthapuram/the-red-box-bakery-junction-rest792157",
       "zomato": "https://www.zomato.com/thiruvananthapuram/the-red-box-trivandrum/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-trivandrum"
     },
     "menuRegion": "india-south",
     "rating": 4.9,
-    "reviewsCount": 465
+    "reviewsCount": 465,
+    "swiggy_rest_id": "792157"
   },
   {
     "id": "rbx-hyd-hyderabad-5",
@@ -3601,13 +3688,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98406 10096",
     "email": "hyderabad@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.51519,
     "longitude": 78.485097,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3617,13 +3704,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-serlingampally-gachibowli-rest900199",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-hyderabad/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-hyderabad"
     },
     "menuRegion": "india-south",
     "rating": 4.7,
-    "reviewsCount": 482
+    "reviewsCount": 482,
+    "swiggy_rest_id": "900199"
   },
   {
     "id": "rbx-hyd-kondapur",
@@ -3639,13 +3727,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98407 10097",
     "email": "kondapur@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 17.462951,
     "longitude": 78.340817,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3655,13 +3743,14 @@
       "Curbside Pickup"
     ],
     "deliveryLinks": {
-      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box",
+      "swiggy": "https://www.swiggy.com/city/hyderabad/the-red-box-madhapur-rest728013",
       "zomato": "https://www.zomato.com/hyderabad/the-red-box-kondapur/order",
       "whatsapp": "https://wa.me/918939444411?text=Hi%20Red%20Box%2C%20I%20would%20like%20to%20order%20from%20the-red-box-kondapur"
     },
     "menuRegion": "india-south",
     "rating": 4.8,
-    "reviewsCount": 499
+    "reviewsCount": 499,
+    "swiggy_rest_id": "728013"
   },
   {
     "id": "rbx-kol-kolkata",
@@ -3677,13 +3766,13 @@
     "phone": "+91 89394 44411",
     "managerPhone": "+91 98408 10098",
     "email": "kolkata@theredbox.in",
-    "hours": "11:00 AM \u2013 11:30 PM",
+    "hours": "11:00 AM – 11:30 PM",
     "isOpen": true,
     "status": "operational",
     "category": "Franchise Operating",
     "latitude": 22.574354,
     "longitude": 88.362873,
-    "deliveryTime": "15\u201325 mins",
+    "deliveryTime": "15–25 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3715,11 +3804,11 @@
     "phone": "+971 4 435 3333",
     "managerPhone": "+971 50 123 4567",
     "email": "dubaimarina@theredboxfood.com",
-    "hours": "12:00 PM \u2013 02:00 AM",
+    "hours": "12:00 PM – 02:00 AM",
     "isOpen": true,
     "latitude": 25.0772,
     "longitude": 55.1388,
-    "deliveryTime": "20\u201330 mins",
+    "deliveryTime": "20–30 mins",
     "dineInSeats": 60,
     "facilities": [
       "Dine-In",
@@ -3753,11 +3842,11 @@
     "phone": "+971 4 435 3334",
     "managerPhone": "+971 50 234 5678",
     "email": "downtowndxb@theredboxfood.com",
-    "hours": "12:00 PM \u2013 01:00 AM",
+    "hours": "12:00 PM – 01:00 AM",
     "isOpen": true,
     "latitude": 25.1972,
     "longitude": 55.2744,
-    "deliveryTime": "20\u201330 mins",
+    "deliveryTime": "20–30 mins",
     "dineInSeats": 48,
     "facilities": [
       "Dine-In",
@@ -3789,11 +3878,11 @@
     "phone": "+65 6789 3333",
     "managerPhone": "+65 9123 4567",
     "email": "singapore@theredboxfood.com",
-    "hours": "11:30 AM \u2013 11:00 PM",
+    "hours": "11:30 AM – 11:00 PM",
     "isOpen": true,
     "latitude": 1.2825,
     "longitude": 103.8443,
-    "deliveryTime": "20\u201330 mins",
+    "deliveryTime": "20–30 mins",
     "dineInSeats": 40,
     "facilities": [
       "Dine-In",
@@ -3825,11 +3914,11 @@
     "phone": "+60 3 2145 3333",
     "managerPhone": "+60 12 345 6789",
     "email": "kl@theredboxfood.com",
-    "hours": "11:00 AM \u2013 12:00 AM",
+    "hours": "11:00 AM – 12:00 AM",
     "isOpen": true,
     "latitude": 3.1466,
     "longitude": 101.7118,
-    "deliveryTime": "20\u201330 mins",
+    "deliveryTime": "20–30 mins",
     "dineInSeats": 42,
     "facilities": [
       "Dine-In",
@@ -3860,11 +3949,11 @@
     "phone": "+44 20 7946 3333",
     "managerPhone": "+44 7700 900123",
     "email": "londonsoho@theredboxfood.com",
-    "hours": "12:00 PM \u2013 11:30 PM",
+    "hours": "12:00 PM – 11:30 PM",
     "isOpen": true,
     "latitude": 51.5126,
     "longitude": -0.1319,
-    "deliveryTime": "20\u201335 mins",
+    "deliveryTime": "20–35 mins",
     "dineInSeats": 44,
     "facilities": [
       "Dine-In",
@@ -3896,11 +3985,11 @@
     "phone": "+1 212 555 3333",
     "managerPhone": "+1 917 555 0199",
     "email": "nycmidtown@theredboxfood.com",
-    "hours": "11:30 AM \u2013 11:00 PM",
+    "hours": "11:30 AM – 11:00 PM",
     "isOpen": true,
     "latitude": 40.7484,
     "longitude": -73.9857,
-    "deliveryTime": "20\u201335 mins",
+    "deliveryTime": "20–35 mins",
     "dineInSeats": 48,
     "facilities": [
       "Dine-In",

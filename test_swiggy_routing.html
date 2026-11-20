@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swiggy Direct Routing Verification</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #0f172a; color: #f8fafc; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 13px; }
+    th, td { border: 1px solid #334155; padding: 8px 12px; text-align: left; }
+    th { background: #1e293b; color: #38bdf8; }
+    tr:nth-child(even) { background: #1e293b80; }
+    .pass { color: #4ade80; font-weight: bold; }
+    .fail { color: #f87171; font-weight: bold; }
+    a { color: #fb923c; text-decoration: none; word-break: break-all; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h2>RedBox Swiggy Branch Restaurant ID & URL Routing Test</h2>
+  <div id="summary">Loading branches and testing routing...</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Branch Name</th>
+        <th>City</th>
+        <th>Area</th>
+        <th>Restaurant ID</th>
+        <th>Resolved Swiggy URL</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="testResults"></tbody>
+  </table>
+
+  <!-- Load branches and app scripts -->
+  <script src="app.js"></script>
+  <script>
+    async function runRoutingTests() {
+      const res = await fetch('data/branches.json');
+      const branches = await res.json();
+      window.branchesData = branches;
+
+      const tbody = document.getElementById('testResults');
+      let passed = 0;
+      let total = 0;
+
+      // Test a comprehensive sample of branches across all cities
+      const testIds = [
+        'rbx-che-alwarpet',
+        'rbx-che-annanagar',
+        'rbx-che-adyar',
+        'rbx-che-ashok-nagar',
+        'rbx-che-perambur',
+        'rbx-che-velachery',
+        'rbx-che-mogappair',
+        'rbx-che-egmore',
+        'rbx-che-tambaram',
+        'rbx-che-kaatupakkam',
+        'rbx-che-valasaravakkam',
+        'rbx-che-navalur',
+        'rbx-che-neelankarai',
+        'rbx-che-pallikarani',
+        'rbx-che-chrompet',
+        'rbx-che-avadi',
+        'rbx-che-adambakkam',
+        'rbx-che-kundrathur',
+        'rbx-che-kilpauk',
+        'rbx-ben-btm-layout',
+        'rbx-ben-marathahalli',
+        'rbx-ben-indiranagar',
+        'rbx-ben-point-14',
+        'rbx-ben-jp-nagar',
+        'rbx-coi-peelamedu',
+        'rbx-coi-sai-baba-colony',
+        'rbx-tir-k-k-nagar',
+        'rbx-mad-madurai',
+        'rbx-vel-krs-nagar',
+        'rbx-pud-pondicherry',
+        'rbx-hyd-hitec-city',
+        'rbx-hyd-kondapur',
+        'rbx-hyd-nallagandla-tellapur',
+        'rbx-vis-gajuwaka',
+        'rbx-vij-vijayawada',
+        'rbx-raj-rajamundry',
+        'rbx-thi-trivandrum'
+      ];
+
+      testIds.forEach((id, idx) => {
+        const b = branches.find(x => x.id === id);
+        if (!b) return;
+        total++;
+        const resolvedUrl = buildPartnerDeliveryUrl('swiggy', b);
+        const hasRestId = resolvedUrl.includes('-rest') || resolvedUrl.includes('/rest');
+        const isPass = hasRestId && resolvedUrl.includes('swiggy.com');
+        if (isPass) passed++;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${b.name}</strong></td>
+          <td>${b.city}</td>
+          <td>${b.area}</td>
+          <td><code>${b.swiggy_rest_id || 'N/A'}</code></td>
+          <td><a href="${resolvedUrl}" target="_blank">${resolvedUrl}</a></td>
+          <td class="${isPass ? 'pass' : 'fail'}">${isPass ? 'PASS ✓' : 'FAIL ✗'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('summary').innerHTML = `
+        <h3 style="color: ${passed === total ? '#4ade80' : '#f87171'}">
+          ${passed} / ${total} Branches Verified Successfully with Direct Restaurant IDs (${Math.round((passed/total)*100)}%)
+        </h3>
+      `;
+    }
+
+    window.addEventListener('DOMContentLoaded', runRoutingTests);
+  </script>
+</body>
+</html>

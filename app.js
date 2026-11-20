@@ -3830,12 +3830,224 @@ const CITY_SLUG_MAP = {
   'all': 'chennai'
 };
 
+// Unique Swiggy Restaurant IDs and canonical branch outlet slugs
+const SWIGGY_OUTLET_REGISTRY = {
+  // Chennai Outlets
+  'rbx-che-perambur': { id: '588206', slug: 'the-red-box-vyasarpadi-rest588206', city: 'chennai' },
+  'rbx-che-mkb-nagar': { id: '588206', slug: 'the-red-box-vyasarpadi-rest588206', city: 'chennai' },
+  'rbx-che-urapakkam': { id: '333546', slug: 'the-red-box-west-tambaram-rest333546', city: 'chennai' },
+  'rbx-che-tambaram': { id: '333546', slug: 'the-red-box-west-tambaram-rest333546', city: 'chennai' },
+  'rbx-che-kaatupakkam': { id: '86233', slug: 'the-red-box-kattupakkam-rest86233', city: 'chennai' },
+  'rbx-che-manapakkam': { id: '837208', slug: 'the-red-box-sri-devi-kuppam-main-road-valasaravakkam-rest837208', city: 'chennai' },
+  'rbx-che-valasaravakkam': { id: '837208', slug: 'the-red-box-sri-devi-kuppam-main-road-valasaravakkam-rest837208', city: 'chennai' },
+  'rbx-che-ashok-nagar': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'rbx-che-chennai': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'rbx-che-parrys': { id: '76702', slug: 'the-red-box-egmore-rest76702', city: 'chennai' },
+  'rbx-che-egmore': { id: '76702', slug: 'the-red-box-egmore-rest76702', city: 'chennai' },
+  'rbx-che-adyar': { id: '680350', slug: 'the-red-box-sardar-patel-road-adyar-rest680350', city: 'chennai' },
+  'rbx-che-mogappair': { id: '646736', slug: 'the-red-box-mogappair-rest646736', city: 'chennai' },
+  'rbx-che-omr-thoraipakkam': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'rbx-che-navalur': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'rbx-che-padur': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'rbx-che-neelankarai': { id: '447816', slug: 'the-red-box-neelankarai-rest447816', city: 'chennai' },
+  'rbx-che-the-re-box-selaiyur': { id: '981426', slug: 'the-red-box-kancheepuram-selaiyur-rest981426', city: 'chennai' },
+  'rbx-che-pallikarani': { id: '142623', slug: 'the-red-box-grace-compound-pallikaranai-rest142623', city: 'chennai' },
+  'rbx-che-chrompet': { id: '598023', slug: 'the-red-box-new-colony-chrompet-rest598023', city: 'chennai' },
+  'rbx-che-avadi': { id: '89836', slug: 'the-red-box-mth-road-avadi-rest89836', city: 'chennai' },
+  'rbx-che-adambakkam': { id: '187971', slug: 'the-red-box-adambakkam-rest187971', city: 'chennai' },
+  'rbx-che-annanagar': { id: '21776', slug: 'the-red-box-anna-nagar-rest21776', city: 'chennai' },
+  'rbx-che-kundrathur': { id: '1001623', slug: 'the-red-box-kovur-rest1001623', city: 'chennai' },
+  'rbx-che-kilpauk': { id: '632593', slug: 'the-red-box-chetpet-rest632593', city: 'chennai' },
+  'rbx-che-alwarpet': { id: '17136', slug: 'the-red-box-mig-colony-alwarpet-rest17136', city: 'chennai' },
+  'rbx-che-velachery': { id: '32064', slug: 'the-red-box-velachery-rest32064', city: 'chennai' },
+  'rbx-chn-tnagar': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'rbx-chn-annanagar': { id: '21776', slug: 'the-red-box-anna-nagar-rest21776', city: 'chennai' },
+  'rbx-chn-kundrathur': { id: '1001623', slug: 'the-red-box-kovur-rest1001623', city: 'chennai' },
+
+  // Coimbatore
+  'rbx-coi-peelamedu': { id: '189293', slug: 'the-red-box-peelamedu-rest189293', city: 'coimbatore' },
+  'rbx-coi-sai-baba-colony': { id: '1165180', slug: 'the-red-box-saravanampatti-rest1165180', city: 'coimbatore' },
+
+  // Madurai
+  'rbx-mad-madurai': { id: '1143103', slug: 'the-red-box-anna-nagar-rest1143103', city: 'madurai' },
+
+  // Vellore
+  'rbx-vel-krs-nagar': { id: '1188660', slug: 'the-red-box-vellore-fort-rest1188660', city: 'vellore' },
+  'rbx-vel-vellore-chennai-road': { id: '1188660', slug: 'the-red-box-vellore-fort-rest1188660', city: 'vellore' },
+
+  // Tiruchirappalli
+  'rbx-tir-k-k-nagar': { id: '1419512', slug: 'the-red-box-thillai-nagar-rest1419512', city: 'trichy' },
+  'rbx-tir-tiruchirappalli': { id: '1419512', slug: 'the-red-box-thillai-nagar-rest1419512', city: 'trichy' },
+
+  // Bengaluru
+  'rbx-ben-btm-layout': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-point-71': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-marathahalli': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'rbx-ben-marathalli-sarjaput-orr': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'rbx-ben-brookefield': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'rbx-ben-whitefield': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'rbx-ben-indiranagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-indira-nagar-potential-outlet': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-bengaluru-palace': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-rajaji-nagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-majestic': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-richmond-town': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-point-14': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'rbx-ben-sarjapur-road': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'rbx-ben-hsr-layout': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'rbx-ben-koramangala': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-koramangala-1': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-electronic-city': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'rbx-ben-jp-nagar': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'rbx-ben-jaya-nagar': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'rbx-ben-bannerughatta': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'rbx-ben-hebbal': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-nagavara': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-kammanahalli': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-kalyan-nagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-yeshwantpur': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-jalahalli': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-mysore-road': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'rbx-ben-nagarbhavi': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'rbx-ben-nehru-puram': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-kasthuriba-nagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-hms-layout': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-kempegowda-layout': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'rbx-ben-redhills-potential-outlet': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-bhopal': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-vastrapur': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-infocity': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'rbx-ben-nizampet': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+
+  // Hyderabad
+  'rbx-hyd-hitec-city': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-flipside': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-embassy': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-kondapur': { id: '728013', slug: 'the-red-box-madhapur-rest728013', city: 'hyderabad' },
+  'rbx-hyd-nallagandla-tellapur': { id: '914268', slug: 'the-red-box-hafeezpet-rest914268', city: 'hyderabad' },
+  'rbx-hyd-l-b-nagar': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad-1': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad-2': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad-3': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad-4': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'rbx-hyd-hyderabad-5': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+
+  // Pondicherry
+  'rbx-pud-pondicherry': { id: '160226', slug: 'the-red-box-heritage-town-rest160226', city: 'pondicherry' },
+
+  // Visakhapatnam (Vizag)
+  'rbx-vis-gajuwaka': { id: '1165188', slug: 'the-red-box-dwarka-nagar-rest1165188', city: 'vizag' },
+
+  // Vijayawada
+  'rbx-vij-vijayawada': { id: '496968', slug: 'the-red-box-patamata-guru-nanak-colony-rest496968', city: 'vijayawada' },
+
+  // Rajahmundry
+  'rbx-raj-rajamundry': { id: '699359', slug: 'the-red-box-ava-road-tilak-road-rest699359', city: 'rajahmundry' },
+
+  // Thiruvananthapuram (Trivandrum)
+  'rbx-thi-trivandrum': { id: '792157', slug: 'the-red-box-the-red-box-bakery-junction-rest792157', city: 'thiruvananthapuram' },
+};
+
+// Area keyword fallback mappings for Swiggy
+const SWIGGY_AREA_CODES = {
+  'alwarpet': { id: '17136', slug: 'the-red-box-mig-colony-alwarpet-rest17136', city: 'chennai' },
+  'anna nagar': { id: '21776', slug: 'the-red-box-anna-nagar-rest21776', city: 'chennai' },
+  'annanagar': { id: '21776', slug: 'the-red-box-anna-nagar-rest21776', city: 'chennai' },
+  'adyar': { id: '680350', slug: 'the-red-box-sardar-patel-road-adyar-rest680350', city: 'chennai' },
+  'ambattur': { id: '1097603', slug: 'the-red-box-sivanandha-nagar-ambattur-rest1097603', city: 'chennai' },
+  'ashok nagar': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'kodambakkam': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  't. nagar': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  't nagar': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'velachery': { id: '32064', slug: 'the-red-box-velachery-rest32064', city: 'chennai' },
+  'mogappair': { id: '646736', slug: 'the-red-box-mogappair-rest646736', city: 'chennai' },
+  'egmore': { id: '76702', slug: 'the-red-box-egmore-rest76702', city: 'chennai' },
+  'parrys': { id: '76702', slug: 'the-red-box-egmore-rest76702', city: 'chennai' },
+  'tambaram': { id: '333546', slug: 'the-red-box-west-tambaram-rest333546', city: 'chennai' },
+  'urapakkam': { id: '333546', slug: 'the-red-box-west-tambaram-rest333546', city: 'chennai' },
+  'chetpet': { id: '632593', slug: 'the-red-box-chetpet-rest632593', city: 'chennai' },
+  'kilpauk': { id: '632593', slug: 'the-red-box-chetpet-rest632593', city: 'chennai' },
+  'valasaravakkam': { id: '837208', slug: 'the-red-box-sri-devi-kuppam-main-road-valasaravakkam-rest837208', city: 'chennai' },
+  'porur': { id: '837208', slug: 'the-red-box-sri-devi-kuppam-main-road-valasaravakkam-rest837208', city: 'chennai' },
+  'kovur': { id: '1001623', slug: 'the-red-box-kovur-rest1001623', city: 'chennai' },
+  'kundrathur': { id: '1001623', slug: 'the-red-box-kovur-rest1001623', city: 'chennai' },
+  'kattupakkam': { id: '86233', slug: 'the-red-box-kattupakkam-rest86233', city: 'chennai' },
+  'navalur': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'omr': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'thoraipakkam': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'padur': { id: '85662', slug: 'the-red-box-navalur-rest85662', city: 'chennai' },
+  'neelankarai': { id: '447816', slug: 'the-red-box-neelankarai-rest447816', city: 'chennai' },
+  'selaiyur': { id: '981426', slug: 'the-red-box-kancheepuram-selaiyur-rest981426', city: 'chennai' },
+  'pallikaranai': { id: '142623', slug: 'the-red-box-grace-compound-pallikaranai-rest142623', city: 'chennai' },
+  'chrompet': { id: '598023', slug: 'the-red-box-new-colony-chrompet-rest598023', city: 'chennai' },
+  'avadi': { id: '89836', slug: 'the-red-box-mth-road-avadi-rest89836', city: 'chennai' },
+  'adambakkam': { id: '187971', slug: 'the-red-box-adambakkam-rest187971', city: 'chennai' },
+  'perambur': { id: '588206', slug: 'the-red-box-vyasarpadi-rest588206', city: 'chennai' },
+  'vyasarpadi': { id: '588206', slug: 'the-red-box-vyasarpadi-rest588206', city: 'chennai' },
+  'mkb nagar': { id: '588206', slug: 'the-red-box-vyasarpadi-rest588206', city: 'chennai' },
+
+  // Bangalore Areas
+  'btm': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'btm layout': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'marathahalli': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'whitefield': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'brookefield': { id: '309676', slug: 'the-red-box-marathahalli-rest309676', city: 'bangalore' },
+  'indiranagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'jeevan bhima nagar': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'hal': { id: '154365', slug: 'the-red-box-hal-3rd-stage-jeevan-bhima-nagar-rest154365', city: 'bangalore' },
+  'bellandur': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'sarjapur': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'hsr': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'hsr layout': { id: '1453885', slug: 'the-red-box-bellandur-rest1453885', city: 'bangalore' },
+  'koramangala': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'jp nagar': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'jayanagar': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'jaya nagar': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+  'bannerughatta': { id: '154998', slug: 'the-red-box-jp-nagar-rest154998', city: 'bangalore' },
+
+  // Coimbatore Areas
+  'peelamedu': { id: '189293', slug: 'the-red-box-peelamedu-rest189293', city: 'coimbatore' },
+  'sai baba colony': { id: '1165180', slug: 'the-red-box-saravanampatti-rest1165180', city: 'coimbatore' },
+  'saravanampatti': { id: '1165180', slug: 'the-red-box-saravanampatti-rest1165180', city: 'coimbatore' },
+
+  // Hyderabad Areas
+  'gachibowli': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'serlingampally': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'hitec city': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'madhapur': { id: '728013', slug: 'the-red-box-madhapur-rest728013', city: 'hyderabad' },
+  'kondapur': { id: '728013', slug: 'the-red-box-madhapur-rest728013', city: 'hyderabad' },
+  'hafeezpet': { id: '914268', slug: 'the-red-box-hafeezpet-rest914268', city: 'hyderabad' },
+  'nallagandla': { id: '914268', slug: 'the-red-box-hafeezpet-rest914268', city: 'hyderabad' },
+  'tellapur': { id: '914268', slug: 'the-red-box-hafeezpet-rest914268', city: 'hyderabad' }
+};
+
+// Default flagship hub per city for seamless fallback
+const SWIGGY_CITY_FLAGSHIP_HUBS = {
+  'chennai': { id: '57557', slug: 'the-red-box-kodambakkam-rest57557', city: 'chennai' },
+  'bangalore': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'bengaluru': { id: '1280126', slug: 'the-red-box-btm-rest1280126', city: 'bangalore' },
+  'coimbatore': { id: '189293', slug: 'the-red-box-peelamedu-rest189293', city: 'coimbatore' },
+  'trichy': { id: '1419512', slug: 'the-red-box-thillai-nagar-rest1419512', city: 'trichy' },
+  'tiruchirappalli': { id: '1419512', slug: 'the-red-box-thillai-nagar-rest1419512', city: 'trichy' },
+  'madurai': { id: '1143103', slug: 'the-red-box-anna-nagar-rest1143103', city: 'madurai' },
+  'vellore': { id: '1188660', slug: 'the-red-box-vellore-fort-rest1188660', city: 'vellore' },
+  'hyderabad': { id: '900199', slug: 'the-red-box-serlingampally-gachibowli-rest900199', city: 'hyderabad' },
+  'pondicherry': { id: '160226', slug: 'the-red-box-heritage-town-rest160226', city: 'pondicherry' },
+  'vizag': { id: '1165188', slug: 'the-red-box-dwarka-nagar-rest1165188', city: 'vizag' },
+  'visakhapatnam': { id: '1165188', slug: 'the-red-box-dwarka-nagar-rest1165188', city: 'vizag' },
+  'vijayawada': { id: '496968', slug: 'the-red-box-patamata-guru-nanak-colony-rest496968', city: 'vijayawada' },
+  'rajahmundry': { id: '699359', slug: 'the-red-box-ava-road-tilak-road-rest699359', city: 'rajahmundry' },
+  'thiruvananthapuram': { id: '792157', slug: 'the-red-box-the-red-box-bakery-junction-rest792157', city: 'thiruvananthapuram' },
+  'trivandrum': { id: '792157', slug: 'the-red-box-the-red-box-bakery-junction-rest792157', city: 'thiruvananthapuram' }
+};
+
 function toSlug(text) {
   if (!text) return '';
   return text.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-// Build accurate city and outlet URL with optional dish query (canonical chain routes avoid 404 dead-ends)
+// Build accurate city and outlet URL with unique Swiggy restaurant codes and optional dish query
 function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
   const b = branch || (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' && branchesData[0]);
   const cityRaw = (b && b.city) ? b.city.toLowerCase().trim() : 'chennai';
@@ -3850,18 +4062,58 @@ function buildPartnerDeliveryUrl(platform, branch = null, dishName = null) {
       return url;
     }
 
-    // If branch has a specific swiggy URL configured in deliveryLinks
-    if (b && b.deliveryLinks && b.deliveryLinks.swiggy && !b.deliveryLinks.swiggy.includes('swiggy-direct')) {
-      let url = b.deliveryLinks.swiggy;
-      // Strip fragile synthetic area sub-slugs like /the-red-box-t-nagar that 404 on Swiggy
-      if (url.includes('/the-red-box-') && !url.includes('/the-red-box?')) {
-        url = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
+    // 1. Direct configured Swiggy URL with restaurant ID code (-rest...)
+    if (b && b.deliveryLinks && b.deliveryLinks.swiggy) {
+      let rawSwiggy = b.deliveryLinks.swiggy.trim();
+      if (rawSwiggy.includes('-rest') || rawSwiggy.includes('/rest')) {
+        let url = rawSwiggy;
+        if (dishName) url += (url.includes('?') ? '&' : '?') + `search=${encodeURIComponent(dishName)}`;
+        return url;
       }
-      if (dishName) url += (url.includes('?') ? '&' : '?') + `search=${encodeURIComponent(dishName)}`;
+    }
+
+    // 2. Lookup in unique Swiggy restaurant ID registry by branch ID or explicit swiggy_rest_id
+    let outlet = null;
+    if (b && b.id && SWIGGY_OUTLET_REGISTRY[b.id]) {
+      outlet = SWIGGY_OUTLET_REGISTRY[b.id];
+    } else if (b && b.swiggy_rest_id) {
+      const restCode = b.swiggy_rest_id;
+      const areaPart = toSlug(b.area || b.name || 'outlet');
+      outlet = {
+        id: restCode,
+        city: swiggyCity,
+        slug: `the-red-box-${areaPart}-rest${restCode}`
+      };
+    }
+
+    // 3. Fallback: match area or branch name keywords
+    if (!outlet && b) {
+      const searchKey = `${b.name || ''} ${b.area || ''}`.toLowerCase();
+      for (const [key, codeInfo] of Object.entries(SWIGGY_AREA_CODES)) {
+        if (searchKey.includes(key)) {
+          outlet = codeInfo;
+          break;
+        }
+      }
+    }
+
+    // If exact branch outlet code was resolved, build the direct Swiggy menu link
+    if (outlet) {
+      const outletCity = outlet.city || swiggyCity;
+      let url = `https://www.swiggy.com/city/${outletCity}/${outlet.slug}`;
+      if (dishName) url += `?search=${encodeURIComponent(dishName)}`;
       return url;
     }
 
-    // Canonical City Brand Route (Swiggy auto-routes via user GPS/IP to nearest operational kitchen)
+    // 4. Fallback to city flagship kitchen hub if available
+    const flagship = SWIGGY_CITY_FLAGSHIP_HUBS[swiggyCity];
+    if (flagship) {
+      let url = `https://www.swiggy.com/city/${flagship.city}/${flagship.slug}`;
+      if (dishName) url += `?search=${encodeURIComponent(dishName)}`;
+      return url;
+    }
+
+    // 5. Canonical City Brand Route
     let url = `https://www.swiggy.com/city/${swiggyCity}/the-red-box`;
     if (dishName) {
       url += `?search=${encodeURIComponent(dishName)}`;
