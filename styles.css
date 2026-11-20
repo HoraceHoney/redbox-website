@@ -1362,7 +1362,7 @@ button[class*="font-heading"][class*="uppercase"] {
   color: #18181B !important;
 }
 
-/* Swiggy & Zomato Quick Order Pill Badges */
+/* Swiggy & Zomato Quick Order Pill Badges (Cut directly from user brand assets) */
 .nav-order-pill {
   display: inline-flex;
   align-items: center;
@@ -1370,18 +1370,18 @@ button[class*="font-heading"][class*="uppercase"] {
   height: 38px;
   min-height: 38px;
   box-sizing: border-box;
-  padding: 0 0.85rem;
+  padding: 0;
   border-radius: 9999px;
   background: transparent;
-  border: 1.5px solid rgba(228, 228, 231, 0.8);
-  box-shadow: none;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.22s ease,
-              background-color 0.22s ease;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.2s ease;
   cursor: pointer;
   text-decoration: none;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .nav-order-pill.hidden,
@@ -1396,71 +1396,28 @@ button[class*="font-heading"][class*="uppercase"] {
   }
 }
 
-@media (min-width: 640px) {
-  .nav-order-pill {
-    padding: 0 1rem;
-  }
-}
-
 .nav-order-pill:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  filter: brightness(1.05);
 }
 
-.nav-order-pill-swiggy {
-  border-color: rgba(252, 128, 25, 0.45);
-  background: rgba(252, 128, 25, 0.04);
-}
-
-.nav-order-pill-swiggy img {
-  height: 20px !important;
-  max-height: 20px !important;
-  width: auto !important;
-  object-fit: contain;
-}
-
-.nav-order-pill-swiggy:hover {
-  border-color: #FC8019;
-  background: rgba(252, 128, 25, 0.08);
-  box-shadow: 0 4px 14px rgba(252, 128, 25, 0.18);
-}
-
-.nav-order-pill-zomato {
-  border-color: rgba(226, 55, 68, 0.45);
-  background: rgba(226, 55, 68, 0.04);
-}
-
+.nav-order-pill-swiggy img,
 .nav-order-pill-zomato img {
-  height: 17px !important;
-  max-height: 17px !important;
+  height: 38px !important;
+  max-height: 38px !important;
   width: auto !important;
+  display: block;
   object-fit: contain;
-}
-
-.nav-order-pill-zomato:hover {
-  border-color: #E23744;
-  background: rgba(226, 55, 68, 0.08);
-  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.18);
 }
 
 /* Enhanced contrast over dark hero background */
-.nav-state-dark .nav-order-pill-swiggy {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-color: #FC8019 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+.nav-state-dark .nav-order-pill {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
 }
 
-.nav-state-dark .nav-order-pill-zomato {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-color: #E23744 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
-}
-
-.nav-state-dark .nav-order-pill-swiggy:hover,
-.nav-state-dark .nav-order-pill-zomato:hover {
-  background: #FFFFFF !important;
-  transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+.nav-state-dark .nav-order-pill:hover {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
 /* Delivery Partner Modal Brand Headers & Enforcements */

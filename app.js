@@ -2604,7 +2604,7 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
       titleEl.innerHTML = `
         <span class="inline-flex items-center gap-2">
           <span>Order on</span>
-          <img src="assets/images/swiggy.svg" alt="Swiggy" class="h-6 w-auto inline-block" style="height: 22px; max-height: 22px; width: auto; object-fit: contain;">
+          <img src="assets/images/user_logos/swiggy_pill_2x.png" alt="Swiggy" class="h-7 w-auto inline-block rounded-full shadow-xs" style="height: 28px; width: auto; object-fit: contain;">
         </span>
       `;
     }
@@ -2618,7 +2618,7 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
       titleEl.innerHTML = `
         <span class="inline-flex items-center gap-2">
           <span>Order on</span>
-          <img src="assets/images/zomato.svg" alt="Zomato" class="h-5 w-auto inline-block" style="height: 20px; max-height: 20px; width: auto; object-fit: contain;">
+          <img src="assets/images/user_logos/zomato_pill_2x.png" alt="Zomato" class="h-7 w-auto inline-block rounded-full shadow-xs" style="height: 28px; width: auto; object-fit: contain;">
         </span>
       `;
     }
