@@ -1463,6 +1463,35 @@ button[class*="font-heading"][class*="uppercase"] {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
 }
 
+/* Delivery Partner Modal Brand Headers & Enforcements */
+#modalLocationTitle {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+}
+
+#modalLocationTitle img {
+  height: 22px !important;
+  max-height: 22px !important;
+  width: auto !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  object-fit: contain !important;
+}
+
+img[src*="zomato.svg"] {
+  max-height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+img[src*="swiggy.svg"] {
+  max-height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* Mobile dropdown open state override */
 .nav-transparent-floating.nav-mobile-open {
   background-color: rgba(255, 255, 255, 0.98) !important;
