@@ -1443,6 +1443,26 @@ button[class*="font-heading"][class*="uppercase"] {
   box-shadow: 0 4px 14px rgba(226, 55, 68, 0.18);
 }
 
+/* Enhanced contrast over dark hero background */
+.nav-state-dark .nav-order-pill-swiggy {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #FC8019 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+.nav-state-dark .nav-order-pill-zomato {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #E23744 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+.nav-state-dark .nav-order-pill-swiggy:hover,
+.nav-state-dark .nav-order-pill-zomato:hover {
+  background: #FFFFFF !important;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+}
+
 /* Mobile dropdown open state override */
 .nav-transparent-floating.nav-mobile-open {
   background-color: rgba(255, 255, 255, 0.98) !important;
