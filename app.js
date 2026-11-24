@@ -2115,11 +2115,9 @@ function detectUserGPS(isManualClick = false) {
       
       setUserLocation(lat, lon, locality, nearest.branch, nearest.distance, fullAddress, accuracy);
       
-      if (statusMsg) statusMsg.textContent = `Identified: ${fullAddress.slice(0, 45)}... (${nearest.distance.toFixed(1)} km to hub)`;
-      if (btnDetectText) btnDetectText.textContent = 'Location Found!';
       if (btnDetect) btnDetect.disabled = false;
 
-      // Keep modal open, update active banner with Continue button, and re-sort nearby branches
+      // Update GPS card with Continue to Swiggy/Zomato button and re-sort nearby branches
       updateModalActiveLocationBanner(userFulfillment ? userFulfillment.pendingPartnerOrder : null);
       modalBranchesShowAll = false;
       populateModalBranches();
@@ -2593,52 +2591,93 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Update Active Location Confirmation Banner in modal
+// Update Active Location state in modal (controls the GPS card directly without top confirmation banner)
 function updateModalActiveLocationBanner(platform = null) {
-  const banner = document.getElementById('modalActiveLocationBanner');
-  if (!banner) return;
+  const gpsTitle = document.getElementById('gpsCardTitle');
+  const statusMsg = document.getElementById('gpsStatusMessage');
+  const btnDetect = document.getElementById('btnModalDetectGps');
+  const btnDetectText = document.getElementById('btnModalDetectGpsText');
+  const btnReset = document.getElementById('btnModalResetGps');
 
   const isVerified = (typeof userFulfillment !== 'undefined' && userFulfillment.isVerified);
-  if (isVerified) {
-    banner.classList.remove('hidden');
-    const addrText = document.getElementById('modalActiveLocationText');
-    const hubText = document.getElementById('modalActiveLocationHub');
-    const btnConfirm = document.getElementById('modalBtnConfirmCurrentOrder');
-    const btnConfirmText = document.getElementById('modalBtnConfirmCurrentText');
+  const target = platform || (userFulfillment ? userFulfillment.pendingPartnerOrder : null);
 
-    const address = userFulfillment.fullAddress || userFulfillment.localityName || '45, G.N. Chetty Road, T. Nagar';
+  if (isVerified) {
     const b = userFulfillment.nearestBranch || (typeof branchesData !== 'undefined' ? branchesData[0] : null);
     const bName = b ? b.name : 'The Red Box';
-    const dist = userFulfillment.distanceKm ? `${userFulfillment.distanceKm} km away` : 'Within delivery radius';
+    const dist = userFulfillment.distanceKm ? `${userFulfillment.distanceKm} km away` : 'In Zone';
+    const address = userFulfillment.fullAddress || userFulfillment.localityName || (b ? b.area : 'Location Verified');
 
-    if (addrText) addrText.textContent = address;
-    if (hubText) hubText.textContent = `Nearest Kitchen: ${bName} (${dist})`;
+    if (gpsTitle) {
+      gpsTitle.innerHTML = `<span class="text-zinc-900 font-bold">${bName}</span> <span class="text-emerald-700 text-[10px] font-bold px-1.5 py-0.5 bg-emerald-100 rounded-md">(${dist})</span>`;
+    }
+    if (statusMsg) {
+      statusMsg.textContent = address;
+    }
+    if (btnReset) {
+      btnReset.classList.remove('hidden');
+    }
 
-    const target = platform || (userFulfillment ? userFulfillment.pendingPartnerOrder : null);
-    if (target === 'swiggy') {
-      if (btnConfirmText) btnConfirmText.textContent = 'Continue to Swiggy ➔';
-      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
-    } else if (target === 'zomato') {
-      if (btnConfirmText) btnConfirmText.textContent = 'Continue to Zomato ➔';
-      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
-    } else {
-      if (btnConfirmText) btnConfirmText.textContent = 'Confirm Location ➔';
-      if (btnConfirm) btnConfirm.className = 'px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer';
+    if (btnDetect && btnDetectText) {
+      btnDetect.disabled = false;
+      if (target === 'swiggy') {
+        btnDetectText.textContent = 'Continue to Swiggy ➔';
+        btnDetect.className = 'px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+      } else if (target === 'zomato') {
+        btnDetectText.textContent = 'Continue to Zomato ➔';
+        btnDetect.className = 'px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+      } else {
+        btnDetectText.textContent = 'Continue to Order ➔';
+        btnDetect.className = 'px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+      }
+      btnDetect.onclick = function() { confirmCurrentLocationOrder(); };
     }
   } else {
-    banner.classList.add('hidden');
+    if (gpsTitle) gpsTitle.textContent = 'Share Current GPS';
+    if (statusMsg) statusMsg.textContent = 'High-accuracy satellite pinpoint & reverse geocode';
+    if (btnReset) btnReset.classList.add('hidden');
+    if (btnDetect && btnDetectText) {
+      btnDetect.disabled = false;
+      btnDetectText.textContent = 'Detect Location';
+      btnDetect.className = 'px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+      btnDetect.onclick = function() { detectUserGPS(true); };
+    }
   }
+
+  if (window.lucide) window.lucide.createIcons();
 }
 
-// Confirm order with current location
+// Reset user location
+function resetUserGpsLocation() {
+  if (typeof userFulfillment !== 'undefined') {
+    userFulfillment.isVerified = false;
+    userFulfillment.fullAddress = null;
+    userFulfillment.localityName = null;
+    userFulfillment.latitude = null;
+    userFulfillment.longitude = null;
+    try {
+      localStorage.removeItem('redbox_fulfillment');
+    } catch (e) {}
+  }
+
+  updateModalActiveLocationBanner(userFulfillment ? userFulfillment.pendingPartnerOrder : null);
+  modalBranchesShowAll = false;
+  populateModalBranches();
+  if (typeof showToast === 'function') {
+    showToast('Location reset. You can detect GPS again or choose a branch below.');
+  }
+}
+window.resetUserGpsLocation = resetUserGpsLocation;
+
+// Confirm order with current location (flows directly to Swiggy / Zomato)
 function confirmCurrentLocationOrder() {
-  const platform = (typeof userFulfillment !== 'undefined' && userFulfillment.pendingPartnerOrder) ? userFulfillment.pendingPartnerOrder : null;
+  const platform = (typeof userFulfillment !== 'undefined' && userFulfillment.pendingPartnerOrder) ? userFulfillment.pendingPartnerOrder : 'swiggy';
   const b = (typeof userFulfillment !== 'undefined' && userFulfillment.nearestBranch) || (typeof branchesData !== 'undefined' ? branchesData[0] : null);
 
   closeLocationSelectorModal();
 
   if (platform) {
-    userFulfillment.pendingPartnerOrder = null;
+    if (typeof userFulfillment !== 'undefined') userFulfillment.pendingPartnerOrder = null;
     handleSmartPartnerOrder(platform, null, 'REDWOK20', b);
   }
 }
@@ -2665,36 +2704,27 @@ function ensureLocationSelectorModalInDOM() {
         </div>
       </div>
 
-      <!-- Active Location Confirmation Banner (if already verified) -->
-      <div id="modalActiveLocationBanner" class="hidden p-3.5 mb-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-3">
-        <div class="min-w-0">
-          <div class="flex items-center gap-1.5 text-emerald-800 text-xs font-bold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Selected Kitchen Location</span>
-          </div>
-          <p id="modalActiveLocationText" class="text-xs font-semibold text-zinc-900 truncate mt-0.5">45, G.N. Chetty Road, T. Nagar, Chennai</p>
-          <span id="modalActiveLocationHub" class="text-[10px] text-zinc-500">Nearest Kitchen: The Red Box - T. Nagar (2.2 km away)</span>
-        </div>
-        <button id="modalBtnConfirmCurrentOrder" onclick="confirmCurrentLocationOrder()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
-          <span id="modalBtnConfirmCurrentText">Continue ➔</span>
-        </button>
-      </div>
-
-      <!-- Live GPS Detection -->
-      <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
+      <!-- Live GPS Detection & 1-Click Order Route -->
+      <div id="modalGpsCard" class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
         <div class="flex items-center gap-3 min-w-0">
-          <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
+          <div id="modalGpsIconWrap" class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
             <i data-lucide="navigation" class="w-4 h-4"></i>
           </div>
           <div class="min-w-0">
-            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
+            <h4 id="gpsCardTitle" class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
             <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">High-accuracy satellite pinpoint & reverse geocode</p>
           </div>
         </div>
-        <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
-          <span id="btnModalDetectGpsText">Detect Location</span>
-          <i data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
-        </button>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+            <span id="btnModalDetectGpsText">Detect Location</span>
+            <i id="btnModalDetectGpsIcon" data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
+          </button>
+          <button id="btnModalResetGps" onclick="resetUserGpsLocation()" title="Reset / Re-detect location" class="hidden px-2.5 py-2 bg-white hover:bg-zinc-100 text-zinc-600 border border-zinc-200 rounded-xl text-xs font-heading font-bold uppercase transition flex items-center gap-1 cursor-pointer">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Reset</span>
+          </button>
+        </div>
       </div>
 
       <!-- Search Branches & Areas -->
