@@ -2593,49 +2593,56 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
 
 // Update Active Location state in modal (controls the GPS card directly without top confirmation banner)
 function updateModalActiveLocationBanner(platform = null) {
-  const gpsTitle = document.getElementById('gpsCardTitle');
-  const statusMsg = document.getElementById('gpsStatusMessage');
+  const card = document.getElementById('modalGpsCard');
+  const unverifiedState = document.getElementById('gpsUnverifiedState');
+  const verifiedState = document.getElementById('gpsVerifiedState');
+  const verifiedBranchName = document.getElementById('gpsVerifiedBranchName');
+  const verifiedDistanceBadge = document.getElementById('gpsVerifiedDistanceBadge');
+  const verifiedAddressText = document.getElementById('gpsVerifiedAddressText');
+  const btnContinue = document.getElementById('btnGpsVerifiedContinue');
+  const btnContinueText = document.getElementById('btnGpsVerifiedContinueText');
+
   const btnDetect = document.getElementById('btnModalDetectGps');
   const btnDetectText = document.getElementById('btnModalDetectGpsText');
-  const btnReset = document.getElementById('btnModalResetGps');
 
   const isVerified = (typeof userFulfillment !== 'undefined' && userFulfillment.isVerified);
   const target = platform || (userFulfillment ? userFulfillment.pendingPartnerOrder : null);
 
   if (isVerified) {
+    if (unverifiedState) unverifiedState.classList.add('hidden');
+    if (verifiedState) verifiedState.classList.remove('hidden');
+    if (card) {
+      card.className = 'p-4 bg-emerald-50/60 rounded-2xl border border-emerald-200/80 mb-4 transition-all';
+    }
+
     const b = userFulfillment.nearestBranch || (typeof branchesData !== 'undefined' ? branchesData[0] : null);
     const bName = b ? b.name : 'The Red Box';
-    const dist = userFulfillment.distanceKm ? `${userFulfillment.distanceKm} km away` : 'In Zone';
-    const address = userFulfillment.fullAddress || userFulfillment.localityName || (b ? b.area : 'Location Verified');
+    const dist = userFulfillment.distanceKm ? `${userFulfillment.distanceKm} km · In Zone` : 'In Zone';
+    const address = userFulfillment.fullAddress || userFulfillment.localityName || (b ? b.address || b.area : 'Location Verified');
 
-    if (gpsTitle) {
-      gpsTitle.innerHTML = `<span class="text-zinc-900 font-bold">${bName}</span> <span class="text-emerald-700 text-[10px] font-bold px-1.5 py-0.5 bg-emerald-100 rounded-md">(${dist})</span>`;
-    }
-    if (statusMsg) {
-      statusMsg.textContent = address;
-    }
-    if (btnReset) {
-      btnReset.classList.remove('hidden');
-    }
+    if (verifiedBranchName) verifiedBranchName.textContent = bName;
+    if (verifiedDistanceBadge) verifiedDistanceBadge.textContent = dist;
+    if (verifiedAddressText) verifiedAddressText.textContent = address;
 
-    if (btnDetect && btnDetectText) {
-      btnDetect.disabled = false;
+    if (btnContinue && btnContinueText) {
       if (target === 'swiggy') {
-        btnDetectText.textContent = 'Continue to Swiggy ➔';
-        btnDetect.className = 'px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+        btnContinueText.textContent = 'Continue to Swiggy';
+        btnContinue.className = 'flex-1 py-2.5 px-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center justify-center gap-2 cursor-pointer';
       } else if (target === 'zomato') {
-        btnDetectText.textContent = 'Continue to Zomato ➔';
-        btnDetect.className = 'px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+        btnContinueText.textContent = 'Continue to Zomato';
+        btnContinue.className = 'flex-1 py-2.5 px-4 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center justify-center gap-2 cursor-pointer';
       } else {
-        btnDetectText.textContent = 'Continue to Order ➔';
-        btnDetect.className = 'px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0';
+        btnContinueText.textContent = 'Continue to Order';
+        btnContinue.className = 'flex-1 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center justify-center gap-2 cursor-pointer';
       }
-      btnDetect.onclick = function() { confirmCurrentLocationOrder(); };
+      btnContinue.onclick = function() { confirmCurrentLocationOrder(); };
     }
   } else {
-    if (gpsTitle) gpsTitle.textContent = 'Share Current GPS';
-    if (statusMsg) statusMsg.textContent = 'High-accuracy satellite pinpoint & reverse geocode';
-    if (btnReset) btnReset.classList.add('hidden');
+    if (verifiedState) verifiedState.classList.add('hidden');
+    if (unverifiedState) unverifiedState.classList.remove('hidden');
+    if (card) {
+      card.className = 'p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 transition-all';
+    }
     if (btnDetect && btnDetectText) {
       btnDetect.disabled = false;
       btnDetectText.textContent = 'Detect Location';
@@ -2705,25 +2712,48 @@ function ensureLocationSelectorModalInDOM() {
       </div>
 
       <!-- Live GPS Detection & 1-Click Order Route -->
-      <div id="modalGpsCard" class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3 min-w-0">
-          <div id="modalGpsIconWrap" class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
-            <i data-lucide="navigation" class="w-4 h-4"></i>
+      <div id="modalGpsCard" class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 transition-all">
+        <!-- Initial / Unverified State -->
+        <div id="gpsUnverifiedState" class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3 min-w-0">
+            <div id="modalGpsIconWrap" class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
+              <i data-lucide="navigation" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0">
+              <h4 id="gpsCardTitle" class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
+              <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">High-accuracy satellite pinpoint & reverse geocode</p>
+            </div>
           </div>
-          <div class="min-w-0">
-            <h4 id="gpsCardTitle" class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Share Current GPS</h4>
-            <p id="gpsStatusMessage" class="text-[11px] text-zinc-500 truncate">High-accuracy satellite pinpoint & reverse geocode</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 flex-shrink-0">
-          <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+          <button id="btnModalDetectGps" onclick="detectUserGPS(true)" class="px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
             <span id="btnModalDetectGpsText">Detect Location</span>
             <i id="btnModalDetectGpsIcon" data-lucide="locate-fixed" class="w-3.5 h-3.5"></i>
           </button>
-          <button id="btnModalResetGps" onclick="resetUserGpsLocation()" title="Reset / Re-detect location" class="hidden px-2.5 py-2 bg-white hover:bg-zinc-100 text-zinc-600 border border-zinc-200 rounded-xl text-xs font-heading font-bold uppercase transition flex items-center gap-1 cursor-pointer">
-            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-            <span class="hidden sm:inline">Reset</span>
-          </button>
+        </div>
+
+        <!-- Verified / Location Found State -->
+        <div id="gpsVerifiedState" class="hidden">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 shadow-2xs mt-0.5">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 id="gpsVerifiedBranchName" class="text-xs sm:text-sm font-heading font-extrabold text-zinc-900 tracking-tight">The Red Box</h4>
+                <span id="gpsVerifiedDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200/80">In Zone</span>
+              </div>
+              <p id="gpsVerifiedAddressText" class="text-[11px] text-zinc-600 truncate mt-0.5">Location Verified</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-2.5 border-t border-emerald-200/60">
+            <button id="btnGpsVerifiedContinue" onclick="confirmCurrentLocationOrder()" class="flex-1 py-2.5 px-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-heading font-extrabold uppercase tracking-wide shadow-sm transition flex items-center justify-center gap-2 cursor-pointer">
+              <span id="btnGpsVerifiedContinueText">Continue to Swiggy</span>
+              <span class="text-sm">➔</span>
+            </button>
+            <button id="btnModalResetGps" onclick="resetUserGpsLocation()" title="Reset / Re-detect location" class="px-3 py-2.5 bg-white hover:bg-zinc-100 text-zinc-600 border border-zinc-200 rounded-xl text-xs font-heading font-bold uppercase transition flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>Reset</span>
+            </button>
+          </div>
         </div>
       </div>
 
