@@ -2119,12 +2119,10 @@ function detectUserGPS(isManualClick = false) {
       if (btnDetectText) btnDetectText.textContent = 'Location Found!';
       if (btnDetect) btnDetect.disabled = false;
 
-      // Close modal if manual click
-      if (isManualClick) {
-        setTimeout(() => {
-          closeLocationSelectorModal();
-        }, 500);
-      }
+      // Keep modal open, update active banner with Continue button, and re-sort nearby branches
+      updateModalActiveLocationBanner(userFulfillment ? userFulfillment.pendingPartnerOrder : null);
+      modalBranchesShowAll = false;
+      populateModalBranches();
     },
     (error) => {
       console.warn('Geolocation access error/denied:', error.message);
@@ -2260,59 +2258,9 @@ function setUserLocation(lat, lon, localityName, branch, distanceKm, fullAddress
   }
 }
 
-// Manual delivery address save handler
+// Legacy stub for saveManualDeliveryAddress (orders are fulfilled directly via Swiggy/Zomato)
 function saveManualDeliveryAddress() {
-  const flatEl = document.getElementById('manualAddressFlat');
-  const streetEl = document.getElementById('manualAddressStreet');
-  const areaEl = document.getElementById('manualAddressArea');
-  const pincodeEl = document.getElementById('manualAddressPincode');
-
-  const flat = flatEl ? flatEl.value.trim() : '';
-  const street = streetEl ? streetEl.value.trim() : '';
-  const area = areaEl ? areaEl.value.trim() : '';
-  const pincode = pincodeEl ? pincodeEl.value.trim() : '';
-
-  if (!street && !area && !flat) {
-    alert('Please enter at least a street or area name.');
-    return;
-  }
-
-  // Combine full address
-  const parts = [];
-  if (flat) parts.push(flat);
-  if (street) parts.push(street);
-  if (area) parts.push(area);
-  let fullAddr = parts.join(', ');
-  if (pincode) fullAddr += (fullAddr ? ` - ${pincode}` : pincode);
-
-  // Match nearest branch based on area text or fallback to T. Nagar/Anna Nagar
-  let matchedBranch = null;
-  if (branchesData && branchesData.length > 0) {
-    const searchStr = `${area} ${street}`.toLowerCase();
-    matchedBranch = branchesData.find(b => {
-      const bStr = `${b.area} ${b.name} ${b.address}`.toLowerCase();
-      return bStr.includes(area.toLowerCase()) || (street && bStr.includes(street.toLowerCase()));
-    });
-    if (!matchedBranch) {
-      matchedBranch = branchesData.find(b => b.id === 'rbx-chn-tnagar') || branchesData[0];
-    }
-  }
-
-  const distanceKm = 1.8; // default in-zone distance for manually specified address
-  setUserLocation(
-    matchedBranch ? matchedBranch.latitude : 13.0418,
-    matchedBranch ? matchedBranch.longitude : 80.2341,
-    area || (matchedBranch ? matchedBranch.area : 'Chennai'),
-    matchedBranch,
-    distanceKm,
-    fullAddr,
-    null
-  );
-
   closeLocationSelectorModal();
-  if (typeof showToast === 'function') {
-    showToast('✓ Delivery address saved: ' + fullAddr);
-  }
 }
 
 // Apply manual branch selection
@@ -2575,6 +2523,10 @@ function openLocationSelectorModal(dishId = null, targetPartner = null) {
 
     updateModalActiveLocationBanner(targetPartner || (userFulfillment ? userFulfillment.pendingPartnerOrder : null));
 
+    modalBranchesShowAll = false;
+    const searchInput = document.getElementById('modalBranchSearchInput');
+    if (searchInput) searchInput.value = '';
+
     modal.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
     populateModalBranches();
@@ -2608,7 +2560,7 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
         </span>
       `;
     }
-    if (subEl) subEl.textContent = 'Share current location or enter your street address to route to your nearest Swiggy kitchen with 20% OFF (Code: REDWOK20)';
+    if (subEl) subEl.textContent = 'Share current location or select your nearest branch to order on Swiggy with 20% OFF (Code: REDWOK20)';
     if (iconWrap) {
       iconWrap.className = 'w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0';
       iconWrap.innerHTML = '<i data-lucide="map-pin" class="w-5 h-5"></i>';
@@ -2622,7 +2574,7 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
         </span>
       `;
     }
-    if (subEl) subEl.textContent = 'Share current location or enter your street address to route to your nearest Zomato kitchen with 20% OFF (Code: REDWOK20)';
+    if (subEl) subEl.textContent = 'Share current location or select your nearest branch to order on Zomato with 20% OFF (Code: REDWOK20)';
     if (iconWrap) {
       iconWrap.className = 'w-11 h-11 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0';
       iconWrap.innerHTML = '<i data-lucide="map-pin" class="w-5 h-5"></i>';
@@ -2630,6 +2582,10 @@ function openPartnerOrderPrompt(platform = 'swiggy') {
   }
 
   updateModalActiveLocationBanner(platform);
+
+  modalBranchesShowAll = false;
+  const searchInput = document.getElementById('modalBranchSearchInput');
+  if (searchInput) searchInput.value = '';
 
   modal.classList.remove('hidden');
   document.body.classList.add('overflow-hidden');
@@ -2704,8 +2660,8 @@ function ensureLocationSelectorModalInDOM() {
           <i data-lucide="map-pin" class="w-5 h-5"></i>
         </div>
         <div>
-          <h3 id="modalLocationTitle" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Delivery Location</h3>
-          <p id="modalLocationSubtitle" class="text-xs text-zinc-500">Verify branch proximity (12 km hot delivery radius) and nearest kitchen hub</p>
+          <h3 id="modalLocationTitle" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 tracking-tight">Select Kitchen Location</h3>
+          <p id="modalLocationSubtitle" class="text-xs text-zinc-500">Share GPS or choose your nearest kitchen hub to order on Swiggy / Zomato</p>
         </div>
       </div>
 
@@ -2714,7 +2670,7 @@ function ensureLocationSelectorModalInDOM() {
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 text-emerald-800 text-xs font-bold">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Current Delivery Address</span>
+            <span>Selected Kitchen Location</span>
           </div>
           <p id="modalActiveLocationText" class="text-xs font-semibold text-zinc-900 truncate mt-0.5">45, G.N. Chetty Road, T. Nagar, Chennai</p>
           <span id="modalActiveLocationHub" class="text-[10px] text-zinc-500">Nearest Kitchen: The Red Box - T. Nagar (2.2 km away)</span>
@@ -2724,7 +2680,7 @@ function ensureLocationSelectorModalInDOM() {
         </button>
       </div>
 
-      <!-- Option 1: Live GPS Detection -->
+      <!-- Live GPS Detection -->
       <div class="p-4 bg-red-50/60 rounded-2xl border border-red-200/70 mb-4 flex items-center justify-between gap-3">
         <div class="flex items-center gap-3 min-w-0">
           <div class="w-9 h-9 rounded-xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
@@ -2741,80 +2697,9 @@ function ensureLocationSelectorModalInDOM() {
         </button>
       </div>
 
-      <!-- Option 2: Enter Delivery Street Address -->
-      <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-200 mb-5 space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <div class="w-6 h-6 rounded-lg bg-zinc-200 text-zinc-700 flex items-center justify-center">
-              <i data-lucide="home" class="w-3.5 h-3.5"></i>
-            </div>
-            <h4 class="text-xs font-heading font-extrabold text-zinc-900 uppercase tracking-wide">Enter Delivery Address</h4>
-          </div>
-          <span class="text-[10px] text-zinc-500 font-medium">Exact street / door delivery</span>
-        </div>
-        <div class="space-y-2">
-          <input type="text" id="manualAddressFlat" placeholder="Flat / House / Building No. (e.g. Flat 4B, Ruby Towers)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
-          <input type="text" id="manualAddressStreet" placeholder="Street / Road / Landmark (e.g. 45, G.N. Chetty Road, Near Vani Mahal)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
-          <div class="grid grid-cols-2 gap-2">
-            <input type="text" id="manualAddressArea" placeholder="Area / Locality (e.g. T. Nagar)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
-            <input type="text" id="manualAddressPincode" placeholder="Pincode (e.g. 600017)" class="w-full px-3 py-2 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red outline-none bg-white">
-          </div>
-        </div>
-        <button onclick="saveManualDeliveryAddress()" class="w-full py-2 bg-brand-red hover:bg-brand-red-dark text-white rounded-xl text-xs font-heading font-bold uppercase tracking-wider shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer">
-          <i data-lucide="check" class="w-3.5 h-3.5"></i>
-          <span>Save & Route to Nearest Kitchen</span>
-        </button>
-      </div>
-
-      <!-- Quick Test Presets -->
-      <div class="mb-5">
-        <div class="flex items-center justify-between mb-2">
-          <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider">Quick Address Presets</label>
-          <span class="text-[10px] text-zinc-400">Click to switch branch outlet</span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <button onclick="setTestPresetLocation('tnagar')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Chennai T. Nagar Hub
-              </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">2.2 km · In Zone</span>
-            </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">45, G.N. Chetty Road, T. Nagar, Chennai - 600017</p>
-          </button>
-          <button onclick="setTestPresetLocation('bengaluru')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Bengaluru Indiranagar
-              </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.4 km · In Zone</span>
-            </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">100ft Road, Indiranagar, Bengaluru - 560038</p>
-          </button>
-          <button onclick="setTestPresetLocation('trichy')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-emerald-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Trichy KK Nagar
-              </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">1.1 km · In Zone</span>
-            </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">KK Nagar Main Road, Tiruchirappalli - 620021</p>
-          </button>
-          <button onclick="setTestPresetLocation('mumbai')" class="p-2.5 rounded-xl border border-red-200 bg-red-50/60 hover:bg-red-100/70 text-left transition cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-red-800 text-[11px] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-red-500"></span> Out of Service (Mumbai)
-              </span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold">>500 km · Out of Zone</span>
-            </div>
-            <p class="text-[10px] text-zinc-700 mt-1 font-medium truncate">Marine Drive, Nariman Point, Mumbai - 400021</p>
-          </button>
-        </div>
-      </div>
-
       <!-- Search Branches & Areas -->
       <div class="mb-3">
-        <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1.5">Or Choose from 100+ Kitchen Hubs</label>
+        <label class="block text-[10px] font-heading font-extrabold text-zinc-400 uppercase tracking-wider mb-1.5">Nearby Kitchen Outlets (Shortest Distance First)</label>
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-3"></i>
           <input type="text" id="modalBranchSearchInput" oninput="filterModalBranches(this.value)" placeholder="Search city or branch (e.g. Anna Nagar, Indiranagar, Dubai...)" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-zinc-200 text-xs focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none">
@@ -2822,7 +2707,7 @@ function ensureLocationSelectorModalInDOM() {
       </div>
 
       <!-- Scrollable Branch List -->
-      <div id="modalBranchListContainer" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+      <div id="modalBranchListContainer" class="space-y-2 max-h-72 overflow-y-auto pr-1">
         <!-- Rendered by JavaScript -->
       </div>
 
@@ -2842,34 +2727,81 @@ function closeLocationSelectorModal() {
   }
 }
 
-// Render 57 branches in modal list
+// Modal branches state
+let modalBranchesShowAll = false;
+
+function toggleModalBranchesShowAll(showAll) {
+  modalBranchesShowAll = showAll;
+  const searchInput = document.getElementById('modalBranchSearchInput');
+  populateModalBranches(searchInput ? searchInput.value : '');
+}
+window.toggleModalBranchesShowAll = toggleModalBranchesShowAll;
+
+function filterModalBranches(val) {
+  modalBranchesShowAll = false;
+  populateModalBranches(val);
+}
+
+// Render branches in modal list with shortest distance on top & 5-item limit with Show More
 function populateModalBranches(filterText = '') {
   const container = document.getElementById('modalBranchListContainer');
   if (!container || !branchesData) return;
 
   const query = (filterText || '').toLowerCase().trim();
-  const filtered = branchesData.filter(b => {
+
+  // Determine user coordinates for distance calculation
+  const userLat = (typeof userFulfillment !== 'undefined' && userFulfillment && userFulfillment.latitude) || (typeof userCoordinates !== 'undefined' && userCoordinates && userCoordinates.lat) || 13.0418;
+  const userLon = (typeof userFulfillment !== 'undefined' && userFulfillment && userFulfillment.longitude) || (typeof userCoordinates !== 'undefined' && userCoordinates && userCoordinates.lng) || 80.2341;
+
+  // Map branches with calculated distance & filter by search query
+  let filtered = branchesData.map(b => {
+    let dist = null;
+    if (b.latitude && b.longitude) {
+      dist = calculateDistanceKm(userLat, userLon, b.latitude, b.longitude);
+      dist = Math.round(dist * 10) / 10;
+    }
+    return { ...b, _distance: dist };
+  }).filter(b => {
     if (!query) return true;
     const s = `${b.name} ${b.city} ${b.area} ${b.state} ${b.branch_code}`.toLowerCase();
     return s.includes(query);
   });
 
+  // Sort ascending with shortest distance on top
+  filtered.sort((a, b) => {
+    if (a._distance === null) return 1;
+    if (b._distance === null) return -1;
+    return a._distance - b._distance;
+  });
+
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="p-4 text-center text-xs text-zinc-400">
-        No branches match "${filterText}". Try searching Chennai, Bangalore, Hyderabad, or Dubai.
+        No branches match "${filterText}". Try searching Chennai, Bangalore, Hyderabad, or Coimbatore.
       </div>
     `;
     return;
   }
 
-  container.innerHTML = filtered.map(b => {
+  const totalCount = filtered.length;
+  const showCount = modalBranchesShowAll ? totalCount : Math.min(5, totalCount);
+  const displayedBranches = filtered.slice(0, showCount);
+
+  let html = displayedBranches.map(b => {
+    const distBadge = (b._distance !== null && b._distance !== undefined) ? `
+      <span class="text-[10px] px-2 py-0.5 rounded-full ${b._distance <= 12 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-bold' : 'bg-zinc-100 text-zinc-600 font-medium'} flex items-center gap-1">
+        <i data-lucide="navigation" class="w-3 h-3 text-emerald-600"></i>
+        <span>${b._distance} km${b._distance <= 12 ? ' · In Zone' : ''}</span>
+      </span>
+    ` : '';
+
     return `
       <div onclick="selectBranchFromModal('${b.id}')" class="p-3 rounded-2xl border border-zinc-200/80 hover:border-brand-red/40 hover:bg-red-50/40 transition cursor-pointer flex items-center justify-between group">
         <div class="min-w-0 pr-2">
           <div class="flex items-center gap-1.5 flex-wrap">
             <span class="font-heading font-extrabold text-xs text-zinc-900 group-hover:text-brand-red transition truncate">${b.name}</span>
             <span class="text-[9px] px-1.5 py-0.2 rounded bg-zinc-100 text-zinc-600 font-bold">${b.city}</span>
+            ${distBadge}
           </div>
           <p class="text-[11px] text-zinc-500 truncate mt-0.5">${b.address}</p>
         </div>
@@ -2881,19 +2813,44 @@ function populateModalBranches(filterText = '') {
     `;
   }).join('');
 
-  if (window.lucide) window.lucide.createIcons();
-}
+  // Show More / Show Less toggle button if more than 5 outlets
+  if (totalCount > 5) {
+    if (!modalBranchesShowAll) {
+      html += `
+        <div class="pt-2 text-center">
+          <button type="button" onclick="toggleModalBranchesShowAll(true)" class="w-full py-2.5 px-4 rounded-xl border border-dashed border-zinc-300 hover:border-brand-red/50 hover:bg-red-50/40 text-xs font-heading font-bold text-zinc-700 hover:text-brand-red transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
+            <span>Show More Outlets (${totalCount - 5} more)</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="pt-2 text-center">
+          <button type="button" onclick="toggleModalBranchesShowAll(false)" class="w-full py-2 px-4 rounded-xl border border-zinc-200 hover:bg-zinc-50 text-xs font-heading font-semibold text-zinc-500 hover:text-zinc-700 transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>Show Less (Show top 5)</span>
+            <i data-lucide="chevron-up" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      `;
+    }
+  }
 
-function filterModalBranches(val) {
-  populateModalBranches(val);
+  container.innerHTML = html;
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function selectBranchFromModal(branchId) {
   const b = branchesData.find(x => x.id === branchId);
+  const platform = (typeof userFulfillment !== 'undefined' && userFulfillment.pendingPartnerOrder) ? userFulfillment.pendingPartnerOrder : null;
   if (b) {
-    applyBranchLocation(b, 2.1, `${b.area || b.name}, ${b.city}`);
+    applyBranchLocation(b, b._distance || 2.1, `${b.area || b.name}, ${b.city}`);
   }
   closeLocationSelectorModal();
+  if (platform) {
+    userFulfillment.pendingPartnerOrder = null;
+    handleSmartPartnerOrder(platform, null, 'REDWOK20', b);
+  }
 }
 
 // Handle clicking "Order" on any dish card
